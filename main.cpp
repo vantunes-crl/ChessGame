@@ -4,10 +4,10 @@
 int main()
 {
     table Table;
-    //main_game Chess(800, 800);
+    main_game Chess(800, 800);
 
 
-    //Chess.start();
+    Chess.start();
     //std::cout << TB[0][0];
 
 
