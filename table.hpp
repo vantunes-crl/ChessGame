@@ -17,13 +17,14 @@ public:
         {
             for (int j = 0; j < 8; ++j )
             {
-                std::cout << " " << std::setw(10);
+                std::cout << std::left << std::setw(10) << std::setfill(' ');
                 if (PlayTable[i][j])
                     std::cout << PlayTable[i][j]->type();
                 else
                     std::cout << "null";
             }
             std::cout << std::endl;
+            std::cout << std::left << "--------------------------------------------------------------------------" << std::endl;
         }
     }
 
