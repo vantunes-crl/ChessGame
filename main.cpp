@@ -25,7 +25,17 @@ int main()
     Table[1][0]->play(Table);
 
 
+    //std::cout << Table[1][0] << std::endl;
+    
+    //std::cout << temp << std::endl;
+    
+    Pos pos = Table[0][5]->getPos(Table);
+    std::cout << Table[0][5]->type() << std::endl;
 
-    Table.printTable();
+    std::cout << pos.x << "x " << pos.y << "y " << std::endl;
+
+    //Table.printTable();
+
+    //std::cout << temp->getPos(Table).x << temp->getPos(Table).y << std::endl;
 
 }
