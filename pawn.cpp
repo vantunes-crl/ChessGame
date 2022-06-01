@@ -7,5 +7,5 @@ std::string pawn::type()
 
 void pawn::play()
 {
-    std::cout << "play From pawn\n";
+
 }

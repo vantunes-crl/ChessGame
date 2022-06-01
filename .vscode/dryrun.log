@@ -2,6 +2,8 @@ make --dry-run --keep-going --print-directory
 make: Entering directory '/home/vantunes/Desktop/ChessGame'
 clang++  -c main.cpp -o main.o
 clang++  -c pawn.cpp -o pawn.o
-clang++ main.o pawn.o -lsfml-graphics -lsfml-window -lsfml-system -o ChessGame
+clang++  -c horse.cpp -o horse.o
+clang++  -c bishop.cpp -o bishop.o
+clang++ main.o pawn.o horse.o bishop.o -lsfml-graphics -lsfml-window -lsfml-system -o ChessGame
 make: Leaving directory '/home/vantunes/Desktop/ChessGame'
  

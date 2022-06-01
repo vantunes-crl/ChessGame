@@ -2,7 +2,7 @@ NAME = ChessGame
 
 INCLUDE = -lsfml-graphics -lsfml-window -lsfml-system
 
-SRCS = main.cpp pawn.cpp horse.cpp
+SRCS = main.cpp pawn.cpp horse.cpp bishop.cpp king.cpp knight.cpp queen.cpp rook.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
