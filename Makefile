@@ -1,8 +1,8 @@
 NAME = ChessGame
 
-INCLUDE = -lsfml-graphics -lsfml-window -lsfml-system -g
+INCLUDE = -lsfml-graphics -lsfml-window -lsfml-system
 
-SRCS = main.cpp main_game.cpp table.cpp pawn.cpp
+SRCS = main.cpp pawn.cpp horse.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

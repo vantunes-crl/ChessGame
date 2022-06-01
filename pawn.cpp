@@ -1,10 +1,11 @@
 #include "pawn.hpp"
 
-
-pawn::pawn()
+std::string pawn::type()
 {
+    return "pawn";
 }
 
-pawn::~pawn()
+void pawn::play()
 {
+    std::cout << "play From pawn\n";
 }

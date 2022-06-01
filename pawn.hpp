@@ -1,16 +1,14 @@
 #ifndef PAWN_HPP
 #define PAWN_HPP
 
+#include "Ichess_pieces.hpp"
 
-class pawn
+class pawn : public Ichess_pieces
 {
-private:
 
-
-
-public:
-    pawn();
-    ~pawn();
+    public:
+        void play() override;
+        std::string type() override;
 };
 
 
