@@ -1,6 +1,6 @@
 #include "king.hpp"
 
-void king::play()
+void king::play(table<Ichess_pieces *> &Table)
 {
 
 }

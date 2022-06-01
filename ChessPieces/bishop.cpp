@@ -1,6 +1,6 @@
 #include "bishop.hpp"
 
-void bishop::play()
+void bishop::play(table<Ichess_pieces *> &Table)
 {
     
 }

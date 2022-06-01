@@ -1,6 +1,6 @@
 #include "queen.hpp"
 
-void queen::play()
+void queen::play(table<Ichess_pieces *> &Table)
 {
 
 }

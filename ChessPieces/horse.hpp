@@ -1,0 +1,15 @@
+#ifndef HORSE_HPP
+#define HORSE_HPP
+
+#include "../Ichess_pieces.hpp"
+
+class horse : public Ichess_pieces
+{
+    public:
+        void play(table<Ichess_pieces *> &Table) override;
+        std::string type() override;
+    
+};
+
+#endif
+
