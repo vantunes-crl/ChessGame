@@ -4,6 +4,10 @@ clang++  -c main.cpp -o main.o
 clang++  -c pawn.cpp -o pawn.o
 clang++  -c horse.cpp -o horse.o
 clang++  -c bishop.cpp -o bishop.o
-clang++ main.o pawn.o horse.o bishop.o -lsfml-graphics -lsfml-window -lsfml-system -o ChessGame
+clang++  -c king.cpp -o king.o
+clang++  -c knight.cpp -o knight.o
+clang++  -c queen.cpp -o queen.o
+clang++  -c rook.cpp -o rook.o
+clang++ main.o pawn.o horse.o bishop.o king.o knight.o queen.o rook.o -lsfml-graphics -lsfml-window -lsfml-system -o ChessGame
 make: Leaving directory '/home/vantunes/Desktop/ChessGame'
  

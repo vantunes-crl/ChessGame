@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Wed Jun  1 16:45:12 2022
+# Make data base, printed on Wed Jun  1 16:58:14 2022
 
 # Variables
 
@@ -90,7 +90,7 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # makefile (from 'Makefile', line 5)
-SRCS = main.cpp pawn.cpp horse.cpp bishop.cpp
+SRCS = main.cpp pawn.cpp horse.cpp bishop.cpp king.cpp knight.cpp queen.cpp rook.cpp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -232,7 +232,6 @@ SNAP_CONTEXT = SH3nYh-v_46mWYHFoFpebRuABqh47eHn-U8dByQns_U-nYOC5kMv
 # environment
 MANAGERPID = 2261
 # environment
- 
 LC_MEASUREMENT = pt_PT.UTF-8
 # environment
 GIO_LAUNCHED_DESKTOP_FILE_PID = 12247
@@ -305,14 +304,15 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Directories
 
-# . (device 66310, inode 2755469): 16 files, no impossibilities.
+# . (device 66310, inode 2755469): 24 files, no impossibilities.
 
-# 16 files, no impossibilities in 1 directories.
+# 24 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
 %.o: %.cpp
 #  recipe to execute (from 'Makefile', line 10):
+ 
 	clang++ ${FLAGS} -c $< -o $@
 
 # 1 implicit rules, 0 (0.0%) terminal.
@@ -321,7 +321,7 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-01 16:45:11.36012631
+#  Last modified 2022-06-01 16:57:30.203331675
 #  File has been updated.
 #  Successfully updated.
 
@@ -338,7 +338,31 @@ clean:
 #  recipe to execute (from 'Makefile', line 18):
 	rm -f $(OBJS)
 
+# Not a target:
+queen.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+knight.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+rook.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 re: fclean all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+king.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -362,7 +386,6 @@ all: ChessGame
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
- 
 # Load=0/32=0%, Rehash=0, Collisions=0/4=0%
 
 fclean: clean
@@ -412,7 +435,7 @@ pawn.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-ChessGame: main.o pawn.o horse.o bishop.o
+ChessGame: main.o pawn.o horse.o bishop.o king.o knight.o queen.o rook.o
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
@@ -423,19 +446,19 @@ ChessGame: main.o pawn.o horse.o bishop.o
 	clang++ $(OBJS) $(INCLUDE) -o $(NAME)
 
 # files hash-table stats:
-# Load=13/1024=1%, Rehash=0, Collisions=0/35=0%
+# Load=17/1024=2%, Rehash=0, Collisions=0/43=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 32 / storage = 267 B / avg = 8 B
-# current buf: size = 8162 B / used = 267 B / count = 32 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 44 / storage = 376 B / avg = 8 B
+# current buf: size = 8162 B / used = 376 B / count = 44 / avg = 8 B
 
-# strcache performance: lookups = 48 / hit rate = 33%
+# strcache performance: lookups = 60 / hit rate = 26%
 # hash-table stats:
-# Load=32/8192=0%, Rehash=0, Collisions=0/48=0%
-# Finished Make data base on Wed Jun  1 16:45:12 2022
+# Load=44/8192=1%, Rehash=0, Collisions=0/60=0%
+# Finished Make data base on Wed Jun  1 16:58:14 2022
 
  
