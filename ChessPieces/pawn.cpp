@@ -1,12 +1,13 @@
 #include "pawn.hpp"
 
-std::string pawn::type()
+PIECES pawn::type()
 {
-    return "pawn";
+    return PAWN;
 }
 
 void pawn::play(table<Ichess_pieces *> &Table)
 {
+    
 
 }
 

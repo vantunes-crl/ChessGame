@@ -5,9 +5,9 @@ void queen::play(table<Ichess_pieces *> &Table)
 
 }
 
-std::string queen::type()
+PIECES queen::type()
 {
-    return "queen";
+    return QUEEN;
 }
 
 Pos queen::getPos(table<Ichess_pieces *> &Table) const

@@ -5,9 +5,9 @@ void rook::play(table<Ichess_pieces *> &Table)
 
 }
 
-std::string rook::type()
+PIECES rook::type()
 {
-    return "rook";
+    return ROOK;
 }
 
 Pos rook::getPos(table<Ichess_pieces *> &Table) const

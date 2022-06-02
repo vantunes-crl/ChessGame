@@ -5,10 +5,9 @@ void bishop::play(table<Ichess_pieces *> &Table)
     
 }
 
-
-std::string bishop::type()
+PIECES bishop::type()
 {
-    return "bishop";
+    return BISHOP;
 }
 
 Pos bishop::getPos(table<Ichess_pieces *> &Table) const

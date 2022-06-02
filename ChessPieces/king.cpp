@@ -5,9 +5,9 @@ void king::play(table<Ichess_pieces *> &Table)
 
 }
 
-std::string king::type()
+PIECES king::type()
 {
-    return "king";
+    return KING;
 }
 
 Pos king::getPos(table<Ichess_pieces *> &Table) const

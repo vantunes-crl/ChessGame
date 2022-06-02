@@ -5,9 +5,9 @@ void knight::play(table<Ichess_pieces *> &Table)
 
 }
 
-std::string knight::type()
+PIECES knight::type()
 {
-    return "knight";
+    return KNIGHT;
 }
 
 Pos knight::getPos(table<Ichess_pieces *> &Table) const

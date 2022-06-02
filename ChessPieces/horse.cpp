@@ -5,9 +5,9 @@ void horse::play(table<Ichess_pieces *> &Table)
     
 }
 
-std::string horse::type()
+PIECES horse::type()
 {
-    return "horse";
+    return HORSE;
 }
 
 Pos horse::getPos(table<Ichess_pieces *> &Table) const
