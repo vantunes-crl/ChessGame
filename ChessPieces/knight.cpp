@@ -1,6 +1,6 @@
 #include "knight.hpp"
 
-void knight::play(table<Ichess_pieces *> &Table)
+void knight::play(table<Ichess_pieces *> &Table, int x, int y)
 {
 
 }

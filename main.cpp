@@ -18,23 +18,25 @@ int main()
     Table[3] = {nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
     Table[4] = {nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
     Table[5] = {nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
-    Table[6] = {new rook, new horse, new bishop, new queen, new king, new bishop, new horse, new rook};
     Table[7] = {new pawn, new pawn, new pawn, new pawn, new pawn, new pawn, new pawn, new pawn};
+    Table[6] = {new rook, new horse, new bishop, new queen, new king, new bishop, new horse, new rook};
 
 
-    Table[1][0]->play(Table);
+    //Table[1][0]->play(Table, 0, 0); //case try go back
+    //Table[1][0]->play(Table, -1, 1); //case out of table
+    //Table[1][0]->play(Table, 1, 0); //case same position
+    //Table[1][0]->play(Table, 2, 1); // case if can kill
+    //Table[1][0]->play(Table, 2, 0); //he can move
+    //Table[1][0]->play(Table, 3, 0); //try move more than 1 slot
+    // { //case of someone is in front
+    //     Table[1][0]->play(Table, 2, 0);
+    //     Table[2][0]->play(Table, 3, 0);
+    //     Table[3][0]->play(Table, 4, 0);
+    //     Table[4][0]->play(Table, 5, 0);
+    //     Table[5][0]->play(Table, 6, 0);
+    // }
 
-
-    //std::cout << Table[1][0] << std::endl;
-    
-    //std::cout << temp << std::endl;
-    
-    Pos pos = Table[0][5]->getPos(Table);
-    std::cout << Table[0][5]->type() << std::endl;
-
-    std::cout << pos.x << "x " << pos.y << "y " << std::endl;
-
-    //Table.printTable();
+    Table.printTable();
 
     //std::cout << temp->getPos(Table).x << temp->getPos(Table).y << std::endl;
 

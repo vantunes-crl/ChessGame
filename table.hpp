@@ -13,13 +13,14 @@ private:
 public:
     void printTable()
     {
+        std::array<std::string, 7> Pieces = {"Bishop", "Horse", "King", "Knight", "Pawn", "Queen", "Rook"};
         for (int i = 0; i < 8; ++i )
         {
             for (int j = 0; j < 8; ++j )
             {
                 std::cout << std::left << std::setw(10) << std::setfill(' ');
                 if (PlayTable[i][j])
-                    std::cout << PlayTable[i][j]->type();
+                    std::cout << Pieces[PlayTable[i][j]->type()];
                 else
                     std::cout << "null";
             }

@@ -1,6 +1,6 @@
 #include "rook.hpp"
 
-void rook::play(table<Ichess_pieces *> &Table)
+void rook::play(table<Ichess_pieces *> &Table, int x, int y)
 {
 
 }

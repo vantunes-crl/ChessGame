@@ -20,4 +20,8 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
+run: fclean all
+	./ChessGame
+	rm -f $(OBJS)
+
 re: fclean all

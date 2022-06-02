@@ -1,6 +1,6 @@
 #include "horse.hpp"
 
-void horse::play(table<Ichess_pieces *> &Table)
+void horse::play(table<Ichess_pieces *> &Table, int x, int y)
 {
     
 }
