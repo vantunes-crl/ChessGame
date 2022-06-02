@@ -2,12 +2,14 @@
 
 PIECES pawn::type()
 {
-    return PAWN;
+    if (Color)
+        return WHITE_PAWN;
+    else
+        return BLACK_PAWN;
 }
 
 void pawn::play(table<Ichess_pieces *> &Table, int x, int y)
 {
-
     Pos pos = this->getPos(Table);
 
     if (x < 0 || x > 7 || y < 0 || y > 7) //verify the conors

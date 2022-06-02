@@ -7,7 +7,10 @@ void king::play(table<Ichess_pieces *> &Table, int x, int y)
 
 PIECES king::type()
 {
-    return KING;
+    if (Color)
+        return WHITE_KING;
+    else
+        return BLACK_KING;
 }
 
 Pos king::getPos(table<Ichess_pieces *> &Table) const

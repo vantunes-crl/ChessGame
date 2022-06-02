@@ -12,14 +12,14 @@ int main()
 {
     table<Ichess_pieces *> Table;
 
-    Table[0] = {new rook, new horse, new bishop, new queen, new king, new bishop, new horse, new rook};
-    Table[1] = {new pawn, new pawn, new pawn, new pawn, new pawn, new pawn, new pawn, new pawn};
+    Table[0] = {new rook(false), new horse(false), new bishop(false), new queen(false), new king(false), new bishop(false), new horse(false), new rook(false)};
+    Table[1] = {new pawn(false), new pawn(false), new pawn(false), new pawn(false), new pawn(false), new pawn(false), new pawn(false), new pawn(false)};
     Table[2] = {nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
     Table[3] = {nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
     Table[4] = {nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
     Table[5] = {nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
-    Table[7] = {new pawn, new pawn, new pawn, new pawn, new pawn, new pawn, new pawn, new pawn};
-    Table[6] = {new rook, new horse, new bishop, new queen, new king, new bishop, new horse, new rook};
+    Table[7] = {new pawn(true), new pawn(true), new pawn(true), new pawn(true), new pawn(true), new pawn(true), new pawn(true), new pawn(true)};
+    Table[6] = {new rook(true), new horse(true), new bishop(true), new queen(true), new king(true), new bishop(true), new horse(true), new rook(true)};
 
 
     //Table[1][0]->play(Table, 0, 0); //case try go back

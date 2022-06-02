@@ -7,7 +7,10 @@ void rook::play(table<Ichess_pieces *> &Table, int x, int y)
 
 PIECES rook::type()
 {
-    return ROOK;
+    if (Color)
+        return WHITE_ROOK;
+    else
+        return BLACK_ROOK;
 }
 
 Pos rook::getPos(table<Ichess_pieces *> &Table) const

@@ -7,7 +7,10 @@ void queen::play(table<Ichess_pieces *> &Table, int x, int y)
 
 PIECES queen::type()
 {
-    return QUEEN;
+    if (Color)
+        return WHITE_QUEEN;
+    else
+        return BLACK_QUEEN;
 }
 
 Pos queen::getPos(table<Ichess_pieces *> &Table) const

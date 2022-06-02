@@ -13,17 +13,26 @@ struct Pos
 
 enum PIECES
 {
-    BISHOP,
-    HORSE,
-    KING,
-    KNIGHT,
-    PAWN,
-    QUEEN,
-    ROOK
+    WHITE_BISHOP,
+    WHITE_HORSE,
+    WHITE_KING,
+    WHITE_KNIGHT,
+    WHITE_PAWN,
+    WHITE_QUEEN,
+    WHITE_ROOK,
+    BLACK_BISHOP,
+    BLACK_HORSE,
+    BLACK_KING,
+    BLACK_KNIGHT,
+    BLACK_PAWN,
+    BLACK_QUEEN,
+    BLACK_ROOK
 };
 
 class Ichess_pieces
 {
+    protected:
+        bool Color;
     public:
         virtual void play(table<Ichess_pieces *> &Table, int x, int y) = 0;
         virtual Pos getPos(table<Ichess_pieces *> &Table) const = 0;

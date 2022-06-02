@@ -9,6 +9,11 @@ class horse : public Ichess_pieces
         void play(table<Ichess_pieces *> &Table, int x, int y) override;
         PIECES type() override;
         Pos getPos(table<Ichess_pieces *> &Table) const override;
+
+        horse(bool b)
+        {
+            Color = b;
+        }
     
 };
 

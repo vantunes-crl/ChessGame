@@ -10,6 +10,10 @@ class knight : public Ichess_pieces
         PIECES type() override;
         Pos getPos(table<Ichess_pieces *> &Table) const override;
 
+        knight(bool b)
+        {
+            Color = b;
+        }
 };
 
 

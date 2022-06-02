@@ -7,7 +7,10 @@ void knight::play(table<Ichess_pieces *> &Table, int x, int y)
 
 PIECES knight::type()
 {
-    return KNIGHT;
+    if (Color)
+        return WHITE_KNIGHT;
+    else
+        return BLACK_KNIGHT;
 }
 
 Pos knight::getPos(table<Ichess_pieces *> &Table) const

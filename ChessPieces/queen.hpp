@@ -10,6 +10,10 @@ class queen : public Ichess_pieces
         PIECES type() override;
         Pos getPos(table<Ichess_pieces *> &Table) const override;
 
+    queen(bool b)
+    {
+        Color = b;
+    }
 };
 
 #endif

@@ -7,7 +7,10 @@ void horse::play(table<Ichess_pieces *> &Table, int x, int y)
 
 PIECES horse::type()
 {
-    return HORSE;
+    if (Color)
+        return WHITE_HORSE;
+    else
+        return BLACK_HORSE;
 }
 
 Pos horse::getPos(table<Ichess_pieces *> &Table) const

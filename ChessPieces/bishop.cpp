@@ -7,7 +7,10 @@ void bishop::play(table<Ichess_pieces *> &Table, int x, int y)
 
 PIECES bishop::type()
 {
-    return BISHOP;
+    if (Color)
+        return WHITE_BISHOP;
+    else
+        return BLACK_BISHOP;
 }
 
 Pos bishop::getPos(table<Ichess_pieces *> &Table) const
