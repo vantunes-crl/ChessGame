@@ -37,6 +37,7 @@ class Ichess_pieces
         virtual void play(table<Ichess_pieces *> &Table, int x, int y) = 0;
         virtual Pos getPos(table<Ichess_pieces *> &Table) const = 0;
         virtual PIECES type() = 0;
+        virtual bool getColor() { return Color; };
         
 
     virtual ~Ichess_pieces() {};

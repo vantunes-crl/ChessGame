@@ -10,10 +10,8 @@ class bishop : public Ichess_pieces
         PIECES type() override;
         Pos getPos(table<Ichess_pieces *> &Table) const override;
 
-        bishop(bool b)
-        {
-            Color = b;
-        }
+        bishop(bool b);
+
 
 };
 

@@ -25,3 +25,8 @@ Pos bishop::getPos(table<Ichess_pieces *> &Table) const
     }
     return {-1, -1};
 }
+
+bishop::bishop(bool b)
+{
+    Color = b;
+}

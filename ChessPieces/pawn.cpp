@@ -22,14 +22,14 @@ void pawn::play(table<Ichess_pieces *> &Table, int x, int y)
         std::cout << "Error: You are in the same spot!, move!" << std::endl;
         return ;
     }
-    else if (pos.x > x) //verify if is trying to go back
+    else if (pos.x > x && !this->getColor() || pos.x < x && this->getColor()) //verify if is trying to go back
     {
         std::cout << "Error: You can't go back pawn, be courageous!!" << std::endl;
         return;
     }
     else if (pos.y != y) //verify if he can kill
     {
-        if (Table[x][y])
+        if (Table[x][y] && Table[x][y]->getColor() != this->getColor()) //verify if exists and its is not a friend
         {
             delete Table[x][y];
             Table[x][y] = std::move(this);
@@ -42,7 +42,7 @@ void pawn::play(table<Ichess_pieces *> &Table, int x, int y)
             return ;
         }
     }
-    else if (x > (pos.x + 1) || y > (pos.y + 2)) //verify if is not walking more them 1 slot
+    else if ((x > (pos.x + 1) || y > (pos.y + 2)) || x < (pos.x - 1) || y < (pos.y - 2)) //verify if is not walking more them 1 slot
     {
         std::cout << "Error: you just can move 1 slot per time Sr.Pawn\n";
         return ;

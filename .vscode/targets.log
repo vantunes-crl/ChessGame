@@ -5,8 +5,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Thu Jun  2 16:27:57 2022
+# Make data base, printed on Thu Jun  2 19:15:07 2022
 
 # Variables
 
@@ -72,7 +73,6 @@ VSCODE_CODE_CACHE_PATH = /home/vantunes/.config/Code/CachedData/c3511e6c69bb3901
 LANG = C
 # environment
 XAUTHORITY = /run/user/1000/gdm/Xauthority
- 
 # default
 .LOADED := 
 # default
@@ -307,6 +307,7 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 %.o: %.cpp
 #  recipe to execute (from 'Makefile', line 10):
 	clang++ ${FLAGS} -c $< -o $@
+ 
 
 # 1 implicit rules, 0 (0.0%) terminal.
 # Files
@@ -320,7 +321,7 @@ ChessPieces/pawn.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-02 16:27:43.884144233
+#  Last modified 2022-06-02 19:14:54.776223039
 #  File has been updated.
 #  Successfully updated.
 
@@ -376,13 +377,12 @@ fclean: clean
 #  recipe to execute (from 'Makefile', line 21):
 	rm -f $(NAME)
 
-run: fclean all
+run: all clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 24):
 	./ChessGame
-	rm -f $(OBJS)
 
 # Not a target:
 ChessPieces/king.o:
@@ -393,13 +393,12 @@ ChessPieces/king.o:
 # Not a target:
 main.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-02 16:25:48.503989077
+#  Last modified 2022-06-02 19:14:20.584161102
 #  File has been updated.
 #  Successfully updated.
 
 main.o: main.cpp
 #  Implicit rule search has been done.
- 
 #  Implicit/static pattern stem: 'main'
 #  File does not exist.
 #  File has been updated.
@@ -433,7 +432,7 @@ ChessPieces/knight.o:
 
 ChessGame: main.o ChessPieces/pawn.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/king.o ChessPieces/knight.o ChessPieces/queen.o ChessPieces/rook.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-02 16:27:47.840149816
+#  Last modified 2022-06-02 19:15:01.112234284
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -461,6 +460,6 @@ ChessPieces/rook.o:
 # strcache performance: lookups = 51 / hit rate = 39%
 # hash-table stats:
 # Load=31/8192=0%, Rehash=0, Collisions=0/51=0%
-# Finished Make data base on Thu Jun  2 16:27:57 2022
+# Finished Make data base on Thu Jun  2 19:15:07 2022
 
  

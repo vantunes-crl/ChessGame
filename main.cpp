@@ -12,17 +12,18 @@ int main()
 {
     table<Ichess_pieces *> Table;
 
-    Table[0] = {new rook(false), new horse(false), new bishop(false), new queen(false), new king(false), new bishop(false), new horse(false), new rook(false)};
-    Table[1] = {new pawn(false), new pawn(false), new pawn(false), new pawn(false), new pawn(false), new pawn(false), new pawn(false), new pawn(false)};
-    Table[2] = {nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
-    Table[3] = {nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
-    Table[4] = {nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
-    Table[5] = {nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
-    Table[7] = {new pawn(true), new pawn(true), new pawn(true), new pawn(true), new pawn(true), new pawn(true), new pawn(true), new pawn(true)};
-    Table[6] = {new rook(true), new horse(true), new bishop(true), new queen(true), new king(true), new bishop(true), new horse(true), new rook(true)};
+    Table[0] = {new rook(0), new horse(0),new bishop(0),new queen(0),new king(0),new bishop(0),new horse(0),new rook(0)};
+    Table[1] = {new pawn(0), new pawn(0), new pawn(0), new pawn(0), new pawn(0), new pawn(0), new pawn(0), new pawn(0)};
+    Table[2] = {nullptr,     nullptr,     nullptr,     nullptr,     nullptr,      nullptr,      nullptr,      nullptr};
+    Table[3] = {nullptr,     nullptr,     nullptr,     nullptr,     nullptr,      nullptr,      nullptr,      nullptr};
+    Table[4] = {nullptr,     nullptr,     nullptr,     nullptr,     nullptr,      nullptr,      nullptr,      nullptr};
+    Table[5] = {nullptr,     nullptr,     nullptr,     nullptr,     nullptr,      nullptr,      nullptr,      nullptr};
+    Table[6] = {new pawn(1), new pawn(1), new pawn(1), new pawn(1), new pawn(1), new pawn(1), new pawn(1),new pawn(1)};
+    Table[7] = {new rook(1), new horse(1),new bishop(1),new queen(1),new king(1),new bishop(1),new horse(1),new rook(1)};
 
 
-    //Table[1][0]->play(Table, 0, 0); //case try go back
+    Table[6][0]->play(Table, 5, 0); //case try go back
+    Table[5][0]->play(Table, 6, 0); 
     //Table[1][0]->play(Table, -1, 1); //case out of table
     //Table[1][0]->play(Table, 1, 0); //case same position
     //Table[1][0]->play(Table, 2, 1); // case if can kill
@@ -35,6 +36,15 @@ int main()
     //     Table[4][0]->play(Table, 5, 0);
     //     Table[5][0]->play(Table, 6, 0);
     // }
+
+
+    // Table[1][1]->play(Table, 2, 1); test if he can kill friend
+    // Table[1][0]->play(Table, 2, 1);
+
+    //std::cout << Table[0][2]->getColor() << std::endl;
+
+    //std::cout << temp->getColor();
+
 
     Table.printTable();
 
