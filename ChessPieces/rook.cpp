@@ -15,17 +15,17 @@ int rook::play(table<Ichess_pieces *> &Table, int x, int y)
         std::cout << "Error: out_size\n";
         return OUT_SIZE;
     }
-    else if (pos.x != x && pos.y != y)
+    else if (pos.x != x && pos.y != y) //just can move to left or right not both
     {
         std::cout << "Just go X or Y not both\n";
         return CANT_MOVE;
     }
-    else if (pos.x == x && pos.y == y)
+    else if (pos.x == x && pos.y == y) // check if its the same pos
     {
         std::cout << "Moveeeee!\n";
         return SAME_PLACE;
     }
-    else if (Table[x][y]->getColor() == this->getColor())
+    else if (Table[x][y]->getColor() == this->getColor()) //check if there is a friend in the spot
     {
         std::cout << "you have a friend there!" << std::endl;
         return CANT_MOVE;
