@@ -1,11 +1,16 @@
 #include "king.hpp"
 
-void king::play(table<Ichess_pieces *> &Table, int x, int y)
+king::king(bool b)
 {
-
+    Color = b;
 }
 
-PIECES king::type()
+int king::play(table<Ichess_pieces *> &Table, int x, int y)
+{
+return 0;
+}
+
+int king::type()
 {
     if (Color)
         return WHITE_KING;

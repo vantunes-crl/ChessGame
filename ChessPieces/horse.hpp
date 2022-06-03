@@ -6,15 +6,11 @@
 class horse : public Ichess_pieces
 {
     public:
-        void play(table<Ichess_pieces *> &Table, int x, int y) override;
-        PIECES type() override;
+        int play(table<Ichess_pieces *> &Table, int x, int y) override;
+        int type() override;
         Pos getPos(table<Ichess_pieces *> &Table) const override;
 
-        horse(bool b)
-        {
-            Color = b;
-        }
-    
+        horse(bool b);
 };
 
 #endif

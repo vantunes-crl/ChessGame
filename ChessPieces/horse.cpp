@@ -1,11 +1,16 @@
 #include "horse.hpp"
 
-void horse::play(table<Ichess_pieces *> &Table, int x, int y)
+horse::horse(bool b)
 {
+    Color = b;
+}
     
+int horse::play(table<Ichess_pieces *> &Table, int x, int y)
+{
+    return 0;   
 }
 
-PIECES horse::type()
+int horse::type()
 {
     if (Color)
         return WHITE_HORSE;

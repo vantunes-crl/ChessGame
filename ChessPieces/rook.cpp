@@ -1,11 +1,16 @@
 #include "rook.hpp"
 
-void rook::play(table<Ichess_pieces *> &Table, int x, int y)
+rook::rook(bool b)
 {
-
+    Color = b;
 }
 
-PIECES rook::type()
+int rook::play(table<Ichess_pieces *> &Table, int x, int y)
+{
+return 0;
+}
+
+int rook::type()
 {
     if (Color)
         return WHITE_ROOK;

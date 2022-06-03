@@ -22,8 +22,10 @@ int main()
     Table[7] = {new rook(1), new horse(1),new bishop(1),new queen(1),new king(1),new bishop(1),new horse(1),new rook(1)};
 
 
-    Table[6][0]->play(Table, 5, 0); //case try go back
-    Table[5][0]->play(Table, 6, 0); 
+    //Table[6][0]->play(Table, 5, 0); //case try go back
+   // Table[5][0]->play(Table, 6, 0);
+    //Table[6][0]->play(Table, 5, 1);
+    
     //Table[1][0]->play(Table, -1, 1); //case out of table
     //Table[1][0]->play(Table, 1, 0); //case same position
     //Table[1][0]->play(Table, 2, 1); // case if can kill

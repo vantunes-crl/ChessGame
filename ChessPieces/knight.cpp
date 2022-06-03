@@ -1,11 +1,16 @@
 #include "knight.hpp"
 
-void knight::play(table<Ichess_pieces *> &Table, int x, int y)
+knight::knight(bool b)
 {
-
+    Color = b;
 }
 
-PIECES knight::type()
+int knight::play(table<Ichess_pieces *> &Table, int x, int y)
+{
+return 0;
+}
+
+int knight::type()
 {
     if (Color)
         return WHITE_KNIGHT;

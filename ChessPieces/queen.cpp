@@ -1,11 +1,16 @@
 #include "queen.hpp"
 
-void queen::play(table<Ichess_pieces *> &Table, int x, int y)
+queen::queen(bool b)
 {
-
+    Color = b;
 }
 
-PIECES queen::type()
+int queen::play(table<Ichess_pieces *> &Table, int x, int y)
+{
+return 0;
+}
+
+int queen::type()
 {
     if (Color)
         return WHITE_QUEEN;

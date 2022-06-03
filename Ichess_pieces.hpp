@@ -11,8 +11,7 @@ struct Pos
     int y;
 };
 
-enum PIECES
-{
+enum PIECES {
     WHITE_BISHOP,
     WHITE_HORSE,
     WHITE_KING,
@@ -29,14 +28,23 @@ enum PIECES
     BLACK_ROOK
 };
 
+enum ERRORS {
+    NO_ERROR,
+    OUT_SIZE,
+    SAME_PLACE,
+    GO_BACK,
+    CANT_MOVE,
+    LIMIT_MOVES,
+};
+
 class Ichess_pieces
 {
     protected:
         bool Color;
     public:
-        virtual void play(table<Ichess_pieces *> &Table, int x, int y) = 0;
+        virtual int play(table<Ichess_pieces *> &Table, int x, int y) = 0;
         virtual Pos getPos(table<Ichess_pieces *> &Table) const = 0;
-        virtual PIECES type() = 0;
+        virtual int type() = 0;
         virtual bool getColor() { return Color; };
         
 

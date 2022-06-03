@@ -1,11 +1,11 @@
 #include "bishop.hpp"
 
-void bishop::play(table<Ichess_pieces *> &Table, int x, int y)
+int bishop::play(table<Ichess_pieces *> &Table, int x, int y)
 {
-    
+    return 0;
 }
 
-PIECES bishop::type()
+int bishop::type()
 {
     if (Color)
         return WHITE_BISHOP;
