@@ -39,6 +39,15 @@ int main()
     //     Table[5][0]->play(Table, 6, 0);
     // }
 
+    // Table[2][0] = std::move(Table[0][0]); 
+    // Table[0][0] = nullptr;
+
+    // Table[2][4] = std::move(Table[1][4]); 
+    // Table[1][4] = nullptr;
+
+
+    Table[0][0]->play(Table, 0, 0);
+
 
     // Table[1][1]->play(Table, 2, 1); test if he can kill friend
     // Table[1][0]->play(Table, 2, 1);
