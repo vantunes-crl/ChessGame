@@ -8,7 +8,7 @@
 #include "ChessPieces/rook.hpp"
 #include "ChessPieces/king.hpp"
 
-int main()
+int main(int argc, char **argv)
 {
     table<Ichess_pieces *> Table;
 
@@ -22,43 +22,66 @@ int main()
     Table[7] = {new rook(1), new horse(1),new bishop(1),new queen(1),new king(1),new bishop(1),new horse(1),new rook(1)};
 
 
-//     Table[6][0]->play(Table, 5, 0); //case try go back
-//    Table[5][0]->play(Table, 6, 0);
-//     Table[6][0]->play(Table, 5, 1);
+
+    //Test pawn
+    // Table[1][0]->play(Table, 2, 0);
+    // Table[2][0]->play(Table, 3, 0);
+    // Table[3][0]->play(Table, 4, 0);
+    // Table[4][0]->play(Table, 5, 0);
+    // Table[5][0]->play(Table, 6, 1);
+    // Table[6][1]->play(Table, 6, 0);
+    // Table[6][1]->play(Table, 7, 1);
+    // Table[6][1]->play(Table, 7, 0);
+
+
+    //test rook
+    // Table[0][0]->play(Table, 4, 0);
+    // Table[4][3] = new pawn(0);
+    // Table[4][0]->play(Table, 4, 2);
+    // Table[4][2]->play(Table, 4, 4);
+
+
+   
+    //Table[5][0]->play(Table, 0, 0);
+
+
+    //Table[6][0]->play(Table, 6, 1);
+    //Table[6][1]->play(Table, 6, 0);
+    //Pos pos = Table[6][1]->getPos(Table);
+    //std::cout << pos.x << pos.y << std::endl;
+
+
     
-//     Table[1][0]->play(Table, -1, 1); //case out of table
-//     Table[1][0]->play(Table, 1, 0); //case same position
-//     Table[1][0]->play(Table, 2, 1); // case if can kill
-//     Table[1][0]->play(Table, 2, 0); //he can move
-//     Table[1][0]->play(Table, 3, 0); //try move more than 1 slot
-//     { //case of someone is in front
-//         Table[1][0]->play(Table, 2, 0);
-//         Table[2][0]->play(Table, 3, 0);
-//         Table[3][0]->play(Table, 4, 0);
-//         Table[4][0]->play(Table, 5, 0);
-//         Table[5][0]->play(Table, 6, 0);
-//     }
-
-    Table[2][0] = std::move(Table[0][0]);
-    Table[0][0] = nullptr;
-
-    // Table[2][4] = std::move(Table[1][4]); 
-    // Table[1][4] = nullptr;
+    //Table[2][0]->play(Table, 3, 0);
+    // Table[3][0]->play(Table, 4, 0);
+    // Table[4][0]->play(Table, 5, 0);
+    // Table[5][0]->play(Table, 6, 1);
+    // Table[6][1]->play(Table, 6, 0);
+    // Table[6][1]->play(Table, 7, 1);
+    // Table[6][1]->play(Table, 7, 0);
 
 
-    //Table[0][0]->play(Table, 0, 0);
 
 
-    // Table[1][1]->play(Table, 2, 1); test if he can kill friend
-    // Table[1][0]->play(Table, 2, 1);
-
-    //std::cout << Table[0][2]->getColor() << std::endl;
-
-    //std::cout << temp->getColor();
 
 
-    Table.printTable();
 
-    //std::cout << temp->getPos(Table).x << temp->getPos(Table).y << std::endl;
+
+
+
+
+    // while (true)
+    // {
+    //     Pos pos_piece;
+    //     Pos pos_move_to;
+    //     std::cout << "Pos piece: X Y \n";
+    //     std::cin >> pos_piece.x;
+    //     std::cin >> pos_piece.y;
+    //     std::cout << "Pos move to: X Y \n";
+    //     std::cin >> pos_move_to.x;
+    //     std::cin >> pos_move_to.y;
+    //     Table[pos_piece.x][pos_piece.y]->play(Table, pos_move_to.x, pos_move_to.y);
+         Table.printTable();
+    // }
 
 }
