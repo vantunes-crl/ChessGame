@@ -13,7 +13,7 @@ int main(int argc, char **argv)
     table<Ichess_pieces *> Table;
 
     Table[0] = {new rook(0), new horse(0),new bishop(0),new queen(0),new king(0),new bishop(0),new horse(0),new rook(0)};
-    Table[1] = {new pawn(0), new pawn(0), new pawn(0), new pawn(0), new pawn(0), new pawn(0), new pawn(0), new pawn(0)};
+    Table[1] = {nullptr, new pawn(0), new pawn(0), new pawn(0), new pawn(0), new pawn(0), new pawn(0), new pawn(0)};
     Table[2] = {nullptr,     nullptr,     nullptr,     nullptr,     nullptr,      nullptr,      nullptr,      nullptr};
     Table[3] = {nullptr,     nullptr,     nullptr,     nullptr,     nullptr,      nullptr,      nullptr,      nullptr};
     Table[4] = {nullptr,     nullptr,     nullptr,     nullptr,     nullptr,      nullptr,      nullptr,      nullptr};
@@ -38,33 +38,9 @@ int main(int argc, char **argv)
     // Table[0][0]->play(Table, 4, 0);
     // Table[4][3] = new pawn(0);
     // Table[4][0]->play(Table, 4, 2);
-    // Table[4][2]->play(Table, 4, 4);
-
-
-   
-    //Table[5][0]->play(Table, 0, 0);
-
-
-    //Table[6][0]->play(Table, 6, 1);
-    //Table[6][1]->play(Table, 6, 0);
-    //Pos pos = Table[6][1]->getPos(Table);
-    //std::cout << pos.x << pos.y << std::endl;
-
-
-    
-    //Table[2][0]->play(Table, 3, 0);
-    // Table[3][0]->play(Table, 4, 0);
-    // Table[4][0]->play(Table, 5, 0);
-    // Table[5][0]->play(Table, 6, 1);
-    // Table[6][1]->play(Table, 6, 0);
-    // Table[6][1]->play(Table, 7, 1);
-    // Table[6][1]->play(Table, 7, 0);
-
-
-
-
-
-
+    // Table[4][2]->play(Table,5, 2);
+    // Table[5][2]->play(Table,5, 7);
+    // Table[5][7]->play(Table,1, 7);
 
 
 

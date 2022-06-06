@@ -14,7 +14,7 @@ int rook::play(table<Ichess_pieces *> &Table, int x, int y)
         std::cout << "Error: out_size\n";
         return OUT_SIZE;
     }
-    else if (pos.x == x && pos.y == y) //just can move to left or right not both
+    else if (pos.x != x && pos.y != y) //just can move to left or right not both
     {
         std::cout << "Just go X or Y not both\n";
         return CANT_MOVE;
@@ -68,7 +68,7 @@ int rook::play(table<Ichess_pieces *> &Table, int x, int y)
             {
                 if (Table[pos.x][pos.y - i])
                 {
-                    std::cout << "there is someone in X " << pos.x << " Y " << pos.y + i << std::endl;
+                    std::cout << "there is someone in X " << pos.x << " Y " << pos.y - i << std::endl;
                     return CANT_MOVE;
                 }
                 ++i;
