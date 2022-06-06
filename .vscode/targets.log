@@ -5,8 +5,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Mon Jun  6 09:36:21 2022
+# Make data base, printed on Mon Jun  6 17:32:04 2022
 
 # Variables
 
@@ -23,7 +24,7 @@ SNAP_INSTANCE_KEY =
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-247a4d04-f162-4b05-aa3a-76a21ceba440.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-699cb8e4-ab28-49f0-91b8-40cc19bb65ac.sock
 # environment
 MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # environment
@@ -64,7 +65,6 @@ VSCODE_LOG_STACK = false
 %F = $(notdir $%)
 # environment
 VSCODE_CODE_CACHE_PATH = /home/vantunes/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
- 
 # environment
 LANG = C
 # environment
@@ -106,7 +106,7 @@ SNAP_REEXEC =
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 16825
+VSCODE_PID = 10189
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -114,7 +114,7 @@ XDG_SESSION_TYPE = x11
 # environment
 BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # environment
-SESSION_MANAGER = local/valerio-crl:@/tmp/.ICE-unix/3597,unix/valerio-crl:/tmp/.ICE-unix/3597
+SESSION_MANAGER = local/valerio-crl:@/tmp/.ICE-unix/3979,unix/valerio-crl:/tmp/.ICE-unix/3979
 # automatic
 *F = $(notdir $*)
 # environment
@@ -126,7 +126,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # makefile (from 'Makefile', line 3)
-INCLUDE = -lsfml-graphics -lsfml-window -lsfml-system -g
+INCLUDE = -lsfml-graphics -lsfml-window -lsfml-system -lgtest -lpthread
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # makefile (from 'Makefile', line 7)
@@ -164,7 +164,7 @@ LC_TIME = pt_PT.UTF-8
 # environment
 SNAP = /snap/code/97
 # environment
-INVOCATION_ID = 2ac0075d316c4d9f876bf758b425b391
+INVOCATION_ID = 86fa1c3ac35a47398cef8c88392bd1cc
 # environment
 SNAP_REVISION = 97
 # environment
@@ -198,7 +198,7 @@ SNAP_ARCH = amd64
 # makefile
 .DEFAULT_GOAL := ChessGame
 # environment
-SYSTEMD_EXEC_PID = 3640
+SYSTEMD_EXEC_PID = 4002
 # environment
 DISPLAY = :1
 # environment
@@ -206,6 +206,7 @@ USER = vantunes
 # environment
 GTK_MODULES = gail:atk-bridge
 # environment
+ 
 DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
 # default
 MAKE_VERSION := 4.3
@@ -216,11 +217,11 @@ SNAP_DATA = /var/snap/code/97
 # environment
 SNAP_CONTEXT = SH3nYh-v_46mWYHFoFpebRuABqh47eHn-U8dByQns_U-nYOC5kMv
 # environment
-MANAGERPID = 3090
+MANAGERPID = 3524
 # environment
 LC_MEASUREMENT = pt_PT.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 16774
+GIO_LAUNCHED_DESKTOP_FILE_PID = 10106
 # environment
 _ = /snap/code/97/usr/share/code/code
 # environment
@@ -234,7 +235,7 @@ GDK_PIXBUF_MODULE_FILE = /home/vantunes/snap/code/common/.cache/gdk-pixbuf-loade
 # environment
 LC_CTYPE = pt_PT.UTF-8
 # environment
-JOURNAL_STREAM = 8:40425
+JOURNAL_STREAM = 8:40617
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -286,9 +287,9 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Directories
 
-# . (device 66310, inode 2755469): 11 files, no impossibilities.
+# . (device 66310, inode 2755469): 12 files, no impossibilities.
 
-# 11 files, no impossibilities in 1 directories.
+# 12 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -308,7 +309,7 @@ ChessPieces/pawn.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-05 18:25:27.288991831
+#  Last modified 2022-06-06 17:32:02.827673833
 #  File has been updated.
 #  Successfully updated.
 
@@ -322,6 +323,7 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 #  recipe to execute (from 'Makefile', line 18):
 	rm -f $(OBJS)
 
@@ -380,8 +382,7 @@ ChessPieces/king.o:
 # Not a target:
 main.cpp:
 #  Implicit rule search has been done.
- 
-#  Last modified 2022-06-05 19:13:29.62783836
+#  Last modified 2022-06-06 17:31:43.139665111
 #  File has been updated.
 #  Successfully updated.
 
@@ -420,11 +421,12 @@ ChessPieces/knight.o:
 
 ChessGame: main.o ChessPieces/pawn.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/king.o ChessPieces/knight.o ChessPieces/queen.o ChessPieces/rook.o
 #  Implicit rule search has not been done.
-#  File does not exist.
+#  Last modified 2022-06-06 10:13:45.153563187
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+ 
 #  recipe to execute (from 'Makefile', line 13):
 	clang++ $(OBJS) $(INCLUDE) -o $(NAME)
 
@@ -445,9 +447,9 @@ ChessPieces/rook.o:
 # strcache buffers: 1 (0) / strings = 32 / storage = 336 B / avg = 10 B
 # current buf: size = 8162 B / used = 336 B / count = 32 / avg = 10 B
 
-# strcache performance: lookups = 51 / hit rate = 37%
+# strcache performance: lookups = 52 / hit rate = 38%
 # hash-table stats:
-# Load=32/8192=0%, Rehash=0, Collisions=0/51=0%
-# Finished Make data base on Mon Jun  6 09:36:21 2022
+# Load=32/8192=0%, Rehash=0, Collisions=0/52=0%
+# Finished Make data base on Mon Jun  6 17:32:04 2022
 
  

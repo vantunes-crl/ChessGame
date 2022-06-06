@@ -10,20 +10,11 @@ int rook::play(table<Ichess_pieces *> &Table, int x, int y)
     Pos pos = this->getPos(Table);
 
     if (x < 0 || x > 7 || y < 0 || y > 7)
-    {
-        std::cout << "Error: out_size\n";
         return OUT_SIZE;
-    }
     else if (pos.x != x && pos.y != y) //just can move to left or right not both
-    {
-        std::cout << "Just go X or Y not both\n";
         return CANT_MOVE;
-    }
     else if (pos.x == x && pos.y == y) // check if its the same pos
-    {
-        std::cout << "Moveeeee!\n";
         return SAME_PLACE;
-    }
     else
     {
         int i = 1;
@@ -32,10 +23,7 @@ int rook::play(table<Ichess_pieces *> &Table, int x, int y)
             while ((pos.x + i) < x) //check vertical
             {
                 if (Table[pos.x + i][pos.y])
-                {
-                    std::cout << "there is someone in X " << pos.x + i << " Y " << pos.y << std::endl;
                     return CANT_MOVE;
-                }
                 ++i;
             }
 
@@ -43,10 +31,7 @@ int rook::play(table<Ichess_pieces *> &Table, int x, int y)
             while ((pos.y + i) < y) // check horizontal
             {
                 if (Table[pos.x][pos.y + i])
-                {
-                    std::cout << "there is someone in X " << pos.x << " Y " << pos.y + i << std::endl;
                     return CANT_MOVE;
-                }
                 ++i;
             }
         }
@@ -56,10 +41,7 @@ int rook::play(table<Ichess_pieces *> &Table, int x, int y)
             while ((pos.x - i) > x) //check vertical reverse
             {
                 if (Table[pos.x - i][pos.y])
-                {
-                    std::cout << "there is someone in X " << pos.x - i << " Y " << pos.y << std::endl;
                     return CANT_MOVE;
-                }
                 ++i;
             }
 
@@ -67,10 +49,7 @@ int rook::play(table<Ichess_pieces *> &Table, int x, int y)
             while ((pos.y - i) > y) // check horizontal reverse
             {
                 if (Table[pos.x][pos.y - i])
-                {
-                    std::cout << "there is someone in X " << pos.x << " Y " << pos.y - i << std::endl;
                     return CANT_MOVE;
-                }
                 ++i;
             }
         }
@@ -85,11 +64,7 @@ int rook::play(table<Ichess_pieces *> &Table, int x, int y)
         std::cout << this->type() << " killed " << Table[x][y]->type() << std::endl;
     }
     else if (Table[x][y] && Table[x][y]->getColor() == this->getColor())
-    {
-        std::cout << "Its a frind there\n";
         return CANT_MOVE;
-        
-    }
     else
     {
         Table[x][y] = std::move(this);

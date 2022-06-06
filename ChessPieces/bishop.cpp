@@ -2,6 +2,30 @@
 
 int bishop::play(table<Ichess_pieces *> &Table, int x, int y)
 {
+    Pos pos = this->getPos(Table);
+
+    // if (x > 7 || x < 0 || y > 7 || y < 0)
+    //     return OUT_SIZE;
+    // else if ()
+    // {
+
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return 0;
 }
 

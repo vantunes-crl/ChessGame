@@ -1,6 +1,6 @@
 NAME = ChessGame
 
-INCLUDE = -lsfml-graphics -lsfml-window -lsfml-system -g
+INCLUDE = -lsfml-graphics -lsfml-window -lsfml-system -lgtest -lpthread
 
 SRCS = main.cpp ChessPieces/pawn.cpp ChessPieces/horse.cpp ChessPieces/bishop.cpp ChessPieces/king.cpp ChessPieces/knight.cpp ChessPieces/queen.cpp ChessPieces/rook.cpp
 
