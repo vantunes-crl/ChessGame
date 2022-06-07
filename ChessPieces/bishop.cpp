@@ -17,15 +17,6 @@ int bishop::play(table<Ichess_pieces *> &Table, int x, int y)
 
 
 
-
-
-
-
-
-
-
-
-
     return 0;
 }
 

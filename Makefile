@@ -1,8 +1,10 @@
 NAME = ChessGame
 
+TEST = ChessTest
+
 INCLUDE = -lsfml-graphics -lsfml-window -lsfml-system -lgtest -lpthread
 
-SRCS = main.cpp ChessPieces/pawn.cpp ChessPieces/horse.cpp ChessPieces/bishop.cpp ChessPieces/king.cpp ChessPieces/knight.cpp ChessPieces/queen.cpp ChessPieces/rook.cpp
+SRCS = ChessPieces/pawn.cpp ChessPieces/horse.cpp ChessPieces/bishop.cpp ChessPieces/king.cpp ChessPieces/knight.cpp ChessPieces/queen.cpp ChessPieces/rook.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -10,15 +12,19 @@ OBJS = $(SRCS:.cpp=.o)
 	clang++ ${FLAGS} -c $< -o $@
 
 $(NAME): $(OBJS)
-	clang++ $(OBJS) $(INCLUDE) -o $(NAME)
+	clang++ main.cpp $(OBJS) $(INCLUDE) -o $(NAME)
 
 all: $(NAME)
+
+test: $(OBJS)
+	clang++ mainTest.cpp $(OBJS) $(INCLUDE) -o $(TEST)
+	./$(TEST)
 
 clean:
 	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(TEST)
 
 run: all clean
 	./ChessGame
