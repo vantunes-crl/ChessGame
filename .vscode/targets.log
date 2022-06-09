@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jun  7 19:36:33 2022
+# Make data base, printed on Thu Jun  9 16:36:05 2022
 
 # Variables
 
@@ -27,7 +27,7 @@ TERMINATOR_DBUS_NAME = net.tenshu.Terminator23558193cd9818af7fe4d2c2f5bd9d00f
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f15c7c8c-bc40-4435-9a1e-524d3bc08bb6.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-8d87c65f-e7be-43db-a5d7-ccf0d19133b7.sock
 # environment
 MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # environment
@@ -39,7 +39,7 @@ VSCODE_CWD = /home/vantunes/Desktop
 # environment
 WINDOWPATH = 2
 # environment
-TERMINATOR_UUID = urn:uuid:b5fc3c98-9ab7-447e-8d1b-54ae3bcef1a6
+TERMINATOR_UUID = urn:uuid:9f859711-c4f5-4ae5-8ed5-1e5d3aac7743
 # environment
 LC_ADDRESS = pt_PT.UTF-8
 # default
@@ -117,7 +117,7 @@ SNAP_REEXEC =
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 9080
+VSCODE_PID = 30427
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -125,7 +125,7 @@ XDG_SESSION_TYPE = x11
 # environment
 BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # environment
-SESSION_MANAGER = local/valerio-crl:@/tmp/.ICE-unix/3519,unix/valerio-crl:/tmp/.ICE-unix/3519
+SESSION_MANAGER = local/valerio-crl:@/tmp/.ICE-unix/4482,unix/valerio-crl:/tmp/.ICE-unix/4482
 # automatic
 *F = $(notdir $*)
 # environment
@@ -177,7 +177,7 @@ LC_TIME = pt_PT.UTF-8
 # environment
 SNAP = /snap/code/97
 # environment
-INVOCATION_ID = 8129a47409c64e2ca35f9840f3cda699
+INVOCATION_ID = a42a6322607742ad99cb4d4a3e7e824d
 # environment
 SNAP_REVISION = 97
 # environment
@@ -217,7 +217,7 @@ SNAP_ARCH = amd64
 # makefile
 .DEFAULT_GOAL := ChessGame
 # environment
-SYSTEMD_EXEC_PID = 3799
+SYSTEMD_EXEC_PID = 4821
 # environment
 DISPLAY = :1
 # environment
@@ -235,11 +235,11 @@ SNAP_DATA = /var/snap/code/97
 # environment
 SNAP_CONTEXT = SH3nYh-v_46mWYHFoFpebRuABqh47eHn-U8dByQns_U-nYOC5kMv
 # environment
-MANAGERPID = 3030
+MANAGERPID = 3810
 # environment
 LC_MEASUREMENT = pt_PT.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 38353
+GIO_LAUNCHED_DESKTOP_FILE_PID = 31232
 # environment
 LC_PAPER = pt_PT.UTF-8
 # environment
@@ -253,7 +253,7 @@ GDK_PIXBUF_MODULE_FILE = /home/vantunes/snap/code/common/.cache/gdk-pixbuf-loade
 # environment
 LC_CTYPE = pt_PT.UTF-8
 # environment
-JOURNAL_STREAM = 8:41334
+JOURNAL_STREAM = 8:38753
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -277,7 +277,6 @@ GSETTINGS_SCHEMA_DIR = /snap/code/97/usr/share/glib-2.0/schemas
 # automatic
 <F = $(notdir $<)
 # environment
- 
 SNAP_VERSION = c3511e6c
 # default
 SUFFIXES := 
@@ -310,10 +309,10 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Directories
 
-# . (device 66310, inode 2755469): 12 files, no impossibilities.
+# . (device 66310, inode 2755469): 14 files, no impossibilities.
 # ChessPieces (device 66310, inode 2753601): 3 files, no impossibilities so far.
 
-# 15 files, no impossibilities in 2 directories.
+# 17 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -422,6 +421,7 @@ run: all clean
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 30):
+ 
 	./ChessGame
 
 # Not a target:
@@ -446,7 +446,7 @@ ChessPieces/knight.o:
 
 ChessGame: ChessPieces/pawn.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/king.o ChessPieces/knight.o ChessPieces/queen.o ChessPieces/rook.o
 #  Implicit rule search has not been done.
-#  File does not exist.
+#  Last modified 2022-06-08 09:59:45.927211209
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -468,12 +468,12 @@ ChessPieces/rook.o:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 36 / storage = 399 B / avg = 11 B
-# current buf: size = 8162 B / used = 399 B / count = 36 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 37 / storage = 409 B / avg = 11 B
+# current buf: size = 8162 B / used = 409 B / count = 37 / avg = 11 B
 
-# strcache performance: lookups = 64 / hit rate = 43%
+# strcache performance: lookups = 66 / hit rate = 43%
 # hash-table stats:
-# Load=36/8192=0%, Rehash=0, Collisions=0/64=0%
-# Finished Make data base on Tue Jun  7 19:36:33 2022
+# Load=37/8192=0%, Rehash=0, Collisions=0/66=0%
+# Finished Make data base on Thu Jun  9 16:36:05 2022
 
  
