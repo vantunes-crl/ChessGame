@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jun  9 16:36:05 2022
+# Make data base, printed on Mon Jun 13 21:08:00 2022
 
 # Variables
 
@@ -15,19 +15,13 @@ GDK_BACKEND = x11
 # environment
 LC_ALL = C
 # environment
-NO_AT_BRIDGE = 1
-# environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
 SSH_AGENT_LAUNCHER = gnome-keyring
 # environment
 SNAP_INSTANCE_KEY = 
 # environment
-TERMINATOR_DBUS_NAME = net.tenshu.Terminator23558193cd9818af7fe4d2c2f5bd9d00f
-# environment
-GJS_DEBUG_OUTPUT = stderr
-# environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-8d87c65f-e7be-43db-a5d7-ccf0d19133b7.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-761ecf71-2941-47cb-865c-4b5ab628e9cd.sock
 # environment
 MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # environment
@@ -39,8 +33,6 @@ VSCODE_CWD = /home/vantunes/Desktop
 # environment
 WINDOWPATH = 2
 # environment
-TERMINATOR_UUID = urn:uuid:9f859711-c4f5-4ae5-8ed5-1e5d3aac7743
-# environment
 LC_ADDRESS = pt_PT.UTF-8
 # default
 MAKE_COMMAND := make
@@ -51,7 +43,7 @@ QT_ACCESSIBILITY = 1
 # environment
 SNAP_INSTANCE_NAME = code
 # environment
-GDK_PIXBUF_MODULEDIR = /snap/code/97/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
+GDK_PIXBUF_MODULEDIR = /snap/code/98/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -71,7 +63,7 @@ VSCODE_LOG_STACK = false
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = /home/vantunes/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+VSCODE_CODE_CACHE_PATH = /home/vantunes/.config/Code/CachedData/4af164ea3a06f701fe3e89a2bcbb421d2026b68f
 # environment
 LANG = C
 # environment
@@ -80,10 +72,10 @@ XAUTHORITY = /run/user/1000/gdm/Xauthority
 .LOADED := 
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
+# environment
+GNOME_TERMINAL_SERVICE = :1.259
 # makefile
 MAKEFLAGS = pqrR
-# environment
-TERMINATOR_DBUS_PATH = /net/tenshu/Terminator2
 # makefile
 CURDIR := /home/vantunes/Desktop/ChessGame
 # environment
@@ -117,19 +109,15 @@ SNAP_REEXEC =
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 30427
+VSCODE_PID = 14068
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
-# environment
-SESSION_MANAGER = local/valerio-crl:@/tmp/.ICE-unix/4482,unix/valerio-crl:/tmp/.ICE-unix/4482
+SESSION_MANAGER = local/valerio-crl:@/tmp/.ICE-unix/3601,unix/valerio-crl:/tmp/.ICE-unix/3601
 # automatic
 *F = $(notdir $*)
-# environment
-IBUS_DISABLE_SNOOPER = 1
 # environment
 CHROME_DESKTOP = code-url-handler.desktop
 # environment
@@ -153,9 +141,9 @@ MAKECMDGOALS := all
 # environment
 XMODIFIERS = @im=ibus
 # environment
-GJS_DEBUG_TOPICS = JS ERROR;JS LOG
-# environment
 SHLVL = 1
+# environment
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/675453dc_3897_419e_9bac_25a89e3265fe
 # environment
 MAKELEVEL := 0
 # default
@@ -175,11 +163,9 @@ SNAP_USER_COMMON = /home/vantunes/snap/code/common
 # environment
 LC_TIME = pt_PT.UTF-8
 # environment
-SNAP = /snap/code/97
+SNAP = /snap/code/98
 # environment
-INVOCATION_ID = a42a6322607742ad99cb4d4a3e7e824d
-# environment
-SNAP_REVISION = 97
+SNAP_REVISION = 98
 # environment
 SNAP_REAL_HOME = /home/vantunes
 # environment
@@ -211,13 +197,11 @@ GNUMAKEFLAGS :=
 # environment
 LOGNAME = vantunes
 # environment
-GIO_LAUNCHED_DESKTOP_FILE = /var/lib/snapd/desktop/applications/code_code.desktop
-# environment
 SNAP_ARCH = amd64
 # makefile
 .DEFAULT_GOAL := ChessGame
 # environment
-SYSTEMD_EXEC_PID = 4821
+SYSTEMD_EXEC_PID = 3624
 # environment
 DISPLAY = :1
 # environment
@@ -231,15 +215,11 @@ MAKE_VERSION := 4.3
 # environment
 DISABLE_WAYLAND = 1
 # environment
-SNAP_DATA = /var/snap/code/97
+SNAP_DATA = /var/snap/code/98
 # environment
 SNAP_CONTEXT = SH3nYh-v_46mWYHFoFpebRuABqh47eHn-U8dByQns_U-nYOC5kMv
 # environment
-MANAGERPID = 3810
-# environment
 LC_MEASUREMENT = pt_PT.UTF-8
-# environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 31232
 # environment
 LC_PAPER = pt_PT.UTF-8
 # environment
@@ -253,8 +233,6 @@ GDK_PIXBUF_MODULE_FILE = /home/vantunes/snap/code/common/.cache/gdk-pixbuf-loade
 # environment
 LC_CTYPE = pt_PT.UTF-8
 # environment
-JOURNAL_STREAM = 8:38753
-# environment
 XDG_SESSION_CLASS = user
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
@@ -265,19 +243,19 @@ QT_IM_MODULE = ibus
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-b54b5c09-1.67.2-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-b54b5c09-1.68.0-main.sock
 # environment
 TERM = xterm-256color
 # environment
 SNAP_NAME = code
 # environment
-GSETTINGS_SCHEMA_DIR = /snap/code/97/usr/share/glib-2.0/schemas
+GSETTINGS_SCHEMA_DIR = /snap/code/98/usr/share/glib-2.0/schemas
 # default
 .RECIPEPREFIX := 
 # automatic
 <F = $(notdir $<)
 # environment
-SNAP_VERSION = c3511e6c
+SNAP_VERSION = 4af164ea
 # default
 SUFFIXES := 
 # environment
@@ -291,7 +269,7 @@ SNAP_COMMON = /var/snap/code/common
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
 # environment
-SNAP_USER_DATA = /home/vantunes/snap/code/97
+SNAP_USER_DATA = /home/vantunes/snap/code/98
 # environment
 XDG_MENU_PREFIX = gnome-
 # environment
@@ -301,7 +279,7 @@ LC_IDENTIFICATION = pt_PT.UTF-8
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # variable set hash-table stats:
-# Load=145/1024=14%, Rehash=0, Collisions=13/185=7%
+# Load=134/1024=13%, Rehash=0, Collisions=19/174=11%
 
 # Pattern-specific Variable Values
 
@@ -309,15 +287,16 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Directories
 
-# . (device 66310, inode 2755469): 14 files, no impossibilities.
+# . (device 66310, inode 2755469): 12 files, no impossibilities.
 # ChessPieces (device 66310, inode 2753601): 3 files, no impossibilities so far.
 
-# 17 files, no impossibilities in 2 directories.
+# 15 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
 %.o: %.cpp
 #  recipe to execute (from 'Makefile', line 12):
+ 
 	clang++ ${FLAGS} -c $< -o $@
 
 # 1 implicit rules, 0 (0.0%) terminal.
@@ -421,7 +400,6 @@ run: all clean
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 30):
- 
 	./ChessGame
 
 # Not a target:
@@ -446,7 +424,7 @@ ChessPieces/knight.o:
 
 ChessGame: ChessPieces/pawn.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/king.o ChessPieces/knight.o ChessPieces/queen.o ChessPieces/rook.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-08 09:59:45.927211209
+#  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -468,12 +446,12 @@ ChessPieces/rook.o:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 37 / storage = 409 B / avg = 11 B
-# current buf: size = 8162 B / used = 409 B / count = 37 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 36 / storage = 399 B / avg = 11 B
+# current buf: size = 8162 B / used = 399 B / count = 36 / avg = 11 B
 
-# strcache performance: lookups = 66 / hit rate = 43%
+# strcache performance: lookups = 64 / hit rate = 43%
 # hash-table stats:
-# Load=37/8192=0%, Rehash=0, Collisions=0/66=0%
-# Finished Make data base on Thu Jun  9 16:36:05 2022
+# Load=36/8192=0%, Rehash=0, Collisions=0/64=0%
+# Finished Make data base on Mon Jun 13 21:08:00 2022
 
  

@@ -57,7 +57,6 @@ int bishop::play(table<Ichess_pieces *> &Table, int x, int y)
         }
         return CANT_MOVE;
     }
-    //return NO_ERROR;
 }
 
 int bishop::type()
