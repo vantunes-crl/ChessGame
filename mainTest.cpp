@@ -96,6 +96,22 @@ TEST_F(PiecesTestSuite, test_horse)
     //Table.printTable();
 }
 
+TEST_F(PiecesTestSuite, test_queen)
+{
+    EXPECT_TRUE(Table[0][3]->play(Table, 0, 3)); //try dont move
+    EXPECT_TRUE(Table[0][3]->play(Table, 1, 4)); //try pass
+    ASSERT_FALSE(Table[1][2]->play(Table, 2,2)); //move pawn
+    EXPECT_FALSE(Table[0][3]->play(Table, 3, 0)); //diagonal left
+    EXPECT_FALSE(Table[3][0]->play(Table, 6, 3)); //try kill
+    EXPECT_FALSE(Table[6][3]->play(Table, 5, 2));
+    EXPECT_TRUE(Table[5][2]->play(Table, 1, 2));
+    EXPECT_FALSE(Table[5][2]->play(Table, 3, 2));
+    EXPECT_FALSE(Table[3][2]->play(Table, 3, 6));
+    EXPECT_TRUE(Table[3][6]->play(Table, 5, 7));
+
+    Table.printTable();
+}
+
 
 int main(int argc, char **argv)
 {

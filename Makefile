@@ -4,7 +4,7 @@ TEST = ChessTest
 
 INCLUDE = -lsfml-graphics -lsfml-window -lsfml-system -lgtest -lpthread
 
-SRCS = ChessPieces/pawn.cpp ChessPieces/horse.cpp ChessPieces/bishop.cpp ChessPieces/king.cpp ChessPieces/knight.cpp ChessPieces/queen.cpp ChessPieces/rook.cpp
+SRCS = ChessPieces/pawn.cpp ChessPieces/horse.cpp ChessPieces/bishop.cpp ChessPieces/king.cpp ChessPieces/queen.cpp ChessPieces/rook.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

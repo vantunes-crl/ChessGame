@@ -26,6 +26,8 @@ int bishop::play(table<Ichess_pieces *> &Table, int x, int y)
             {
                 if (Table[x][y] && Table[x][y]->getColor() == this->getColor()) //its a friend
                     return CANT_MOVE;
+                if (Table[x][y])
+                    delete Table[x][y];
                 Table[x][y] = std::move(this); //kill
                 Table[pos.x][pos.y] = nullptr;
                 return NO_ERROR;
@@ -50,6 +52,8 @@ int bishop::play(table<Ichess_pieces *> &Table, int x, int y)
             {
                 if (Table[x][y] && Table[x][y]->getColor() == this->getColor()) //its a friend
                     return CANT_MOVE;
+                if (Table[x][y])
+                    delete Table[x][y];
                 Table[x][y] = std::move(this); //kill
                 Table[pos.x][pos.y] = nullptr;
                 return NO_ERROR;
