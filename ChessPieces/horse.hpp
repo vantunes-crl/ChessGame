@@ -1,6 +1,6 @@
 #ifndef HORSE_HPP
 #define HORSE_HPP
-
+#pragma once
 #include "../Ichess_pieces.hpp"
 
 class horse : public Ichess_pieces
@@ -11,6 +11,7 @@ class horse : public Ichess_pieces
         Pos getPos(table<Ichess_pieces *> &Table) const override;
 
         horse(bool b);
+        horse *copy() override;
 };
 
 #endif

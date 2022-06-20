@@ -1,18 +1,34 @@
 #ifndef TABLE_HPP
 #define TABLE_HPP
+#pragma once
 
 #include <array>
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 
 template <class T>
 class table
 {
     public:
 
-        //delete cpy and assign to avoid memory leaks
-        table(const table &) = delete;
-        table &operator=(const table &) = delete;
+        table(const table &cpy) = delete;
+
+        table &operator=(table &cpy)
+        {
+            for (int i = 0; i < 8; ++i)
+            {
+                for (int j = 0; j < 8; ++j)
+                {
+                    if (cpy.PlayTable[i][j])
+                        PlayTable[i][j] = cpy.PlayTable[i][j]->copy();
+                    else
+                        PlayTable[i][j] = nullptr;
+                }
+            }
+            return *this;
+        }
+
+
         table() {};
 
 
@@ -42,16 +58,15 @@ class table
 
         ~table() 
         {
-            for (auto pieces : PlayTable)
+            for (int i = 0; i < 8; ++i)
             {
-                for (auto piece : pieces)
+                for (int j = 0; j < 8; ++j)
                 {
-                    if (piece)
-                        delete piece;
+                    if (PlayTable[i][j] != nullptr)
+                        delete PlayTable[i][j];
                 }
             }
         };
-
 
     private:
         std::array<std::array<T, 8>, 8> PlayTable;

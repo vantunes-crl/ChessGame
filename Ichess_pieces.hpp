@@ -1,5 +1,6 @@
 #ifndef ICHESS_PIECES_HPP
 #define ICHESS_PIECES_HPP
+#pragma once
 
 #include <iostream>
 #include "table.hpp"
@@ -14,14 +15,12 @@ enum PIECES {
     WHITE_BISHOP,
     WHITE_HORSE,
     WHITE_KING,
-    WHITE_KNIGHT,
     WHITE_PAWN,
     WHITE_QUEEN,
     WHITE_ROOK,
     BLACK_BISHOP,
     BLACK_HORSE,
     BLACK_KING,
-    BLACK_KNIGHT,
     BLACK_PAWN,
     BLACK_QUEEN,
     BLACK_ROOK
@@ -45,9 +44,8 @@ class Ichess_pieces
         virtual Pos getPos(table<Ichess_pieces *> &Table) const = 0;
         virtual int type() = 0;
         virtual bool getColor() { return Color; };
-        
-
-    virtual ~Ichess_pieces() {};
+        virtual Ichess_pieces *copy() = 0;
+        virtual ~Ichess_pieces() {};
 };
 
 

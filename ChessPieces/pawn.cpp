@@ -59,3 +59,8 @@ int pawn::type()
     else
         return BLACK_PAWN;
 }
+
+pawn *pawn::copy()
+{
+    return new pawn(Color);
+}

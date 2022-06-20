@@ -139,3 +139,9 @@ Pos queen::getPos(table<Ichess_pieces *> &Table) const
     }
     return {-1, -1};
 }
+
+
+queen *queen::copy()
+{
+    return new queen(Color);
+}

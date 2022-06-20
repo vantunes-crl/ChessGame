@@ -5,8 +5,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Sat Jun 18 09:27:07 2022
+# Make data base, printed on Mon Jun 20 14:06:41 2022
 
 # Variables
 
@@ -21,7 +22,7 @@ SSH_AGENT_LAUNCHER = gnome-keyring
 # environment
 SNAP_INSTANCE_KEY = 
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-e78bfcb8-9671-4dbf-bc12-188fae36d625.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-04e49dab-1129-44a7-9687-c15f1bd431de.sock
 # environment
 MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # environment
@@ -73,7 +74,7 @@ XAUTHORITY = /run/user/1000/gdm/Xauthority
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # environment
-GNOME_TERMINAL_SERVICE = :1.138
+GNOME_TERMINAL_SERVICE = :1.182
 # makefile
 MAKEFLAGS = pqrR
 # makefile
@@ -109,13 +110,13 @@ SNAP_REEXEC =
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 13445
+VSCODE_PID = 29956
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/valerio-crl:@/tmp/.ICE-unix/4414,unix/valerio-crl:/tmp/.ICE-unix/4414
+SESSION_MANAGER = local/valerio-crl:@/tmp/.ICE-unix/4413,unix/valerio-crl:/tmp/.ICE-unix/4413
 # automatic
 *F = $(notdir $*)
 # environment
@@ -143,7 +144,7 @@ XMODIFIERS = @im=ibus
 # environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/046836ad_713b_4a4f_a6fd_6c6ae7fd1d9c
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/4d92878c_704c_4330_920f_66dbfd823154
 # environment
 MAKELEVEL := 0
 # default
@@ -287,15 +288,14 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Directories
 
-# . (device 66310, inode 2884726): 13 files, no impossibilities.
+# . (device 66310, inode 2884726): 12 files, no impossibilities.
 # ChessPieces (device 66310, inode 2885368): 20 files, no impossibilities so far.
 
-# 33 files, no impossibilities in 2 directories.
+# 32 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
 %.o: %.cpp
- 
 #  recipe to execute (from 'Makefile', line 12):
 	clang++ ${FLAGS} -c $< -o $@
 
@@ -312,21 +312,21 @@ ChessPieces/horse.cpp:
 # Not a target:
 ChessPieces/bishop.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-18 09:10:26.959401491
+#  Last modified 2022-06-18 09:40:34.45734252
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 ChessPieces/queen.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-18 09:24:27.384320154
+#  Last modified 2022-06-18 09:39:41.705286759
 #  File has been updated.
 #  Successfully updated.
 
 ChessPieces/pawn.o: ChessPieces/pawn.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/pawn'
-#  Last modified 2022-06-18 09:26:42.032462545
+#  Last modified 2022-06-20 13:57:53.677115242
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 12):
@@ -335,14 +335,14 @@ ChessPieces/pawn.o: ChessPieces/pawn.cpp
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-18 09:26:52.700473824
+#  Last modified 2022-06-20 14:06:38.298284143
 #  File has been updated.
 #  Successfully updated.
 
 ChessPieces/bishop.o: ChessPieces/bishop.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/bishop'
-#  Last modified 2022-06-18 09:26:42.408462942
+#  Last modified 2022-06-20 13:54:08.000798789
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 12):
@@ -363,14 +363,15 @@ re: fclean all
 # Not a target:
 ChessPieces/pawn.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-18 09:10:26.959401491
+ 
+#  Last modified 2022-06-20 12:13:50.554889998
 #  File has been updated.
 #  Successfully updated.
 
 ChessPieces/horse.o: ChessPieces/horse.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/horse'
-#  Last modified 2022-06-18 09:26:42.220462744
+#  Last modified 2022-06-20 13:54:07.804798591
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 12):
@@ -379,7 +380,7 @@ ChessPieces/horse.o: ChessPieces/horse.cpp
 ChessPieces/queen.o: ChessPieces/queen.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/queen'
-#  Last modified 2022-06-18 09:26:54.760476001
+#  Last modified 2022-06-20 13:54:08.392799187
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 12):
@@ -417,7 +418,7 @@ run: all clean
 ChessPieces/king.o: ChessPieces/king.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/king'
-#  Last modified 2022-06-18 09:26:42.596463141
+#  Last modified 2022-06-20 13:54:08.196798987
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 12):
@@ -426,7 +427,7 @@ ChessPieces/king.o: ChessPieces/king.cpp
 # Not a target:
 ChessPieces/king.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-18 09:10:26.959401491
+#  Last modified 2022-06-20 13:50:50.928687271
 #  File has been updated.
 #  Successfully updated.
 
@@ -474,7 +475,7 @@ ChessGame: ChessPieces/pawn.o ChessPieces/horse.o ChessPieces/bishop.o ChessPiec
 ChessPieces/rook.o: ChessPieces/rook.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/rook'
-#  Last modified 2022-06-18 09:26:54.956476208
+#  Last modified 2022-06-20 13:54:08.588799386
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 12):
@@ -483,7 +484,7 @@ ChessPieces/rook.o: ChessPieces/rook.cpp
 # Not a target:
 ChessPieces/rook.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-18 09:10:26.959401491
+#  Last modified 2022-06-18 09:39:30.573274992
 #  File has been updated.
 #  Successfully updated.
 
@@ -495,12 +496,12 @@ ChessPieces/rook.cpp:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 62 / storage = 729 B / avg = 11 B
-# current buf: size = 8162 B / used = 729 B / count = 62 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 61 / storage = 719 B / avg = 11 B
+# current buf: size = 8162 B / used = 719 B / count = 61 / avg = 11 B
 
-# strcache performance: lookups = 96 / hit rate = 35%
+# strcache performance: lookups = 95 / hit rate = 35%
 # hash-table stats:
-# Load=62/8192=1%, Rehash=0, Collisions=0/96=0%
-# Finished Make data base on Sat Jun 18 09:27:07 2022
+# Load=61/8192=1%, Rehash=0, Collisions=0/95=0%
+# Finished Make data base on Mon Jun 20 14:06:41 2022
 
  

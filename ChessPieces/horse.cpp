@@ -59,3 +59,8 @@ Pos horse::getPos(table<Ichess_pieces *> &Table) const
     }
     return {-1, -1};
 }
+
+horse *horse::copy()
+{
+    return new horse(Color);
+}

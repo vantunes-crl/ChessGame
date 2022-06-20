@@ -1,6 +1,7 @@
 #ifndef QUEEN_HPP
 #define QUEEN_HPP
 
+#pragma once
 #include "../Ichess_pieces.hpp"
 
 class queen : public Ichess_pieces
@@ -11,6 +12,7 @@ class queen : public Ichess_pieces
         Pos getPos(table<Ichess_pieces *> &Table) const override;
 
         queen(bool b);
+        queen *copy() override;
 };
 
 #endif

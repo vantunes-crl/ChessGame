@@ -1,6 +1,6 @@
 #ifndef KING_HPP
 #define KING_HPP
-
+#pragma once
 #include "../Ichess_pieces.hpp"
 
 class king : public Ichess_pieces 
@@ -11,6 +11,8 @@ class king : public Ichess_pieces
         Pos getPos(table<Ichess_pieces *> &Table) const override;
 
         king(bool b);
+        king *copy() override;
+
 
 
 };

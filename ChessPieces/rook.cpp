@@ -94,3 +94,8 @@ Pos rook::getPos(table<Ichess_pieces *> &Table) const
     }
     return {-1, -1};
 }
+
+rook *rook::copy()
+{
+    return new rook(Color);
+}

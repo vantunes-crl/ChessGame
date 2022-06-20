@@ -88,3 +88,9 @@ bishop::bishop(bool b)
 {
     Color = b;
 }
+
+
+bishop *bishop::copy()
+{
+    return new bishop(Color);
+}

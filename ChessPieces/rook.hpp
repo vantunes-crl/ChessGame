@@ -1,6 +1,6 @@
 #ifndef ROOK_HPP
 #define ROOK_HPP
-
+#pragma once
 #include "../Ichess_pieces.hpp"
 
 class rook : public Ichess_pieces
@@ -11,7 +11,7 @@ class rook : public Ichess_pieces
         Pos getPos(table<Ichess_pieces *> &Table) const override;
 
         rook(bool b);
-
+        rook *copy() override;
 
 };
 

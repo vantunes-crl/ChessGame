@@ -1,5 +1,7 @@
 #ifndef PAWN_HPP
 #define PAWN_HPP
+#pragma once
+
 
 #include "../Ichess_pieces.hpp"
 
@@ -11,9 +13,9 @@ class pawn : public Ichess_pieces
         Pos getPos(table<Ichess_pieces *> &Table) const override;
 
         pawn(bool b);
+
+        pawn *copy() override;
 };
-
-
 
 
 #endif
