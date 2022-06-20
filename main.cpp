@@ -10,7 +10,7 @@
 int main()
 {
     table<Ichess_pieces *> Table;
-    table<Ichess_pieces *> Table2;
+    //table<Ichess_pieces *> Table2;
 
 
     Table[0] = {new rook(0), new horse(0),new bishop(0),new queen(0),new king(0),new bishop(0),new horse(0),new rook(0)};
@@ -22,12 +22,7 @@ int main()
     Table[6] = {new pawn(1), new pawn(1), new pawn(1), new pawn(1), new pawn(1), new pawn(1), new pawn(1),new pawn(1)};
     Table[7] = {new rook(1), new horse(1),new bishop(1),new queen(1),new king(1),new bishop(1),new horse(1),new rook(1)};
 
-    Table2 = Table;
-
-    std::cout << Table2[0][0]->type() << std::endl;
-
-
-    //Table[0][4]->play(Table, 1, 5);
+    Table[0][4]->play(Table, 1, 5);
 
    // Table.printTable();
 

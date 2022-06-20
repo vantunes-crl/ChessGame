@@ -8,11 +8,8 @@ king::king(bool b)
 
 void checkIfSomeoneCanKill(table<Ichess_pieces *> Table, Pos pos)
 {
-
-   // std::cout << Table[pos.x][pos.y]->type() << std::endl;
-
+   std::cout << Table[pos.x][pos.y]->type() << std::endl;
 }
-
 
 int king::play(table<Ichess_pieces *> &Table, int x, int y)
 {
@@ -27,7 +24,7 @@ int king::play(table<Ichess_pieces *> &Table, int x, int y)
         return CANT_MOVE;
     else
     {
-        //checkIfSomeoneCanKill(Table, {x, y});
+        checkIfSomeoneCanKill(Table, {x, y});
     }
 
 return 0;

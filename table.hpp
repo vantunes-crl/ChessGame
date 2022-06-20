@@ -11,7 +11,19 @@ class table
 {
     public:
 
-        table(const table &cpy) = delete;
+        table(const table &cpy)
+        {
+            for (int i = 0; i < 8; ++i)
+            {
+                for (int j = 0; j < 8; ++j)
+                {
+                    if (cpy.PlayTable[i][j])
+                        PlayTable[i][j] = cpy.PlayTable[i][j]->copy();
+                    else
+                        PlayTable[i][j] = nullptr;
+                }
+            }
+        }
 
         table &operator=(table &cpy)
         {
@@ -58,6 +70,7 @@ class table
 
         ~table() 
         {
+            //std::cout << "Call Destructor\n";
             for (int i = 0; i < 8; ++i)
             {
                 for (int j = 0; j < 8; ++j)
