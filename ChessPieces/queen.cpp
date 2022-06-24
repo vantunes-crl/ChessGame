@@ -5,36 +5,36 @@ queen::queen(bool b)
     Color = b;
 }
 
-int queen::play(table<Ichess_pieces *> &Table, int x, int y)
+int queen::play(Table_t &Table, Pos ToMovePos)
 {
 
     Pos pos = this->getPos(Table);
     Pos posCpy(pos);
 
-    if (x < 0 || x > 7 || y < 0 || y > 7)
+    if (ToMovePos.x < 0 || ToMovePos.x > 7 || ToMovePos.y < 0 || ToMovePos.y > 7)
         return OUT_SIZE;
-    else if (pos.x == x && pos.y == y)
+    else if (pos.x == ToMovePos.x && pos.y == ToMovePos.y)
         return SAME_PLACE;
-    else if (Table[x][y] && Table[x][y]->getColor() == this->getColor())
+    else if (Table[ToMovePos.x][ToMovePos.y] && Table[ToMovePos.x][ToMovePos.y]->getColor() == this->getColor())
         return CANT_MOVE;
-    else if (x != pos.x && y != pos.y) //diagonal case
+    else if (ToMovePos.x != pos.x && ToMovePos.y != pos.y) //diagonal case
     {
-        if (pos.y < y)
+        if (pos.y < ToMovePos.y)
         {
             while (true) //move right
             {
-                if (x < pos.x) //move back else move forward
+                if (ToMovePos.x < pos.x) //move back else move forward
                     posCpy.x--;
                 else
                     posCpy.x++;
                 posCpy.y++;
                 if (posCpy.x < 0 || posCpy.y < 0 || posCpy.x > 7 || posCpy.y > 7)
                     break;
-                if (Table[posCpy.x][posCpy.y] && (posCpy.x != x && y != posCpy.y)) //someone along the way, cant move
+                if (Table[posCpy.x][posCpy.y] && (posCpy.x != ToMovePos.x && ToMovePos.y != posCpy.y)) //someone along the way, cant move
                     return CANT_MOVE;
-                if (x == posCpy.x && y == posCpy.y) // can move
+                if (ToMovePos.x == posCpy.x && ToMovePos.y == posCpy.y) // can move
                 {
-                    Table[x][y] = std::move(this); //kill
+                    Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y]; //kill
                     Table[pos.x][pos.y] = nullptr;
                     return NO_ERROR;
                 }
@@ -44,7 +44,7 @@ int queen::play(table<Ichess_pieces *> &Table, int x, int y)
         {
             while (true) //move left
             {
-                if (x < pos.x) //move back else move forward
+                if (ToMovePos.x < pos.x) //move back else move forward
                     posCpy.x--;
                 else
                     posCpy.x++;
@@ -53,9 +53,9 @@ int queen::play(table<Ichess_pieces *> &Table, int x, int y)
                     break;
                 if (Table[posCpy.x][posCpy.y]) //someone along the way, cant move
                     return CANT_MOVE;
-                if (x == posCpy.x && y == posCpy.y) // can move
+                if (ToMovePos.x == posCpy.x && ToMovePos.y == posCpy.y) // can move
                 {
-                    Table[x][y] = std::move(this); //kill
+                    Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y]; //kill
                     Table[pos.x][pos.y] = nullptr;
                     return NO_ERROR;
                 }
@@ -67,9 +67,9 @@ int queen::play(table<Ichess_pieces *> &Table, int x, int y)
     {
 
         int i = 1;
-        if (x > pos.x || y > pos.y)
+        if (ToMovePos.x > pos.x || ToMovePos.y > pos.y)
         {
-            while ((pos.x + i) < x) //check vertical
+            while ((pos.x + i) < ToMovePos.x) //check vertical
             {
                 if (Table[pos.x + i][pos.y])
                     return CANT_MOVE;
@@ -77,7 +77,7 @@ int queen::play(table<Ichess_pieces *> &Table, int x, int y)
             }
 
             i = 1;
-            while ((pos.y + i) < y) // check horizontal
+            while ((pos.y + i) < ToMovePos.y) // check horizontal
             {
                 if (Table[pos.x][pos.y + i])
                     return CANT_MOVE;
@@ -87,7 +87,7 @@ int queen::play(table<Ichess_pieces *> &Table, int x, int y)
         else
         {
             i = 1;
-            while ((pos.x - i) > x) //check vertical reverse
+            while ((pos.x - i) > ToMovePos.x) //check vertical reverse
             {
                 if (Table[pos.x - i][pos.y])
                     return CANT_MOVE;
@@ -95,7 +95,7 @@ int queen::play(table<Ichess_pieces *> &Table, int x, int y)
             }
 
             i = 1;
-            while ((pos.y - i) > y) // check horizontal reverse
+            while ((pos.y - i) > ToMovePos.y) // check horizontal reverse
             {
                 if (Table[pos.x][pos.y - i])
                     return CANT_MOVE;
@@ -103,16 +103,15 @@ int queen::play(table<Ichess_pieces *> &Table, int x, int y)
             }
         }
 
-        if (Table[x][y])
+        if (Table[ToMovePos.x][ToMovePos.y])
         {
-            delete Table[x][y];
-            Table[x][y] = std::move(this);
+            Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y];
             Table[pos.x][pos.y] = nullptr;
-            std::cout << this->type() << " killed " << Table[x][y]->type() << std::endl;
+            std::cout << this->type() << " killed " << Table[ToMovePos.x][ToMovePos.y]->type() << std::endl;
         }
         else
         {
-            Table[x][y] = std::move(this);
+            Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y];
             Table[pos.x][pos.y] = nullptr;
         }
         return NO_ERROR;
@@ -127,13 +126,13 @@ int queen::type()
         return BLACK_QUEEN;
 }
 
-Pos queen::getPos(table<Ichess_pieces *> &Table) const
+Pos queen::getPos(Table_t &Table) const
 {
     for (int i = 0; i < 8; ++i)
     {
         for (int j = 0; j < 8; ++j)
         {
-            if (this == Table[i][j])
+            if (this == Table[i][j].get())
                 return {i, j};
         }
     }
@@ -141,9 +140,9 @@ Pos queen::getPos(table<Ichess_pieces *> &Table) const
 }
 
 
-queen *queen::copy()
+std::shared_ptr<Ichess_pieces> queen::copy()
 {
-    return new queen(Color);
+    return std::make_shared<queen>(Color);
 }
 
 

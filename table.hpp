@@ -33,34 +33,15 @@ class table
                 for (int j = 0; j < 8; ++j)
                 {
                     if (cpy.PlayTable[i][j])
-                    {
-                        if (PlayTable[i][j])
-                            delete PlayTable[i][j];
                         PlayTable[i][j] = cpy.PlayTable[i][j]->copy();
-                    }
                     else
-                    {
-                        if (PlayTable[i][j])
-                            delete PlayTable[i][j];
                         PlayTable[i][j] = nullptr;
-                    }
                 }
             }
             return *this;
         }
 
-
-        table() 
-        {
-            for (int i = 0; i < 8; ++i)
-            {
-                for (int j = 0; j < 8; ++j)
-                    PlayTable[i][j] = nullptr;
-            }
-        }
-
-       
-
+        table() = default;
 
         void printTable()
         {
@@ -87,18 +68,7 @@ class table
 
         std::array<T, 8> &operator[](const int i) { return PlayTable[i]; }
 
-        ~table() 
-        {
-            //std::cout << "Call Destructor\n";
-            for (int i = 0; i < 8; ++i)
-            {
-                for (int j = 0; j < 8; ++j)
-                {
-                    if (PlayTable[i][j] != nullptr)
-                        delete PlayTable[i][j];
-                }
-            }
-        };
+        ~table() = default;
 
     private:
         std::array<std::array<T, 8>, 8> PlayTable;

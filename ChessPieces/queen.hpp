@@ -7,12 +7,12 @@
 class queen : public Ichess_pieces
 {
     public:
-        int play(table<Ichess_pieces *> &Table, int x, int y) override;
+        int play(Table_t &Table, Pos ToMovePos) override;
         int type() override;
-        Pos getPos(table<Ichess_pieces *> &Table) const override;
+        Pos getPos(Table_t &Table) const override;
         bool getColor() const override;
         queen(bool b);
-        queen *copy() override;
+        std::shared_ptr<Ichess_pieces> copy() override;
     private:
         bool Color;
 };

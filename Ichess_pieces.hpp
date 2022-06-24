@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "table.hpp"
-#include <algorithm>
+#include <memory>
 
 struct Pos
 {
@@ -39,14 +39,14 @@ enum ERRORS {
 
 class Ichess_pieces
 {
-    protected:
-        
     public:
-        virtual int play(table<Ichess_pieces *> &Table, int x, int y) = 0;
-        virtual Pos getPos(table<Ichess_pieces *> &Table) const = 0;
+        typedef table<std::shared_ptr<Ichess_pieces>> Table_t;
+    public:
+        virtual int play(Table_t &Table, Pos ToMovePos) = 0;
+        virtual Pos getPos(Table_t &Table) const = 0;
         virtual int type() = 0;
         virtual bool getColor() const = 0;
-        virtual Ichess_pieces *copy() = 0;
+        virtual std::shared_ptr<Ichess_pieces> copy() = 0;
         virtual ~Ichess_pieces() {};
 };
 

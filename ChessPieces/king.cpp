@@ -6,7 +6,7 @@ king::king(bool b)
 }
 
 
-void checkIfSomeoneCanKill(table<Ichess_pieces *> Table, Pos pos)
+void checkIfSomeoneCanKill(Ichess_pieces::Table_t Table, Pos pos)
 {
 
     for (int i = 0; i < 8; ++i)
@@ -15,27 +15,28 @@ void checkIfSomeoneCanKill(table<Ichess_pieces *> Table, Pos pos)
         {
             if (Table[i][j])
             {
-                if (!Table[i][j]->play(Table, pos.x, pos.y))
+                if (!Table[i][j]->play(Table, pos))
                     std::cout << "can be killed\n";
             }
         }
     }
 }
 
-int king::play(table<Ichess_pieces *> &Table, int x, int y)
+int king::play(Table_t &Table, Pos ToMovePos)
 {
 
     Pos pos = this->getPos(Table);
 
-    if (x < 0 || x > 7 || y < 0 || y > 7) //check out size
+    if (ToMovePos.x < 0 || ToMovePos.x > 7 || ToMovePos.y < 0 || ToMovePos.y > 7) //check out size
         return OUT_SIZE;
-    else if (x == pos.x && y == pos.y) //check if is in the same place
+    else if (ToMovePos.x == pos.x && ToMovePos.y == pos.y) //check if is in the same place
         return SAME_PLACE;
-    else if (x > (x + 1) || x < (x - 1) || y > (y + 1) || y < (y - 1)) // check if can move just 1
+    else if (ToMovePos.x > (ToMovePos.x + 1) || ToMovePos.x < (ToMovePos.x - 1) ||
+            (ToMovePos.y > (ToMovePos.y + 1) || ToMovePos.y < (ToMovePos.y - 1))) // check if can move just 1
         return CANT_MOVE;
     else
     {
-        checkIfSomeoneCanKill(Table, {x, y});
+        checkIfSomeoneCanKill(Table, {ToMovePos.x, ToMovePos.y});
     }
 
 return 0;
@@ -49,13 +50,13 @@ int king::type()
         return BLACK_KING;
 }
 
-Pos king::getPos(table<Ichess_pieces *> &Table) const
+Pos king::getPos(Table_t &Table) const
 {
     for (int i = 0; i < 8; ++i)
     {
         for (int j = 0; j < 8; ++j)
         {
-            if (this == Table[i][j])
+            if (this == Table[i][j].get())
                 return {i, j};
         }
     }
@@ -63,9 +64,9 @@ Pos king::getPos(table<Ichess_pieces *> &Table) const
 }
 
 
-king *king::copy()
+std::shared_ptr<Ichess_pieces> king::copy()
 {
-    return new king(Color);
+    return std::make_shared<king>(Color);
 }
 
 

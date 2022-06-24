@@ -6,12 +6,12 @@
 class king : public Ichess_pieces 
 {
     public:
-        int play(table<Ichess_pieces *> &Table, int x, int y) override;
+        int play(Table_t &Table, Pos ToMovePos) override;
         int type() override;
-        Pos getPos(table<Ichess_pieces *> &Table) const override;
+        Pos getPos(Table_t &Table) const override;
         bool getColor() const override;
         king(bool b);
-        king *copy() override;
+        std::shared_ptr<Ichess_pieces> copy() override;
     private:
         bool Color;
 
