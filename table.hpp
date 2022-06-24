@@ -11,38 +11,6 @@ template <class T>
 class table
 {
     public:
-
-        table(const table &cpy)
-        {
-            for (int i = 0; i < 8; ++i)
-            {
-                for (int j = 0; j < 8; ++j)
-                {
-                    if (cpy.PlayTable[i][j])
-                        PlayTable[i][j] = cpy.PlayTable[i][j]->copy();
-                    else
-                        PlayTable[i][j] = nullptr;
-                }
-            }
-        }
-
-        table &operator=(table &cpy)
-        {
-            for (int i = 0; i < 8; ++i)
-            {
-                for (int j = 0; j < 8; ++j)
-                {
-                    if (cpy.PlayTable[i][j])
-                        PlayTable[i][j] = cpy.PlayTable[i][j]->copy();
-                    else
-                        PlayTable[i][j] = nullptr;
-                }
-            }
-            return *this;
-        }
-
-        table() = default;
-
         void printTable()
         {
             std::array<std::string, 12> Pieces = {"\033[1;39mBishop\033[0m", "\033[1;39mHorse\033[0m",
@@ -67,8 +35,6 @@ class table
         }
 
         std::array<T, 8> &operator[](const int i) { return PlayTable[i]; }
-
-        ~table() = default;
 
     private:
         std::array<std::array<T, 8>, 8> PlayTable;
