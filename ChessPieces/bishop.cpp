@@ -37,6 +37,7 @@ int bishop::play(table<Ichess_pieces *> &Table, int x, int y)
     }
     else
     {
+
         while (true) //move left
         {
             if (x < pos.x) //move back else move forward

@@ -1,286 +1,245 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-# GNU Make 4.3
+# GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
-# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Mon Jun 20 14:06:41 2022
+# Make data base, printed on Fri Jun 24 11:55:35 2022
 
 # Variables
 
-# environment
-GDK_BACKEND = x11
-# environment
-LC_ALL = C
-# environment
-GNOME_SHELL_SESSION_MODE = ubuntu
-# environment
-SSH_AGENT_LAUNCHER = gnome-keyring
-# environment
-SNAP_INSTANCE_KEY = 
-# environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-04e49dab-1129-44a7-9687-c15f1bd431de.sock
-# environment
-MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
-# environment
-LC_NAME = pt_PT.UTF-8
-# environment
-LC_NUMERIC = pt_PT.UTF-8
-# environment
-VSCODE_CWD = /home/vantunes/Desktop
-# environment
-WINDOWPATH = 2
-# environment
-LC_ADDRESS = pt_PT.UTF-8
-# default
-MAKE_COMMAND := make
-# environment
-QT_ACCESSIBILITY = 1
+# 'override' directive
+GNUMAKEFLAGS := 
 # automatic
-@D = $(patsubst %/,%,$(dir $@))
-# environment
-SNAP_INSTANCE_NAME = code
-# environment
-GDK_PIXBUF_MODULEDIR = /snap/code/99/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
-# environment
-VSCODE_HANDLES_UNCAUGHT_ERRORS = true
-# default
-.VARIABLES := 
-# environment
-PWD = /home/vantunes/Desktop/ChessGame
+<D = $(patsubst %/,%,$(dir $<))
 # automatic
-%D = $(patsubst %/,%,$(dir $%))
+?F = $(notdir $?)
 # environment
-XDG_DATA_DIRS = /usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
-# environment
-OLDPWD = /home/vantunes
-# automatic
-^D = $(patsubst %/,%,$(dir $^))
-# environment
-VSCODE_LOG_STACK = false
-# automatic
-%F = $(notdir $%)
-# environment
-VSCODE_CODE_CACHE_PATH = /home/vantunes/.config/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
-# environment
-LANG = C
-# environment
-XAUTHORITY = /run/user/1000/gdm/Xauthority
-# default
-.LOADED := 
-# default
-.INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
-# environment
-GNOME_TERMINAL_SERVICE = :1.182
-# makefile
-MAKEFLAGS = pqrR
-# makefile
-CURDIR := /home/vantunes/Desktop/ChessGame
-# environment
-VSCODE_PIPE_LOGGING = true
-# environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
-# environment
-LESSOPEN = | /usr/bin/lesspipe %s
-# makefile (from 'Makefile', line 7)
-SRCS = ChessPieces/pawn.cpp ChessPieces/horse.cpp ChessPieces/bishop.cpp ChessPieces/king.cpp ChessPieces/queen.cpp ChessPieces/rook.cpp
-# automatic
-*D = $(patsubst %/,%,$(dir $*))
-# environment
-MFLAGS = -pqrR
-# environment
-SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+DESKTOP_SESSION = ubuntu
 # default
 .SHELLFLAGS := -c
 # environment
-XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
-# automatic
-+D = $(patsubst %/,%,$(dir $+))
-# environment
-XDG_SESSION_DESKTOP = ubuntu
-# makefile (from 'Makefile', line 1)
-MAKEFILE_LIST := Makefile
-# environment
-SNAP_REEXEC = 
-# automatic
-@F = $(notdir $@)
-# environment
-VSCODE_VERBOSE_LOGGING = true
-# environment
-VSCODE_PID = 29956
+XDG_SESSION_CLASS = user
 # environment
 XDG_SESSION_TYPE = x11
+# environment
+VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/valerio-crl:@/tmp/.ICE-unix/4413,unix/valerio-crl:/tmp/.ICE-unix/4413
+IM_CONFIG_PHASE = 1
 # automatic
-*F = $(notdir $*)
+@D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_DESKTOP = code-url-handler.desktop
+XAUTHORITY = /run/user/1000/gdm/Xauthority
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
-# automatic
-<D = $(patsubst %/,%,$(dir $<))
-# environment
-VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
-# makefile (from 'Makefile', line 5)
-INCLUDE = -lsfml-graphics -lsfml-window -lsfml-system -lgtest -lpthread
-# default
-MAKE_HOST := x86_64-pc-linux-gnu
-# makefile (from 'Makefile', line 9)
-OBJS = $(SRCS:.cpp=.o)
-# environment
-GNOME_DESKTOP_SESSION_ID = this-is-deprecated
-# makefile
-SHELL = /bin/sh
-# default
-MAKECMDGOALS := all
+GDMSESSION = ubuntu
 # environment
 XMODIFIERS = @im=ibus
+# makefile
+CURDIR := /home/vantunes/Desktop/ChessGame
+# makefile
+SHELL = /bin/sh
 # environment
-SHLVL = 1
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/4d92878c_704c_4330_920f_66dbfd823154
+_ = /usr/share/code/code
 # environment
-MAKELEVEL := 0
-# default
-MAKE = $(MAKE_COMMAND)
+JOURNAL_STREAM = 8:53059
 # environment
-SNAP_COOKIE = SH3nYh-v_46mWYHFoFpebRuABqh47eHn-U8dByQns_U-nYOC5kMv
-# environment
-PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
-# default
-MAKEFILES := 
-# environment
-LC_MONETARY = pt_PT.UTF-8
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
 # automatic
-^F = $(notdir $^)
+@F = $(notdir $@)
 # environment
-SNAP_USER_COMMON = /home/vantunes/snap/code/common
-# environment
-LC_TIME = pt_PT.UTF-8
-# environment
-SNAP = /snap/code/99
-# environment
-SNAP_REVISION = 99
-# environment
-SNAP_REAL_HOME = /home/vantunes
-# environment
-VSCODE_LOG_NATIVE = false
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
 # environment
 USERNAME = vantunes
 # environment
-LC_TELEPHONE = pt_PT.UTF-8
+MAKELEVEL := 0
 # environment
-LESSCLOSE = /usr/bin/lesspipe %s %s
-# automatic
-?F = $(notdir $?)
-# makefile (from 'Makefile', line 1)
-NAME = ChessGame
+MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # environment
-XDG_CURRENT_DESKTOP = Unity
+XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
-LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
-# automatic
-+F = $(notdir $+)
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
-DESKTOP_SESSION = ubuntu
+VSCODE_VERBOSE_LOGGING = true
 # environment
-ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
-# makefile (from 'Makefile', line 3)
-TEST = ChessTest
-# 'override' directive
-GNUMAKEFLAGS := 
+LC_CTYPE = pt_PT.UTF-8
+# makefile (from 'Makefile', line 9)
+OBJS = $(SRCS:.cpp=.o)
 # environment
-LOGNAME = vantunes
+MANAGERPID = 1613
 # environment
-SNAP_ARCH = amd64
-# makefile
-.DEFAULT_GOAL := ChessGame
+LESSOPEN = | /usr/bin/lesspipe %s
 # environment
-SYSTEMD_EXEC_PID = 4433
+LC_NAME = pt_PT.UTF-8
 # environment
-DISPLAY = :1
-# environment
-USER = vantunes
-# environment
-GTK_MODULES = gail:atk-bridge
-# environment
-DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
+VSCODE_CWD = /home/vantunes
 # default
-MAKE_VERSION := 4.3
+MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-DISABLE_WAYLAND = 1
-# environment
-SNAP_DATA = /var/snap/code/99
-# environment
-SNAP_CONTEXT = SH3nYh-v_46mWYHFoFpebRuABqh47eHn-U8dByQns_U-nYOC5kMv
-# environment
-LC_MEASUREMENT = pt_PT.UTF-8
-# environment
-LC_PAPER = pt_PT.UTF-8
-# environment
-XDG_RUNTIME_DIR = /run/user/1000
+PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-COLORTERM = truecolor
+GJS_DEBUG_OUTPUT = stderr
 # environment
-GDK_PIXBUF_MODULE_FILE = /home/vantunes/snap/code/common/.cache/gdk-pixbuf-loaders.cache
+SESSION_MANAGER = local/vantunes-crl:@/tmp/.ICE-unix/2550,unix/vantunes-crl:/tmp/.ICE-unix/2550
 # environment
-LC_CTYPE = pt_PT.UTF-8
+XDG_RUNTIME_DIR = /run/user/1000
 # environment
-XDG_SESSION_CLASS = user
+XDG_MENU_PREFIX = gnome-
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+INVOCATION_ID = 0f4f54646a7c40df8aa79f2dadccd5ab
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+LS_COLORS = 
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# environment
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 6992
+# automatic
+%F = $(notdir $%)
+# environment
+DISPLAY = :0
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /home/vantunes/Desktop/ChessGame
+# default
+.LOADED := 
+# environment
+SSH_AGENT_PID = 2512
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# environment
+GTK_MODULES = gail:atk-bridge
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /home/vantunes
 # environment
-QT_IM_MODULE = ibus
+LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
-ELECTRON_RUN_AS_NODE = 1
+VSCODE_CODE_CACHE_PATH = /home/vantunes/.config/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
+# environment
+LOGNAME = vantunes
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# automatic
++F = $(notdir $+)
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# makefile (from 'Makefile', line 3)
+TEST = ChessTest
+# environment
+LC_TIME = pt_PT.UTF-8
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+QT_IM_MODULE = ibus
+# makefile (from 'Makefile', line 7)
+SRCS = ChessPieces/pawn.cpp ChessPieces/horse.cpp ChessPieces/bishop.cpp ChessPieces/king.cpp ChessPieces/queen.cpp ChessPieces/rook.cpp
+# environment
+SHLVL = 0
+# environment
+GNOME_SHELL_SESSION_MODE = ubuntu
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-4bdda087-78e3-4b82-8033-569ab4ab579f.sock
+# default
+MAKE_VERSION := 4.2.1
+# environment
+USER = vantunes
+# environment
+LC_MONETARY = pt_PT.UTF-8
+# makefile
+.DEFAULT_GOAL := ChessGame
+# makefile (from 'Makefile', line 5)
+INCLUDE = -lsfml-graphics -lsfml-window -lsfml-system -lgtest -lpthread
+# environment
+XDG_CURRENT_DESKTOP = Unity
+# makefile (from 'Makefile', line 1)
+NAME = ChessGame
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+LC_TELEPHONE = pt_PT.UTF-8
+# default
+MAKE_COMMAND := make
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
 # environment
 VSCODE_IPC_HOOK = /run/user/1000/vscode-b54b5c09-1.68.1-main.sock
+# makefile
+MAKEFLAGS = pqrR
 # environment
-TERM = xterm-256color
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# automatic
++D = $(patsubst %/,%,$(dir $+))
 # environment
-SNAP_NAME = code
+GDK_BACKEND = x11
 # environment
-GSETTINGS_SCHEMA_DIR = /snap/code/99/usr/share/glib-2.0/schemas
+LC_PAPER = pt_PT.UTF-8
+# environment
+QT_ACCESSIBILITY = 1
+# environment
+DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
 # default
-.RECIPEPREFIX := 
+MAKEFILES := 
+# environment
+LC_NUMERIC = pt_PT.UTF-8
 # automatic
 <F = $(notdir $<)
 # environment
-SNAP_VERSION = 30d9c6cd
+LC_MEASUREMENT = pt_PT.UTF-8
+# environment
+LC_ALL = C
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# automatic
+^F = $(notdir $^)
 # default
 SUFFIXES := 
 # environment
-VSCODE_CLI = 1
+CHROME_DESKTOP = code-url-handler.desktop
 # environment
-ELECTRON_NO_ATTACH_CONSOLE = 1
-# environment
-VTE_VERSION = 6800
-# environment
-SNAP_COMMON = /var/snap/code/common
+WINDOWPATH = 2
 # default
-.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
-# environment
-SNAP_USER_DATA = /home/vantunes/snap/code/99
-# environment
-XDG_MENU_PREFIX = gnome-
-# environment
-GDMSESSION = ubuntu
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
 # environment
 LC_IDENTIFICATION = pt_PT.UTF-8
+# default
+.RECIPEPREFIX := 
 # environment
-SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
+LC_ADDRESS = pt_PT.UTF-8
+# environment
+LANG = C
+# environment
+VSCODE_PID = 6992
 # variable set hash-table stats:
-# Load=134/1024=13%, Rehash=0, Collisions=21/177=12%
+# Load=114/1024=11%, Rehash=0, Collisions=24/145=17%
 
 # Pattern-specific Variable Values
 
@@ -288,10 +247,10 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Directories
 
-# . (device 66310, inode 2884726): 12 files, no impossibilities.
-# ChessPieces (device 66310, inode 2885368): 20 files, no impossibilities so far.
+# . (device 66310, inode 27788771): 13 files, no impossibilities.
+# ChessPieces (device 66310, inode 27788820): 20 files, no impossibilities so far.
 
-# 32 files, no impossibilities in 2 directories.
+# 33 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -300,33 +259,46 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 	clang++ ${FLAGS} -c $< -o $@
 
 # 1 implicit rules, 0 (0.0%) terminal.
+
 # Files
+
+ChessPieces/rook.o: ChessPieces/rook.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'ChessPieces/rook'
+#  Last modified 2022-06-23 15:09:52.648203155
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 12):
+	clang++ ${FLAGS} -c $< -o $@
 
 # Not a target:
 ChessPieces/horse.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-18 09:10:26.959401491
+#  Last modified 2022-06-22 20:35:05.926170647
 #  File has been updated.
 #  Successfully updated.
 
-# Not a target:
-ChessPieces/bishop.cpp:
+all: ChessGame
+#  Command line target.
 #  Implicit rule search has been done.
-#  Last modified 2022-06-18 09:40:34.45734252
+#  File does not exist.
 #  File has been updated.
 #  Successfully updated.
 
-# Not a target:
-ChessPieces/queen.cpp:
+ChessPieces/king.o: ChessPieces/king.cpp
 #  Implicit rule search has been done.
-#  Last modified 2022-06-18 09:39:41.705286759
+#  Implicit/static pattern stem: 'ChessPieces/king'
+#  Last modified 2022-06-23 15:09:52.288202053
 #  File has been updated.
 #  Successfully updated.
+ 
+#  recipe to execute (from 'Makefile', line 12):
+	clang++ ${FLAGS} -c $< -o $@
 
 ChessPieces/pawn.o: ChessPieces/pawn.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/pawn'
-#  Last modified 2022-06-20 13:57:53.677115242
+#  Last modified 2022-06-23 15:09:51.748200399
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 12):
@@ -335,52 +307,45 @@ ChessPieces/pawn.o: ChessPieces/pawn.cpp
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-20 14:06:38.298284143
+#  Last modified 2022-06-22 20:35:05.930170595
 #  File has been updated.
 #  Successfully updated.
-
-ChessPieces/bishop.o: ChessPieces/bishop.cpp
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'ChessPieces/bishop'
-#  Last modified 2022-06-20 13:54:08.000798789
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 12):
-	clang++ ${FLAGS} -c $< -o $@
-
-clean:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 24):
-	rm -f $(OBJS)
-
-re: fclean all
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
 
 # Not a target:
-ChessPieces/pawn.cpp:
+ChessPieces/bishop.cpp:
 #  Implicit rule search has been done.
- 
-#  Last modified 2022-06-20 12:13:50.554889998
+#  Last modified 2022-06-22 20:56:25.225974588
 #  File has been updated.
 #  Successfully updated.
-
-ChessPieces/horse.o: ChessPieces/horse.cpp
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'ChessPieces/horse'
-#  Last modified 2022-06-20 13:54:07.804798591
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 12):
-	clang++ ${FLAGS} -c $< -o $@
 
 ChessPieces/queen.o: ChessPieces/queen.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/queen'
-#  Last modified 2022-06-20 13:54:08.392799187
+#  Last modified 2022-06-23 15:09:52.472202616
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 12):
+	clang++ ${FLAGS} -c $< -o $@
+
+test: ChessPieces/pawn.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 20):
+	clang++ mainTest.cpp $(OBJS) $(INCLUDE) -o $(TEST)
+	./$(TEST)
+
+fclean: clean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 27):
+	rm -f $(NAME) $(TEST)
+
+ChessPieces/horse.o: ChessPieces/horse.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'ChessPieces/horse'
+#  Last modified 2022-06-23 15:09:51.936200975
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 12):
@@ -392,21 +357,17 @@ ChessPieces/queen.o: ChessPieces/queen.cpp
 #  Modification time never checked.
 #  File has not been updated.
 
-all: ChessGame
-#  Command line target.
+# Not a target:
+ChessPieces/rook.cpp:
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2022-06-22 20:35:05.930170595
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+#  Successfully updated.
 
-fclean: clean
+re: fclean all
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 27):
-	rm -f $(NAME) $(TEST)
 
 run: all clean
 #  Implicit rule search has not been done.
@@ -415,81 +376,53 @@ run: all clean
 #  recipe to execute (from 'Makefile', line 30):
 	./ChessGame
 
-ChessPieces/king.o: ChessPieces/king.cpp
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'ChessPieces/king'
-#  Last modified 2022-06-20 13:54:08.196798987
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 12):
-	clang++ ${FLAGS} -c $< -o $@
-
 # Not a target:
 ChessPieces/king.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-20 13:50:50.928687271
+#  Last modified 2022-06-22 20:42:46.698611453
 #  File has been updated.
 #  Successfully updated.
 
-test: ChessPieces/pawn.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o
+clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 20):
-	clang++ mainTest.cpp $(OBJS) $(INCLUDE) -o $(TEST)
-	./$(TEST)
+#  recipe to execute (from 'Makefile', line 24):
+	rm -f $(OBJS)
 
 ChessGame: ChessPieces/pawn.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
-#  File does not exist.
+#  Last modified 2022-06-23 15:09:52.932204025
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := ChessGame
-# automatic
-# * := 
-# automatic
-# < := ChessPieces/pawn.o
-# automatic
-# + := ChessPieces/pawn.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o
-# automatic
-# % := 
-# automatic
-# ^ := ChessPieces/pawn.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o
-# automatic
-# ? := ChessPieces/pawn.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o
-# automatic
-# | := 
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=2/15=13%
+#  Successfully updated.
 #  recipe to execute (from 'Makefile', line 15):
 	clang++ main.cpp $(OBJS) $(INCLUDE) -o $(NAME)
 
-# Not a target:
-.SUFFIXES:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-ChessPieces/rook.o: ChessPieces/rook.cpp
+ChessPieces/bishop.o: ChessPieces/bishop.cpp
 #  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'ChessPieces/rook'
-#  Last modified 2022-06-20 13:54:08.588799386
+#  Implicit/static pattern stem: 'ChessPieces/bishop'
+#  Last modified 2022-06-23 15:09:52.104201489
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 12):
 	clang++ ${FLAGS} -c $< -o $@
 
 # Not a target:
-ChessPieces/rook.cpp:
+ChessPieces/pawn.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-18 09:39:30.573274992
+#  Last modified 2022-06-22 20:35:05.930170595
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+ChessPieces/queen.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-22 20:35:05.930170595
 #  File has been updated.
 #  Successfully updated.
 
 # files hash-table stats:
-# Load=22/1024=2%, Rehash=0, Collisions=0/70=0%
+# Load=22/1024=2%, Rehash=0, Collisions=0/69=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
@@ -501,7 +434,7 @@ ChessPieces/rook.cpp:
 
 # strcache performance: lookups = 95 / hit rate = 35%
 # hash-table stats:
-# Load=61/8192=1%, Rehash=0, Collisions=0/95=0%
-# Finished Make data base on Mon Jun 20 14:06:41 2022
+# Load=61/8192=1%, Rehash=0, Collisions=2/95=2%
+# Finished Make data base on Fri Jun 24 11:55:35 2022
 
  

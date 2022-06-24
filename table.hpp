@@ -5,6 +5,7 @@
 #include <array>
 #include <iomanip>
 #include <iostream>
+#include <list>
 
 template <class T>
 class table
@@ -32,9 +33,17 @@ class table
                 for (int j = 0; j < 8; ++j)
                 {
                     if (cpy.PlayTable[i][j])
+                    {
+                        if (PlayTable[i][j])
+                            delete PlayTable[i][j];
                         PlayTable[i][j] = cpy.PlayTable[i][j]->copy();
+                    }
                     else
+                    {
+                        if (PlayTable[i][j])
+                            delete PlayTable[i][j];
                         PlayTable[i][j] = nullptr;
+                    }
                 }
             }
             return *this;
@@ -50,14 +59,17 @@ class table
             }
         }
 
+       
+
 
         void printTable()
         {
-            std::array<std::string, 14> Pieces = {"\033[1;39mBishop\033[0m", "\033[1;39mHorse\033[0m", "\033[1;39mKing\033[0m",
-            "\033[1;39mKnight\033[0m", "\033[1;39mPawn\033[0m",
+            std::array<std::string, 12> Pieces = {"\033[1;39mBishop\033[0m", "\033[1;39mHorse\033[0m",
+            "\033[1;39mKing\033[0m", "\033[1;39mPawn\033[0m",
             "\033[1;39mQueen\033[0m", "\033[1;39mRook\033[0m",
-            "\033[1;30mBishop\033[0m", "\033[1;30mHorse\033[0m", "\033[1;30mKing\033[0m", "\033[1;30mKnight\033[0m",
-            "\033[1;30mPawn\033[0m", "\033[1;30mQueen\033[0m", "\033[1;30mRook\033[0m"};
+            "\033[1;30mBishop\033[0m", "\033[1;30mHorse\033[0m",
+            "\033[1;30mKing\033[0m", "\033[1;30mPawn\033[0m",
+            "\033[1;30mQueen\033[0m", "\033[1;30mRook\033[0m"};
             for (int i = 0; i < 8; ++i )
             {
                 for (int j = 0; j < 8; ++j )

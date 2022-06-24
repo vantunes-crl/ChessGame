@@ -8,7 +8,18 @@ king::king(bool b)
 
 void checkIfSomeoneCanKill(table<Ichess_pieces *> Table, Pos pos)
 {
-   std::cout << Table[pos.x][pos.y]->type() << std::endl;
+
+    for (int i = 0; i < 8; ++i)
+    {
+        for (int j = 0; j < 8; ++j)
+        {
+            if (Table[i][j])
+            {
+                if (!Table[i][j]->play(Table, pos.x, pos.y))
+                    std::cout << "can be killed\n";
+            }
+        }
+    }
 }
 
 int king::play(table<Ichess_pieces *> &Table, int x, int y)
