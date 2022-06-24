@@ -64,3 +64,8 @@ horse *horse::copy()
 {
     return new horse(Color);
 }
+
+bool horse::getColor() const
+{
+    return Color;
+}

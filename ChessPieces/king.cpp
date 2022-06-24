@@ -67,3 +67,9 @@ king *king::copy()
 {
     return new king(Color);
 }
+
+
+bool king::getColor() const
+{
+    return Color;
+}

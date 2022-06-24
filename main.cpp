@@ -28,7 +28,7 @@ std::list<Pos> BackTrackAvalPlaces(const Pos &PiecesPos, table<Ichess_pieces *> 
 int main()
 {
     table<Ichess_pieces *> Table;
-    //table<Ichess_pieces *> Table2;
+    table<Ichess_pieces *> Table2;
 
 
     Table[0] = {new rook(0), new horse(0),nullptr,new queen(0),new king(0),new bishop(0),new horse(0),new rook(0)};

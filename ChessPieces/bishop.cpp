@@ -95,3 +95,9 @@ bishop *bishop::copy()
 {
     return new bishop(Color);
 }
+
+
+bool bishop::getColor() const
+{
+    return Color;
+}

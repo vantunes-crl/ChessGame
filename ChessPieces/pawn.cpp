@@ -64,3 +64,9 @@ pawn *pawn::copy()
 {
     return new pawn(Color);
 }
+
+
+bool pawn::getColor() const
+{
+    return Color;
+}

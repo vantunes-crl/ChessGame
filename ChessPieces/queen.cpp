@@ -145,3 +145,9 @@ queen *queen::copy()
 {
     return new queen(Color);
 }
+
+
+bool queen::getColor() const
+{
+    return Color;
+}

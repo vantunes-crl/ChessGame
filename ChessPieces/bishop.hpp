@@ -9,11 +9,15 @@ class bishop : public Ichess_pieces
         int play(table<Ichess_pieces *> &Table, int x, int y) override;
         int type() override;
         Pos getPos(table<Ichess_pieces *> &Table) const override;
-    
+        bool getColor() const override;
+
+
+
         bishop(bool b);
         bishop *copy() override;
 
-
+    private:
+        bool Color;
 };
 
 

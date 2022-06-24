@@ -99,3 +99,9 @@ rook *rook::copy()
 {
     return new rook(Color);
 }
+
+
+bool rook::getColor() const
+{
+    return Color;
+}
