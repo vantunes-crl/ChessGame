@@ -1,8 +1,10 @@
 #include "bishop.hpp"
 
+
 int bishop::play(Table_t &Table, Pos ToMovePos)
 {
     Pos pos = this->getPos(Table); //original to set pos after move
+
     Pos posCpy(pos); //cpy to increment and decrement
 
     if (ToMovePos.x > 7 || ToMovePos.x < 0 || ToMovePos.y > 7 || ToMovePos.y < 0) //out size of the table
@@ -56,7 +58,7 @@ int bishop::play(Table_t &Table, Pos ToMovePos)
                 return NO_ERROR;
             }
         }
-        return CANT_MOVE;
+    return CANT_MOVE;
     }
 }
 

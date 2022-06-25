@@ -24,4 +24,10 @@ class BackTrack
          * @param Table Table where the piece is.
          */
         void BackTrackAvalPlacesPrint(const Pos &PiecesPos, Ichess_pieces::Table_t &Table);
+
+
+        std::list<Pos> checkDiagonalTopLeft(Ichess_pieces::Table_t &Table, Pos StartPos);
+        std::list<Pos> checkDiagonalTopRight(Ichess_pieces::Table_t &Table, Pos StartPos);
+        std::list<Pos> checkDiagonalBottonLeft(Ichess_pieces::Table_t &Table, Pos StartPos);
+        std::list<Pos> checkDiagonalBottonRight(Ichess_pieces::Table_t &Table, Pos StartPos);
 };

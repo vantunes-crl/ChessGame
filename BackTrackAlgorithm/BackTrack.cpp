@@ -31,3 +31,64 @@ void BackTrack::BackTrackAvalPlacesPrint(const Pos &PiecesPos, Ichess_pieces::Ta
         }
     }
 }
+
+std::list<Pos> BackTrack::checkDiagonalTopLeft(Ichess_pieces::Table_t &Table, Pos StartPos)
+{
+    std::list<Pos> List;
+
+    while (StartPos.x < 7 && StartPos.y < 7 && StartPos.x > 0 && StartPos.y > 0)
+    {
+        StartPos.x--;
+        StartPos.y--;
+        if (Table[StartPos.x][StartPos.y] != nullptr)
+            List.push_back({StartPos.x, StartPos.y});
+    }
+
+    return List;
+}
+
+std::list<Pos> BackTrack::checkDiagonalTopRight(Ichess_pieces::Table_t &Table, Pos StartPos)
+{
+    std::list<Pos> List;
+
+    while (StartPos.x < 7 && StartPos.y < 7 && StartPos.x > 0 && StartPos.y > 0)
+    {
+        StartPos.x--;
+        StartPos.y++;
+        if (Table[StartPos.x][StartPos.y] != nullptr)
+            List.push_back({StartPos.x, StartPos.y});
+    }
+
+    return List;
+}
+
+
+std::list<Pos> BackTrack::checkDiagonalBottonLeft(Ichess_pieces::Table_t &Table, Pos StartPos)
+{
+    std::list<Pos> List;
+
+    while (StartPos.x < 7 && StartPos.y < 7 && StartPos.x > 0 && StartPos.y > 0)
+    {
+        StartPos.x++;
+        StartPos.y--;
+        if (Table[StartPos.x][StartPos.y] != nullptr)
+            List.push_back({StartPos.x, StartPos.y});
+    }
+
+    return List;
+}
+
+std::list<Pos> BackTrack::checkDiagonalBottonRight(Ichess_pieces::Table_t &Table, Pos StartPos)
+{
+    std::list<Pos> List;
+
+    while (StartPos.x < 7 && StartPos.y < 7 && StartPos.x > 0 && StartPos.y > 0)
+    {
+        StartPos.x++;
+        StartPos.y++;
+        if (Table[StartPos.x][StartPos.y] != nullptr)
+            List.push_back({StartPos.x, StartPos.y});
+    }
+
+    return List;
+}
