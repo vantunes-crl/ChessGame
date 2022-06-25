@@ -5,9 +5,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Fri Jun 24 13:54:54 2022
+# Make data base, printed on Sat Jun 25 15:15:30 2022
 
 # Variables
 
@@ -48,7 +47,7 @@ VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupp
 # environment
 _ = /usr/share/code/code
 # environment
-JOURNAL_STREAM = 8:53059
+JOURNAL_STREAM = 8:41686
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
@@ -74,7 +73,7 @@ LC_CTYPE = pt_PT.UTF-8
 # makefile (from 'Makefile', line 10)
 OBJS = $(SRCS:.cpp=.o)
 # environment
-MANAGERPID = 1613
+MANAGERPID = 1550
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -90,7 +89,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-SESSION_MANAGER = local/vantunes-crl:@/tmp/.ICE-unix/2550,unix/vantunes-crl:/tmp/.ICE-unix/2550
+SESSION_MANAGER = local/vantunes-crl:@/tmp/.ICE-unix/1921,unix/vantunes-crl:/tmp/.ICE-unix/1921
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -100,7 +99,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 0f4f54646a7c40df8aa79f2dadccd5ab
+INVOCATION_ID = ed2e9b5fb2b34070822ff2ca7620c764
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -110,7 +109,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 6992
+GIO_LAUNCHED_DESKTOP_FILE_PID = 5093
 # automatic
 %F = $(notdir $%)
 # environment
@@ -122,7 +121,7 @@ PWD = /home/vantunes/Desktop/ChessGame
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 2512
+SSH_AGENT_PID = 1883
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -158,13 +157,13 @@ MAKECMDGOALS := all
 # environment
 QT_IM_MODULE = ibus
 # makefile (from 'Makefile', line 7)
-SRCS = ChessPieces/horse.cpp ChessPieces/bishop.cpp ChessPieces/pawn.cpp ChessPieces/king.cpp ChessPieces/queen.cpp ChessPieces/rook.cpp BackTrack.cpp
+SRCS = ChessPieces/horse.cpp ChessPieces/bishop.cpp ChessPieces/pawn.cpp ChessPieces/king.cpp ChessPieces/queen.cpp ChessPieces/rook.cpp BackTrackAlgorithm/BackTrack.cpp
 # environment
 SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-4bdda087-78e3-4b82-8033-569ab4ab579f.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-24abf498-b8bc-4570-bb3c-85ca79b06822.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -226,6 +225,7 @@ SUFFIXES :=
 # environment
 CHROME_DESKTOP = code-url-handler.desktop
 # environment
+ 
 WINDOWPATH = 2
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
@@ -238,9 +238,9 @@ LC_ADDRESS = pt_PT.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 6992
+VSCODE_PID = 5093
 # variable set hash-table stats:
-# Load=114/1024=11%, Rehash=0, Collisions=24/145=17%
+# Load=114/1024=11%, Rehash=0, Collisions=24/149=16%
 
 # Pattern-specific Variable Values
 
@@ -248,10 +248,10 @@ VSCODE_PID = 6992
 
 # Directories
 
-# . (device 66310, inode 27788771): 16 files, no impossibilities.
-# ChessPieces (device 66310, inode 27788820): 20 files, no impossibilities so far.
+# . (device 66310, inode 27788771): 13 files, no impossibilities.
+# ChessPieces (device 66310, inode 27788820): 12 files, no impossibilities so far.
 
-# 36 files, no impossibilities in 2 directories.
+# 25 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -263,14 +263,11 @@ VSCODE_PID = 6992
 
 # Files
 
-ChessPieces/rook.o: ChessPieces/rook.cpp
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'ChessPieces/rook'
-#  Last modified 2022-06-24 13:54:41.80964797
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 13):
-	clang++ ${FLAGS} -c $< -o $@
+# Not a target:
+ChessPieces/rook.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 ChessPieces/horse.cpp:
@@ -284,50 +281,36 @@ all: ChessGame
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
 
-ChessPieces/king.o: ChessPieces/king.cpp
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'ChessPieces/king'
-#  Last modified 2022-06-24 13:54:41.361646413
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 13):
-	clang++ ${FLAGS} -c $< -o $@
+# Not a target:
+ChessPieces/king.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
-ChessPieces/pawn.o: ChessPieces/pawn.cpp
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'ChessPieces/pawn'
-#  Last modified 2022-06-24 13:54:41.145645663
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 13):
-	clang++ ${FLAGS} -c $< -o $@
+# Not a target:
+ChessPieces/pawn.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-24 13:54:36.629629968
+#  Last modified 2022-06-25 14:12:32.96787809
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
-ChessPieces/bishop.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-24 12:47:02.560310031
-#  File has been updated.
-#  Successfully updated.
+ChessPieces/queen.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
-ChessPieces/queen.o: ChessPieces/queen.cpp
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'ChessPieces/queen'
-#  Last modified 2022-06-24 13:54:41.589647205
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 13):
-	clang++ ${FLAGS} -c $< -o $@
-
-test: ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o BackTrack.o
+test: ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o BackTrackAlgorithm/BackTrack.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -345,31 +328,35 @@ fclean: clean
 ChessPieces/horse.o: ChessPieces/horse.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/horse'
-#  Last modified 2022-06-24 13:54:40.697644106
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := ChessPieces/horse.o
+# automatic
+# % := 
+# automatic
+# * := ChessPieces/horse
+# automatic
+# + := ChessPieces/horse.cpp
+# automatic
+# | := 
+# automatic
+# < := ChessPieces/horse.cpp
+# automatic
+# ^ := ChessPieces/horse.cpp
+# automatic
+# ? := ChessPieces/horse.cpp
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/14=7%
 #  recipe to execute (from 'Makefile', line 13):
 	clang++ ${FLAGS} -c $< -o $@
-
-# Not a target:
-BackTrack.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-24 13:53:14.62134435
-#  File has been updated.
-#  Successfully updated.
 
 # Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-
-# Not a target:
-ChessPieces/rook.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-24 13:18:10.549966156
-#  File has been updated.
-#  Successfully updated.
 
 re: fclean all
 #  Implicit rule search has not been done.
@@ -383,13 +370,6 @@ run: all clean
 #  recipe to execute (from 'Makefile', line 31):
 	./ChessGame
 
-# Not a target:
-ChessPieces/king.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-24 13:07:18.300117072
-#  File has been updated.
-#  Successfully updated.
-
 clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -397,61 +377,42 @@ clean:
 #  recipe to execute (from 'Makefile', line 25):
 	rm -f $(OBJS)
 
-ChessGame: ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o BackTrack.o
+ChessGame: ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o BackTrackAlgorithm/BackTrack.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-24 13:54:42.381649958
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
 #  recipe to execute (from 'Makefile', line 16):
 	clang++ main.cpp $(OBJS) $(INCLUDE) -o $(NAME)
 
-ChessPieces/bishop.o: ChessPieces/bishop.cpp
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'ChessPieces/bishop'
-#  Last modified 2022-06-24 13:54:40.921644884
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 13):
-	clang++ ${FLAGS} -c $< -o $@
+# Not a target:
+ChessPieces/bishop.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-ChessPieces/pawn.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-24 13:01:12.575332708
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-ChessPieces/queen.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-24 13:13:46.63717739
-#  File has been updated.
-#  Successfully updated.
-
-BackTrack.o: BackTrack.cpp
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'BackTrack'
-#  Last modified 2022-06-24 13:54:42.005648651
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 13):
-	clang++ ${FLAGS} -c $< -o $@
+BackTrackAlgorithm/BackTrack.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # files hash-table stats:
- 
-# Load=24/1024=2%, Rehash=0, Collisions=0/76=0%
+# Load=18/1024=2%, Rehash=0, Collisions=0/52=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 65 / storage = 769 B / avg = 11 B
-# current buf: size = 8162 B / used = 769 B / count = 65 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 45 / storage = 512 B / avg = 11 B
+# current buf: size = 8162 B / used = 512 B / count = 45 / avg = 11 B
 
-# strcache performance: lookups = 103 / hit rate = 36%
+# strcache performance: lookups = 74 / hit rate = 39%
 # hash-table stats:
-# Load=65/8192=1%, Rehash=0, Collisions=2/103=2%
-# Finished Make data base on Fri Jun 24 13:54:54 2022
+# Load=45/8192=1%, Rehash=0, Collisions=2/74=3%
+# Finished Make data base on Sat Jun 25 15:15:30 2022
 
  

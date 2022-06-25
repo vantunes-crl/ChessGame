@@ -1,0 +1,38 @@
+@startuml ChessGame
+
+interface  Ichess_pieces
+{
+    virtual int type() = 0
+}
+
+class table
+class pawn
+class bishop
+class horse
+class king
+class queen
+class rook
+
+Ichess_pieces <|.. pawn
+Ichess_pieces <|.. bishop
+Ichess_pieces <|.. horse
+Ichess_pieces <|.. king
+Ichess_pieces <|.. queen
+Ichess_pieces <|.. rook
+
+table ..> Ichess_pieces
+
+class BackTrack
+rook ..> BackTrack
+pawn ..> BackTrack
+queen ..> BackTrack
+king ..> BackTrack
+bishop ..> BackTrack
+horse ..> BackTrack
+
+
+
+
+
+
+@enduml

@@ -6,11 +6,23 @@
 #include <iomanip>
 #include <iostream>
 #include <list>
+#include <memory>
 
+/**
+ * @brief Class that represents the table in the Chess Game.
+ * 
+ * @tparam T std::shared_ptr<Ichess_pieces>
+ * 
+ * @warning Use this Template with a diferent type of std::shared_ptr<Ichess_pieces> will cause undefine behavior
+ */
 template <class T>
 class table
 {
     public:
+        /**
+         * @brief Print the table and the pieces with diferent colors.
+         * 
+         */
         void printTable()
         {
             std::array<std::string, 12> Pieces = {"\033[1;39mBishop\033[0m", "\033[1;39mHorse\033[0m",

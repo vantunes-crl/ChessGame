@@ -7,7 +7,7 @@
 #include "ChessPieces/queen.hpp"
 #include "ChessPieces/rook.hpp"
 #include "ChessPieces/king.hpp"
-#include "BackTrack.hpp"
+#include "BackTrackAlgorithm/BackTrack.hpp"
 
 int main()
 {
@@ -24,7 +24,7 @@ int main()
     Table[7] = {std::make_shared<rook>(1), std::make_shared<horse>(1),std::make_shared<bishop>(1),std::make_shared<queen>(1),std::make_shared<king>(1),std::make_shared<bishop>(1),std::make_shared<horse>(1),std::make_shared<rook>(1)};
 
     BackTrack backTrack;
-    backTrack.BackTrackAvalPlacesPrint({1, 5}, Table);
+    backTrack.BackTrackAvalPlacesPrint({0, 1}, Table);
 
     //std::cout << Table[1][5]->type() << std::endl;
 

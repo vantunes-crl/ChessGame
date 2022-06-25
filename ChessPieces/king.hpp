@@ -1,8 +1,14 @@
 #ifndef KING_HPP
 #define KING_HPP
 #pragma once
-#include "../Ichess_pieces.hpp"
+#include "Ichess_pieces.hpp"
 
+/**
+ * @brief Class that represents the king in Chess Game.
+ * Can move one place to all directions.
+ * Can't move if can be killed in the next place.
+ * Most important Piece of the game, if king die the game ends.
+ */
 class king : public Ichess_pieces 
 {
     public:
@@ -10,6 +16,12 @@ class king : public Ichess_pieces
         int type() override;
         Pos getPos(Table_t &Table) const override;
         bool getColor() const override;
+
+        /**
+         * @brief Construct a new King object
+         * 
+         * @param b Chess Piece Color False/Black True/White
+         */
         king(bool b);
         std::shared_ptr<Ichess_pieces> copy() override;
     private:
