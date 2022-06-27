@@ -19,6 +19,13 @@ enum HORIZONTAL_CHECK_CASE {
     HORIZONTAL_RIGHT
 };
 
+enum RELATIVE_POS {
+    TOP_LEFT,
+    TOP_RIGHT,
+    BOTTOM_LEFT,
+    BOTTOM_RIGHT,
+};
+
 /**
  * @brief Class to calculate all possible moves and checks in a Chess Game.
  * 
@@ -58,9 +65,9 @@ class BackTrack
          * @param Table Table where the piece is.
          * @param StartPos Start position of the piece on the table.
          * @param CASE Case to check HORIZONTAL_LEFT, HORIZONTAL_RIGHT
-         * @return std::list<Pos> list of positions in that check.
+         * @return Pos list of positions in that check.
          */
-        std::list<Pos> checkHorizontal(Ichess_pieces::Table_t &Table, Pos StartPos, const HORIZONTAL_CHECK_CASE CASE);
+        Pos checkHorizontal(Ichess_pieces::Table_t &Table, Pos StartPos, const HORIZONTAL_CHECK_CASE CASE);
 
          /**
          * @brief Check a especific vertical on the Chess table.
@@ -68,10 +75,10 @@ class BackTrack
          * @param Table Table where the piece is.
          * @param StartPos Start position of the piece on the table.
          * @param CASE Case to check VERTICAL_TOP, VERTICAL_BOTTON.
-         * @return std::list<Pos> list of positions in that check.
+         * @return POS list of positions in that check.
          */
-        std::list<Pos> checkVertical(Ichess_pieces::Table_t &Table, Pos StartPos, const VERTICAL_CHECK_CASE CASE);
+        Pos checkVertical(Ichess_pieces::Table_t &Table, Pos StartPos, const VERTICAL_CHECK_CASE CASE);
 
-
+        RELATIVE_POS checkRelativePos(Ichess_pieces::Table_t &Table, const Pos pos);
 
 };
