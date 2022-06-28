@@ -15,6 +15,7 @@ int horse::play(Table_t &Table, Pos ToMovePos)
         return SAME_PLACE;
     else if (Table[ToMovePos.x][ToMovePos.y] && Table[ToMovePos.x][ToMovePos.y]->getColor() == this->getColor()) //check if its a friend
         return CANT_MOVE;
+    //Verify if its moving in L
     else if (((ToMovePos.x == (pos.x - 2) && (pos.y - 1) == ToMovePos.y) || (ToMovePos.x == (pos.x - 2) && (pos.y + 1) == ToMovePos.y)) || 
     ((ToMovePos.x == (pos.x + 2) && (pos.y + 1) == ToMovePos.y) || (ToMovePos.x == (pos.x + 2) && (pos.y - 1) == ToMovePos.y)))
     {

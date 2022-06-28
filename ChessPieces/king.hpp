@@ -25,10 +25,19 @@ class king : public Ichess_pieces
          */
         king(bool b);
         std::shared_ptr<Ichess_pieces> copy() override;
-        bool checkIfSomeoneCanKill(Ichess_pieces::Table_t Table, Pos pos);
+
     private:
         bool Color;
         BackTrack backTrack;
+        /**
+         * @brief Check the next position, if someone can kill there.
+         * 
+         * @param Table Table where the pieces are.
+         * @param pos the next pos to move.
+         * @return true if can be killed.
+         * @return false if no one can kill.
+         */
+        bool checkIfSomeoneCanKill(Ichess_pieces::Table_t Table, Pos pos);
 
 };
 

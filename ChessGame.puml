@@ -28,11 +28,6 @@ pawn ..> BackTrack
 queen ..> BackTrack
 king ..> BackTrack
 bishop ..> BackTrack
-horse ..> BackTrack
-
-
-
-
 
 
 @enduml
