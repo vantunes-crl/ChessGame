@@ -35,7 +35,6 @@ void BackTrack::BackTrackAvalPlacesPrint(const Pos &PiecesPos, Ichess_pieces::Ta
 std::list<Pos> BackTrack::checkDiagonal(Ichess_pieces::Table_t &Table, Pos StartPos, const DIAGONAL_CHECK_CASE CASE)
 {
     std::list<Pos> List;
-    bool Color = Table[StartPos.x][StartPos.y]->getColor();
     while (true)
     {
         switch (CASE)

@@ -2,6 +2,7 @@
 #define KING_HPP
 #pragma once
 #include "Ichess_pieces.hpp"
+#include "../BackTrackAlgorithm/BackTrack.hpp"
 
 /**
  * @brief Class that represents the king in Chess Game.
@@ -24,9 +25,10 @@ class king : public Ichess_pieces
          */
         king(bool b);
         std::shared_ptr<Ichess_pieces> copy() override;
+        bool checkIfSomeoneCanKill(Ichess_pieces::Table_t Table, Pos pos);
     private:
         bool Color;
-
+        BackTrack backTrack;
 
 };
 

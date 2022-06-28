@@ -24,8 +24,6 @@ int horse::play(Table_t &Table, Pos ToMovePos)
     else if (((ToMovePos.y == (pos.y - 2) && (pos.x - 1)) == ToMovePos.x || (ToMovePos.y == (pos.y - 2) && (pos.x + 1) == ToMovePos.x)) || 
     ((ToMovePos.y == (pos.y + 2) && (pos.x + 1)) == ToMovePos.x || (ToMovePos.y == (pos.y + 2) && (pos.x - 1) == ToMovePos.x)))
     {
-        std::cout << pos.x <<  pos.y << "aqui\n";
-        std::cout << ToMovePos.x <<  ToMovePos.y << "aqui\n";
         Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y];
         Table[pos.x][pos.y] = nullptr;
     }
