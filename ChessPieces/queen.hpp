@@ -3,6 +3,7 @@
 
 #pragma once
 #include "Ichess_pieces.hpp"
+#include "../BackTrackAlgorithm/BackTrack.hpp"
 
 /**
  * @brief Class that represents the king in Chess Game.
@@ -26,6 +27,7 @@ class queen : public Ichess_pieces
         std::shared_ptr<Ichess_pieces> copy() override;
     private:
         bool Color;
+        BackTrack backTrack;
 };
 
 #endif

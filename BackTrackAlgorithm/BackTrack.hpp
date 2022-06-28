@@ -58,7 +58,7 @@ class BackTrack
          * @param Table Table where the piece is.
          * @param StartPos Start position of the piece on the table.
          * @param CASE Case to check HORIZONTAL_LEFT, HORIZONTAL_RIGHT
-         * @return Pos list of positions in that check.
+         * @return std::list<Pos> list of positions in that check.
          */
         std::list<Pos> checkHorizontal(Ichess_pieces::Table_t &Table, Pos StartPos, const HORIZONTAL_CHECK_CASE CASE);
 
@@ -68,7 +68,7 @@ class BackTrack
          * @param Table Table where the piece is.
          * @param StartPos Start position of the piece on the table.
          * @param CASE Case to check VERTICAL_TOP, VERTICAL_BOTTON.
-         * @return POS list of positions in that check.
+         * @return std::list<Pos> list of positions in that check.
          */
         std::list<Pos> checkVertical(Ichess_pieces::Table_t &Table, Pos StartPos, const VERTICAL_CHECK_CASE CASE);
 

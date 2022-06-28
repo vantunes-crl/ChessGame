@@ -7,115 +7,47 @@ queen::queen(bool b)
 
 int queen::play(Table_t &Table, Pos ToMovePos)
 {
-
     Pos pos = this->getPos(Table);
     Pos posCpy(pos);
 
-    if (ToMovePos.x < 0 || ToMovePos.x > 7 || ToMovePos.y < 0 || ToMovePos.y > 7)
+    if (ToMovePos.x < 0 || ToMovePos.x > 7 || ToMovePos.y < 0 || ToMovePos.y > 7) //out_size of the table
         return OUT_SIZE;
-    else if (pos.x == ToMovePos.x && pos.y == ToMovePos.y)
+    else if (pos.x == ToMovePos.x && pos.y == ToMovePos.y) //Same place
         return SAME_PLACE;
-    else if (Table[ToMovePos.x][ToMovePos.y] && Table[ToMovePos.x][ToMovePos.y]->getColor() == this->getColor())
+    else if (Table[ToMovePos.x][ToMovePos.y] && Table[ToMovePos.x][ToMovePos.y]->getColor() == this->getColor()) //its a friend
         return CANT_MOVE;
-    else if (ToMovePos.x != pos.x && ToMovePos.y != pos.y) //diagonal case
+    
+    std::list<Pos> List;
+    for (int i = 0; i < 4; ++i) //check all diagonal
     {
-        if (pos.y < ToMovePos.y)
-        {
-            while (true) //move right
-            {
-                if (ToMovePos.x < pos.x) //move back else move forward
-                    posCpy.x--;
-                else
-                    posCpy.x++;
-                posCpy.y++;
-                if (posCpy.x < 0 || posCpy.y < 0 || posCpy.x > 7 || posCpy.y > 7)
-                    break;
-                if (Table[posCpy.x][posCpy.y] && (posCpy.x != ToMovePos.x && ToMovePos.y != posCpy.y)) //someone along the way, cant move
-                    return CANT_MOVE;
-                if (ToMovePos.x == posCpy.x && ToMovePos.y == posCpy.y) // can move
-                {
-                    Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y]; //kill
-                    Table[pos.x][pos.y] = nullptr;
-                    return NO_ERROR;
-                }
-            }
-        }
-        else
-        {
-            while (true) //move left
-            {
-                if (ToMovePos.x < pos.x) //move back else move forward
-                    posCpy.x--;
-                else
-                    posCpy.x++;
-                posCpy.y--;
-                if (posCpy.x < 0 || posCpy.y < 0 || posCpy.x > 7 || posCpy.y > 7)
-                    break;
-                if (Table[posCpy.x][posCpy.y]) //someone along the way, cant move
-                    return CANT_MOVE;
-                if (ToMovePos.x == posCpy.x && ToMovePos.y == posCpy.y) // can move
-                {
-                    Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y]; //kill
-                    Table[pos.x][pos.y] = nullptr;
-                    return NO_ERROR;
-                }
-            }
-        }
-        return CANT_MOVE;
+        auto ListCpy = backTrack.checkDiagonal(Table, pos, DIAGONAL_CHECK_CASE(i));
+        List.insert(List.end(), ListCpy.begin(), ListCpy.end());
     }
-    else
+
+    //check all vertical/horizontal
+    auto List1 = backTrack.checkVertical(Table, pos, VERTICAL_TOP);
+    auto List2 = backTrack.checkVertical(Table, pos, VERTICAL_BOTTOM);
+    auto List3 = backTrack.checkHorizontal(Table, pos, HORIZONTAL_RIGHT);
+    auto List4 = backTrack.checkHorizontal(Table, pos, HORIZONTAL_RIGHT);
+
+    //append in the main list
+    List.insert(List.end(), List1.begin(), List1.end());
+    List.insert(List.end(), List2.begin(), List2.end());
+    List.insert(List.end(), List3.begin(), List3.end());
+    List.insert(List.end(), List4.begin(), List4.end());
+
+    //Check in the list of avaliable places, if exists move.
+    for (auto it = List.begin(); it != List.end(); ++it)
     {
-
-        int i = 1;
-        if (ToMovePos.x > pos.x || ToMovePos.y > pos.y)
-        {
-            while ((pos.x + i) < ToMovePos.x) //check vertical
-            {
-                if (Table[pos.x + i][pos.y])
-                    return CANT_MOVE;
-                ++i;
-            }
-
-            i = 1;
-            while ((pos.y + i) < ToMovePos.y) // check horizontal
-            {
-                if (Table[pos.x][pos.y + i])
-                    return CANT_MOVE;
-                ++i;
-            }
-        }
-        else
-        {
-            i = 1;
-            while ((pos.x - i) > ToMovePos.x) //check vertical reverse
-            {
-                if (Table[pos.x - i][pos.y])
-                    return CANT_MOVE;
-                ++i;
-            }
-
-            i = 1;
-            while ((pos.y - i) > ToMovePos.y) // check horizontal reverse
-            {
-                if (Table[pos.x][pos.y - i])
-                    return CANT_MOVE;
-                ++i;
-            }
-        }
-
-        if (Table[ToMovePos.x][ToMovePos.y])
+        if (ToMovePos.x == it->x && ToMovePos.y == it->y)
         {
             Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y];
             Table[pos.x][pos.y] = nullptr;
-            std::cout << this->type() << " killed " << Table[ToMovePos.x][ToMovePos.y]->type() << std::endl;
+            return NO_ERROR;
         }
-        else
-        {
-            Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y];
-            Table[pos.x][pos.y] = nullptr;
-        }
-        return NO_ERROR;
     }
+
+    return CANT_MOVE;
 }
 
 int queen::type()
