@@ -2,7 +2,7 @@ NAME = ChessGame
 
 TEST = ChessTest
 
-INCLUDE = -lsfml-graphics -lsfml-window -lsfml-system -lgtest -lpthread
+INCLUDE = -lsfml-graphics -lsfml-window -lsfml-system -lgtest -lpthread -g
 
 SRCS =  ChessPieces/horse.cpp ChessPieces/bishop.cpp ChessPieces/pawn.cpp ChessPieces/king.cpp ChessPieces/queen.cpp ChessPieces/rook.cpp BackTrackAlgorithm/BackTrack.cpp
 

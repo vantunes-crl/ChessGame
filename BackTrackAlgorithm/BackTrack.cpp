@@ -35,7 +35,7 @@ void BackTrack::BackTrackAvalPlacesPrint(const Pos &PiecesPos, Ichess_pieces::Ta
 std::list<Pos> BackTrack::checkDiagonal(Ichess_pieces::Table_t &Table, Pos StartPos, const DIAGONAL_CHECK_CASE CASE)
 {
     std::list<Pos> List;
-
+    bool Color = Table[StartPos.x][StartPos.y]->getColor();
     while (true)
     {
         switch (CASE)
@@ -59,10 +59,10 @@ std::list<Pos> BackTrack::checkDiagonal(Ichess_pieces::Table_t &Table, Pos Start
         }
         if (StartPos.x > 7 || StartPos.y > 7 || StartPos.x < 0 || StartPos.y < 0)
             break;
-        else if (Table[StartPos.x][StartPos.y] != nullptr)
-            List.push_back({-1, -1});
         else
             List.push_back({StartPos.x, StartPos.y});
+        if (Table[StartPos.x][StartPos.y] != nullptr)
+            break;
     }
     return List;
 }

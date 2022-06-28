@@ -50,3 +50,11 @@ void GUI::start()
         _window->display();
     }
 }
+
+
+int main()
+{
+    GUI gi(500,500);
+
+    gi.start();
+}

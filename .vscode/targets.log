@@ -5,9 +5,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Mon Jun 27 16:28:03 2022
+# Make data base, printed on Tue Jun 28 10:53:49 2022
 
 # Variables
 
@@ -29,6 +28,8 @@ XDG_SESSION_TYPE = x11
 VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
+# environment
+IM_CONFIG_PHASE = 1
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
@@ -42,11 +43,11 @@ CURDIR := /home/vantunes/Desktop/ChessGame
 # makefile
 SHELL = /bin/sh
 # environment
-VTE_VERSION = 6003
-# environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:55301
+_ = /usr/share/code/code
+# environment
+JOURNAL_STREAM = 8:46811
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
@@ -54,7 +55,7 @@ MAKEFILE_LIST :=  Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-IM_CONFIG_PHASE = 1
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
 # environment
 USERNAME = vantunes
 # environment
@@ -68,19 +69,17 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-_ = /usr/bin/code
-# environment
 LC_CTYPE = pt_PT.UTF-8
 # makefile (from 'Makefile', line 10)
 OBJS = $(SRCS:.cpp=.o)
 # environment
-MANAGERPID = 1521
+MANAGERPID = 1630
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 LC_NAME = pt_PT.UTF-8
 # environment
-VSCODE_CWD = /home/vantunes/Desktop
+VSCODE_CWD = /home/vantunes
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -88,7 +87,9 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/vantunes-crl:@/tmp/.ICE-unix/1889,unix/vantunes-crl:/tmp/.ICE-unix/1889
+GJS_DEBUG_OUTPUT = stderr
+# environment
+SESSION_MANAGER = local/vantunes-crl:@/tmp/.ICE-unix/2571,unix/vantunes-crl:/tmp/.ICE-unix/2571
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -98,15 +99,17 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = d73a00cea812463da17ccbfd4eae60db
+INVOCATION_ID = 89be4e083aa74150812ca2e2ed9ef232
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
-LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+LS_COLORS = 
 # environment
 XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 8306
 # automatic
 %F = $(notdir $%)
 # environment
@@ -118,7 +121,7 @@ PWD = /home/vantunes/Desktop/ChessGame
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1851
+SSH_AGENT_PID = 2533
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -130,8 +133,6 @@ HOME = /home/vantunes
 # environment
 LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
-VSCODE_CLI = 1
-# environment
 VSCODE_CODE_CACHE_PATH = /home/vantunes/.config/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
 # environment
 LOGNAME = vantunes
@@ -139,8 +140,6 @@ LOGNAME = vantunes
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
 +F = $(notdir $+)
-# environment
-ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # environment
@@ -151,8 +150,6 @@ GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 TEST = ChessTest
 # environment
 LC_TIME = pt_PT.UTF-8
-# environment
-COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
 # default
@@ -162,11 +159,11 @@ QT_IM_MODULE = ibus
 # makefile (from 'Makefile', line 7)
 SRCS = ChessPieces/horse.cpp ChessPieces/bishop.cpp ChessPieces/pawn.cpp ChessPieces/king.cpp ChessPieces/queen.cpp ChessPieces/rook.cpp BackTrackAlgorithm/BackTrack.cpp
 # environment
-SHLVL = 1
+SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-72f7b977-0655-4fa9-bf04-93268967092a.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-8fa60019-5ddc-4f39-a172-5b7c6d093a19.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -176,7 +173,7 @@ LC_MONETARY = pt_PT.UTF-8
 # makefile
 .DEFAULT_GOAL := ChessGame
 # makefile (from 'Makefile', line 5)
-INCLUDE = -lsfml-graphics -lsfml-window -lsfml-system -lgtest -lpthread
+INCLUDE = -lsfml-graphics -lsfml-window -lsfml-system -lgtest -lpthread -g
 # environment
 XDG_CURRENT_DESKTOP = Unity
 # makefile (from 'Makefile', line 1)
@@ -187,8 +184,6 @@ NAME = ChessGame
 LC_TELEPHONE = pt_PT.UTF-8
 # default
 MAKE_COMMAND := make
-# environment
-OLDPWD = /home/vantunes
 # default
 .VARIABLES := 
 # automatic
@@ -208,8 +203,6 @@ GDK_BACKEND = x11
 # environment
 LC_PAPER = pt_PT.UTF-8
 # environment
-NO_AT_BRIDGE = 1
-# environment
 QT_ACCESSIBILITY = 1
 # environment
 DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
@@ -224,11 +217,9 @@ LC_MEASUREMENT = pt_PT.UTF-8
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/b042f9fc_b927_49b6_b8e8_0e56d1a2a92d
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # automatic
 ^F = $(notdir $^)
-# environment
-GNOME_TERMINAL_SERVICE = :1.116
 # default
 SUFFIXES := 
 # environment
@@ -246,11 +237,9 @@ LC_ADDRESS = pt_PT.UTF-8
 # environment
 LANG = C
 # environment
-TERM = xterm-256color
-# environment
-VSCODE_PID = 25993
+VSCODE_PID = 8306
 # variable set hash-table stats:
-# Load=119/1024=12%, Rehash=0, Collisions=24/150=16%
+# Load=114/1024=11%, Rehash=0, Collisions=24/145=17%
 
 # Pattern-specific Variable Values
 
@@ -277,7 +266,7 @@ VSCODE_PID = 25993
 ChessPieces/rook.o: ChessPieces/rook.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/rook'
-#  Last modified 2022-06-27 16:27:58.252794129
+#  Last modified 2022-06-28 10:52:23.842509876
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 13):
@@ -286,7 +275,7 @@ ChessPieces/rook.o: ChessPieces/rook.cpp
 # Not a target:
 ChessPieces/horse.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-24 12:52:05.377491871
+#  Last modified 2022-06-28 10:48:18.126986936
 #  File has been updated.
 #  Successfully updated.
 
@@ -300,7 +289,7 @@ all: ChessGame
 ChessPieces/king.o: ChessPieces/king.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/king'
-#  Last modified 2022-06-27 16:27:57.800792173
+#  Last modified 2022-06-28 10:52:23.414504645
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 13):
@@ -309,7 +298,7 @@ ChessPieces/king.o: ChessPieces/king.cpp
 ChessPieces/pawn.o: ChessPieces/pawn.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/pawn'
-#  Last modified 2022-06-27 16:27:57.580791222
+#  Last modified 2022-06-28 10:52:23.206502104
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 13):
@@ -318,21 +307,22 @@ ChessPieces/pawn.o: ChessPieces/pawn.cpp
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-27 16:27:53.684774404
+#  Last modified 2022-06-28 10:52:19.394455395
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
+ 
 ChessPieces/bishop.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-27 16:26:26.764414539
+#  Last modified 2022-06-28 10:45:11.15537228
 #  File has been updated.
 #  Successfully updated.
 
 ChessPieces/queen.o: ChessPieces/queen.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/queen'
-#  Last modified 2022-06-27 16:27:58.028793159
+#  Last modified 2022-06-28 10:52:23.634507334
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 13):
@@ -349,7 +339,7 @@ test: ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o ChessPieces/ki
 # Not a target:
 BackTrackAlgorithm/BackTrack.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-27 16:27:41.048720271
+#  Last modified 2022-06-28 10:36:01.08874309
 #  File has been updated.
 #  Successfully updated.
 
@@ -363,7 +353,7 @@ fclean: clean
 ChessPieces/horse.o: ChessPieces/horse.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/horse'
-#  Last modified 2022-06-27 16:27:57.148789355
+#  Last modified 2022-06-28 10:52:22.810497261
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 13):
@@ -378,7 +368,6 @@ ChessPieces/horse.o: ChessPieces/horse.cpp
 # Not a target:
 ChessPieces/rook.cpp:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-06-24 13:18:10.549966156
 #  File has been updated.
 #  Successfully updated.
@@ -411,7 +400,7 @@ clean:
 
 ChessGame: ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o BackTrackAlgorithm/BackTrack.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-27 16:27:58.788796448
+#  Last modified 2022-06-28 10:52:24.446517251
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 16):
@@ -420,7 +409,7 @@ ChessGame: ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o ChessPiec
 ChessPieces/bishop.o: ChessPieces/bishop.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/bishop'
-#  Last modified 2022-06-27 16:27:57.376790341
+#  Last modified 2022-06-28 10:52:23.014499758
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 13):
@@ -429,7 +418,7 @@ ChessPieces/bishop.o: ChessPieces/bishop.cpp
 BackTrackAlgorithm/BackTrack.o: BackTrackAlgorithm/BackTrack.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'BackTrackAlgorithm/BackTrack'
-#  Last modified 2022-06-27 16:27:58.476795098
+#  Last modified 2022-06-28 10:52:24.058512515
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 13):
@@ -463,6 +452,6 @@ ChessPieces/queen.cpp:
 # strcache performance: lookups = 107 / hit rate = 35%
 # hash-table stats:
 # Load=69/8192=1%, Rehash=0, Collisions=3/107=3%
-# Finished Make data base on Mon Jun 27 16:28:03 2022
+# Finished Make data base on Tue Jun 28 10:53:49 2022
 
  

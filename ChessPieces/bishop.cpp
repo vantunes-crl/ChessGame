@@ -11,19 +11,17 @@ int bishop::play(Table_t &Table, Pos ToMovePos)
     else if (Table[ToMovePos.x][ToMovePos.y] && Table[ToMovePos.x][ToMovePos.y]->getColor() == this->getColor()) //try kill friend
         return CANT_MOVE;
 
-    auto List = backTrack.checkDiagonal(Table, pos, DIAGONAL_TOP_LEFT);
-    auto List2 = backTrack.checkDiagonal(Table, pos, DIAGONAL_TOP_RIGHT);
-    auto List3 = backTrack.checkDiagonal(Table, pos, DIAGONAL_BOTTOM_LEFT);
-    auto List4 = backTrack.checkDiagonal(Table, pos, DIAGONAL_BOTTOM_RIGHT);
+    //Check all diagonal cases and save in a std::list
+    std::list<Pos> List;
+    for (int i = 0; i < 4; ++i)
+    {
+        auto ListCpy = backTrack.checkDiagonal(Table, pos, DIAGONAL_CHECK_CASE(i));
+        List.insert(List.end(), ListCpy.begin(), ListCpy.end());
+    }
 
-    List.insert(List.end(), List2.begin(), List2.end());
-    List.insert(List.end(), List3.begin(), List3.end());    
-    List.insert(List.end(), List4.begin(), List4.end());    
-
+    //Compare the avalivable pos, and move if exists.
     for (auto it = List.begin(); it != List.end(); ++it)
     {
-        if (it->x == -1 && it->y == -1)
-            return CANT_MOVE;
         if (ToMovePos.x == it->x && ToMovePos.y == it->y)
         {
             Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y];

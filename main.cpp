@@ -33,11 +33,11 @@ int main()
 
 
     BackTrack backTrack;
-   backTrack.BackTrackAvalPlacesPrint({7, 2}, Table);
+    backTrack.BackTrackAvalPlacesPrint({1, 2}, Table);
 
     //std::cout << Table[1][5]->type() << std::endl;
 
-   //std::cout << Table[0][2]->play(Table, {1,0}) << std::endl;
+    //std::cout << Table[1][2]->play(Table, {2,0}) << std::endl;
     Table.printTable();
 
 }
