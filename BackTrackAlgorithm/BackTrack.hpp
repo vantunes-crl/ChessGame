@@ -77,7 +77,7 @@ class BackTrack
          * @param CASE Case to check VERTICAL_TOP, VERTICAL_BOTTON.
          * @return POS list of positions in that check.
          */
-        Pos checkVertical(Ichess_pieces::Table_t &Table, Pos StartPos, const VERTICAL_CHECK_CASE CASE);
+        std::list<Pos> checkVertical(Ichess_pieces::Table_t &Table, Pos StartPos, const VERTICAL_CHECK_CASE CASE);
 
         RELATIVE_POS checkRelativePos(Ichess_pieces::Table_t &Table, const Pos pos);
 

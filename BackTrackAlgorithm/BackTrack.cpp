@@ -87,23 +87,28 @@ Pos BackTrack::checkHorizontal(Ichess_pieces::Table_t &Table, Pos StartPos, cons
 }
 
 
-Pos BackTrack::checkVertical(Ichess_pieces::Table_t &Table, Pos StartPos, const VERTICAL_CHECK_CASE CASE)
+std::list<Pos> BackTrack::checkVertical(Ichess_pieces::Table_t &Table, Pos StartPos, const VERTICAL_CHECK_CASE CASE)
 {
+    std::list<Pos> List;
 
-    while (StartPos.x < 7 && StartPos.x > 0)
+    while (true)
     {
         switch (CASE)
         {
         case VERTICAL_BOTTOM:
             StartPos.x--;
         case VERTICAL_TOP:
-            StartPos.y++;
+            StartPos.x++;
         }
+        if (StartPos.x > 7 || StartPos.x < 0)
+            break;
+        else
+            List.push_back({StartPos.x, StartPos.y});
         if (Table[StartPos.x][StartPos.y] != nullptr)
-            return {StartPos.x, StartPos.y};
+            break;
     }
 
-    return {-1,-1};
+    return List;
 }
 
 RELATIVE_POS BackTrack::checkRelativePos(Ichess_pieces::Table_t &Table, const Pos pos)
