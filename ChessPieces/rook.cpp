@@ -8,68 +8,40 @@ rook::rook(bool b)
 int rook::play(Table_t &Table, Pos ToMovePos)
 {
     Pos pos = this->getPos(Table);
+    std::list<Pos> List;
 
-    if (ToMovePos.x < 0 || ToMovePos.x > 7 || ToMovePos.y < 0 || ToMovePos.y > 7)
+    if (ToMovePos.x < 0 || ToMovePos.x > 7 || ToMovePos.y < 0 || ToMovePos.y > 7) //out_side of the table
         return OUT_SIZE;
     else if (pos.x != ToMovePos.x && pos.y != ToMovePos.y) //just can move to left or right not both
         return CANT_MOVE;
     else if (pos.x == ToMovePos.x && pos.y == ToMovePos.y) // check if its the same pos
         return SAME_PLACE;
-    else
-    {
-        int i = 1;
-        if (ToMovePos.x > pos.x || ToMovePos.y > pos.y)
-        {
-            while ((pos.x + i) < ToMovePos.x) //check vertical
-            {
-                if (Table[pos.x + i][pos.y])
-                    return CANT_MOVE;
-                ++i;
-            }
-
-            i = 1;
-            while ((pos.y + i) < ToMovePos.y) // check horizontal
-            {
-                if (Table[pos.x][pos.y + i])
-                    return CANT_MOVE;
-                ++i;
-            }
-        }
-        else
-        {
-            i = 1;
-            while ((pos.x - i) > ToMovePos.x) //check vertical reverse
-            {
-                if (Table[pos.x - i][pos.y])
-                    return CANT_MOVE;
-                ++i;
-            }
-
-            i = 1;
-            while ((pos.y - i) > ToMovePos.y) // check horizontal reverse
-            {
-                if (Table[pos.x][pos.y - i])
-                    return CANT_MOVE;
-                ++i;
-            }
-        }
-        
-    }
-
-    if (Table[ToMovePos.x][ToMovePos.y] && Table[ToMovePos.x][ToMovePos.y]->getColor() != this->getColor()) //verify if exists and its is not a friend
-    {
-        Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y];
-        Table[pos.x][pos.y] = nullptr;
-    }
-    else if (Table[ToMovePos.x][ToMovePos.y] && Table[ToMovePos.x][ToMovePos.y]->getColor() == this->getColor())
+    else if (Table[ToMovePos.x][ToMovePos.y] && Table[ToMovePos.x][ToMovePos.y]->getColor() == this->getColor()) //try kill friend
         return CANT_MOVE;
-    else
+    else if (pos.x != ToMovePos.x) //BackTrack of Vertical
     {
-        Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y];
-        Table[pos.x][pos.y] = nullptr;
+        List = backtrack.checkVertical(Table, pos, VERTICAL_TOP);
+        auto List2 = backtrack.checkVertical(Table, pos, VERTICAL_BOTTOM);
+        List.insert(List.end(), List2.begin(), List2.end());
+    }
+    else  //BackTrack of Horizontal
+    {
+        List = backtrack.checkHorizontal(Table, pos, HORIZONTAL_RIGHT);
+        auto List2 = backtrack.checkHorizontal(Table, pos, HORIZONTAL_RIGHT);
+        List.insert(List.end(), List2.begin(), List2.end());
     }
 
-    return NO_ERROR;
+    for (auto it = List.begin(); it != List.end(); ++it)
+    {
+        if (ToMovePos.x == it->x && ToMovePos.y == it->y)
+        {
+            Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y];
+            Table[pos.x][pos.y] = nullptr;
+            return NO_ERROR;
+        }
+    }
+
+    return CANT_MOVE;
 }
 
 int rook::type()

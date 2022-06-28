@@ -68,22 +68,30 @@ std::list<Pos> BackTrack::checkDiagonal(Ichess_pieces::Table_t &Table, Pos Start
 }
 
 
-
-Pos BackTrack::checkHorizontal(Ichess_pieces::Table_t &Table, Pos StartPos, const HORIZONTAL_CHECK_CASE CASE)
+std::list<Pos> BackTrack::checkHorizontal(Ichess_pieces::Table_t &Table, Pos StartPos, const HORIZONTAL_CHECK_CASE CASE)
 {
-    while (StartPos.y < 7 && StartPos.y > 0)
+    std::list<Pos> List;
+
+    while (true)
     {
         switch (CASE)
         {
         case HORIZONTAL_LEFT:
             StartPos.y--;
+            break;
         case HORIZONTAL_RIGHT:
             StartPos.y++;
+            break;
         }
+        if (StartPos.x > 7 || StartPos.x < 0)
+            break;
+        else
+            List.push_back({StartPos.x, StartPos.y});
         if (Table[StartPos.x][StartPos.y] != nullptr)
-            return {StartPos.x, StartPos.y};
+            break;
     }
-    return {-1,-1};
+    
+    return List;
 }
 
 
@@ -97,8 +105,10 @@ std::list<Pos> BackTrack::checkVertical(Ichess_pieces::Table_t &Table, Pos Start
         {
         case VERTICAL_BOTTOM:
             StartPos.x--;
+            break;
         case VERTICAL_TOP:
             StartPos.x++;
+            break;
         }
         if (StartPos.x > 7 || StartPos.x < 0)
             break;
@@ -109,16 +119,4 @@ std::list<Pos> BackTrack::checkVertical(Ichess_pieces::Table_t &Table, Pos Start
     }
 
     return List;
-}
-
-RELATIVE_POS BackTrack::checkRelativePos(Ichess_pieces::Table_t &Table, const Pos pos)
-{
-    if (pos.x <= 3 && pos.y <= 3)
-        return TOP_LEFT;
-    else if (pos.x > 3 && pos.y > 3)
-        return BOTTOM_RIGHT;
-    else if (pos.x <= 3 && pos.y >= 3)
-        return TOP_RIGHT;
-    else
-        return BOTTOM_LEFT;
 }

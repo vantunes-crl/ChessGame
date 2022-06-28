@@ -17,6 +17,10 @@ int pawn::play(Table_t &Table, Pos ToMovePos)
         return CANT_MOVE;
 
     std::list<Pos> List;
+    
+    //Check vertical and diagonal  DIAGONAL_BOTTOM_LEFT, DIAGONAL_BOTTOM_RIGHT if Black
+    //Check vertical and diagonal  DIAGONAL_TOP_LEFT, DIAGONAL_TOP_RIGHT if white
+    //Same for the Vertical TOP/BOTTOM
     if (!this->getColor())
     {
         for (int i = 2; i < 4; ++i)

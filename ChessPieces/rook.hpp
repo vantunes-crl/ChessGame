@@ -2,6 +2,7 @@
 #define ROOK_HPP
 #pragma once
 #include "Ichess_pieces.hpp"
+#include "../BackTrackAlgorithm/BackTrack.hpp"
 
 /**
  * @brief Class that represents the rook in Chess Game.
@@ -25,6 +26,7 @@ class rook : public Ichess_pieces
         std::shared_ptr<Ichess_pieces> copy() override;
     private:
         bool Color;
+        BackTrack backtrack;
 
 };
 
