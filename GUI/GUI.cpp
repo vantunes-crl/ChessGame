@@ -23,7 +23,10 @@ void GUI::FillTableWithPieces(Ichess_pieces::Table_t &Table, std::array<sf::Text
         }
     }
     for (int i = 0; i < 32; ++i)
-        _window->draw(*Pieces[i]);
+    {
+        if (Pieces[i])
+            _window->draw(*Pieces[i]);
+    }
 }
 
 std::array<sf::Texture, 12> GUI::initTextures()
@@ -69,20 +72,48 @@ std::array<sf::Texture, 12> GUI::initTextures()
 /* Main loop */
 void GUI::start(Ichess_pieces::Table_t &Table)
 {
+    //static board image
     sf::Texture Board;
     Board.loadFromFile("GUI/chess-pack/board.png");
     sf::Sprite BoardSprite(Board);
-    
 
+    bool Select = 0;
     std::array<sf::Texture, 12> PiecesTextures = initTextures();
-
+    Pos Piece = {0,0};
     while (_window->isOpen())
     {
         sf::Event event;
         while (_window->pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
-                _window->close();
+            switch (event.type)
+            {
+                // window closed
+                case sf::Event::Closed:
+                    _window->close();
+                    break;
+
+                // key pressed
+                case sf::Event::KeyPressed:
+                    break;
+                
+                case sf::Event::MouseButtonPressed:
+                    if (!Select)
+                    {
+                        Select = true;
+                        Piece = {event.mouseButton.y / 100, event.mouseButton.x / 100};
+                    }
+                    else
+                    {
+                        Pos NextMove = {event.mouseButton.y / 100, event.mouseButton.x / 100};
+                        if (Table[Piece.x][Piece.y])
+                            Table[Piece.x][Piece.y]->play(Table, NextMove);
+                        Select = false;
+                    }
+                    break;
+                // we don't process other types of events
+                default:
+                    break;
+            }
         }   
         _window->clear();
         _window->draw(BoardSprite);
