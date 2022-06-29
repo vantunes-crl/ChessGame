@@ -5,38 +5,77 @@ GUI::GUI(int width, int height)
     _window = std::make_shared<sf::RenderWindow>(sf::VideoMode(width, height), "Chess Game");
 }
 
-/* Fill the table with blocks of black and white */
-void GUI::FillTableColors()
+void GUI::FillTableWithPieces(Ichess_pieces::Table_t &Table, std::array<sf::Texture, 12> &Textures)
 {
-    std::array<std::array<sf::RectangleShape, 8>, 8> Boxes;
-    std::array<std::array<int, 8>, 8> ColorTable;
-
-    for (auto i = 0; i < 8 ; ++i)
-    {
-        if (i % 2)
-            ColorTable[i] = {0, 1, 0, 1, 0, 1, 0, 1};
-        else
-            ColorTable[i] = {1, 0, 1, 0, 1, 0, 1, 0};
-    }
+    std::array<std::shared_ptr<sf::Sprite>, 32> Pieces;
+    int count = 0;
 
     for (int i = 0; i < 8; ++i)
     {
         for (int j = 0; j < 8; ++j)
         {
-            Boxes[i][j].setSize(sf::Vector2f((_window->getSize().x / 8), (_window->getSize().y / 8)));
-            if (ColorTable[i][j])
-                Boxes[i][j].setFillColor(sf::Color::White);
-            else
-                Boxes[i][j].setFillColor(sf::Color::Black);
-            Boxes[i][j].setPosition(i * (_window->getSize().x / 8), j * (_window->getSize().y / 8));
-            _window->draw(Boxes[i][j]);
+            if (Table[i][j])
+            {
+               Pieces[count] =  std::make_shared<sf::Sprite>(Textures[Table[i][j]->type()]);
+               Pieces[count]->setPosition(j * (_window->getSize().x / 8), i * (_window->getSize().y / 8));
+               count++;
+            }
         }
     }
+    for (int i = 0; i < 32; ++i)
+        _window->draw(*Pieces[i]);
+}
+
+std::array<sf::Texture, 12> GUI::initTextures()
+{
+    sf::Texture PawnWhite;
+    sf::Texture PawnBlack;
+    sf::Texture BishopWhite;
+    sf::Texture BishopBlack;
+    sf::Texture KnightWhite;
+    sf::Texture KnightBlack;
+    sf::Texture KingWhite;
+    sf::Texture KingBlack;
+    sf::Texture QueenWhite;
+    sf::Texture QueenBlack;
+    sf::Texture RookWhite;
+    sf::Texture RookBlack;
+
+    PawnWhite.loadFromFile("GUI/chess-pack/chess-pawn-white.png");
+    PawnBlack.loadFromFile("GUI/chess-pack/chess-pawn-black.png");
+    BishopWhite.loadFromFile("GUI/chess-pack/chess-bishop-white.png");
+    BishopBlack.loadFromFile("GUI/chess-pack/chess-bishop-black.png");
+    KnightWhite.loadFromFile("GUI/chess-pack/chess-knight-white.png");
+    KnightBlack.loadFromFile("GUI/chess-pack/chess-knight-black.png");
+    KingWhite.loadFromFile("GUI/chess-pack/chess-king-white.png");
+    KingBlack.loadFromFile("GUI/chess-pack/chess-king-black.png");
+    QueenWhite.loadFromFile("GUI/chess-pack/chess-queen-white.png");
+    QueenBlack.loadFromFile("GUI/chess-pack/chess-queen-black.png");
+    RookWhite.loadFromFile("GUI/chess-pack/chess-rook-white.png");
+    RookBlack.loadFromFile("GUI/chess-pack/chess-rook-black.png");
+
+    std::array<sf::Texture, 12> Textures = {
+        BishopWhite, KnightWhite,
+        KingWhite, PawnWhite,
+        QueenWhite, RookWhite,
+        BishopBlack, KnightBlack,
+        KingBlack, PawnBlack,
+        QueenBlack, RookBlack,
+    };
+
+    return Textures;
 }
 
 /* Main loop */
-void GUI::start()
+void GUI::start(Ichess_pieces::Table_t &Table)
 {
+    sf::Texture Board;
+    Board.loadFromFile("GUI/chess-pack/board.png");
+    sf::Sprite BoardSprite(Board);
+    
+
+    std::array<sf::Texture, 12> PiecesTextures = initTextures();
+
     while (_window->isOpen())
     {
         sf::Event event;
@@ -46,15 +85,8 @@ void GUI::start()
                 _window->close();
         }   
         _window->clear();
-        FillTableColors();
+        _window->draw(BoardSprite);
+        FillTableWithPieces(Table, PiecesTextures);
         _window->display();
     }
-}
-
-
-int main()
-{
-    GUI gi(500,500);
-
-    gi.start();
 }
