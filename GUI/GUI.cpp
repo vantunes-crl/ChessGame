@@ -91,10 +91,6 @@ void GUI::start(Ichess_pieces::Table_t &Table)
                 case sf::Event::Closed:
                     _window->close();
                     break;
-
-                // key pressed
-                case sf::Event::KeyPressed:
-                    break;
                 
                 case sf::Event::MouseButtonPressed:
                     if (!Select)
