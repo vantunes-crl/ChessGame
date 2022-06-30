@@ -97,12 +97,12 @@ void GUI::start(Ichess_pieces::Table_t &Table)
                     {
                         Select = true;
                         Piece = {event.mouseButton.y / 100, event.mouseButton.x / 100};
-                        std::cout << "Piece: " << event.mouseButton.y / 100 << event.mouseButton.x / 100 << std::endl;
+                        std::cout << "Piece: " << event.mouseButton.y / 100 << ":" << event.mouseButton.x / 100 << std::endl;
                     }
                     else
                     {
                         Pos NextMove = {event.mouseButton.y / 100, event.mouseButton.x / 100};
-                        std::cout << "Next Move: " << event.mouseButton.y / 100 << event.mouseButton.x / 100 << std::endl;
+                        std::cout << "Next Move: " << event.mouseButton.y / 100 << ":" << event.mouseButton.x / 100 << std::endl;
                         if (Table[Piece.x][Piece.y])
                             Table[Piece.x][Piece.y]->play(Table, NextMove);
                         Select = false;
