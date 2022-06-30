@@ -29,5 +29,10 @@ queen ..> BackTrack
 king ..> BackTrack
 bishop ..> BackTrack
 
+class GUI
+GUI ..> Ichess_pieces
+GUI ..> table
+
+
 
 @enduml

@@ -47,7 +47,7 @@ int king::play(Table_t &Table, Pos ToMovePos)
     List.push_back(*backTrack.checkVertical(Table, pos, VERTICAL_TOP).begin());
     List.push_back(*backTrack.checkVertical(Table, pos, VERTICAL_BOTTOM).begin());
     List.push_back(*backTrack.checkHorizontal(Table, pos, HORIZONTAL_RIGHT).begin());
-    List.push_back(*backTrack.checkHorizontal(Table, pos, HORIZONTAL_RIGHT).begin());
+    List.push_back(*backTrack.checkHorizontal(Table, pos, HORIZONTAL_LEFT).begin());
 
 
     //Check in the list of avaliable places, if exists move.

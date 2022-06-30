@@ -27,7 +27,7 @@ int rook::play(Table_t &Table, Pos ToMovePos)
     else  //BackTrack of Horizontal
     {
         List = backtrack.checkHorizontal(Table, pos, HORIZONTAL_RIGHT);
-        auto List2 = backtrack.checkHorizontal(Table, pos, HORIZONTAL_RIGHT);
+        auto List2 = backtrack.checkHorizontal(Table, pos, HORIZONTAL_LEFT);
         List.insert(List.end(), List2.begin(), List2.end());
     }
 

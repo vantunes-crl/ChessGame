@@ -82,7 +82,7 @@ std::list<Pos> BackTrack::checkHorizontal(Ichess_pieces::Table_t &Table, Pos Sta
             StartPos.y++;
             break;
         }
-        if (StartPos.x > 7 || StartPos.x < 0)
+        if (StartPos.y > 7 || StartPos.y < 0)
             break;
         else
             List.push_back({StartPos.x, StartPos.y});

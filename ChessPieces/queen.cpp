@@ -28,7 +28,7 @@ int queen::play(Table_t &Table, Pos ToMovePos)
     auto List1 = backTrack.checkVertical(Table, pos, VERTICAL_TOP);
     auto List2 = backTrack.checkVertical(Table, pos, VERTICAL_BOTTOM);
     auto List3 = backTrack.checkHorizontal(Table, pos, HORIZONTAL_RIGHT);
-    auto List4 = backTrack.checkHorizontal(Table, pos, HORIZONTAL_RIGHT);
+    auto List4 = backTrack.checkHorizontal(Table, pos, HORIZONTAL_LEFT);
 
     //append in the main list
     List.insert(List.end(), List1.begin(), List1.end());
