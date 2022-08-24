@@ -1,121 +1,121 @@
 #include "BackTrack.hpp"
 
-std::list<Pos> BackTrack::BackTrackAvalPlacesList(const Pos &PiecesPos, Ichess_pieces::Table_t &Table)
+std::list<int> BackTrack::BackTrackAvalPlacesList(const int &PiecesPos, Ichess_pieces::Board_t &Board)
 {
-    std::list<Pos> list;
-    Ichess_pieces::Table_t CpyTable;
+    std::list<int> list;
+    Ichess_pieces::Board_t CpyBoard;
 
-    for (int i = 0; i < 8; ++i)
-    {
-        for (int j = 0; j < 8; ++j)
-        {
-            CpyTable = Table;
-            if (CpyTable[PiecesPos.x][PiecesPos.y]->play(CpyTable, Pos(i, j)) == 0)
-                list.push_back(Pos(i, j));
-        }
-    }
+    // for (int i = 0; i < 8; ++i)
+    // {
+    //     for (int j = 0; j < 8; ++j)
+    //     {
+    //         CpyBoard = Board;
+    //         if (CpyBoard[Piecesint.x][Piecesint.y]->play(CpyBoard, int(i, j)) == 0)
+    //             list.push_back(int(i, j));
+    //     }
+    // }
     return list;
 }
 
-void BackTrack::BackTrackAvalPlacesPrint(const Pos &PiecesPos, Ichess_pieces::Table_t &Table)
+void BackTrack::BackTrackAvalPlacesPrint(const int &PiecesPos, Ichess_pieces::Board_t &Board)
 {
-    Ichess_pieces::Table_t CpyTable;
+    // Ichess_pieces::Board_t CpyBoard;
 
-    for (int i = 0; i < 8; ++i)
-    {
-        for (int j = 0; j < 8; ++j)
-        {
-            CpyTable = Table;
-            if (CpyTable[PiecesPos.x][PiecesPos.y]->play(CpyTable, Pos(i, j)) == 0)
-                std::cout << "Can move to Pos: " << i << ":" << j << std::endl;
-        }
-    }
+    // for (int i = 0; i < 8; ++i)
+    // {
+    //     for (int j = 0; j < 8; ++j)
+    //     {
+    //         CpyBoard = Board;
+    //         if (CpyBoard[Piecesint.x][Piecesint.y]->play(CpyBoard, int(i, j)) == 0)
+    //             std::cout << "Can move to int: " << i << ":" << j << std::endl;
+    //     }
+    // }
 }
 
-std::list<Pos> BackTrack::checkDiagonal(Ichess_pieces::Table_t &Table, Pos StartPos, const DIAGONAL_CHECK_CASE CASE)
+std::list<int> BackTrack::checkDiagonal(Ichess_pieces::Board_t &Board, int Startint, const DIAGONAL_CHECK_CASE CASE)
 {
-    std::list<Pos> List;
-    while (true)
-    {
-        switch (CASE)
-        {
-        case DIAGONAL_TOP_LEFT:
-            StartPos.x--;
-            StartPos.y--;
-            break;
-        case DIAGONAL_TOP_RIGHT:
-            StartPos.x--;
-            StartPos.y++;
-            break;
-        case DIAGONAL_BOTTOM_LEFT:
-            StartPos.x++;
-            StartPos.y--;
-            break;
-        case DIAGONAL_BOTTOM_RIGHT:
-            StartPos.x++;
-            StartPos.y++;
-            break;
-        }
-        if (StartPos.x > 7 || StartPos.y > 7 || StartPos.x < 0 || StartPos.y < 0)
-            break;
-        else
-            List.push_back({StartPos.x, StartPos.y});
-        if (Table[StartPos.x][StartPos.y] != nullptr)
-            break;
-    }
+    std::list<int> List;
+    // while (true)
+    // {
+    //     switch (CASE)
+    //     {
+    //     case DIAGONAL_TOP_LEFT:
+    //         Startint.x--;
+    //         Startint.y--;
+    //         break;
+    //     case DIAGONAL_TOP_RIGHT:
+    //         Startint.x--;
+    //         Startint.y++;
+    //         break;
+    //     case DIAGONAL_BOTTOM_LEFT:
+    //         Startint.x++;
+    //         Startint.y--;
+    //         break;
+    //     case DIAGONAL_BOTTOM_RIGHT:
+    //         Startint.x++;
+    //         Startint.y++;
+    //         break;
+    //     }
+    //     if (Startint.x > 7 || Startint.y > 7 || Startint.x < 0 || Startint.y < 0)
+    //         break;
+    //     else
+    //         List.push_back({Startint.x, Startint.y});
+    //     if (Board[Startint.x][Startint.y] != nullptr)
+    //         break;
+    // }
     return List;
 }
 
 
-std::list<Pos> BackTrack::checkHorizontal(Ichess_pieces::Table_t &Table, Pos StartPos, const HORIZONTAL_CHECK_CASE CASE)
+std::list<int> BackTrack::checkHorizontal(Ichess_pieces::Board_t &Board, int Startint, const HORIZONTAL_CHECK_CASE CASE)
 {
-    std::list<Pos> List;
+    std::list<int> List;
 
-    while (true)
-    {
-        switch (CASE)
-        {
-        case HORIZONTAL_LEFT:
-            StartPos.y--;
-            break;
-        case HORIZONTAL_RIGHT:
-            StartPos.y++;
-            break;
-        }
-        if (StartPos.y > 7 || StartPos.y < 0)
-            break;
-        else
-            List.push_back({StartPos.x, StartPos.y});
-        if (Table[StartPos.x][StartPos.y] != nullptr)
-            break;
-    }
+    // while (true)
+    // {
+    //     switch (CASE)
+    //     {
+    //     case HORIZONTAL_LEFT:
+    //         Startint.y--;
+    //         break;
+    //     case HORIZONTAL_RIGHT:
+    //         Startint.y++;
+    //         break;
+    //     }
+    //     if (Startint.y > 7 || Startint.y < 0)
+    //         break;
+    //     else
+    //         List.push_back({Startint.x, Startint.y});
+    //     if (Board[Startint.x][Startint.y] != nullptr)
+    //         break;
+    // }
     
     return List;
 }
 
 
-std::list<Pos> BackTrack::checkVertical(Ichess_pieces::Table_t &Table, Pos StartPos, const VERTICAL_CHECK_CASE CASE)
+std::list<int> BackTrack::checkVertical(Ichess_pieces::Board_t &Board, int Startint, const VERTICAL_CHECK_CASE CASE)
 {
-    std::list<Pos> List;
+    std::list<int> List;
 
-    while (true)
-    {
-        switch (CASE)
-        {
-        case VERTICAL_BOTTOM:
-            StartPos.x--;
-            break;
-        case VERTICAL_TOP:
-            StartPos.x++;
-            break;
-        }
-        if (StartPos.x > 7 || StartPos.x < 0)
-            break;
-        else
-            List.push_back({StartPos.x, StartPos.y});
-        if (Table[StartPos.x][StartPos.y] != nullptr)
-            break;
-    }
+    // while (true)
+    // {
+    //     switch (CASE)
+    //     {
+    //     case VERTICAL_BOTTOM:
+    //         Startint.x--;
+    //         break;
+    //     case VERTICAL_TOP:
+    //         Startint.x++;
+    //         break;
+    //     }
+    //     if (Startint.x > 7 || Startint.x < 0)
+    //         break;
+    //     else
+    //         List.push_back({Startint.x, Startint.y});
+    //     if (Board[Startint.x][Startint.y] != nullptr)
+    //         break;
+    // }
 
     return List;
 }

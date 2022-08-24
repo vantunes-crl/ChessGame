@@ -89,7 +89,7 @@ class Board
             return *this;
         }
 
-        std::array<T, 64> &operator[](const int i) { return PlayBoard[i]; }
+        T &operator[](const int i) { return PlayBoard[i]; }
 
     private:
         std::array<T, 64> PlayBoard;

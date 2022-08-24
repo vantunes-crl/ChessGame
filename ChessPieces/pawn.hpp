@@ -14,9 +14,9 @@
 class pawn : public Ichess_pieces
 {
     public:
-        int play(Table_t &Table, Pos ToMovePos) override;
+        int play(Board_t &Board, int ToMoveint) override;
         int type() override;
-        Pos getPos(Table_t &Table) const override;
+        int getPos(Board_t &Board) const override;
         bool getColor() const override;
 
         /**

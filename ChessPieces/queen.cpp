@@ -5,47 +5,47 @@ queen::queen(bool b)
     Color = b;
 }
 
-int queen::play(Table_t &Table, Pos ToMovePos)
+int queen::play(Board_t &Board, int ToMoveint)
 {
-    Pos pos = this->getPos(Table);
-    Pos posCpy(pos);
+    // int pos = this->getPos(Board);
+    // int posCpy(pos);
 
-    if (ToMovePos.x < 0 || ToMovePos.x > 7 || ToMovePos.y < 0 || ToMovePos.y > 7) //out_size of the table
-        return OUT_SIZE;
-    else if (pos.x == ToMovePos.x && pos.y == ToMovePos.y) //Same place
-        return SAME_PLACE;
-    else if (Table[ToMovePos.x][ToMovePos.y] && Table[ToMovePos.x][ToMovePos.y]->getColor() == this->getColor()) //its a friend
-        return CANT_MOVE;
+    // if (ToMoveint.x < 0 || ToMoveint.x > 7 || ToMovePos.y < 0 || ToMovePos.y > 7) //out_size of the Board
+    //     return OUT_SIZE;
+    // else if (pos.x == ToMoveint.x && pos.y == ToMoveint.y) //Same place
+    //     return SAME_PLACE;
+    // else if (Board[ToMoveint.x][ToMoveint.y] && Board[ToMovePos.x][ToMovePos.y]->getColor() == this->getColor()) //its a friend
+    //     return CANT_MOVE;
     
-    std::list<Pos> List;
-    for (int i = 0; i < 4; ++i) //check all diagonal
-    {
-        auto ListCpy = backTrack.checkDiagonal(Table, pos, DIAGONAL_CHECK_CASE(i));
-        List.insert(List.end(), ListCpy.begin(), ListCpy.end());
-    }
+    // std::list<int> List;
+    // for (int i = 0; i < 4; ++i) //check all diagonal
+    // {
+    //     auto ListCpy = backTrack.checkDiagonal(Board, pos, DIAGONAL_CHECK_CASE(i));
+    //     List.insert(List.end(), ListCpy.begin(), ListCpy.end());
+    // }
 
-    //check all vertical/horizontal
-    auto List1 = backTrack.checkVertical(Table, pos, VERTICAL_TOP);
-    auto List2 = backTrack.checkVertical(Table, pos, VERTICAL_BOTTOM);
-    auto List3 = backTrack.checkHorizontal(Table, pos, HORIZONTAL_RIGHT);
-    auto List4 = backTrack.checkHorizontal(Table, pos, HORIZONTAL_LEFT);
+    // //check all vertical/horizontal
+    // auto List1 = backTrack.checkVertical(Board, pos, VERTICAL_TOP);
+    // auto List2 = backTrack.checkVertical(Board, pos, VERTICAL_BOTTOM);
+    // auto List3 = backTrack.checkHorizontal(Board, pos, HORIZONTAL_RIGHT);
+    // auto List4 = backTrack.checkHorizontal(Board, pos, HORIZONTAL_LEFT);
 
-    //append in the main list
-    List.insert(List.end(), List1.begin(), List1.end());
-    List.insert(List.end(), List2.begin(), List2.end());
-    List.insert(List.end(), List3.begin(), List3.end());
-    List.insert(List.end(), List4.begin(), List4.end());
+    // //append in the main list
+    // List.insert(List.end(), List1.begin(), List1.end());
+    // List.insert(List.end(), List2.begin(), List2.end());
+    // List.insert(List.end(), List3.begin(), List3.end());
+    // List.insert(List.end(), List4.begin(), List4.end());
 
-    //Check in the list of avaliable places, if exists move.
-    for (auto it = List.begin(); it != List.end(); ++it)
-    {
-        if (ToMovePos.x == it->x && ToMovePos.y == it->y)
-        {
-            Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y];
-            Table[pos.x][pos.y] = nullptr;
-            return NO_ERROR;
-        }
-    }
+    // //Check in the list of avaliable places, if exists move.
+    // for (auto it = List.begin(); it != List.end(); ++it)
+    // {
+    //     if (ToMoveint.x == it->x && ToMoveint.y == it->y)
+    //     {
+    //         Board[ToMoveint.x][ToMoveint.y] = Board[pos.x][pos.y];
+    //         Board[pos.x][pos.y] = nullptr;
+    //         return NO_ERROR;
+    //     }
+    // }
 
     return CANT_MOVE;
 }
@@ -58,17 +58,14 @@ int queen::type()
         return BLACK_QUEEN;
 }
 
-Pos queen::getPos(Table_t &Table) const
+int queen::getPos(Board_t &Board) const
 {
-    for (int i = 0; i < 8; ++i)
+    for (int i = 0; i < 64; ++i)
     {
-        for (int j = 0; j < 8; ++j)
-        {
-            if (this == Table[i][j].get())
-                return {i, j};
-        }
+        if (this == Board[i].get())
+            return i;
     }
-    return {-1, -1};
+    return -1;
 }
 
 

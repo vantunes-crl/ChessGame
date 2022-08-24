@@ -29,47 +29,47 @@ class BackTrack
         /**
          * @brief search for all possible moves of the piece on the table.
          * 
-         * @param PiecesPos Pos of the piece to be verify in the table.
-         * @param Table Table where the piece is.
-         * @return std::list<Pos> with all Pos X/Y where this piece can move.
+         * @param Piecesint int of the piece to be verify in the table.
+         * @param Board Board where the piece is.
+         * @return std::list<int> with all int X/Y where this piece can move.
          */
-        std::list<Pos> BackTrackAvalPlacesList(const Pos &PiecesPos, Ichess_pieces::Table_t &Table);
+        std::list<int> BackTrackAvalPlacesList(const int &Piecesint, Ichess_pieces::Board_t &Board);
          /**
          * @brief search for all possible moves of the piece on the table and print.
          * 
-         * @param PiecesPos Pos of the piece to be verify in the table.
-         * @param Table Table where the piece is.
+         * @param Piecesint int of the piece to be verify in the table.
+         * @param Board Board where the piece is.
          */
-        void BackTrackAvalPlacesPrint(const Pos &PiecesPos, Ichess_pieces::Table_t &Table);
+        void BackTrackAvalPlacesPrint(const int &Piecesint, Ichess_pieces::Board_t &Board);
 
         /**
          * @brief Check a especific diagonal in the Chess table.
          * 
-         * @param Table Table where the piece is.
-         * @param StartPos Start position of the piece on the table.
+         * @param Board Board where the piece is.
+         * @param Startint Start position of the piece on the table.
          * @param CASE Case to check DIAGONAL_TOP_LEFT, DIAGONAL_TOP_RIGHT, DIAGONAL_BOTTON_RIGHT, DIAGONAL_BOTTON_RIGHT.
-         * @return std::list<Pos> list of positions in that check.
+         * @return std::list<int> list of positions in that check.
          */
-        std::list<Pos> checkDiagonal(Ichess_pieces::Table_t &Table, Pos StartPos, const DIAGONAL_CHECK_CASE CASE);
+        std::list<int> checkDiagonal(Ichess_pieces::Board_t &Board, int Startint, const DIAGONAL_CHECK_CASE CASE);
 
         /**
          * @brief Check a especific horizontal on the Chess table.
          * 
-         * @param Table Table where the piece is.
-         * @param StartPos Start position of the piece on the table.
+         * @param Board Board where the piece is.
+         * @param Startint Start position of the piece on the table.
          * @param CASE Case to check HORIZONTAL_LEFT, HORIZONTAL_RIGHT
-         * @return std::list<Pos> list of positions in that check.
+         * @return std::list<int> list of positions in that check.
          */
-        std::list<Pos> checkHorizontal(Ichess_pieces::Table_t &Table, Pos StartPos, const HORIZONTAL_CHECK_CASE CASE);
+        std::list<int> checkHorizontal(Ichess_pieces::Board_t &Board, int Startint, const HORIZONTAL_CHECK_CASE CASE);
 
          /**
          * @brief Check a especific vertical on the Chess table.
          * 
-         * @param Table Table where the piece is.
-         * @param StartPos Start position of the piece on the table.
+         * @param Board Board where the piece is.
+         * @param Startint Start position of the piece on the table.
          * @param CASE Case to check VERTICAL_TOP, VERTICAL_BOTTON.
-         * @return std::list<Pos> list of positions in that check.
+         * @return std::list<int> list of positions in that check.
          */
-        std::list<Pos> checkVertical(Ichess_pieces::Table_t &Table, Pos StartPos, const VERTICAL_CHECK_CASE CASE);
+        std::list<int> checkVertical(Ichess_pieces::Board_t &Board, int Startint, const VERTICAL_CHECK_CASE CASE);
 
 };

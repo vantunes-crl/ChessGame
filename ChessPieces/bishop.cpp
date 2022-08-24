@@ -1,35 +1,35 @@
 #include "bishop.hpp"
 
-int bishop::play(Table_t &Table, Pos ToMovePos)
+int bishop::play(Board_t &Board, int ToMoveint)
 {
-    Pos pos = this->getPos(Table); //original to set pos after move
+    // int pos = this->getPos(Board); //original to set pos after move
 
-    if (ToMovePos.x > 7 || ToMovePos.x < 0 || ToMovePos.y > 7 || ToMovePos.y < 0) //out size of the table
-        return OUT_SIZE;
-    else if (ToMovePos.x == pos.x || ToMovePos.y == pos.y) //if is not moving
-        return SAME_PLACE;
-    else if (Table[ToMovePos.x][ToMovePos.y] && Table[ToMovePos.x][ToMovePos.y]->getColor() == this->getColor()) //try kill friend
-        return CANT_MOVE;
+    // if (ToMoveint.x > 7 || ToMoveint.x < 0 || ToMovePos.y > 7 || ToMovePos.y < 0) //out size of the Board
+    //     return OUT_SIZE;
+    // else if (ToMoveint.x == pos.x || ToMoveint.y == pos.y) //if is not moving
+    //     return SAME_PLACE;
+    // else if (Board[ToMoveint.x][ToMoveint.y] && Board[ToMovePos.x][ToMovePos.y]->getColor() == this->getColor()) //try kill friend
+    //     return CANT_MOVE;
 
-    //Check all diagonal cases and save in a std::list
-    std::list<Pos> List;
-    for (int i = 0; i < 4; ++i)
-    {
-        auto ListCpy = backTrack.checkDiagonal(Table, pos, DIAGONAL_CHECK_CASE(i));
-        List.insert(List.end(), ListCpy.begin(), ListCpy.end());
-    }
+    // //Check all diagonal cases and save in a std::list
+    // std::list<int> List;
+    // for (int i = 0; i < 4; ++i)
+    // {
+    //     auto ListCpy = backTrack.checkDiagonal(Board, pos, DIAGONAL_CHECK_CASE(i));
+    //     List.insert(List.end(), ListCpy.begin(), ListCpy.end());
+    // }
 
-    //Compare the avalivable pos, and move if exists.
-    for (auto it = List.begin(); it != List.end(); ++it)
-    {
-        if (ToMovePos.x == it->x && ToMovePos.y == it->y)
-        {
-            Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y];
-            Table[pos.x][pos.y] = nullptr;
-            return NO_ERROR;
-        }
-    }
-    return CANT_MOVE;
+    // //Compare the avalivable pos, and move if exists.
+    // for (auto it = List.begin(); it != List.end(); ++it)
+    // {
+    //     if (ToMoveint.x == it->x && ToMoveint.y == it->y)
+    //     {
+    //         Board[ToMoveint.x][ToMoveint.y] = Board[pos.x][pos.y];
+    //         Board[pos.x][pos.y] = nullptr;
+    //         return NO_ERROR;
+    //     }
+    // }
+    // return CANT_MOVE;
 }
 
 int bishop::type()
@@ -40,17 +40,14 @@ int bishop::type()
         return BLACK_BISHOP;
 }
 
-Pos bishop::getPos(Table_t &Table) const
+int bishop::getPos(Board_t &Board) const
 {
-    for (int i = 0; i < 8; ++i)
+    for (int i = 0; i < 64; ++i)
     {
-        for (int j = 0; j < 8; ++j)
-        {
-            if (this == Table[i][j].get())
-                return {i, j};
-        }
+        if (this == Board[i].get())
+            return i;
     }
-    return {-1, -1};
+    return -1;
 }
 
 bishop::bishop(bool b)
