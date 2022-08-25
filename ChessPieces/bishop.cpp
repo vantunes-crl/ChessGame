@@ -1,36 +1,61 @@
 #include "bishop.hpp"
+#include <cstring>
 
-int bishop::play(Board_t &Board, int ToMoveint)
+ enum EDGES
+ {
+    TOP_EDGE, BOTTON_EDGE, LEFT_EDGE, RIGHT_EDGE
+ };
+
+void AvalMoves(int steps, EDGES Edge, int pos, Ichess_pieces::Board_t &Board, std::list<int> &moves)
 {
-    // int pos = this->getPos(Board); //original to set pos after move
+    std::array<std::array<int, 8>, 4> All_Edges = {{
+        {0,1,2,3,4,5,6,7},
+        {56,57,58,59,60,61,62,63},
+        {0,8,16,24,32,40,48,56},
+        {7,15,23,31,39,47,55,63},
+    }};
 
-    // if (ToMoveint.x > 7 || ToMoveint.x < 0 || ToMovePos.y > 7 || ToMovePos.y < 0) //out size of the Board
-    //     return OUT_SIZE;
-    // else if (ToMoveint.x == pos.x || ToMoveint.y == pos.y) //if is not moving
-    //     return SAME_PLACE;
-    // else if (Board[ToMoveint.x][ToMoveint.y] && Board[ToMovePos.x][ToMovePos.y]->getColor() == this->getColor()) //try kill friend
-    //     return CANT_MOVE;
-
-    // //Check all diagonal cases and save in a std::list
-    // std::list<int> List;
-    // for (int i = 0; i < 4; ++i)
-    // {
-    //     auto ListCpy = backTrack.checkDiagonal(Board, pos, DIAGONAL_CHECK_CASE(i));
-    //     List.insert(List.end(), ListCpy.begin(), ListCpy.end());
-    // }
-
-    // //Compare the avalivable pos, and move if exists.
-    // for (auto it = List.begin(); it != List.end(); ++it)
-    // {
-    //     if (ToMoveint.x == it->x && ToMoveint.y == it->y)
-    //     {
-    //         Board[ToMoveint.x][ToMoveint.y] = Board[pos.x][pos.y];
-    //         Board[pos.x][pos.y] = nullptr;
-    //         return NO_ERROR;
-    //     }
-    // }
-    // return CANT_MOVE;
+    while (true)
+    {
+        if (std::find(All_Edges[Edge].begin(), All_Edges[Edge].end(), pos) != All_Edges[Edge].end())
+            break;
+        pos += steps;
+        if (pos > 63 || pos < 0)
+            break;
+        moves.push_back(pos);
+        if (Board[pos])
+            break;
+    }
 }
+
+
+int bishop::play(Board_t &Board, int ToMovePos)
+{
+    int pos = this->getPos(Board); //original to set pos after move
+    
+    if (ToMovePos > 63 || ToMovePos < 0) //out size of the Board
+        return OUT_SIZE;
+    else if (pos == ToMovePos) //if is not moving
+        return SAME_PLACE;
+    else if (Board[ToMovePos] && Board[ToMovePos]->getColor() == this->getColor()) //try kill friend
+        return CANT_MOVE;
+    
+    std::list<int> moves;
+    AvalMoves(9, RIGHT_EDGE, pos, Board, moves);
+    AvalMoves(7, LEFT_EDGE, pos, Board, moves);
+    AvalMoves(-9, LEFT_EDGE, pos, Board, moves);
+    AvalMoves(-7, RIGHT_EDGE, pos, Board, moves);
+
+    for (auto it : moves)
+    {
+        if (it == ToMovePos)
+            return NO_ERROR;
+    };
+
+    return CANT_MOVE;
+}
+
+
 
 int bishop::type()
 {

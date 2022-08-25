@@ -19,7 +19,7 @@ bool king::checkIfSomeoneCanKill(Ichess_pieces::Board_t Board, int pos)
     //         }
     //     }
     // }
-    // return false;
+    return false;
 }
 
 int king::play(Board_t &Board, int ToMoveint)

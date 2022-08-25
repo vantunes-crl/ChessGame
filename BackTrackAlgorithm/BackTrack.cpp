@@ -19,17 +19,14 @@ std::list<int> BackTrack::BackTrackAvalPlacesList(const int &PiecesPos, Ichess_p
 
 void BackTrack::BackTrackAvalPlacesPrint(const int &PiecesPos, Ichess_pieces::Board_t &Board)
 {
-    // Ichess_pieces::Board_t CpyBoard;
+    Ichess_pieces::Board_t CpyBoard;
 
-    // for (int i = 0; i < 8; ++i)
-    // {
-    //     for (int j = 0; j < 8; ++j)
-    //     {
-    //         CpyBoard = Board;
-    //         if (CpyBoard[Piecesint.x][Piecesint.y]->play(CpyBoard, int(i, j)) == 0)
-    //             std::cout << "Can move to int: " << i << ":" << j << std::endl;
-    //     }
-    // }
+    for (int i = 0; i < 64; ++i)
+    {
+        CpyBoard = Board;
+        if (CpyBoard[PiecesPos]->play(CpyBoard, i) == 0)
+            std::cout << "Can move to int: " << i << std::endl;
+    }
 }
 
 std::list<int> BackTrack::checkDiagonal(Ichess_pieces::Board_t &Board, int Startint, const DIAGONAL_CHECK_CASE CASE)

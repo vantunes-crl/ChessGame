@@ -27,7 +27,10 @@ int main()
     
     Board.printTable();
     
-    
+    BackTrack backTrack;
+    backTrack.BackTrackAvalPlacesPrint(2, Board);
+
+    //Board[5]->play(Board, 20);
     
     
     
@@ -38,8 +41,7 @@ int main()
     // Table[6] = {std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1),std::make_shared<pawn>(1)};
     // Table[7] = {std::make_shared<rook>(1), std::make_shared<horse>(1),std::make_shared<bishop>(1),std::make_shared<queen>(1),std::make_shared<king>(1),std::make_shared<bishop>(1),std::make_shared<horse>(1),std::make_shared<rook>(1)};
 
-    // BackTrack backTrack;
-    // backTrack.BackTrackAvalPlacesPrint({7, 4}, Table);
+    
 
     //gui.start(Table);
 

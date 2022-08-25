@@ -31,7 +31,7 @@ int horse::play(Board_t &Board, int ToMoveint)
     // else
     //     return CANT_MOVE;
 
-    // return NO_ERROR;   
+    return NO_ERROR;   
 }
 
 int horse::type()

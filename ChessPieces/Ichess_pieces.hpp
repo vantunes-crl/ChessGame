@@ -5,6 +5,7 @@
 #include <iostream>
 #include "../table.hpp"
 #include <memory>
+#include <algorithm>
 
 /**
  * @brief Type of each piece in chess game.
