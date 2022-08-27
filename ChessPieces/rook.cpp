@@ -5,41 +5,29 @@ rook::rook(bool b)
     Color = b;
 }
 
-int rook::play(Board_t &Board, int ToMoveint)
+int rook::play(Board_t &Board, int ToMovePos)
 {
-//     int pos = this->getPos(Board);
-//     std::list<int> List;
+    int pos = this->getPos(Board);
 
-//     if (ToMoveint.x < 0 || ToMoveint.x > 7 || ToMovePos.y < 0 || ToMovePos.y > 7) //out_side of the Board
-//         return OUT_SIZE;
-//     else if (pos.x != ToMoveint.x && pos.y != ToMoveint.y) //just can move to left or right not both
-//         return CANT_MOVE;
-//     else if (pos.x == ToMoveint.x && pos.y == ToMoveint.y) // check if its the same pos
-//         return SAME_PLACE;
-//     else if (Board[ToMoveint.x][ToMoveint.y] && Board[ToMovePos.x][ToMovePos.y]->getColor() == this->getColor()) //try kill friend
-//         return CANT_MOVE;
-//     else if (pos.x != ToMoveint.x) //BackTrack of Vertical
-//     {
-//         List = backtrack.checkVertical(Board, pos, VERTICAL_TOP);
-//         auto List2 = backtrack.checkVertical(Board, pos, VERTICAL_BOTTOM);
-//         List.insert(List.end(), List2.begin(), List2.end());
-//     }
-//     else  //BackTrack of Horizontal
-//     {
-//         List = backtrack.checkHorizontal(Board, pos, HORIZONTAL_RIGHT);
-//         auto List2 = backtrack.checkHorizontal(Board, pos, HORIZONTAL_LEFT);
-//         List.insert(List.end(), List2.begin(), List2.end());
-//     }
+    if (ToMovePos > 63 || ToMovePos < 0) //out size of the Board
+        return OUT_SIZE;
+    else if (pos == ToMovePos) //if is not moving
+        return SAME_PLACE;
+    else if (Board[ToMovePos] && Board[ToMovePos]->getColor() == this->getColor()) //try kill friend
+        return CANT_MOVE;
+    
+    
+    std::list<int> moves;
+    backTrack.AvalMoves(8, BOTTON_EDGE, pos, Board, moves); //move top right
+    backTrack.AvalMoves(-8, TOP_EDGE, pos, Board, moves); //move top left
+    backTrack.AvalMoves(-1, LEFT_EDGE, pos, Board, moves); //move botton left
+    backTrack.AvalMoves(1, RIGHT_EDGE, pos, Board, moves); //move botton right
 
-//     for (auto it = List.begin(); it != List.end(); ++it)
-//     {
-//         if (ToMoveint.x == it->x && ToMoveint.y == it->y)
-//         {
-//             Board[ToMoveint.x][ToMoveint.y] = Board[pos.x][pos.y];
-//             Board[pos.x][pos.y] = nullptr;
-//             return NO_ERROR;
-//         }
-//     }
+    for (auto it : moves)
+    {
+        if (it == ToMovePos)
+            return NO_ERROR;
+    };
 
     return CANT_MOVE;
 }

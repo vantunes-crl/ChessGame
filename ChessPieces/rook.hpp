@@ -26,7 +26,7 @@ class rook : public Ichess_pieces
         std::shared_ptr<Ichess_pieces> copy() override;
     private:
         bool Color;
-        BackTrack backtrack;
+        BackTrack backTrack;
 
 };
 

@@ -5,47 +5,32 @@ queen::queen(bool b)
     Color = b;
 }
 
-int queen::play(Board_t &Board, int ToMoveint)
+int queen::play(Board_t &Board, int ToMovePos)
 {
-    // int pos = this->getPos(Board);
-    // int posCpy(pos);
-
-    // if (ToMoveint.x < 0 || ToMoveint.x > 7 || ToMovePos.y < 0 || ToMovePos.y > 7) //out_size of the Board
-    //     return OUT_SIZE;
-    // else if (pos.x == ToMoveint.x && pos.y == ToMoveint.y) //Same place
-    //     return SAME_PLACE;
-    // else if (Board[ToMoveint.x][ToMoveint.y] && Board[ToMovePos.x][ToMovePos.y]->getColor() == this->getColor()) //its a friend
-    //     return CANT_MOVE;
+    int pos = this->getPos(Board); //original to set pos after move
     
-    // std::list<int> List;
-    // for (int i = 0; i < 4; ++i) //check all diagonal
-    // {
-    //     auto ListCpy = backTrack.checkDiagonal(Board, pos, DIAGONAL_CHECK_CASE(i));
-    //     List.insert(List.end(), ListCpy.begin(), ListCpy.end());
-    // }
+    if (ToMovePos > 63 || ToMovePos < 0) //out size of the Board
+        return OUT_SIZE;
+    else if (pos == ToMovePos) //if is not moving
+        return SAME_PLACE;
+    else if (Board[ToMovePos] && Board[ToMovePos]->getColor() == this->getColor()) //try kill friend
+        return CANT_MOVE;
+    
+    std::list<int> moves;
+    backTrack.AvalMoves(9, RIGHT_EDGE, pos, Board, moves); //move top right
+    backTrack.AvalMoves(7, LEFT_EDGE, pos, Board, moves); //move top left
+    backTrack.AvalMoves(-9, LEFT_EDGE, pos, Board, moves); //move botton left
+    backTrack.AvalMoves(-7, RIGHT_EDGE, pos, Board, moves); //move botton right
+    backTrack.AvalMoves(8, BOTTON_EDGE, pos, Board, moves); //move top right
+    backTrack.AvalMoves(-8, TOP_EDGE, pos, Board, moves); //move top left
+    backTrack.AvalMoves(-1, LEFT_EDGE, pos, Board, moves); //move botton left
+    backTrack.AvalMoves(1, RIGHT_EDGE, pos, Board, moves); //move botton right
 
-    // //check all vertical/horizontal
-    // auto List1 = backTrack.checkVertical(Board, pos, VERTICAL_TOP);
-    // auto List2 = backTrack.checkVertical(Board, pos, VERTICAL_BOTTOM);
-    // auto List3 = backTrack.checkHorizontal(Board, pos, HORIZONTAL_RIGHT);
-    // auto List4 = backTrack.checkHorizontal(Board, pos, HORIZONTAL_LEFT);
-
-    // //append in the main list
-    // List.insert(List.end(), List1.begin(), List1.end());
-    // List.insert(List.end(), List2.begin(), List2.end());
-    // List.insert(List.end(), List3.begin(), List3.end());
-    // List.insert(List.end(), List4.begin(), List4.end());
-
-    // //Check in the list of avaliable places, if exists move.
-    // for (auto it = List.begin(); it != List.end(); ++it)
-    // {
-    //     if (ToMoveint.x == it->x && ToMoveint.y == it->y)
-    //     {
-    //         Board[ToMoveint.x][ToMoveint.y] = Board[pos.x][pos.y];
-    //         Board[pos.x][pos.y] = nullptr;
-    //         return NO_ERROR;
-    //     }
-    // }
+    for (auto it : moves)
+    {
+        if (it == ToMovePos)
+            return NO_ERROR;
+    };
 
     return CANT_MOVE;
 }

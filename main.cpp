@@ -15,22 +15,22 @@ int main()
     Board<std::shared_ptr<Ichess_pieces>> Board;
     
     Board = {
-        std::make_shared<rook>(0), std::make_shared<horse>(0),std::make_shared<bishop>(0),std::make_shared<queen>(0),nullptr,std::make_shared<bishop>(0),std::make_shared<horse>(0),std::make_shared<rook>(0),
+        nullptr, std::make_shared<horse>(0),std::make_shared<bishop>(0),std::make_shared<queen>(0),nullptr,std::make_shared<bishop>(0),std::make_shared<horse>(0),std::make_shared<rook>(0),
         std::make_shared<pawn>(0), std::make_shared<pawn>(0), std::make_shared<pawn>(0), std::make_shared<pawn>(0), std::make_shared<pawn>(0), std::make_shared<pawn>(0), std::make_shared<pawn>(0), std::make_shared<pawn>(0),
-        nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,
+        std::make_shared<rook>(0),nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,
         nullptr,std::make_shared<king>(0),nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,
         nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,
         nullptr,nullptr,nullptr,nullptr,std::make_shared<bishop>(1),nullptr,nullptr,nullptr,
-        std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1),std::make_shared<pawn>(1),
+        std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1), nullptr, std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1),std::make_shared<pawn>(1),
         std::make_shared<rook>(1), std::make_shared<horse>(1),std::make_shared<bishop>(1),std::make_shared<queen>(1),std::make_shared<king>(1),std::make_shared<bishop>(1),std::make_shared<horse>(1),std::make_shared<rook>(1),
     };
     
     Board.printTable();
     
     BackTrack backTrack;
-    backTrack.BackTrackAvalPlacesPrint(48, Board);
+    backTrack.BackTrackAvalPlacesPrint(59, Board);
 
-    //Board[8]->play(Board, 16);
+    //Board[16]->play(Board, 24);
     
     
     
