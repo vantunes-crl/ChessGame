@@ -19,6 +19,12 @@ enum HORIZONTAL_CHECK_CASE {
     HORIZONTAL_RIGHT
 };
 
+enum EDGES
+ {
+    TOP_EDGE, BOTTON_EDGE, LEFT_EDGE, RIGHT_EDGE
+ };
+
+
 /**
  * @brief Class to calculate all possible moves and checks in a Chess Game.
  * 
@@ -71,5 +77,8 @@ class BackTrack
          * @return std::list<int> list of positions in that check.
          */
         std::list<int> checkVertical(Ichess_pieces::Board_t &Board, int Startint, const VERTICAL_CHECK_CASE CASE);
+
+
+        void AvalMoves(int steps, EDGES Edge, int pos, Ichess_pieces::Board_t &Board, std::list<int> &moves);
 
 };

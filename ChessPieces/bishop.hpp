@@ -11,7 +11,7 @@
 class bishop : public Ichess_pieces
 {
     public:
-        int play(Board_t &Board, int ToMoveint) override;
+        int play(Board_t &Board, int ToMovePos) override;
         int type() override;
         int getPos(Board_t &Board) const override;
         bool getColor() const override;
