@@ -18,7 +18,10 @@ int horse::play(Board_t &Board, int ToMovePos)
 
     const int AvalPos[4] ={17, -17, 15, -15};
     if (std::find(std::begin(AvalPos), std::end(AvalPos), ToMovePos - pos) != std::end(AvalPos))
+    {
+        G_first_play[this->Color] = false;
         return NO_ERROR;
+    }
     
     return CANT_MOVE;   
 }

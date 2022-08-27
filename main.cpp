@@ -28,9 +28,9 @@ int main()
     Board.printTable();
     
     BackTrack backTrack;
-    backTrack.BackTrackAvalPlacesPrint(25, Board);
+    backTrack.BackTrackAvalPlacesPrint(48, Board);
 
-    //Board[5]->play(Board, 20);
+    //Board[8]->play(Board, 16);
     
     
     
