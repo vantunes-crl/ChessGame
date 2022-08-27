@@ -33,7 +33,11 @@ int king::play(Board_t &Board, int ToMovePos)
     const int AvalPos[8] = {-1, 1, 8, -8, 7, -7, 9, -9};
 
     if (std::find(std::begin(AvalPos), std::end(AvalPos), ToMovePos - pos) != std::end(AvalPos) && !checkIfSomeoneCanKill(Board, ToMovePos))
+    {
+        Board[ToMovePos] = Board[pos];
+        Board[pos] = nullptr;
         return NO_ERROR;
+    }
 
     return CANT_MOVE;
 }

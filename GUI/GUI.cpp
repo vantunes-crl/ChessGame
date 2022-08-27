@@ -29,47 +29,45 @@ void GUI::FillBoardWithPieces(Ichess_pieces::Board_t &Table, std::array<sf::Text
     //}
 }
 
-// std::array<sf::Texture, 12> GUI::initTextures()
-// {
-//     // sf::Texture PawnWhite;
-//     // sf::Texture PawnBlack;
-//     // sf::Texture BishopWhite;
-//     // sf::Texture BishopBlack;
-//     // sf::Texture KnightWhite;
-//     // sf::Texture KnightBlack;
-//     // sf::Texture KingWhite;
-//     // sf::Texture KingBlack;
-//     // sf::Texture QueenWhite;
-//     // sf::Texture QueenBlack;
-//     // sf::Texture RookWhite;
-//     // sf::Texture RookBlack;
+std::array<sf::Texture, 12> GUI::initTextures()
+{
+    sf::Texture PawnWhite;
+    sf::Texture PawnBlack;
+    sf::Texture BishopWhite;
+    sf::Texture BishopBlack;
+    sf::Texture KnightWhite;
+    sf::Texture KnightBlack;
+    sf::Texture KingWhite;
+    sf::Texture KingBlack;
+    sf::Texture QueenWhite;
+    sf::Texture QueenBlack;
+    sf::Texture RookWhite;
+    sf::Texture RookBlack;
 
-//     // PawnWhite.loadFromFile("GUI/chess-pack/chess-pawn-white.png");
-//     // PawnBlack.loadFromFile("GUI/chess-pack/chess-pawn-black.png");
-//     // BishopWhite.loadFromFile("GUI/chess-pack/chess-bishop-white.png");
-//     // BishopBlack.loadFromFile("GUI/chess-pack/chess-bishop-black.png");
-//     // KnightWhite.loadFromFile("GUI/chess-pack/chess-knight-white.png");
-//     // KnightBlack.loadFromFile("GUI/chess-pack/chess-knight-black.png");
-//     // KingWhite.loadFromFile("GUI/chess-pack/chess-king-white.png");
-//     // KingBlack.loadFromFile("GUI/chess-pack/chess-king-black.png");
-//     // QueenWhite.loadFromFile("GUI/chess-pack/chess-queen-white.png");
-//     // QueenBlack.loadFromFile("GUI/chess-pack/chess-queen-black.png");
-//     // RookWhite.loadFromFile("GUI/chess-pack/chess-rook-white.png");
-//     // RookBlack.loadFromFile("GUI/chess-pack/chess-rook-black.png");
+    PawnWhite.loadFromFile("GUI/chess-pack/chess-pawn-white.png");
+    PawnBlack.loadFromFile("GUI/chess-pack/chess-pawn-black.png");
+    BishopWhite.loadFromFile("GUI/chess-pack/chess-bishop-white.png");
+    BishopBlack.loadFromFile("GUI/chess-pack/chess-bishop-black.png");
+    KnightWhite.loadFromFile("GUI/chess-pack/chess-knight-white.png");
+    KnightBlack.loadFromFile("GUI/chess-pack/chess-knight-black.png");
+    KingWhite.loadFromFile("GUI/chess-pack/chess-king-white.png");
+    KingBlack.loadFromFile("GUI/chess-pack/chess-king-black.png");
+    QueenWhite.loadFromFile("GUI/chess-pack/chess-queen-white.png");
+    QueenBlack.loadFromFile("GUI/chess-pack/chess-queen-black.png");
+    RookWhite.loadFromFile("GUI/chess-pack/chess-rook-white.png");
+    RookBlack.loadFromFile("GUI/chess-pack/chess-rook-black.png");
 
-//     // std::array<sf::Texture, 12> Textures = {
-//     //     BishopWhite, KnightWhite,
-//     //     KingWhite, PawnWhite,
-//     //     QueenWhite, RookWhite,
-//     //     BishopBlack, KnightBlack,
-//     //     KingBlack, PawnBlack,
-//     //     QueenBlack, RookBlack,
-//     // };
+    std::array<sf::Texture, 12> Textures = {
+        BishopWhite, KnightWhite,
+        KingWhite, PawnWhite,
+        QueenWhite, RookWhite,
+        BishopBlack, KnightBlack,
+        KingBlack, PawnBlack,
+        QueenBlack, RookBlack,
+    };
 
-//     // return Textures;
-
-//     return std::array<sf::Texture, 12>;
-// }
+    return Textures;
+}
 
 /* Main loop */
 void GUI::start(Ichess_pieces::Board_t &Board)

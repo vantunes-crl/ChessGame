@@ -33,6 +33,7 @@ int pawn::play(Board_t &Board, int ToMovePos)
             if (is_End)
             {
                 Board[ToMovePos] = Board[pos];
+                Board[pos] = nullptr;
                 Board[ToMovePos] = std::make_shared<queen>(this->Color); 
             }
             return NO_ERROR;
@@ -44,6 +45,7 @@ int pawn::play(Board_t &Board, int ToMovePos)
             if (is_End)
             {
                 Board[ToMovePos] = Board[pos];
+                Board[pos] = nullptr;
                 Board[ToMovePos] = std::make_shared<queen>(this->Color); 
             }
             return NO_ERROR;
@@ -65,6 +67,7 @@ int pawn::play(Board_t &Board, int ToMovePos)
             if (is_End)
             {
                 Board[ToMovePos] = Board[pos];
+                Board[pos] = nullptr;
                 Board[ToMovePos] = std::make_shared<queen>(this->Color); 
             }
             return NO_ERROR;
@@ -76,6 +79,7 @@ int pawn::play(Board_t &Board, int ToMovePos)
             if (is_End)
             {
                 Board[ToMovePos] = Board[pos];
+                Board[pos] = nullptr;
                 Board[ToMovePos] = std::make_shared<queen>(this->Color); 
             }
             return NO_ERROR;

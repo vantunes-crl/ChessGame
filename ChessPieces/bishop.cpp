@@ -21,7 +21,11 @@ int bishop::play(Board_t &Board, int ToMovePos)
     for (auto it : moves)
     {
         if (it == ToMovePos)
+        {
+            Board[ToMovePos] = Board[pos];
+            Board[pos] = nullptr;
             return NO_ERROR;
+        }
     };
 
     return CANT_MOVE;
