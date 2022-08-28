@@ -5,28 +5,31 @@ GUI::GUI(int width, int height)
     _window = std::make_shared<sf::RenderWindow>(sf::VideoMode(width, height), "Chess Game");
 }
 
-void GUI::FillBoardWithPieces(Ichess_pieces::Board_t &Table, std::array<sf::Texture, 12> &Textures)
+void GUI::FillBoardWithPieces(Ichess_pieces::Board_t &Board, std::array<sf::Texture, 12> &Textures)
 {
-    // std::array<std::shared_ptr<sf::Sprite>, 32> Pieces;
-    // int count = 0;
+    std::array<std::shared_ptr<sf::Sprite>, 32> Pieces;
+    int count = 0;
+    int CountPos = 0;
 
-    // for (int i = 0; i < 8; ++i)
-    // {
-    //     for (int j = 0; j < 8; ++j)
-    //     {
-    //         if (Board[i][j])
-    //         {
-    //            Pieces[count] =  std::make_shared<sf::Sprite>(Textures[Board[i][j]->type()]);
-    //            Pieces[count]->setintition(j * (_window->getSize().x / 8), i * (_window->getSize().y / 8));
-    //            count++;
-    //         }
-    //     }
-    // }
-    // for (int i = 0; i < 32; ++i)
-    // {
-    //     if (Pieces[i])
-    //         _window->draw(*Pieces[i]);
-    //}
+    for (int i = 0; i < 8; ++i)
+    {
+        for (int j = 0; j < 8; ++j)
+        {
+            if (Board[CountPos])
+            {
+                Pieces[count] = std::make_shared<sf::Sprite>(Textures[Board[CountPos]->type()]);
+                Pieces[count]->setPosition(j * 100, i * 100);
+                count++;
+            }
+            CountPos++;
+        }
+        
+    }
+    for (int i = 0; i < 32; ++i)
+    {
+        if (Pieces[i])
+            _window->draw(*Pieces[i]);
+    }
 }
 
 std::array<sf::Texture, 12> GUI::initTextures()
@@ -69,53 +72,90 @@ std::array<sf::Texture, 12> GUI::initTextures()
     return Textures;
 }
 
+void GUI::selectPiece(const int pos, Ichess_pieces::Board_t &Board, std::list<Pos> &List)
+{
+    static bool selected = false;
+    static int PiecesPos = 0;
+    std::list<int> AvalPlaces;
+
+    List.clear();
+    AvalPlaces = backTrack.BackTrackAvalPlacesList(pos, Board);
+    for (auto it : AvalPlaces)
+    {
+        List.push_back({it % 8, it / 8});
+    }
+
+    if (!selected)
+    {
+        PiecesPos = pos;
+        selected = true;
+    }
+    else
+    {
+        std::cout << PiecesPos << ":" << pos << std::endl;
+        Board[PiecesPos]->play(Board, pos);
+        selected = false;
+    }
+
+}
+
+void GUI::DisplayAvalPlaces(std::list<Pos> &List)
+{
+    for (auto it : List)
+    {
+        sf::RectangleShape rectangle(sf::Vector2f(100, 100));
+        rectangle.setFillColor(sf::Color(0, 128, 0, 110));
+        rectangle.setPosition(it.x * 100, it.y * 100);
+        _window->draw(rectangle);
+    }    
+}
+
 /* Main loop */
 void GUI::start(Ichess_pieces::Board_t &Board)
 {
     //static board image
-    // sf::Texture Board;
-    // Board.loadFromFile("GUI/chess-pack/board.png");
-    // sf::Sprite BoardSprite(Board);
+    sf::Texture BoardTexture;
 
-    // bool Select = 0;
-    // std::array<sf::Texture, 12> PiecesTextures = initTextures();
-    // int Piece = {0,0};
-    // while (_window->isOpen())
-    // {
-    //     // sf::Event event;
-    //     // while (_window->pollEvent(event))
-    //     // {
-    //     //     switch (event.type)
-    //     //     {
-    //     //         // window closed
-    //     //         case sf::Event::Closed:
-    //     //             _window->close();
-    //     //             break;
+    BoardTexture.loadFromFile("GUI/chess-pack/board.png");
+    sf::Sprite BoardSprite(BoardTexture);
+
+    bool Select = 0;
+    std::array<sf::Texture, 12> PiecesTextures = initTextures();
+
+    int count = 0;
+    int Matrix[8][8];
+    for (int i = 0; i < 8; ++i)
+    {
+        for (int j = 0; j < 8; ++j)
+            Matrix[i][j] = count++;
+    }
+
+    std::list<Pos> AvalPlaces;
+
+    while (_window->isOpen())
+    {
+        sf::Event event;
+        while (_window->pollEvent(event))
+        {
+            switch (event.type)
+            {
+                // window closed
+                case sf::Event::Closed:
+                    _window->close();
+                    break;
                 
-    //     //         case sf::Event::MouseButtonPressed:
-    //     //             if (!Select)
-    //     //             {
-    //     //                 Select = true;
-    //     //                 Piece = {event.mouseButton.y / 100, event.mouseButton.x / 100};
-    //     //                 std::cout << "Piece: " << event.mouseButton.y / 100 << ":" << event.mouseButton.x / 100 << std::endl;
-    //     //             }
-    //     //             else
-    //     //             {
-    //     //                 int NextMove = {event.mouseButton.y / 100, event.mouseButton.x / 100};
-    //     //                 std::cout << "Next Move: " << event.mouseButton.y / 100 << ":" << event.mouseButton.x / 100 << std::endl;
-    //     //                 if (Board[Piece.x][Piece.y])
-    //     //                     Board[Piece.x][Piece.y]->play(Board, NextMove);
-    //     //                 Select = false;
-    //     //             }
-    //     //             break;
-    //     //         // we don't process other types of events
-    //     //         default:
-    //     //             break;
-    //     //     }
-    //     // }   
-    //     _window->clear();
-    //     _window->draw(BoardSprite);
-    //     FillBoardWithPieces(Board, PiecesTextures);
-    //     _window->display();
-    // }
+                case sf::Event::MouseButtonPressed:
+                    selectPiece(Matrix[event.mouseButton.y / 100][event.mouseButton.x / 100], Board, AvalPlaces);
+                    // std::cout << event.mouseButton.x / 100 << ":" << event.mouseButton.y / 100 << std::endl;
+                    // std::cout << Matrix[event.mouseButton.y / 100][event.mouseButton.x / 100] << std::endl;
+                default:
+                    break;
+            }
+        }
+        _window->clear();
+        _window->draw(BoardSprite);
+        FillBoardWithPieces(Board, PiecesTextures);
+        DisplayAvalPlaces(AvalPlaces);          
+        _window->display();
+    }
 }

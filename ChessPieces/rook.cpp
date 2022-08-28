@@ -16,7 +16,6 @@ int rook::play(Board_t &Board, int ToMovePos)
     else if (Board[ToMovePos] && Board[ToMovePos]->getColor() == this->getColor()) //try kill friend
         return CANT_MOVE;
     
-    
     std::list<int> moves;
     backTrack.AvalMoves(8, BOTTON_EDGE, pos, Board, moves); //move top right
     backTrack.AvalMoves(-8, TOP_EDGE, pos, Board, moves); //move top left

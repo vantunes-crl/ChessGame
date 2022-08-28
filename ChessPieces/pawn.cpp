@@ -26,27 +26,37 @@ int pawn::play(Board_t &Board, int ToMovePos)
         if (std::find(std::begin(BoardEnd), std::end(BoardEnd), ToMovePos) != std::end(BoardEnd))
             is_End = true;
 
-        if ((G_first_play[this->Color] && pos - ToMovePos == 16) ||  //first play of table, front move
-            (G_first_play[this->Color] && pos - ToMovePos == 8 && !Board[ToMovePos])) //normal front move
+        if ((Board.getFirstPlay(this->Color) && pos - ToMovePos == 16) ||  //first play of table, front move
+            (Board.getFirstPlay(this->Color) && pos - ToMovePos == 8 && !Board[ToMovePos])) //normal front move
         {
-            G_first_play[this->Color] = false;
+            Board.getFirstPlay(this->Color) = false;
             if (is_End)
             {
                 Board[ToMovePos] = Board[pos];
                 Board[pos] = nullptr;
                 Board[ToMovePos] = std::make_shared<queen>(this->Color); 
             }
+            else
+            {
+                Board[ToMovePos] = Board[pos];
+                Board[pos] = nullptr;
+            }
             return NO_ERROR;
         }
         else if ((pos - ToMovePos == 9 && Board[ToMovePos] && Board[ToMovePos]->getColor() != this->Color) ||  //kill enemy
             (pos - ToMovePos == 7 && Board[ToMovePos] && Board[ToMovePos]->getColor() != this->Color))
         {
-            G_first_play[this->Color] = false;
+            Board.getFirstPlay(this->Color) = false;
             if (is_End)
             {
                 Board[ToMovePos] = Board[pos];
                 Board[pos] = nullptr;
                 Board[ToMovePos] = std::make_shared<queen>(this->Color); 
+            }
+            else
+            {
+                Board[ToMovePos] = Board[pos];
+                Board[pos] = nullptr;
             }
             return NO_ERROR;
         }
@@ -60,27 +70,37 @@ int pawn::play(Board_t &Board, int ToMovePos)
         if (std::find(std::begin(BoardEnd), std::end(BoardEnd), ToMovePos) != std::end(BoardEnd))
             is_End = true;
 
-        if ((G_first_play[this->Color] && pos - ToMovePos == -16) ||  //first play of table, front move
-            (G_first_play[this->Color] && pos - ToMovePos == -8 && !Board[ToMovePos])) //normal front move
+        if ((Board.getFirstPlay(this->Color) && pos - ToMovePos == -16) ||  //first play of table, front move
+            (Board.getFirstPlay(this->Color) && pos - ToMovePos == -8 && !Board[ToMovePos])) //normal front move
         {
-            G_first_play[this->Color] = false;
+            Board.getFirstPlay(this->Color) = false;
             if (is_End)
             {
                 Board[ToMovePos] = Board[pos];
                 Board[pos] = nullptr;
                 Board[ToMovePos] = std::make_shared<queen>(this->Color); 
             }
+            else
+            {
+                Board[ToMovePos] = Board[pos];
+                Board[pos] = nullptr;
+            }
             return NO_ERROR;
         }
         else if ((pos - ToMovePos == -9 && Board[ToMovePos] && Board[ToMovePos]->getColor() != this->Color) || //kill enemy
             (pos - ToMovePos == -7 && Board[ToMovePos] && Board[ToMovePos]->getColor() != this->Color))
         {
-            G_first_play[this->Color] = false;
+            Board.getFirstPlay(this->Color) = false;
             if (is_End)
             {
                 Board[ToMovePos] = Board[pos];
                 Board[pos] = nullptr;
                 Board[ToMovePos] = std::make_shared<queen>(this->Color); 
+            }
+            else
+            {
+                Board[ToMovePos] = Board[pos];
+                Board[pos] = nullptr;
             }
             return NO_ERROR;
         }

@@ -39,9 +39,6 @@ enum ERRORS {
     LIMIT_MOVES,
 };
 
-static bool G_first_play[2] = {true, true};
-
-
 /**
  * @brief Interface to build all Pieces on the Chess Game.
  * 

@@ -5,6 +5,13 @@
 #include <memory>
 #include "../table.hpp"
 #include "../ChessPieces/Ichess_pieces.hpp"
+#include "../BackTrackAlgorithm/BackTrack.hpp"
+
+struct Pos
+{
+    int x;
+    int y;
+};
 
 /**
  * @brief Graphical interface for the ChessGame.
@@ -14,7 +21,11 @@ class GUI
 {
 private:
     std::shared_ptr<sf::RenderWindow> _window;
+    BackTrack backTrack;
 public:
+    void DisplayAvalPlaces(std::list<Pos> &List);
+
+    void selectPiece(const int pos, Ichess_pieces::Board_t &Board, std::list<Pos> &List);
 
     /**
      * @brief Main Function of the GUI, Where the main loop hapens.
