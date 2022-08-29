@@ -26,6 +26,8 @@ class pawn : public Ichess_pieces
          */
         pawn(bool b);
 
+        void move(std::shared_ptr<Ichess_pieces> &ToMovePos, std::shared_ptr<Ichess_pieces> &Pos, bool end);
+
         std::shared_ptr<Ichess_pieces> copy() override;
     private:
         bool Color;
