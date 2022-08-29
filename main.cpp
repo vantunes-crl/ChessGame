@@ -1,6 +1,6 @@
 #include <memory>
 #include <algorithm>
-#include "table.hpp"
+#include "Board.hpp"
 #include "ChessPieces/pawn.hpp"
 #include "ChessPieces/bishop.hpp"
 #include "ChessPieces/horse.hpp"
