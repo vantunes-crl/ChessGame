@@ -20,6 +20,7 @@ int horse::play(Board_t &Board, int ToMovePos)
     if (std::find(std::begin(AvalPos), std::end(AvalPos), ToMovePos - pos) != std::end(AvalPos))
     {
         Board.getFirstPlay(this->Color) = false;
+        //std::cout << " pos to move :"<< ToMovePos << "this pos :" << pos << "Result "<< pos - ToMovePos << std::endl;
         Board[ToMovePos] = Board[pos];
         Board[pos] = nullptr;
         return NO_ERROR;

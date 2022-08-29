@@ -81,9 +81,7 @@ void GUI::selectPiece(const int pos, Ichess_pieces::Board_t &Board, std::list<Po
     List.clear();
     AvalPlaces = backTrack.BackTrackAvalPlacesList(pos, Board);
     for (auto it : AvalPlaces)
-    {
         List.push_back({it % 8, it / 8});
-    }
 
     if (!selected)
     {
@@ -92,11 +90,11 @@ void GUI::selectPiece(const int pos, Ichess_pieces::Board_t &Board, std::list<Po
     }
     else
     {
-        std::cout << PiecesPos << ":" << pos << std::endl;
+        //std::cout << PiecesPos << ":" << pos << std::endl;
         Board[PiecesPos]->play(Board, pos);
+        List.clear();
         selected = false;
     }
-
 }
 
 void GUI::DisplayAvalPlaces(std::list<Pos> &List)
@@ -146,8 +144,6 @@ void GUI::start(Ichess_pieces::Board_t &Board)
                 
                 case sf::Event::MouseButtonPressed:
                     selectPiece(Matrix[event.mouseButton.y / 100][event.mouseButton.x / 100], Board, AvalPlaces);
-                    // std::cout << event.mouseButton.x / 100 << ":" << event.mouseButton.y / 100 << std::endl;
-                    // std::cout << Matrix[event.mouseButton.y / 100][event.mouseButton.x / 100] << std::endl;
                 default:
                     break;
             }

@@ -6,8 +6,7 @@ pawn::pawn(bool b)
     Color = b;
 }
 
-
-bool checkEnd(const int ToMovePos)
+bool pawn::checkEnd(const int ToMovePos)
 {
     const int BoardEnd[16] = {56, 57, 58, 59, 60, 61, 62 , 63, 0, 1, 2, 3, 4, 5, 6, 7};
 
@@ -15,7 +14,6 @@ bool checkEnd(const int ToMovePos)
         return true;
     return false;
 }
-
 
 void pawn::move(std::shared_ptr<Ichess_pieces> &ToMovePos, std::shared_ptr<Ichess_pieces> &Pos, bool end)
 {
@@ -50,12 +48,6 @@ int pawn::play(Board_t &Board, int ToMovePos)
             move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
             return NO_ERROR;
         }
-        else if (pos - ToMovePos == 8 && !Board[ToMovePos])
-        {
-            Board.getFirstPlay(this->Color) = false;
-            move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
-            return NO_ERROR;
-        }
         else if ((pos - ToMovePos == 9 && Board[ToMovePos] && Board[ToMovePos]->getColor() != this->Color) ||  //kill enemy right
             (pos - ToMovePos == 7 && Board[ToMovePos] && Board[ToMovePos]->getColor() != this->Color)) //kill enemy left
         {
@@ -69,18 +61,11 @@ int pawn::play(Board_t &Board, int ToMovePos)
             move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
             return NO_ERROR;
         }
-        
     }
     else
     {
         if ((Board.getFirstPlay(this->Color) && pos - ToMovePos == -16) ||  //first play of table, front move
             (Board.getFirstPlay(this->Color) && pos - ToMovePos == -8 && !Board[ToMovePos])) //normal front move
-        {
-            Board.getFirstPlay(this->Color) = false;
-            move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
-            return NO_ERROR;
-        }
-        else if (pos - ToMovePos == -8 && !Board[ToMovePos])
         {
             Board.getFirstPlay(this->Color) = false;
             move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
