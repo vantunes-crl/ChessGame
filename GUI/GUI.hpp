@@ -5,6 +5,13 @@
 #include <memory>
 #include "../table.hpp"
 #include "../ChessPieces/Ichess_pieces.hpp"
+#include "../BackTrackAlgorithm/BackTrack.hpp"
+
+struct Pos
+{
+    int x;
+    int y;
+};
 
 /**
  * @brief Graphical interface for the ChessGame.
@@ -14,22 +21,26 @@ class GUI
 {
 private:
     std::shared_ptr<sf::RenderWindow> _window;
+    BackTrack backTrack;
 public:
+    void DisplayAvalPlaces(std::list<Pos> &List);
+
+    void selectPiece(const int pos, Ichess_pieces::Board_t &Board, std::list<Pos> &List);
 
     /**
      * @brief Main Function of the GUI, Where the main loop hapens.
      * 
-     * @param Table The table where the pieces are.
+     * @param Board The table where the pieces are.
      */
-    void start(Ichess_pieces::Table_t &Table);
+    void start(Ichess_pieces::Board_t &Board);
 
     /**
      * @brief a Draw Function where draws all pieces in the right places.
      * 
-     * @param Table Table where the pieces are
+     * @param Board Board where the pieces are
      * @param Textures a array of sf::Textures, with all pieces textures. 
      */
-    void FillTableWithPieces(Ichess_pieces::Table_t &Table, std::array<sf::Texture, 12> &Textures);
+    void FillBoardWithPieces(Ichess_pieces::Board_t &Table, std::array<sf::Texture, 12> &Textures);
 
     /**
      * @brief Init the list of textures.

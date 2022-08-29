@@ -1,75 +1,102 @@
 #include "pawn.hpp"
+#include "queen.hpp"
 
 pawn::pawn(bool b)
 {
     Color = b;
 }
 
-int pawn::play(Table_t &Table, Pos ToMovePos)
+bool pawn::checkEnd(const int ToMovePos)
 {
-    Pos pos = this->getPos(Table);
+    const int BoardEnd[16] = {56, 57, 58, 59, 60, 61, 62 , 63, 0, 1, 2, 3, 4, 5, 6, 7};
 
-    if (ToMovePos.x < 0 || ToMovePos.x > 7 || ToMovePos.y < 0 || ToMovePos.y > 7) //verify if not out_size
-        return OUT_SIZE;
-    else if (pos.x == ToMovePos.x && pos.y == ToMovePos.y) //verify if is the same position
-        return SAME_PLACE;
-    else if (Table[ToMovePos.x][ToMovePos.y] && Table[ToMovePos.x][ToMovePos.y]->getColor() == this->getColor()) //friend
-        return CANT_MOVE;
+    if (std::find(std::begin(BoardEnd), std::end(BoardEnd), ToMovePos) != std::end(BoardEnd))
+        return true;
+    return false;
+}
 
-    std::list<Pos> List;
-    
-    //Check vertical and diagonal  DIAGONAL_BOTTOM_LEFT, DIAGONAL_BOTTOM_RIGHT if Black
-    //Check vertical and diagonal  DIAGONAL_TOP_LEFT, DIAGONAL_TOP_RIGHT if white
-    //Same for the Vertical TOP/BOTTOM
-    if (!this->getColor())
-    {
-        for (int i = 2; i < 4; ++i)
-            List.push_back(*backtrack.checkDiagonal(Table, pos, DIAGONAL_CHECK_CASE(i)).begin());
-        List.push_back(*backtrack.checkVertical(Table, pos, VERTICAL_TOP).begin());
-    }   
+void pawn::move(std::shared_ptr<Ichess_pieces> &ToMovePos, std::shared_ptr<Ichess_pieces> &Pos, bool end)
+{
+    if (!end)
+        ToMovePos = Pos;
     else
     {
-        for (int i = 0; i < 2; ++i)
-            List.push_back(*backtrack.checkDiagonal(Table, pos, DIAGONAL_CHECK_CASE(i)).begin());
-        List.push_back(*backtrack.checkVertical(Table, pos, VERTICAL_BOTTOM).begin());
+        std::shared_ptr<Ichess_pieces> temp = std::make_shared<queen>(this->Color);
+        ToMovePos = temp;
     }
+    Pos = nullptr;
+}
 
-    auto it = List.begin();
-    if (it->x == ToMovePos.x && it->y == ToMovePos.y && Table[ToMovePos.x][ToMovePos.y]) //check if can kill diagonal right
+int pawn::play(Board_t &Board, int ToMovePos)
+{
+    int pos = this->getPos(Board);
+
+    if (ToMovePos > 63 || ToMovePos < 0) //out size of the Board
+        return OUT_SIZE;
+    else if (pos == ToMovePos) //if is not moving
+        return SAME_PLACE;
+    else if (Board[ToMovePos] && Board[ToMovePos]->getColor() == this->getColor()) //try kill friend
+        return CANT_MOVE;
+
+    //white 1 black 0
+    if (this->Color)
     {
-        Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y];
-        Table[pos.x][pos.y] = nullptr;
-        return NO_ERROR;
+        if ((Board.getFirstPlay(this->Color) && pos - ToMovePos == 16) ||  //first play of table, front move
+            (Board.getFirstPlay(this->Color) && pos - ToMovePos == 8 && !Board[ToMovePos])) //normal front move
+        {
+            Board.getFirstPlay(this->Color) = false;
+            move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
+            return NO_ERROR;
+        }
+        else if ((pos - ToMovePos == 9 && Board[ToMovePos] && Board[ToMovePos]->getColor() != this->Color) ||  //kill enemy right
+            (pos - ToMovePos == 7 && Board[ToMovePos] && Board[ToMovePos]->getColor() != this->Color)) //kill enemy left
+        {
+            Board.getFirstPlay(this->Color) = false;
+            move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
+            return NO_ERROR;
+        }
+        else if (pos - ToMovePos == 8 && !Board[ToMovePos]) //normal move
+        {
+            Board.getFirstPlay(this->Color) = false;
+            move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
+            return NO_ERROR;
+        }
     }
-    ++it;
-    if (it->x == ToMovePos.x && it->y == ToMovePos.y && Table[ToMovePos.x][ToMovePos.y]) //check if can kill diagonal left
+    else
     {
-        Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y];
-        Table[pos.x][pos.y] = nullptr;
-        return NO_ERROR;
-    }
-    ++it;
-    if (it->x == ToMovePos.x && it->y == ToMovePos.y && !Table[ToMovePos.x][ToMovePos.y]) //no one in front
-    {
-        Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y];
-        Table[pos.x][pos.y] = nullptr;
-        return NO_ERROR;
+        if ((Board.getFirstPlay(this->Color) && pos - ToMovePos == -16) ||  //first play of table, front move
+            (Board.getFirstPlay(this->Color) && pos - ToMovePos == -8 && !Board[ToMovePos])) //normal front move
+        {
+            Board.getFirstPlay(this->Color) = false;
+            move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
+            return NO_ERROR;
+        }
+        else if ((pos - ToMovePos == -9 && Board[ToMovePos] && Board[ToMovePos]->getColor() != this->Color) ||  //kill enemy left
+            (pos - ToMovePos == -7 && Board[ToMovePos] && Board[ToMovePos]->getColor() != this->Color)) //kill enemy right
+        {
+            Board.getFirstPlay(this->Color) = false;
+            move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
+            return NO_ERROR;
+        }
+        else if (pos - ToMovePos == -8 && !Board[ToMovePos]) //normal move
+        {
+            Board.getFirstPlay(this->Color) = false;
+            move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
+            return NO_ERROR;
+        }
     }
 
     return CANT_MOVE;
 }
 
-Pos pawn::getPos(Table_t &Table) const
+int pawn::getPos(Board_t &Board) const
 {
-    for (int i = 0; i < 8; ++i)
+    for (int i = 0; i < 64; ++i)
     {
-        for (int j = 0; j < 8; ++j)
-        {
-            if (this == Table[i][j].get())
-                return {i, j};
-        }
+        if (this == Board[i].get())
+            return i;
     }
-    return {-1, -1};
+    return -1;
 }
 
 int pawn::type()

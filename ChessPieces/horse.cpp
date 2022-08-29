@@ -5,33 +5,28 @@ horse::horse(bool b)
     Color = b;
 }
     
-int horse::play(Table_t &Table, Pos ToMovePos)
+int horse::play(Board_t &Board, int ToMovePos)
 {
-    Pos pos = this->getPos(Table);
+    int pos = this->getPos(Board);
 
-    if (ToMovePos.x < 0 || ToMovePos.x > 7 || ToMovePos.y < 0 || ToMovePos.y > 7) //out_size of the table
+    if (ToMovePos > 63 || ToMovePos < 0) //out size of the Board
         return OUT_SIZE;
-    else if (ToMovePos.x == pos.x && ToMovePos.y == pos.y) //same pos
+    else if (pos == ToMovePos) //if is not moving
         return SAME_PLACE;
-    else if (Table[ToMovePos.x][ToMovePos.y] && Table[ToMovePos.x][ToMovePos.y]->getColor() == this->getColor()) //check if its a friend
-        return CANT_MOVE;
-    //Verify if its moving in L
-    else if (((ToMovePos.x == (pos.x - 2) && (pos.y - 1) == ToMovePos.y) || (ToMovePos.x == (pos.x - 2) && (pos.y + 1) == ToMovePos.y)) || 
-    ((ToMovePos.x == (pos.x + 2) && (pos.y + 1) == ToMovePos.y) || (ToMovePos.x == (pos.x + 2) && (pos.y - 1) == ToMovePos.y)))
-    {
-        Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y];
-        Table[pos.x][pos.y] = nullptr;
-    }
-    else if (((ToMovePos.y == (pos.y - 2) && (pos.x - 1)) == ToMovePos.x || (ToMovePos.y == (pos.y - 2) && (pos.x + 1) == ToMovePos.x)) || 
-    ((ToMovePos.y == (pos.y + 2) && (pos.x + 1)) == ToMovePos.x || (ToMovePos.y == (pos.y + 2) && (pos.x - 1) == ToMovePos.x)))
-    {
-        Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y];
-        Table[pos.x][pos.y] = nullptr;
-    }
-    else
+    else if (Board[ToMovePos] && Board[ToMovePos]->getColor() == this->getColor()) //try kill friend
         return CANT_MOVE;
 
-    return NO_ERROR;   
+    const int AvalPos[4] = {17, -17, 15, -15};
+    if (std::find(std::begin(AvalPos), std::end(AvalPos), ToMovePos - pos) != std::end(AvalPos))
+    {
+        Board.getFirstPlay(this->Color) = false;
+        //std::cout << " pos to move :"<< ToMovePos << "this pos :" << pos << "Result "<< pos - ToMovePos << std::endl;
+        Board[ToMovePos] = Board[pos];
+        Board[pos] = nullptr;
+        return NO_ERROR;
+    }
+    
+    return CANT_MOVE;   
 }
 
 int horse::type()
@@ -42,17 +37,14 @@ int horse::type()
         return BLACK_HORSE;
 }
 
-Pos horse::getPos(Table_t &Table) const
+int horse::getPos(Board_t &Board) const
 {
-    for (int i = 0; i < 8; ++i)
+    for (int i = 0; i < 64; ++i)
     {
-        for (int j = 0; j < 8; ++j)
-        {
-            if (this == Table[i][j].get())
-                return {i, j};
-        }
+        if (this == Board[i].get())
+            return i;
     }
-    return {-1, -1};
+    return -1;
 }
 
 std::shared_ptr<Ichess_pieces> horse::copy()

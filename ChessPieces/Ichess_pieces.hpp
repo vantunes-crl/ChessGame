@@ -5,17 +5,7 @@
 #include <iostream>
 #include "../table.hpp"
 #include <memory>
-
-/**
- * @brief Structure to save pos x and y.
- * 
- */
-struct Pos
-{
-    Pos(int x, int y) :x(x), y(y) {}
-    int x;
-    int y;
-};
+#include <algorithm>
 
 /**
  * @brief Type of each piece in chess game.
@@ -56,23 +46,23 @@ enum ERRORS {
 class Ichess_pieces
 {
     public:
-        typedef table<std::shared_ptr<Ichess_pieces>> Table_t;
+        typedef Board<std::shared_ptr<Ichess_pieces>> Board_t;
     public:
         /**
-         * @brief Move a piece on the table.
+         * @brief Move a piece on the Board.
          * 
-         * @param Table Table where the pieces are.
-         * @param ToMovePos Pos X,Y to the next move.
+         * @param Board Board where the pieces are.
+         * @param ToMoveint int X,Y to the next move.
          * @return int > 0 if an error occurs, else return 0
          */
-        virtual int play(Table_t &Table, Pos ToMovePos) = 0;
+        virtual int play(Board_t &Board, int ToMoveint) = 0;
         /**
-         * @brief Get the Pos of the piece on the table.
+         * @brief Get the int of the piece on the Board.
          * 
-         * @param Table Table where the pieces are.
-         * @return Pos X,Y in the table.
+         * @param Board Board where the pieces are.
+         * @return int X,Y in the Board.
          */
-        virtual Pos getPos(Table_t &Table) const = 0;
+        virtual int getPos(Board_t &Board) const = 0;
         /**
          * @brief Type of the pieces
          * 

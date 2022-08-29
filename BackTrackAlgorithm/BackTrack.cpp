@@ -1,121 +1,54 @@
 #include "BackTrack.hpp"
 
-std::list<Pos> BackTrack::BackTrackAvalPlacesList(const Pos &PiecesPos, Ichess_pieces::Table_t &Table)
+std::list<int> BackTrack::BackTrackAvalPlacesList(const int &PiecesPos, Ichess_pieces::Board_t &Board)
 {
-    std::list<Pos> list;
-    Ichess_pieces::Table_t CpyTable;
+    std::list<int> list;
+    Ichess_pieces::Board_t CpyBoard;
 
-    for (int i = 0; i < 8; ++i)
+    if (!Board[PiecesPos])
+        return list;
+
+    for (int i = 0; i < 64; ++i)
     {
-        for (int j = 0; j < 8; ++j)
-        {
-            CpyTable = Table;
-            if (CpyTable[PiecesPos.x][PiecesPos.y]->play(CpyTable, Pos(i, j)) == 0)
-                list.push_back(Pos(i, j));
-        }
+        CpyBoard = Board;
+        if (CpyBoard[PiecesPos]->play(CpyBoard, i) == 0)
+            list.push_back(i);
     }
     return list;
 }
 
-void BackTrack::BackTrackAvalPlacesPrint(const Pos &PiecesPos, Ichess_pieces::Table_t &Table)
+void BackTrack::BackTrackAvalPlacesPrint(const int &PiecesPos, Ichess_pieces::Board_t &Board)
 {
-    Ichess_pieces::Table_t CpyTable;
+    Ichess_pieces::Board_t CpyBoard;
 
-    for (int i = 0; i < 8; ++i)
+   
+    for (int i = 0; i < 64; ++i)
     {
-        for (int j = 0; j < 8; ++j)
-        {
-            CpyTable = Table;
-            if (CpyTable[PiecesPos.x][PiecesPos.y]->play(CpyTable, Pos(i, j)) == 0)
-                std::cout << "Can move to Pos: " << i << ":" << j << std::endl;
-        }
+        CpyBoard = Board;
+        if (CpyBoard[PiecesPos]->play(CpyBoard, i) == 0)
+            std::cout << "Can move to int: " << i << std::endl;
+        
     }
 }
 
-std::list<Pos> BackTrack::checkDiagonal(Ichess_pieces::Table_t &Table, Pos StartPos, const DIAGONAL_CHECK_CASE CASE)
+void BackTrack::AvalMoves(int steps, EDGES Edge, int pos, Ichess_pieces::Board_t &Board, std::list<int> &moves)
 {
-    std::list<Pos> List;
-    while (true)
-    {
-        switch (CASE)
-        {
-        case DIAGONAL_TOP_LEFT:
-            StartPos.x--;
-            StartPos.y--;
-            break;
-        case DIAGONAL_TOP_RIGHT:
-            StartPos.x--;
-            StartPos.y++;
-            break;
-        case DIAGONAL_BOTTOM_LEFT:
-            StartPos.x++;
-            StartPos.y--;
-            break;
-        case DIAGONAL_BOTTOM_RIGHT:
-            StartPos.x++;
-            StartPos.y++;
-            break;
-        }
-        if (StartPos.x > 7 || StartPos.y > 7 || StartPos.x < 0 || StartPos.y < 0)
-            break;
-        else
-            List.push_back({StartPos.x, StartPos.y});
-        if (Table[StartPos.x][StartPos.y] != nullptr)
-            break;
-    }
-    return List;
-}
-
-
-std::list<Pos> BackTrack::checkHorizontal(Ichess_pieces::Table_t &Table, Pos StartPos, const HORIZONTAL_CHECK_CASE CASE)
-{
-    std::list<Pos> List;
+    std::array<std::array<int, 8>, 4> All_Edges = {{
+        {0,1,2,3,4,5,6,7},
+        {56,57,58,59,60,61,62,63},
+        {0,8,16,24,32,40,48,56},
+        {7,15,23,31,39,47,55,63},
+    }};
 
     while (true)
     {
-        switch (CASE)
-        {
-        case HORIZONTAL_LEFT:
-            StartPos.y--;
+        if (std::find(All_Edges[Edge].begin(), All_Edges[Edge].end(), pos) != All_Edges[Edge].end())
             break;
-        case HORIZONTAL_RIGHT:
-            StartPos.y++;
+        pos += steps;
+        if (pos > 63 || pos < 0)
             break;
-        }
-        if (StartPos.y > 7 || StartPos.y < 0)
-            break;
-        else
-            List.push_back({StartPos.x, StartPos.y});
-        if (Table[StartPos.x][StartPos.y] != nullptr)
+        moves.push_back(pos);
+        if (Board[pos])
             break;
     }
-    
-    return List;
-}
-
-
-std::list<Pos> BackTrack::checkVertical(Ichess_pieces::Table_t &Table, Pos StartPos, const VERTICAL_CHECK_CASE CASE)
-{
-    std::list<Pos> List;
-
-    while (true)
-    {
-        switch (CASE)
-        {
-        case VERTICAL_BOTTOM:
-            StartPos.x--;
-            break;
-        case VERTICAL_TOP:
-            StartPos.x++;
-            break;
-        }
-        if (StartPos.x > 7 || StartPos.x < 0)
-            break;
-        else
-            List.push_back({StartPos.x, StartPos.y});
-        if (Table[StartPos.x][StartPos.y] != nullptr)
-            break;
-    }
-
-    return List;
 }

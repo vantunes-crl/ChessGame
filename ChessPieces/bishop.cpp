@@ -1,36 +1,36 @@
 #include "bishop.hpp"
+#include <cstring>
 
-int bishop::play(Table_t &Table, Pos ToMovePos)
+int bishop::play(Board_t &Board, int ToMovePos)
 {
-    Pos pos = this->getPos(Table); //original to set pos after move
-
-    if (ToMovePos.x > 7 || ToMovePos.x < 0 || ToMovePos.y > 7 || ToMovePos.y < 0) //out size of the table
+    int pos = this->getPos(Board); //original to set pos after move
+    
+    if (ToMovePos > 63 || ToMovePos < 0) //out size of the Board
         return OUT_SIZE;
-    else if (ToMovePos.x == pos.x || ToMovePos.y == pos.y) //if is not moving
+    else if (pos == ToMovePos) //if is not moving
         return SAME_PLACE;
-    else if (Table[ToMovePos.x][ToMovePos.y] && Table[ToMovePos.x][ToMovePos.y]->getColor() == this->getColor()) //try kill friend
+    else if (Board[ToMovePos] && Board[ToMovePos]->getColor() == this->getColor()) //try kill friend
         return CANT_MOVE;
+    
+    std::list<int> moves;
+    backTrack.AvalMoves(9, RIGHT_EDGE, pos, Board, moves); //move top right
+    backTrack.AvalMoves(7, LEFT_EDGE, pos, Board, moves); //move top left
+    backTrack.AvalMoves(-9, LEFT_EDGE, pos, Board, moves); //move botton left
+    backTrack.AvalMoves(-7, RIGHT_EDGE, pos, Board, moves); //move botton right
 
-    //Check all diagonal cases and save in a std::list
-    std::list<Pos> List;
-    for (int i = 0; i < 4; ++i)
+    for (auto it : moves)
     {
-        auto ListCpy = backTrack.checkDiagonal(Table, pos, DIAGONAL_CHECK_CASE(i));
-        List.insert(List.end(), ListCpy.begin(), ListCpy.end());
-    }
-
-    //Compare the avalivable pos, and move if exists.
-    for (auto it = List.begin(); it != List.end(); ++it)
-    {
-        if (ToMovePos.x == it->x && ToMovePos.y == it->y)
+        if (it == ToMovePos)
         {
-            Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y];
-            Table[pos.x][pos.y] = nullptr;
+            Board[ToMovePos] = Board[pos];
+            Board[pos] = nullptr;
             return NO_ERROR;
         }
-    }
+    };
+
     return CANT_MOVE;
 }
+
 
 int bishop::type()
 {
@@ -40,17 +40,14 @@ int bishop::type()
         return BLACK_BISHOP;
 }
 
-Pos bishop::getPos(Table_t &Table) const
+int bishop::getPos(Board_t &Board) const
 {
-    for (int i = 0; i < 8; ++i)
+    for (int i = 0; i < 64; ++i)
     {
-        for (int j = 0; j < 8; ++j)
-        {
-            if (this == Table[i][j].get())
-                return {i, j};
-        }
+        if (this == Board[i].get())
+            return i;
     }
-    return {-1, -1};
+    return -1;
 }
 
 bishop::bishop(bool b)

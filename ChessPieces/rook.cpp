@@ -5,41 +5,32 @@ rook::rook(bool b)
     Color = b;
 }
 
-int rook::play(Table_t &Table, Pos ToMovePos)
+int rook::play(Board_t &Board, int ToMovePos)
 {
-    Pos pos = this->getPos(Table);
-    std::list<Pos> List;
+    int pos = this->getPos(Board);
 
-    if (ToMovePos.x < 0 || ToMovePos.x > 7 || ToMovePos.y < 0 || ToMovePos.y > 7) //out_side of the table
+    if (ToMovePos > 63 || ToMovePos < 0) //out size of the Board
         return OUT_SIZE;
-    else if (pos.x != ToMovePos.x && pos.y != ToMovePos.y) //just can move to left or right not both
-        return CANT_MOVE;
-    else if (pos.x == ToMovePos.x && pos.y == ToMovePos.y) // check if its the same pos
+    else if (pos == ToMovePos) //if is not moving
         return SAME_PLACE;
-    else if (Table[ToMovePos.x][ToMovePos.y] && Table[ToMovePos.x][ToMovePos.y]->getColor() == this->getColor()) //try kill friend
+    else if (Board[ToMovePos] && Board[ToMovePos]->getColor() == this->getColor()) //try kill friend
         return CANT_MOVE;
-    else if (pos.x != ToMovePos.x) //BackTrack of Vertical
-    {
-        List = backtrack.checkVertical(Table, pos, VERTICAL_TOP);
-        auto List2 = backtrack.checkVertical(Table, pos, VERTICAL_BOTTOM);
-        List.insert(List.end(), List2.begin(), List2.end());
-    }
-    else  //BackTrack of Horizontal
-    {
-        List = backtrack.checkHorizontal(Table, pos, HORIZONTAL_RIGHT);
-        auto List2 = backtrack.checkHorizontal(Table, pos, HORIZONTAL_LEFT);
-        List.insert(List.end(), List2.begin(), List2.end());
-    }
+    
+    std::list<int> moves;
+    backTrack.AvalMoves(8, BOTTON_EDGE, pos, Board, moves); //move top right
+    backTrack.AvalMoves(-8, TOP_EDGE, pos, Board, moves); //move top left
+    backTrack.AvalMoves(-1, LEFT_EDGE, pos, Board, moves); //move botton left
+    backTrack.AvalMoves(1, RIGHT_EDGE, pos, Board, moves); //move botton right
 
-    for (auto it = List.begin(); it != List.end(); ++it)
+    for (auto it : moves)
     {
-        if (ToMovePos.x == it->x && ToMovePos.y == it->y)
+        if (it == ToMovePos)
         {
-            Table[ToMovePos.x][ToMovePos.y] = Table[pos.x][pos.y];
-            Table[pos.x][pos.y] = nullptr;
+            Board[ToMovePos] = Board[pos];
+            Board[pos] = nullptr;
             return NO_ERROR;
         }
-    }
+    };
 
     return CANT_MOVE;
 }
@@ -52,17 +43,14 @@ int rook::type()
         return BLACK_ROOK;
 }
 
-Pos rook::getPos(Table_t &Table) const
+int rook::getPos(Board_t &Board) const
 {
-    for (int i = 0; i < 8; ++i)
+    for (int i = 0; i < 64; ++i)
     {
-        for (int j = 0; j < 8; ++j)
-        {
-            if (this == Table[i][j].get())
-                return {i, j};
-        }
+        if (this == Board[i].get())
+            return i;
     }
-    return {-1, -1};
+    return -1;
 }
 
 std::shared_ptr<Ichess_pieces> rook::copy()
