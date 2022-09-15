@@ -29,7 +29,7 @@ class pawn : public Ichess_pieces
         std::shared_ptr<Ichess_pieces> copy() override;
     private:
         bool Color;
-        BackTrack backtrack;
+        BackTrack backTrack;
         bool checkEnd(const int ToMovePos);
         void move(std::shared_ptr<Ichess_pieces> &ToMovePos, std::shared_ptr<Ichess_pieces> &Pos, bool end);
 };

@@ -15,12 +15,13 @@ int horse::play(Board_t &Board, int ToMovePos)
         return SAME_PLACE;
     else if (Board[ToMovePos] && Board[ToMovePos]->getColor() == this->getColor()) //try kill friend
         return CANT_MOVE;
+    if (!backTrack.checkOpositeEdges(pos, ToMovePos))
+        return CANT_MOVE;
 
     const int AvalPos[4] = {17, -17, 15, -15};
     if (std::find(std::begin(AvalPos), std::end(AvalPos), ToMovePos - pos) != std::end(AvalPos))
     {
         Board.getFirstPlay(this->Color) = false;
-        //std::cout << " pos to move :"<< ToMovePos << "this pos :" << pos << "Result "<< pos - ToMovePos << std::endl;
         Board[ToMovePos] = Board[pos];
         Board[pos] = nullptr;
         return NO_ERROR;

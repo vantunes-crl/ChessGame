@@ -3,7 +3,7 @@
 #pragma once
 
 #include <iostream>
-#include "../table.hpp"
+#include "../Board.hpp"
 #include <memory>
 #include <algorithm>
 
@@ -52,10 +52,10 @@ class Ichess_pieces
          * @brief Move a piece on the Board.
          * 
          * @param Board Board where the pieces are.
-         * @param ToMoveint int X,Y to the next move.
+         * @param ToMovePos int X,Y to the next move.
          * @return int > 0 if an error occurs, else return 0
          */
-        virtual int play(Board_t &Board, int ToMoveint) = 0;
+        virtual int play(Board_t &Board, int ToMovePos) = 0;
         /**
          * @brief Get the int of the piece on the Board.
          * 

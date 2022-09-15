@@ -76,6 +76,7 @@ void GUI::selectPiece(const int pos, Ichess_pieces::Board_t &Board, std::list<Po
 {
     static bool selected = false;
     static int PiecesPos = 0;
+    static int Color = 0;
     std::list<int> AvalPlaces;
 
     List.clear();
@@ -90,8 +91,15 @@ void GUI::selectPiece(const int pos, Ichess_pieces::Board_t &Board, std::list<Po
     }
     else
     {
-        //std::cout << PiecesPos << ":" << pos << std::endl;
-        Board[PiecesPos]->play(Board, pos);
+        if(Board[PiecesPos])
+        {   
+            if (Color != Board[PiecesPos]->getColor())
+            {
+                Board[PiecesPos]->play(Board, pos);
+                if (Board[pos])
+                    Color = Board[pos]->getColor();
+            }
+        }       
         List.clear();
         selected = false;
     }

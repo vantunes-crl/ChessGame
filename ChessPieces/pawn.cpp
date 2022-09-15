@@ -37,7 +37,10 @@ int pawn::play(Board_t &Board, int ToMovePos)
         return SAME_PLACE;
     else if (Board[ToMovePos] && Board[ToMovePos]->getColor() == this->getColor()) //try kill friend
         return CANT_MOVE;
-
+    
+    if (!backTrack.checkOpositeEdges(pos, ToMovePos))
+        return CANT_MOVE;
+    
     //white 1 black 0
     if (this->Color)
     {
@@ -48,8 +51,8 @@ int pawn::play(Board_t &Board, int ToMovePos)
             move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
             return NO_ERROR;
         }
-        else if ((pos - ToMovePos == 9 && Board[ToMovePos] && Board[ToMovePos]->getColor() != this->Color) ||  //kill enemy right
-            (pos - ToMovePos == 7 && Board[ToMovePos] && Board[ToMovePos]->getColor() != this->Color)) //kill enemy left
+        else if ((pos - ToMovePos == 9 && Board[ToMovePos] ) ||  //kill enemy right
+            (pos - ToMovePos == 7 && Board[ToMovePos] )) //kill enemy left
         {
             Board.getFirstPlay(this->Color) = false;
             move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
@@ -71,8 +74,8 @@ int pawn::play(Board_t &Board, int ToMovePos)
             move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
             return NO_ERROR;
         }
-        else if ((pos - ToMovePos == -9 && Board[ToMovePos] && Board[ToMovePos]->getColor() != this->Color) ||  //kill enemy left
-            (pos - ToMovePos == -7 && Board[ToMovePos] && Board[ToMovePos]->getColor() != this->Color)) //kill enemy right
+        else if ((pos - ToMovePos == -9 && Board[ToMovePos] )  ||  //kill enemy left
+            (pos - ToMovePos == -7 && Board[ToMovePos] )) //kill enemy right
         {
             Board.getFirstPlay(this->Color) = false;
             move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
