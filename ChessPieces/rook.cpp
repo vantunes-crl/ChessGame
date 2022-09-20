@@ -1,8 +1,65 @@
 #include "rook.hpp"
+#include "king.hpp"
 
 rook::rook(bool b)
 {
     Color = b;
+}
+
+bool rook::checkNullRange(Ichess_pieces *first, Ichess_pieces *end)
+{
+    while (first != end)
+    {
+        if (first != nullptr)
+            return false;
+        ++first;
+    }
+    return true;
+}
+
+bool rook::swapKing(Board_t &Board, const int posRook, const int posKing)
+{
+    static int count = 0;
+    static bool Swap[2] = {false, false};
+
+    switch (posRook)
+    {
+    case 63:
+        if (checkNullRange(Board[60].get(), Board[62].get()) && (!Swap[1] || !Swap[0]))
+        {
+            std::swap(Board[posKing], Board[61]);
+            std::swap(Board[posRook], Board[60]);
+            Swap[count++] = true;
+            break;
+        }
+    case 56:
+        if (checkNullRange(Board[57].get(), Board[58].get()) && (!Swap[1] || !Swap[0]))
+        {
+            std::swap(Board[posKing], Board[57]);
+            std::swap(Board[posRook], Board[58]);
+            Swap[count++] = true;
+            break;
+        }
+    case 7:
+        if (checkNullRange(Board[4].get(), Board[6].get()) && (!Swap[1] || !Swap[0]))
+        {
+            std::swap(Board[posKing], Board[5]);
+            std::swap(Board[posRook], Board[4]);
+            Swap[count++] = true;
+            break;
+        }
+    case 0:
+        if (checkNullRange(Board[1].get(), Board[2].get()) && (!Swap[1] || !Swap[0]))
+        {
+            std::swap(Board[posKing], Board[1]);
+            std::swap(Board[posRook], Board[2]);
+            Swap[count++] = true;
+            break;
+        }
+    default:
+        return true;
+    }   
+    return false;
 }
 
 int rook::play(Board_t &Board, int ToMovePos)
@@ -14,8 +71,17 @@ int rook::play(Board_t &Board, int ToMovePos)
     else if (pos == ToMovePos) //if is not moving
         return SAME_PLACE;
     else if (Board[ToMovePos] && Board[ToMovePos]->getColor() == this->getColor()) //try kill friend
-        return CANT_MOVE;
-    
+    {
+        switch (Board[ToMovePos]->type()) //Check if its a Swap Rook/King
+        {
+        case WHITE_KING:
+        case BLACK_KING:
+            return (swapKing(Board, pos, ToMovePos));
+        default:
+            return CANT_MOVE;
+        }
+    }
+
     std::list<int> moves;
     backTrack.AvalMoves(8, BOTTON_EDGE, pos, Board, moves); //move top right
     backTrack.AvalMoves(-8, TOP_EDGE, pos, Board, moves); //move top left

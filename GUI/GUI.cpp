@@ -93,12 +93,12 @@ void GUI::selectPiece(const int pos, Ichess_pieces::Board_t &Board, std::list<Po
     {
         if(Board[PiecesPos])
         {   
-            if (Color != Board[PiecesPos]->getColor())
-            {
+            // if (Color != Board[PiecesPos]->getColor())
+            // {
                 Board[PiecesPos]->play(Board, pos);
-                if (Board[pos])
-                    Color = Board[pos]->getColor();
-            }
+            //     if (Board[pos])
+            //         Color = Board[pos]->getColor();
+            // }
         }       
         List.clear();
         selected = false;

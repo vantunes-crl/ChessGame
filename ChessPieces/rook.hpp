@@ -3,12 +3,12 @@
 #pragma once
 #include "Ichess_pieces.hpp"
 #include "../BackTrackAlgorithm/BackTrack.hpp"
-
 /**
  * @brief Class that represents the rook in Chess Game.
  * Can move only Horizontal or Vertical.
  * No move limit.
  */
+
 class rook : public Ichess_pieces
 {
     public:
@@ -27,6 +27,8 @@ class rook : public Ichess_pieces
     private:
         bool Color;
         BackTrack backTrack;
+        bool  swapKing(Board_t &Board, const int posRook, const int posKing);
+        bool checkNullRange(Ichess_pieces *first, Ichess_pieces *end);
 
 };
 
