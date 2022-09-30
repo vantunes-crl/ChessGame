@@ -4,7 +4,7 @@ GUI::GUI(int width, int height)
 :str("Game Start\n")
 {
     _window = std::make_shared<sf::RenderWindow>(sf::VideoMode(width, height), "Chess Game");
-    _console_window = std::make_shared<sf::RenderWindow>(sf::VideoMode(300, 300), "Console");
+   // _console_window = std::make_shared<sf::RenderWindow>(sf::VideoMode(300, 300), "Console");
 }
 
 void GUI::FillBoardWithPieces(Ichess_pieces::Board_t &Board, std::array<sf::Texture, 12> &Textures)
@@ -101,17 +101,20 @@ void GUI::selectPiece(const int pos, Ichess_pieces::Board_t &Board, std::list<Po
             //     if (Board[pos])
             //         Color = Board[pos]->getColor();
             // }
-            char p1 = char(PiecesPos % 8 + 48);
-            char p2 = char(PiecesPos / 8 + 'a');
-            str.append("Move From:     ");
-            str.push_back(p2);
-            str.push_back(p1);
-            p1 = char(pos % 8 + 48);
-            p2 = char(pos / 8 + 'a');
-            str.append("    Move To:     ");
-            str.push_back(p2);
-            str.push_back(p1);
-            str.append("\n");
+
+
+            //show moves
+            // char p1 = char(PiecesPos % 8 + 48);
+            // char p2 = char(PiecesPos / 8 + 'a');
+            // str.append("Move From:     ");
+            // str.push_back(p2);
+            // str.push_back(p1);
+            // p1 = char(pos % 8 + 48);
+            // p2 = char(pos / 8 + 'a');
+            // str.append("    Move To:     ");
+            // str.push_back(p2);
+            // str.push_back(p1);
+            // str.append("\n");
         }       
         List.clear();
         selected = false;
@@ -137,8 +140,32 @@ void GUI::PrintText()
     text.setFont(font); 
     text.setString(this->str);
     text.setFillColor(sf::Color::White);
-    text.setCharacterSize(10);
+    text.setCharacterSize(20);
     _console_window->draw(text);
+}
+
+void GUI::PositionsNames()
+{
+    sf::Text text;
+    sf::Font font;
+    sf::Text text2;
+
+    font.loadFromFile("/home/vantunes/ChessGame/Roboto-Black.ttf");
+    text.setFont(font); 
+    text.setString("\t\t a\t\t\t\t  b\t\t\t\t  c\t\t\t\t  d\t\t\t\t  e\t\t\t\t  f\t\t\t\t  g\t\t\t\t  h");
+    text.setFillColor(sf::Color::White);
+    text.setCharacterSize(20);
+    text.setPosition(0,800);
+
+    text2.setFont(font);
+    text2.setString("\n8\n\n\n\n7\n\n\n\n\n6\n\n\n\n5\n\n\n\n4\n\n\n\n\n3\n\n\n\n2\n\n\n\n1");
+    text2.setFillColor(sf::Color::White);
+    text2.setCharacterSize(20);
+    text2.setPosition(805, 20);
+
+    _window->draw(text);
+    _window->draw(text2);
+
 }
 
 /* Main loop */
@@ -182,12 +209,13 @@ void GUI::start(Ichess_pieces::Board_t &Board)
             }
         }
         _window->clear();
-        _console_window->clear();
+        //_console_window->clear();
         _window->draw(BoardSprite);
         FillBoardWithPieces(Board, PiecesTextures);
         DisplayAvalPlaces(AvalPlaces);
-        PrintText();   
+        //PrintText();   
+        PositionsNames();
         _window->display();
-        _console_window->display();
+        //_console_window->display();
     }
 }

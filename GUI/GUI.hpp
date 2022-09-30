@@ -51,6 +51,8 @@ public:
      */
     std::array<sf::Texture, 12> initTextures();
 
+    void PositionsNames();
+
     void PrintText();
 
     /**
