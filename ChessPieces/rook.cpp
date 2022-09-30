@@ -19,41 +19,58 @@ bool rook::checkNullRange(Ichess_pieces *first, Ichess_pieces *end)
 
 bool rook::swapKing(Board_t &Board, const int posRook, const int posKing)
 {
-    static int count = 0;
-    static bool Swap[2] = {false, false};
+    static int countWhite = 0;
+    static int countBlack = 0;
+    static bool Swap[2][2] = {{false, false}, {false, false}};
 
+    int color = Board[posKing]->getColor();
+
+    std::cout << Swap[0][0] << Swap[0][1] << Swap[1][0] << Swap[1][1] << std::endl; 
+    
     switch (posRook)
     {
     case 63:
-        if (checkNullRange(Board[60].get(), Board[62].get()) && (!Swap[1] || !Swap[0]))
+        if (checkNullRange(Board[60].get(), Board[62].get()) && (!Swap[color][1] || !Swap[color][0]))
         {
             std::swap(Board[posKing], Board[61]);
             std::swap(Board[posRook], Board[60]);
-            Swap[count++] = true;
+            if (color)
+                Swap[color][countWhite++] = true;
+            else
+                Swap[color][countBlack++] = true;
             break;
         }
     case 56:
-        if (checkNullRange(Board[57].get(), Board[58].get()) && (!Swap[1] || !Swap[0]))
+        if (checkNullRange(Board[57].get(), Board[58].get()) && (!Swap[color][1] || !Swap[color][0]))
         {
             std::swap(Board[posKing], Board[57]);
             std::swap(Board[posRook], Board[58]);
-            Swap[count++] = true;
+            if (color)
+                Swap[color][countWhite++] = true;
+            else
+                Swap[color][countBlack++] = true;
             break;
         }
     case 7:
-        if (checkNullRange(Board[4].get(), Board[6].get()) && (!Swap[1] || !Swap[0]))
+        if (checkNullRange(Board[4].get(), Board[6].get()) && (!Swap[color][1] || !Swap[color][0]))
         {
             std::swap(Board[posKing], Board[5]);
             std::swap(Board[posRook], Board[4]);
-            Swap[count++] = true;
+            if (color)
+                Swap[color][countWhite++] = true;
+            else
+                Swap[color][countBlack++] = true;
             break;
         }
     case 0:
-        if (checkNullRange(Board[1].get(), Board[2].get()) && (!Swap[1] || !Swap[0]))
+        if (checkNullRange(Board[1].get(), Board[2].get()) && (!Swap[color][1] || !Swap[color][0]))
         {
             std::swap(Board[posKing], Board[1]);
             std::swap(Board[posRook], Board[2]);
-            Swap[count++] = true;
+            if (color)
+                Swap[color][countWhite++] = true;
+            else
+                Swap[color][countBlack++] = true;
             break;
         }
     default:
@@ -123,7 +140,6 @@ std::shared_ptr<Ichess_pieces> rook::copy()
 {
     return std::make_shared<rook>(Color);
 }
-
 
 bool rook::getColor() const
 {

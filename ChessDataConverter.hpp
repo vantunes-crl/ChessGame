@@ -16,8 +16,6 @@ class ChessDataConverter
             return std::make_pair(Move.first - 'a', Move.second);
         }
 
-        
-
         std::array<int, 64> MatrixToEncode(const BoardMatrix &Board);
 
         BoardMatrix EncodeToMatrix(const std::array<int, 64> &Board);
