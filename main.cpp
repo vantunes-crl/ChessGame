@@ -10,6 +10,8 @@
 #include "BackTrackAlgorithm/BackTrack.hpp"
 #include "GUI/GUI.hpp"
 #include "ChessDataConverter.hpp"
+#include <thread>
+
 
 int main()
 {
@@ -26,21 +28,29 @@ int main()
         std::make_shared<rook>(1), std::make_shared<horse>(1),std::make_shared<bishop>(1),std::make_shared<king>(1),nullptr,nullptr,std::make_shared<horse>(1),std::make_shared<rook>(1),
     };
     
-    // Board.printTable();    
+  // Board.printTable();    
 
   //  BackTrack backTrack;
 
-    
-    //GUI gui(825,825);
+  //GUI gui(825, 825);
 
-    //gui.start(Board);
+  //std::thread first(&GUI::start, gui, std::ref(board));
 
-  // ChessDataConverter<Board<std::shared_ptr<Ichess_pieces>>> test;
+  //std::thread second(&cont);
+  
+  //second.join();
+
+
+  ChessDataConverter<Board<std::shared_ptr<Ichess_pieces>>> test;
+
+  auto vec = test.parseMovesFile("GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn");
+  test.parseMoves(vec[0]);
 
   // auto a = test.ConvertInput(std::make_pair(7,7));
 
   // std::cout << a.first << a.second << std::endl;
 
+    //first.join();
 
 }
 

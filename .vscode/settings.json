@@ -49,6 +49,9 @@
         "memory_resource": "cpp",
         "numeric": "cpp",
         "random": "cpp",
-        "cstring": "cpp"
+        "cstring": "cpp",
+        "chrono": "cpp",
+        "ratio": "cpp",
+        "thread": "cpp"
     }
 }
