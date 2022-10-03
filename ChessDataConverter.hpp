@@ -9,13 +9,6 @@ struct Plays
     int numberOfPlay;
     std::string WhitePlay;
     std::string BlackPlay;
-
-    // Plays()
-    // {
-    //     this->BlackPlay = nullptr;
-    //     this->WhitePlay = nullptr;
-    //     numberOfPlay = 0;
-    // }
 };
 
 
@@ -47,27 +40,24 @@ class ChessDataConverter
             while (std::getline(file, buff))
             {
                 if (buff.c_str()[0] == '1')
-                {
-                    vec.push_back(buff);
-                }    
+                    vec.push_back(buff);   
             }
 
             return vec;
         }
 
-        void parseMoves(std::string moves)
+        std::vector<Plays> parseMoves(std::string moves)
         {
             std::string gameEndStatus = moves.substr(moves.find('{'), moves.find('}'));
             moves.erase(moves.find('{'), moves.find('}'));
 
             std::vector<Plays> plays;
             Plays temp;
-            int count = 0;
 
+            int count = 0;
             auto splitedStr = std::strtok(const_cast<char *>(moves.c_str()), " ");
             while (splitedStr != NULL)
             {  
-                //std::cout << splitedStr << std::endl;
                 switch (count)
                 {
                 case 0:
@@ -78,28 +68,16 @@ class ChessDataConverter
                     break;
                 case 2:
                     temp.BlackPlay = splitedStr;
-                    break;
-                case 3:
                     plays.push_back(temp);
                     break;
                 }
                 splitedStr = std::strtok(NULL, " ");
-                if (count == 3)
+                if (count == 2)
                     count = -1;
-                count++;
+                ++count;
             }
 
-            std::cout << plays[1].numberOfPlay << std::endl;
-            std::cout << plays[1].WhitePlay << std::endl;
-            std::cout << plays[1].BlackPlay << std::endl;
-
+            return plays;
         }
-
-        
-
-    private:
-
-
-
 };
 

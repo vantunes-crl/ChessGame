@@ -11,6 +11,7 @@
 #include "GUI/GUI.hpp"
 #include "ChessDataConverter.hpp"
 #include <thread>
+#include "Bot/AutoPlay.hpp"
 
 
 int main()
@@ -41,16 +42,20 @@ int main()
   //second.join();
 
 
-  ChessDataConverter<Board<std::shared_ptr<Ichess_pieces>>> test;
+  // ChessDataConverter<Board<std::shared_ptr<Ichess_pieces>>> test;
 
-  auto vec = test.parseMovesFile("GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn");
-  test.parseMoves(vec[0]);
+  // auto vec = test.parseMovesFile("GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn");
+  // auto plays = test.parseMoves(vec[0]);
 
   // auto a = test.ConvertInput(std::make_pair(7,7));
 
   // std::cout << a.first << a.second << std::endl;
 
     //first.join();
+
+    AutoPlay<Board<std::shared_ptr<Ichess_pieces>>> autoplay;
+
+    autoplay.startPlay("GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn", board);
 
 }
 
