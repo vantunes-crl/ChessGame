@@ -13,7 +13,6 @@
 #include <thread>
 #include "Bot/AutoPlay.hpp"
 
-
 int main()
 {
     Board<std::shared_ptr<Ichess_pieces>> board;
@@ -34,14 +33,14 @@ int main()
   //  BackTrack backTrack;
 
   GUI gui(825, 825);
-  AutoPlay<Board<std::shared_ptr<Ichess_pieces>>> autoplay;
+  //AutoPlay<Board<std::shared_ptr<Ichess_pieces>>> autoplay;
 
   std::thread first(&GUI::start, gui, std::ref(board));
 
-  std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::startPlay, autoplay,"GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn", std::ref(board));
+  //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::startPlay, autoplay,"GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn", std::ref(board));
   
   first.join();
-  second.join();
+  //second.join();
 
 
   // ChessDataConverter<Board<std::shared_ptr<Ichess_pieces>>> test;
