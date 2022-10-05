@@ -21,15 +21,14 @@ void BackTrack::BackTrackAvalPlacesPrint(const int &PiecesPos, Ichess_pieces::Bo
 {
     Ichess_pieces::Board_t CpyBoard;
 
-   
     for (int i = 0; i < 64; ++i)
     {
         CpyBoard = Board;
         if (CpyBoard[PiecesPos]->play(CpyBoard, i) == 0)
             std::cout << "Can move to int: " << i << std::endl;
-        
     }
 }
+
 
 void BackTrack::AvalMoves(int steps, EDGES Edge, int pos, Ichess_pieces::Board_t &Board, std::list<int> &moves)
 {

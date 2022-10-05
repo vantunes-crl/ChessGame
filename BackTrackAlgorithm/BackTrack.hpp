@@ -2,27 +2,10 @@
 
 #include "../ChessPieces/Ichess_pieces.hpp"
 
-enum DIAGONAL_CHECK_CASE {
-    DIAGONAL_TOP_LEFT,
-    DIAGONAL_TOP_RIGHT,
-    DIAGONAL_BOTTOM_LEFT,
-    DIAGONAL_BOTTOM_RIGHT,
-};
-
-enum VERTICAL_CHECK_CASE {
-    VERTICAL_TOP,
-    VERTICAL_BOTTOM,
-};
-
-enum HORIZONTAL_CHECK_CASE {
-    HORIZONTAL_LEFT,
-    HORIZONTAL_RIGHT
-};
-
 enum EDGES
- {
+{
     TOP_EDGE, BOTTON_EDGE, LEFT_EDGE, RIGHT_EDGE
- };
+};
 
 
 /**
@@ -51,5 +34,4 @@ class BackTrack
         void AvalMoves(int steps, EDGES Edge, int pos, Ichess_pieces::Board_t &Board, std::list<int> &moves);
 
         bool checkOpositeEdges(const int &pos, const int &ToMovePos);
-
 };

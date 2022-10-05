@@ -39,6 +39,9 @@ enum ERRORS {
     LIMIT_MOVES,
 };
 
+//0 white 1 black
+static int G_ROUND = 0; 
+
 /**
  * @brief Interface to build all Pieces on the Chess Game.
  * 
@@ -82,6 +85,7 @@ class Ichess_pieces
          * @return std::shared_ptr<Ichess_pieces> 
          */
         virtual std::shared_ptr<Ichess_pieces> copy() = 0;
+
         virtual ~Ichess_pieces() {};
 };
 

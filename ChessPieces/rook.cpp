@@ -24,8 +24,6 @@ bool rook::swapKing(Board_t &Board, const int posRook, const int posKing)
     static bool Swap[2][2] = {{false, false}, {false, false}};
 
     int color = Board[posKing]->getColor();
-
-    std::cout << Swap[0][0] << Swap[0][1] << Swap[1][0] << Swap[1][1] << std::endl; 
     
     switch (posRook)
     {
