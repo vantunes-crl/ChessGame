@@ -33,7 +33,6 @@ class Board
 
             for (int i = 0; i < 64; ++i )
             {
-                
                 if (i % 8 == 0)
                     std::cout << std::left << "\n--------------------------------------------------------------------------\n";
                 std::cout << std::left << std::setw(20) << std::setfill(' ');
@@ -56,13 +55,17 @@ class Board
             return first_play[color];
         }
 
+        bool &swapRookKing(int color)
+        {
+            return Swap[color];
+        }
 
         T &operator[](const int i) { return PlayBoard[i]; }
 
     private:
         std::array<T, 64> PlayBoard;
         bool first_play[2] = {true, true};
-
+        bool Swap[2] = {true, true};
 };
 
 

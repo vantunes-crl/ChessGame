@@ -1,6 +1,7 @@
 #ifndef ROOK_HPP
 #define ROOK_HPP
 #pragma once
+#include "king.hpp"
 #include "Ichess_pieces.hpp"
 #include "../BackTrackAlgorithm/BackTrack.hpp"
 /**
@@ -23,6 +24,7 @@ class rook : public Ichess_pieces
          * @param b  Chess Piece Color False/Black True/White
          */
         rook(bool b);
+
         std::shared_ptr<Ichess_pieces> copy() override;
     private:
         bool Color;

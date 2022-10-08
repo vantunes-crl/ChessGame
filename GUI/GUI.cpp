@@ -97,6 +97,7 @@ void GUI::selectPiece(const int pos, Ichess_pieces::Board_t &Board, std::list<Po
         {   
             // if (Color != Board[PiecesPos]->getColor())
             // {
+            if (pos != PiecesPos)
                 Board[PiecesPos]->play(Board, pos);
             //     if (Board[pos])
             //         Color = Board[pos]->getColor();
@@ -136,7 +137,7 @@ void GUI::PrintText()
 {
     sf::Text text;
     sf::Font font;
-    font.loadFromFile("/home/vantunes/ChessGame/Roboto-Black.ttf");
+    font.loadFromFile("/home/vantunes/ChessGame/GUI/Roboto-Black.ttf");
     text.setFont(font); 
     text.setString(this->str);
     text.setFillColor(sf::Color::White);
@@ -150,7 +151,7 @@ void GUI::PositionsNames()
     sf::Font font;
     sf::Text text2;
 
-    font.loadFromFile("/home/vantunes/ChessGame/Roboto-Black.ttf");
+    font.loadFromFile("/home/vantunes/ChessGame/GUI/Roboto-Black.ttf");
     text.setFont(font); 
     text.setString("\t\t a\t\t\t\t  b\t\t\t\t  c\t\t\t\t  d\t\t\t\t  e\t\t\t\t  f\t\t\t\t  g\t\t\t\t  h");
     text.setFillColor(sf::Color::White);
