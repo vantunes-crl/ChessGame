@@ -1,6 +1,7 @@
 #include "BackTrack.hpp"
+#include "../ChessPieces/rook.hpp"
 
-std::list<int> BackTrack::BackTrackAvalPlacesList(const int &PiecesPos, Ichess_pieces::Board_t &Board)
+std::list<int> BackTrack::BackTrackAvalPlacesList(const int &PiecesPos, Ichess_pieces::Board_t Board)
 {
     std::list<int> list;
     Ichess_pieces::Board_t CpyBoard;
@@ -30,7 +31,7 @@ void BackTrack::BackTrackAvalPlacesPrint(const int &PiecesPos, Ichess_pieces::Bo
 }
 
 
-void BackTrack::AvalMoves(int steps, EDGES Edge, int pos, Ichess_pieces::Board_t &Board, std::list<int> &moves)
+void BackTrack::AvalMoves(int steps, EDGES Edge, int pos, Ichess_pieces::Board_t Board, std::list<int> &moves)
 {
     std::array<std::array<int, 8>, 4> All_Edges = {{
         {0,1,2,3,4,5,6,7},

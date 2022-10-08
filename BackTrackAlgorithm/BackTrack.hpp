@@ -22,7 +22,7 @@ class BackTrack
          * @param Board Board where the piece is.
          * @return std::list<int> with all int X/Y where this piece can move.
          */
-        std::list<int> BackTrackAvalPlacesList(const int &PiecesPos, Ichess_pieces::Board_t &Board);
+        std::list<int> BackTrackAvalPlacesList(const int &PiecesPos, Ichess_pieces::Board_t Board);
          /**
          * @brief search for all possible moves of the piece on the table and print.
          * 
@@ -31,7 +31,7 @@ class BackTrack
          */
         void BackTrackAvalPlacesPrint(const int &Piecesint, Ichess_pieces::Board_t &Board);
 
-        void AvalMoves(int steps, EDGES Edge, int pos, Ichess_pieces::Board_t &Board, std::list<int> &moves);
+        void AvalMoves(int steps, EDGES Edge, int pos, Ichess_pieces::Board_t Board, std::list<int> &moves);
 
         bool checkOpositeEdges(const int &pos, const int &ToMovePos);
 };
