@@ -16,7 +16,7 @@
 [PlyCount "108"]
 [Result "1/2-1/2"]
 
-1. e4 g6 2. h4 d6 3. h5 gxh5 4. Qxh5 Nf6 5. Qe2 Nc6 6. c3 e5 7. Nf3 Bg4 8. d3 d5 9. Nbd2 Qd6 10. exd5 Qxd5 11. Ne4 Be7 12. Nxf6+ Bxf6 13. Qe4 Bxf3 14. gxf3 O-O-O 15. Qf5+ Qe6 16. Bh3 Qxf5 17. Bxf5+ Kb8 18. Be3 Ne7 19. Be4 Bg7 20. O-O-O f5 21. Bg5 fxe4 22. Bxe7 Rxd3 23. Rxd3 exd3 24. Kd2 Kc8 25. Kxd3 Kd7 26. Bc5 Ke6 27. Ke4 b6 28. Be3 h5 29. Bg5 c6 30. Rg1 Bf6 31. f4 exf4 32. Bxf4 h4 33. Rg6 Rh5 34. f3 h3 35. Bh2 Rg5 36. Rxg5 Bxg5 37. f4 Bh4 38. b3 Be1 39. c4 Kf6 40. f5 Bc3 41. Bb8 a6 42. Bc7 b5 43. cxb5 cxb5 44. a4 bxa4 45. bxa4 Kg5 46. Kf3 Kxf5 47. Bb6 Be5 48. Bd8 h2 49. Kg2 Ke4 50. Kh1 Kd5 51. Be7 Kc4 52. Bf8 a5 53. Bh6 Kb3 54. Be3 Kxa4 {Game drawn by mutual agreement} 1/2-1/2
+1. e4 c5 2. Nc3 d6 3. Qf3 e6 4. Nh3 Nf6 5. Nf4 Be7 6. Qg3 O-O 7. Bb5 a6 8. Bc4 b5 9. Bb3 Nc6 10. Rf1 Nd4 11. d3 Nxb3 12. axb3 Bb7 13. Ke2 b4 14. Nd1 a5 15. Ne3 Bc6 16. Nc4 a4 17. Rd1 axb3 18. Rxa8 Qxa8 19. cxb3 d5 20. exd5 exd5 21. Ne5 Bd6 22. Nxc6 Qxc6 23. Qg5 h6 24. Qf5 Qc7 25. Nxd5 Nxd5 26. Qxd5 Bxh2 27. g3 Bxg3 28. fxg3 Qxg3 29. Qf3 Re8 30. Be3 Qh2 31. Kf1 Re6 32. Bf4 Qh4 33. Ra1 Rf6 34. Ra8 Kh7 35. Qe4 g6 36. Kg1 Rxf4 37. Qe2 Qg3 38. Qg2 Qe1 39. Kh2 Rh4 40. Qh3 Rxh3 41. Kxh3 Qf2 42. Re8 Qxb2 43. Rc8 Qc3 44. Kg2 Qxd3 45. Rxc5 Qxb3 46. Rc7 Qe6 47. Kf3 b3 48. Ra7 b2 49. Rb7 Qf5 50. Ke3 b1=Q 51. Rxb1 Qxb1 52. Kf3 Qb4 0-1 {White forfeits on time}
 
 [Event "FICS rated standard game"]
 [Site "FICS freechess.org"]

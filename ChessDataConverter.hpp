@@ -16,38 +16,34 @@ template <class BoardMatrix>
 class ChessDataConverter
 {
     public:
-        std::pair<char, int> ConvertInput(std::pair<int, int> &Move)         
+        std::pair<char, int> matrixToEncode(std::pair<int, int> &Move)         
         {
             return std::make_pair(Move.first + 'a', abs(Move.second - 8));
         }
 
-        std::pair<int, int> ConvertInput(std::pair<char, int> &Move)         
+        std::pair<int, int> encodeToMatrix(std::pair<char, int> &Move)         
         {
             return std::make_pair(Move.first - 'a', abs(Move.second - 8));
         }
 
-        int parseMove(std::string &Move)
+        int encodeToPosNumber(std::string &Move)
         {
-            Move.erase(std::remove(Move.begin(), Move.end(), 'x'), Move.end());
-
+            std::pair<int, int> coverted;
+             std::pair<char, int> temp;
             if (Move.size() == 2)
             {
-                auto pair = std::make_pair(Move[0], Move[1] - 48);
-                auto coverted = ConvertInput(pair);
-                auto final = ConvertInput(coverted.second, coverted.first);
-                return final;
+                temp = std::make_pair(Move[0], Move[1] - 48);
+                coverted = encodeToMatrix(temp);
             }
             else
             {
-                auto pair = std::make_pair(Move[1], Move[2] - 48);
-                auto coverted = ConvertInput(pair);
-                auto final = ConvertInput(coverted.second, coverted.first);
-                return final;
+                temp = std::make_pair(Move[1], Move[2] - 48);
+                coverted = encodeToMatrix(temp);
             }
-            return 0;
+            return matrixToPosNumber(coverted.second, coverted.first);
         }
 
-        int ConvertInput(int x, int y)
+        int matrixToPosNumber(int x, int y)
         {
             int count = 0;
             int Matrix[8][8];
@@ -84,6 +80,7 @@ class ChessDataConverter
         {
             std::string gameEndStatus = moves.substr(moves.find('{'), moves.find('}'));
             moves.erase(moves.find('{'), moves.find('}'));
+            moves.erase(std::remove(moves.begin(), moves.end(), 'x'), moves.end());
 
             std::vector<Plays> plays;
             Plays temp;
@@ -99,7 +96,6 @@ class ChessDataConverter
                     break;
                 case 1:
                     temp.WhitePlay = splitedStr;
-                    std::cout << splitedStr << std::endl;
                     break;
                 case 2:
                     temp.BlackPlay = splitedStr;

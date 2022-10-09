@@ -15,52 +15,42 @@ class AutoPlay
         void startPlay(std::string movesfile, Board &board)
         {
             auto vec = converter.parseMovesFile(movesfile);
-            auto plays = converter.parseMoves(vec[1]);
+            auto plays = converter.parseMoves(vec[0]);
 
             for (auto it = plays.begin(); it != plays.end(); ++it)
             {
                 sleep(1);
-                auto parsedMove = 0;
+                int posToMove = converter.encodeToPosNumber(it->WhitePlay);
                 if (it->WhitePlay[0] == 'O')
-                {   
-                    std::string s = "K";
-                    auto king = findType(s);
-                    for (int i = 0; i < 64; ++i)
-                    {
-                        if (board[i] && board[i]->type() == king)
-                            parsedMove = i;
-                    }
-                }
-                else
-                    parsedMove = converter.parseMove(it->WhitePlay);
+                    posToMove = 60;
                 auto piecePos = ConvertPlay(it->WhitePlay, board);
-                if (!(board[piecePos]->play(board, parsedMove)))
+                std::cout << "WhitePlay" << "Play: " << it->WhitePlay << std::endl;
+
+                if (!(board[piecePos]->play(board, posToMove)))
                     G_ROUND = 1;
                 else
-                    std::cout << "G_Round " << G_ROUND << " Piece Pos " << piecePos << " ParsedMove " << parsedMove << " Normal Move " << it->WhitePlay << std::endl; 
-                sleep(1);
-                if (it->BlackPlay[0] == 'O')
-                {   
-                    std::string s = "K";
-                    auto king = findType(s);
-                    for (int i = 0; i < 64; ++i)
-                    {
-                        if (board[i] && board[i]->type() == king)
-                            parsedMove = i;
-                    }
+                {
+                    std::cout << "G_Round " << G_ROUND << " Piece Pos " << piecePos << " MoveToPos " << posToMove << " Normal Move " << it->WhitePlay << std::endl;
+                    sleep(100);
                 }
-                else
-                    parsedMove = converter.parseMove(it->BlackPlay);
+                sleep(1);
+                posToMove = converter.encodeToPosNumber(it->BlackPlay);
+                if (it->BlackPlay[0] == 'O')
+                    posToMove = 4;
                 piecePos = ConvertPlay(it->BlackPlay, board);
-                if (!(board[piecePos]->play(board, parsedMove)))
+                std::cout << "BlackPlay" << "Play: " << it->BlackPlay << std::endl;
+                if (!(board[piecePos]->play(board, posToMove)))
                     G_ROUND = 0;
                 else
-                    std::cout << "G_Round " << G_ROUND << " Piece Pos " << piecePos << " ParsedMove " << parsedMove << " Normal Move " << it->BlackPlay << std::endl; 
+                {
+                    std::cout << "G_Round " << G_ROUND << " Piece Pos " << piecePos << " MoveToPos " << posToMove << " Normal Move " << it->BlackPlay << std::endl;
+                    sleep(100);
+                }
             }
 
         }
 
-        int predictPieceToMove(Board &board, int finalPos, PIECES Piece)
+        int predictPieceToMove(Board board, int toMovePos, PIECES Piece)
         {
             Board cpyBoard = board;
             for (int i = 0; i < 64; ++i)
@@ -68,7 +58,7 @@ class AutoPlay
                 cpyBoard = board;
                 if (cpyBoard[i] && cpyBoard[i]->type() == Piece)
                 {
-                    if (!cpyBoard[i]->play(cpyBoard, finalPos))
+                    if (!cpyBoard[i]->play(cpyBoard, toMovePos))
                         return i;
                     else
                         continue;
@@ -77,9 +67,9 @@ class AutoPlay
             return 0;
         }
 
-        PIECES findType(std::string &move)
+        PIECES findType(char type)
         {
-            switch (move[0])
+            switch (type)
             {
             case 'N':
                 return G_ROUND ? BLACK_HORSE : WHITE_HORSE;
@@ -97,28 +87,26 @@ class AutoPlay
             }
         }
 
+        int findKingPos(Board &board)
+        {
+            auto king = findType('K');
+            for (int i = 0; i < 64; ++i)
+            {
+                if (board[i] && board[i]->type() == king)
+                    return i;
+            }
+            return 0;
+        }
+
         int ConvertPlay(std::string &move, Board &board)
         {
-            auto type = findType(move);
-            int final = 0;
+            auto type = findType(move[0]);
+            int toMovePos = 0;
             if (move[0] == 'O')
-            {   
-                std::string s = "K";
-                auto king = findType(s);
-                for (int i = 0; i < 64; ++i)
-                {
-                    if (board[i] && board[i]->type() == king)
-                        final = i;
-                }
-            }
+                toMovePos = findKingPos(board);
             else
-                final = converter.parseMove(move);
-
-            std::cout << final << "final" << std::endl;
-            std::cout << type << "type" << std::endl;
-            auto test = predictPieceToMove(board, final, type);
-            std::cout << "test " << test << std::endl;
-            return test;
+                toMovePos = converter.encodeToPosNumber(move);
+            return predictPieceToMove(board, toMovePos, type);
         }
  
 };
