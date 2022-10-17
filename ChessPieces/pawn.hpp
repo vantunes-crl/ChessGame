@@ -27,9 +27,16 @@ class pawn : public Ichess_pieces
         pawn(bool b);
 
         std::shared_ptr<Ichess_pieces> copy() override;
+
+        void ResetFirstPlay()
+        {
+            this->first_play = true;
+        }
+
     private:
         bool Color;
         BackTrack backTrack;
+        bool first_play = true;
         bool checkEnd(const int ToMovePos);
         void move(std::shared_ptr<Ichess_pieces> &ToMovePos, std::shared_ptr<Ichess_pieces> &Pos, bool end);
 };

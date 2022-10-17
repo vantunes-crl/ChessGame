@@ -48,6 +48,8 @@ class AutoPlay
                 }
             }
 
+            std::cout << "Finish!\n";
+
         }
 
         int predictPieceToMove(Board board, int toMovePos, PIECES Piece)
@@ -102,6 +104,7 @@ class AutoPlay
         {
             auto type = findType(move[0]);
             int toMovePos = 0;
+
             if (move[0] == 'O')
                 toMovePos = findKingPos(board);
             else

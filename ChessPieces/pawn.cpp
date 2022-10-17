@@ -44,46 +44,46 @@ int pawn::play(Board_t &Board, int ToMovePos)
     //white 1 black 0
     if (this->Color)
     {
-        if ((Board.getFirstPlay(this->Color) && pos - ToMovePos == 16) ||  //first play of table, front move
-            (Board.getFirstPlay(this->Color) && pos - ToMovePos == 8 && !Board[ToMovePos])) //normal front move
+        if ((this->first_play && pos - ToMovePos == 16 && !Board[ToMovePos] && !Board[pos - 8]) ||  //first play of table, front move
+            (this->first_play && pos - ToMovePos == 8 && !Board[ToMovePos])) //normal front move
         {
-            Board.getFirstPlay(this->Color) = false;
+            this->first_play = false;
             move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
             return NO_ERROR;
         }
         else if ((pos - ToMovePos == 9 && Board[ToMovePos] ) ||  //kill enemy right
             (pos - ToMovePos == 7 && Board[ToMovePos] )) //kill enemy left
         {
-            Board.getFirstPlay(this->Color) = false;
+            this->first_play = false;
             move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
             return NO_ERROR;
         }
         else if (pos - ToMovePos == 8 && !Board[ToMovePos]) //normal move
         {
-            Board.getFirstPlay(this->Color) = false;
+            this->first_play = false;
             move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
             return NO_ERROR;
         }
     }
     else
     {
-        if ((Board.getFirstPlay(this->Color) && pos - ToMovePos == -16) ||  //first play of table, front move
-            (Board.getFirstPlay(this->Color) && pos - ToMovePos == -8 && !Board[ToMovePos])) //normal front move
+        if ((this->first_play && pos - ToMovePos == -16 && !Board[ToMovePos] && !Board[pos + 8]) ||  //first play of table, front move
+            (this->first_play && pos - ToMovePos == -8 && !Board[ToMovePos])) //normal front move
         {
-            Board.getFirstPlay(this->Color) = false;
+            this->first_play = false;
             move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
             return NO_ERROR;
         }
         else if ((pos - ToMovePos == -9 && Board[ToMovePos] )  ||  //kill enemy left
             (pos - ToMovePos == -7 && Board[ToMovePos] )) //kill enemy right
         {
-            Board.getFirstPlay(this->Color) = false;
+            this->first_play = false;
             move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
             return NO_ERROR;
         }
         else if (pos - ToMovePos == -8 && !Board[ToMovePos]) //normal move
         {
-            Board.getFirstPlay(this->Color) = false;
+            this->first_play = false;
             move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
             return NO_ERROR;
         }

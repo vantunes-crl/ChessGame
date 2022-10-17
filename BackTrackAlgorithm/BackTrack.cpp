@@ -4,14 +4,14 @@
 std::list<int> BackTrack::BackTrackAvalPlacesList(const int &PiecesPos, Ichess_pieces::Board_t Board)
 {
     std::list<int> list;
-    Ichess_pieces::Board_t CpyBoard;
+    //Ichess_pieces::Board_t CpyBoard;
 
     if (!Board[PiecesPos])
         return list;
 
     for (int i = 0; i < 64; ++i)
     {
-        CpyBoard = Board;
+        Ichess_pieces::Board_t CpyBoard(Board);
         if (CpyBoard[PiecesPos]->play(CpyBoard, i) == 0)
             list.push_back(i);
     }

@@ -29,7 +29,11 @@ class ChessDataConverter
         int encodeToPosNumber(std::string &Move)
         {
             std::pair<int, int> coverted;
-             std::pair<char, int> temp;
+            std::pair<char, int> temp;
+
+            if (Move[2] == '=')
+                Move.erase(Move.begin() + 2, Move.end());
+            
             if (Move.size() == 2)
             {
                 temp = std::make_pair(Move[0], Move[1] - 48);
