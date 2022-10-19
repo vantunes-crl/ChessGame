@@ -44,15 +44,26 @@ class Board
             std::cout << std::left << "\n--------------------------------------------------------------------------\n";
         }
 
+        Board() = default;
+
+        Board(Board &Board)
+        {
+            for (auto i = 0; i < 64; ++i)
+            {
+                if (Board[i])
+                {
+                    PlayBoard[i] = Board[i]->copy();
+                }
+                else
+                    PlayBoard[i] = nullptr;
+            }
+        }
+
         Board operator=(const std::array<T, 64> &boardArray)
         {
             PlayBoard = boardArray;
-            return *this;
-        }
 
-        bool &getFirstPlay(int color)
-        {
-            return first_play[color];
+            return *this;
         }
 
         bool &swapRookKing(int color)
@@ -64,7 +75,6 @@ class Board
 
     private:
         std::array<T, 64> PlayBoard;
-        bool first_play[2] = {true, true};
         bool Swap[2] = {true, true};
 };
 

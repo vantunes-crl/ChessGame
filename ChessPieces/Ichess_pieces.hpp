@@ -52,15 +52,15 @@ class Ichess_pieces
          * @brief Move a piece on the Board.
          * 
          * @param Board Board where the pieces are.
-         * @param ToMovePos int X,Y to the next move.
-         * @return int > 0 if an error occurs, else return 0
+         * @param ToMovePos int pos to the next move based in a 64 pos board.
+         * @return int > 0 if an error occurs, else return 0.
          */
         virtual int play(Board_t &Board, int ToMovePos) = 0;
         /**
          * @brief Get the int of the piece on the Board.
          * 
          * @param Board Board where the pieces are.
-         * @return int X,Y in the Board.
+         * @return int pos to the next move based in a 64 pos board.
          */
         virtual int getPos(Board_t &Board) const = 0;
         /**

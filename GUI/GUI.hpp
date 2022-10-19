@@ -21,9 +21,7 @@ class GUI
 {
 private:
     std::shared_ptr<sf::RenderWindow> _window;
-    std::shared_ptr<sf::RenderWindow> _console_window;
     BackTrack backTrack;
-    std::string str;
 public:
     void DisplayAvalPlaces(std::list<Pos> &List);
 
@@ -52,8 +50,6 @@ public:
     std::array<sf::Texture, 12> initTextures();
 
     void PositionsNames();
-
-    void PrintText();
 
     /**
      * @brief Construct a new GUI object.

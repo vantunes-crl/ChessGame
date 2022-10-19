@@ -26,6 +26,16 @@ class horse : public Ichess_pieces
     private:
         bool Color;
         BackTrack backTrack;
+
+        /**
+         * @brief Check Distance between Ys to handle errors.
+         * 
+         * @param pos Pos of the piece.
+         * @param ToMovePos Pos to move.
+         * @return true if the distance is less than 3.
+         * @return false if the distance is bigger than 3.
+         */
+        bool checkDistance(int pos, int ToMovePos);
 };
 
 #endif

@@ -4,6 +4,16 @@ horse::horse(bool b)
 {
     Color = b;
 }
+
+bool horse::checkDistance(int pos, int ToMovePos)
+{
+    int y1 = pos % 8;
+    int y2 = ToMovePos % 8;
+
+    if (abs(y1 - y2) > 3)
+        return true;
+    return false;
+}
     
 int horse::play(Board_t &Board, int ToMovePos)
 {
@@ -17,11 +27,13 @@ int horse::play(Board_t &Board, int ToMovePos)
         return CANT_MOVE;
     if (!backTrack.checkOpositeEdges(pos, ToMovePos))
         return CANT_MOVE;
+    if (checkDistance(pos, ToMovePos))
+        return CANT_MOVE;
 
-    const int AvalPos[4] = {17, -17, 15, -15};
+    const int AvalPos[8] = {17, -17, 15, -15, 6, -6, 10, -10};
+
     if (std::find(std::begin(AvalPos), std::end(AvalPos), ToMovePos - pos) != std::end(AvalPos))
     {
-        Board.getFirstPlay(this->Color) = false;
         Board[ToMovePos] = Board[pos];
         Board[pos] = nullptr;
         return NO_ERROR;
