@@ -27,21 +27,23 @@ int main()
         std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1),std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1),std::make_shared<pawn>(1),
         std::make_shared<rook>(1), std::make_shared<horse>(1),std::make_shared<bishop>(1),std::make_shared<queen>(1),std::make_shared<king>(1),std::make_shared<bishop>(1),std::make_shared<horse>(1),std::make_shared<rook>(1),
     };
-    
-  // Board.printTable();    
 
-  //  BackTrack backTrack;
+  // BackTrack backTrack;
+
+  // auto test = backTrack.BackTrackAvalPlacesList(50, board);
+
+  // for (auto t : test)
+  //   std::cout << t << std::endl;
 
   GUI gui(825, 825);
-  AutoPlay<Board<std::shared_ptr<Ichess_pieces>>> autoplay;
+  // //AutoPlay<Board<std::shared_ptr<Ichess_pieces>>> autoplay;
 
   std::thread first(&GUI::start, gui, std::ref(board));
 
-  std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::startPlay, autoplay,"GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn", std::ref(board));
+  // //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::startPlay, autoplay,"GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn", std::ref(board));
   
   first.join();
-  second.join();
-
+  //second.join();
 
   // ChessDataConverter<Board<std::shared_ptr<Ichess_pieces>>> test;
 
@@ -53,8 +55,6 @@ int main()
   // std::cout << a.first << a.second << std::endl;
 
     //first.join();
-
-    
 
 }
 

@@ -29,7 +29,7 @@ class rook : public Ichess_pieces
     private:
         bool Color;
         BackTrack backTrack;
-        bool  swapKing(Board_t &Board, const int posRook, const int posKing);
+        bool swapKing(Board_t &Board, const int posRook, const int posKing);
         bool checkNullRange(Ichess_pieces *first, Ichess_pieces *end);
 
 };
