@@ -4,7 +4,6 @@
 std::list<int> BackTrack::BackTrackAvalPlacesList(const int &PiecesPos, Ichess_pieces::Board_t Board)
 {
     std::list<int> list;
-    //Ichess_pieces::Board_t CpyBoard;
 
     if (!Board[PiecesPos])
         return list;

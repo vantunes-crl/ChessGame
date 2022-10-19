@@ -1,10 +1,8 @@
 #include "GUI.hpp"
 
 GUI::GUI(int width, int height)
-:str("Game Start\n")
 {
     _window = std::make_shared<sf::RenderWindow>(sf::VideoMode(width, height), "Chess Game");
-   // _console_window = std::make_shared<sf::RenderWindow>(sf::VideoMode(300, 300), "Console");
 }
 
 void GUI::FillBoardWithPieces(Ichess_pieces::Board_t &Board, std::array<sf::Texture, 12> &Textures)
@@ -95,27 +93,8 @@ void GUI::selectPiece(const int pos, Ichess_pieces::Board_t &Board, std::list<Po
     {
         if(Board[PiecesPos])
         {   
-            // if (Color != Board[PiecesPos]->getColor())
-            // {
             if (pos != PiecesPos)
                 Board[PiecesPos]->play(Board, pos);
-            //     if (Board[pos])
-            //         Color = Board[pos]->getColor();
-            // }
-
-
-            //show moves
-            // char p1 = char(PiecesPos % 8 + 48);
-            // char p2 = char(PiecesPos / 8 + 'a');
-            // str.append("Move From:     ");
-            // str.push_back(p2);
-            // str.push_back(p1);
-            // p1 = char(pos % 8 + 48);
-            // p2 = char(pos / 8 + 'a');
-            // str.append("    Move To:     ");
-            // str.push_back(p2);
-            // str.push_back(p1);
-            // str.append("\n");
         }       
         List.clear();
         selected = false;
@@ -131,18 +110,6 @@ void GUI::DisplayAvalPlaces(std::list<Pos> &List)
         rectangle.setPosition(it.x * 100, it.y * 100);
         _window->draw(rectangle);
     }    
-}
-
-void GUI::PrintText()
-{
-    sf::Text text;
-    sf::Font font;
-    font.loadFromFile("/home/vantunes/ChessGame/GUI/fonts/Roboto-Black.ttf");
-    text.setFont(font); 
-    text.setString(this->str);
-    text.setFillColor(sf::Color::White);
-    text.setCharacterSize(20);
-    _console_window->draw(text);
 }
 
 void GUI::PositionsNames()
@@ -200,7 +167,6 @@ void GUI::start(Ichess_pieces::Board_t &Board)
                 // window closed
                 case sf::Event::Closed:
                     _window->close();
-                    _console_window->close();
                     break;
                 
                 case sf::Event::MouseButtonPressed:
@@ -210,13 +176,10 @@ void GUI::start(Ichess_pieces::Board_t &Board)
             }
         }
         _window->clear();
-        //_console_window->clear();
         _window->draw(BoardSprite);
         FillBoardWithPieces(Board, PiecesTextures);
         DisplayAvalPlaces(AvalPlaces);
-        //PrintText();   
         PositionsNames();
         _window->display();
-        //_console_window->display();
     }
 }

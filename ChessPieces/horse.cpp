@@ -5,7 +5,7 @@ horse::horse(bool b)
     Color = b;
 }
 
-bool checkDistance(int pos, int ToMovePos)
+bool horse::checkDistance(int pos, int ToMovePos)
 {
     int y1 = pos % 8;
     int y2 = ToMovePos % 8;

@@ -28,11 +28,6 @@ class pawn : public Ichess_pieces
 
         std::shared_ptr<Ichess_pieces> copy() override;
 
-        void ResetFirstPlay()
-        {
-            this->first_play = true;
-        }
-
     private:
         bool Color;
         BackTrack backTrack;
