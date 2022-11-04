@@ -7,6 +7,7 @@
 #include <iostream>
 #include <list>
 #include <memory>
+#include <fstream>
 
 /**
  * @brief Class that represents the table in the Chess Game.
@@ -69,6 +70,31 @@ class Board
         bool &swapRookKing(int color)
         {
             return Swap[color];
+        }
+
+
+        void saveState(std::string move, std::string color, int playNumber)
+        {
+            std::array<int, 64> encodedBoard;
+            static int count = 0;
+
+            for (int i = 0; i < 64; ++i)
+            {
+                if (PlayBoard[i])
+                    encodedBoard[i] = PlayBoard[i]->type();
+                else
+                    encodedBoard[i] = 0;
+            }
+
+            std::ofstream file("Game.rec", std::ios_base::app);
+
+            for (auto i = 0; i < 64; ++i)
+                file << encodedBoard[i] << " ";
+
+            file << "Play: " << playNumber << " ";
+            file << color << " " << move;
+            file << "\n";
+            file.close();
         }
 
         T &operator[](const int i) { return PlayBoard[i]; }

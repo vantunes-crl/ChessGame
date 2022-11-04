@@ -27,6 +27,25 @@ void pawn::move(std::shared_ptr<Ichess_pieces> &ToMovePos, std::shared_ptr<Iches
     Pos = nullptr;
 }
 
+int pawn::movePieces(Board_t &Board, int ToMovePos, int pos)
+{
+    int signal = 1;
+    if (!this->Color)
+        signal = -1;
+
+    bool firstPlay = ((this->first_play && pos - ToMovePos == (16 * signal) && !Board[ToMovePos] && !Board[pos - (8 * signal)]) || (this->first_play && pos - ToMovePos == (8 * signal) && !Board[ToMovePos]));
+    bool killEnemy = ((pos - ToMovePos == (9 * signal) && Board[ToMovePos] ) || (pos - ToMovePos == (7 * signal) && Board[ToMovePos]));
+    bool normalMove = (pos - ToMovePos == (8 * signal) && !Board[ToMovePos]);
+
+    if (firstPlay || killEnemy || normalMove)
+    {
+        this->first_play = false;
+        move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
+        return NO_ERROR;
+    }
+    return CANT_MOVE;  
+}
+
 int pawn::play(Board_t &Board, int ToMovePos)
 {
     int pos = this->getPos(Board);
@@ -40,56 +59,9 @@ int pawn::play(Board_t &Board, int ToMovePos)
     
     if (!backTrack.checkOpositeEdges(pos, ToMovePos))
         return CANT_MOVE;
-    
-    //white 1 black 0
-    if (this->Color)
-    {
-        if ((this->first_play && pos - ToMovePos == 16 && !Board[ToMovePos] && !Board[pos - 8]) ||  //first play of table, front move
-            (this->first_play && pos - ToMovePos == 8 && !Board[ToMovePos])) //normal front move
-        {
-            this->first_play = false;
-            move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
-            return NO_ERROR;
-        }
-        else if ((pos - ToMovePos == 9 && Board[ToMovePos] ) ||  //kill enemy right
-            (pos - ToMovePos == 7 && Board[ToMovePos] )) //kill enemy left
-        {
-            this->first_play = false;
-            move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
-            return NO_ERROR;
-        }
-        else if (pos - ToMovePos == 8 && !Board[ToMovePos]) //normal move
-        {
-            this->first_play = false;
-            move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
-            return NO_ERROR;
-        }
-    }
-    else
-    {
-        if ((this->first_play && pos - ToMovePos == -16 && !Board[ToMovePos] && !Board[pos + 8]) ||  //first play of table, front move
-            (this->first_play && pos - ToMovePos == -8 && !Board[ToMovePos])) //normal front move
-        {
-            this->first_play = false;
-            move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
-            return NO_ERROR;
-        }
-        else if ((pos - ToMovePos == -9 && Board[ToMovePos] )  ||  //kill enemy left
-            (pos - ToMovePos == -7 && Board[ToMovePos] )) //kill enemy right
-        {
-            this->first_play = false;
-            move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
-            return NO_ERROR;
-        }
-        else if (pos - ToMovePos == -8 && !Board[ToMovePos]) //normal move
-        {
-            this->first_play = false;
-            move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
-            return NO_ERROR;
-        }
-    }
 
-    return CANT_MOVE;
+    return movePieces(Board, ToMovePos, pos);
+    
 }
 
 int pawn::getPos(Board_t &Board) const

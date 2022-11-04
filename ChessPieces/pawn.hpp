@@ -34,6 +34,8 @@ class pawn : public Ichess_pieces
         bool first_play = true;
         bool checkEnd(const int ToMovePos);
         void move(std::shared_ptr<Ichess_pieces> &ToMovePos, std::shared_ptr<Ichess_pieces> &Pos, bool end);
+
+        int movePieces(Board_t &Board, int ToMovePos, int pos);
 };
 
 

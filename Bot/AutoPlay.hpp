@@ -56,9 +56,13 @@ class AutoPlay
             for (auto it = plays.begin(); it != plays.end(); ++it)
             {
                 std::cout << "Round: " << it->numberOfPlay << std::endl;
-                sleep(1);
+
+                //sleep(1);
+                board.saveState(it->WhitePlay, "White", it->numberOfPlay);
                 Play(it->WhitePlay, board);
-                sleep(1);
+                
+                //sleep(1);
+                board.saveState(it->BlackPlay, "Black", it->numberOfPlay);
                 Play(it->BlackPlay, board);
             }
 
