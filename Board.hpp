@@ -23,7 +23,8 @@ class Board
     public:
         void printTable()
         {
-            std::array<std::string, 12> Pieces = {
+            std::array<std::string, 13> Pieces = {
+            "\033[1;32mempty\033[0m",
             "\033[1;39mBishop\033[0m", "\033[1;39mHorse\033[0m",
             "\033[1;39mKing\033[0m", "\033[1;39mPawn\033[0m",
             "\033[1;39mQueen\033[0m", "\033[1;39mRook\033[0m",

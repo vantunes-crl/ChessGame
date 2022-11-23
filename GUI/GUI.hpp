@@ -40,14 +40,14 @@ public:
      * @param Board Board where the pieces are
      * @param Textures a array of sf::Textures, with all pieces textures. 
      */
-    void FillBoardWithPieces(Ichess_pieces::Board_t &Table, std::array<sf::Texture, 12> &Textures);
+    void FillBoardWithPieces(Ichess_pieces::Board_t &Table, std::array<sf::Texture, 13> &Textures);
 
     /**
      * @brief Init the list of textures.
      * 
      * @return std::array<sf::Texture, 12> 
      */
-    std::array<sf::Texture, 12> initTextures();
+    std::array<sf::Texture, 13> initTextures();
 
     void PositionsNames();
 

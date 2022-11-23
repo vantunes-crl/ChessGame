@@ -51,7 +51,7 @@ class AutoPlay
         void startPlay(std::string movesfile, Board &board)
         {
             auto vec = converter.parseMovesFile(movesfile);
-            auto plays = converter.parseMoves(vec[0]);
+            auto plays = converter.parseMoves(vec[1]);
 
             for (auto it = plays.begin(); it != plays.end(); ++it)
             {

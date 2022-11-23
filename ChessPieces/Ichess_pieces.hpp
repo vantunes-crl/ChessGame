@@ -12,6 +12,7 @@
  * 
  */
 enum PIECES {
+    EMPTY,
     WHITE_BISHOP,
     WHITE_HORSE,
     WHITE_KING,
@@ -23,7 +24,7 @@ enum PIECES {
     BLACK_KING,
     BLACK_PAWN,
     BLACK_QUEEN,
-    BLACK_ROOK
+    BLACK_ROOK,
 };
 
 /**

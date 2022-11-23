@@ -5,7 +5,7 @@ GUI::GUI(int width, int height)
     _window = std::make_shared<sf::RenderWindow>(sf::VideoMode(width, height), "Chess Game");
 }
 
-void GUI::FillBoardWithPieces(Ichess_pieces::Board_t &Board, std::array<sf::Texture, 12> &Textures)
+void GUI::FillBoardWithPieces(Ichess_pieces::Board_t &Board, std::array<sf::Texture, 13> &Textures)
 {
     std::array<std::shared_ptr<sf::Sprite>, 32> Pieces;
     int count = 0;
@@ -32,7 +32,7 @@ void GUI::FillBoardWithPieces(Ichess_pieces::Board_t &Board, std::array<sf::Text
     }
 }
 
-std::array<sf::Texture, 12> GUI::initTextures()
+std::array<sf::Texture, 13> GUI::initTextures()
 {
     sf::Texture PawnWhite;
     sf::Texture PawnBlack;
@@ -60,7 +60,8 @@ std::array<sf::Texture, 12> GUI::initTextures()
     RookWhite.loadFromFile("GUI/chess-pack/chess-rook-white.png");
     RookBlack.loadFromFile("GUI/chess-pack/chess-rook-black.png");
 
-    std::array<sf::Texture, 12> Textures = {
+    std::array<sf::Texture, 13> Textures = {
+        BishopWhite,
         BishopWhite, KnightWhite,
         KingWhite, PawnWhite,
         QueenWhite, RookWhite,
@@ -146,7 +147,7 @@ void GUI::start(Ichess_pieces::Board_t &Board)
     sf::Sprite BoardSprite(BoardTexture);
 
     bool Select = 0;
-    std::array<sf::Texture, 12> PiecesTextures = initTextures();
+    std::array<sf::Texture, 13> PiecesTextures = initTextures();
 
     int count = 0;
     int Matrix[8][8];
