@@ -3,9 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <memory>
-#include "../Board.hpp"
 #include "../ChessPieces/Ichess_pieces.hpp"
-#include "../BackTrackAlgorithm/BackTrack.hpp"
 
 struct Pos
 {

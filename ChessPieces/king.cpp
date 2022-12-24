@@ -1,5 +1,6 @@
 #include "king.hpp"
 
+
 king::king(bool b)
 {
     Color = b;

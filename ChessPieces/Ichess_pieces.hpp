@@ -3,9 +3,12 @@
 #pragma once
 
 #include <iostream>
-#include "../Board.hpp"
 #include <memory>
+#include "../BackTrackAlgorithm/BackTrack.hpp"
+#include "../Board.hpp"
 #include <algorithm>
+
+
 
 /**
  * @brief Type of each piece in chess game.

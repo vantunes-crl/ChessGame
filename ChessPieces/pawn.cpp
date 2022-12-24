@@ -1,5 +1,5 @@
 #include "pawn.hpp"
-#include "queen.hpp"
+
 
 pawn::pawn(bool b)
 {

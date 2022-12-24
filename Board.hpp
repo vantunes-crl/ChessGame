@@ -2,12 +2,14 @@
 #define TABLE_HPP
 #pragma once
 
+#include "ChessPieces/Ichess_pieces.hpp"
 #include <array>
 #include <iomanip>
 #include <iostream>
 #include <list>
 #include <memory>
 #include <fstream>
+
 
 /**
  * @brief Class that represents the table in the Chess Game.
@@ -98,12 +100,17 @@ class Board
             file.close();
         }
 
+        void swap_reset()
+        {
+            Swap[0] = true;
+            Swap[1] = true;
+        }
+
         T &operator[](const int i) { return PlayBoard[i]; }
 
     private:
         std::array<T, 64> PlayBoard;
         bool Swap[2] = {true, true};
 };
-
 
 #endif

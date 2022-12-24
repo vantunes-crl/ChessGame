@@ -1,5 +1,4 @@
 #include "BackTrack.hpp"
-#include "../ChessPieces/rook.hpp"
 
 std::list<int> BackTrack::BackTrackAvalPlacesList(const int &PiecesPos, Ichess_pieces::Board_t Board)
 {

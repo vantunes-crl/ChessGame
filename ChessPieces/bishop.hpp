@@ -2,7 +2,7 @@
 #define BISHOP_HPP
 #pragma once
 #include "Ichess_pieces.hpp"
-#include "../BackTrackAlgorithm/BackTrack.hpp"
+
 /**
  * @brief Class that represents the Bishop in Chess Game.
  * Can move only diagonal left/right.

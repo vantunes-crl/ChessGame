@@ -55,22 +55,29 @@ class AutoPlay
         void startPlay(std::string movesfile, Board &board)
         {
             auto vec = converter.parseMovesFile(movesfile);
-            auto plays = converter.parseMoves(vec[15]);
 
-            for (auto it = plays.begin(); it != plays.end(); ++it)
+            for (int i = 0; i < vec.size(); ++i)
             {
-                std::cout << "Round: " << it->numberOfPlay << std::endl;
+                auto plays = converter.parseMoves(vec[15]);
 
-                //sleep(10);
-                board.saveState(it->WhitePlay, "White", it->numberOfPlay);
-                Play(it->WhitePlay, board);
-                
-                //sleep(10);
-                board.saveState(it->BlackPlay, "Black", it->numberOfPlay);
-                Play(it->BlackPlay, board);
+                for (auto it = plays.begin(); it != plays.end(); ++it)
+                {
+                    std::cout << "Round: " << it->numberOfPlay << std::endl;
+
+                    //sleep(1);
+                    board.saveState(it->WhitePlay, "White", it->numberOfPlay);
+                    Play(it->WhitePlay, board);
+                    
+                    //sleep(1);
+                    board.saveState(it->BlackPlay, "Black", it->numberOfPlay);
+                    Play(it->BlackPlay, board);
+                }
+                //board.init();
+                board = loadState();
+                board.swap_reset();
+                std::cout << "Finish!\n";
             }
-
-            std::cout << "Finish!\n";
+            
         }
 
         /**

@@ -2,8 +2,7 @@
 #define PAWN_HPP
 #pragma once
 
-#include "Ichess_pieces.hpp"
-#include "../BackTrackAlgorithm/BackTrack.hpp"
+#include "queen.hpp"
 
 /**
  * @brief Class that represents the Pawn in Chess Game.

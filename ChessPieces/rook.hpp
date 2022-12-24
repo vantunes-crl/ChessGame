@@ -1,9 +1,9 @@
 #ifndef ROOK_HPP
 #define ROOK_HPP
+
 #pragma once
 #include "king.hpp"
-#include "Ichess_pieces.hpp"
-#include "../BackTrackAlgorithm/BackTrack.hpp"
+
 /**
  * @brief Class that represents the rook in Chess Game.
  * Can move only Horizontal or Vertical.

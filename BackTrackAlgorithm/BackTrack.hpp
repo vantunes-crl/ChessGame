@@ -1,6 +1,14 @@
 #pragma once
 
 #include "../ChessPieces/Ichess_pieces.hpp"
+#include <list>
+
+class Ichess_pieces;
+
+template <class T>
+class Board;
+
+typedef Board<std::shared_ptr<Ichess_pieces>> Board_t;
 
 enum EDGES
 {
@@ -22,7 +30,7 @@ class BackTrack
          * @param Board Board where all the pieces are.
          * @return std::list<int> with all int X/Y where this piece can move.
          */
-        std::list<int> BackTrackAvalPlacesList(const int &PiecesPos, Ichess_pieces::Board_t Board);
+        std::list<int> BackTrackAvalPlacesList(const int &PiecesPos, Board_t Board);
 
          /**
          * @brief search for all possible moves of the piece on the table and print.
@@ -30,7 +38,7 @@ class BackTrack
          * @param PiecesPos int of the piece to be verify in the table.
          * @param Board Board where all the pieces are.
          */
-        void BackTrackAvalPlacesPrint(const int &Piecesint, Ichess_pieces::Board_t &Board);
+        void BackTrackAvalPlacesPrint(const int &Piecesint, Board_t &Board);
 
         /**
          * @brief Check avalivable places between a distance in steps.
@@ -56,7 +64,7 @@ class BackTrack
          * @param Board Board where all the pieces are. 
          * @param moves 
          */
-        void AvalMoves(int steps, EDGES Edge, int pos, Ichess_pieces::Board_t Board, std::list<int> &moves);
+        void AvalMoves(int steps, EDGES Edge, int pos, Board_t Board, std::list<int> &moves);
 
         /**
          * @brief Check the edges to handle some bugs where the piece cross the board.
