@@ -23,7 +23,7 @@ bool rook::swapKing(Board_t &Board, const int posRook, const int posKing)
     switch (posRook)
     {
     case 63:
-        if (checkNullRange(Board[61].get(), Board[62].get()) && Board.swapRookKing(color))
+        if (checkNullRange(Board[61].get(), Board[62].get()) && Board.swapRookKing(color) && color && posKing == 60)
         {
             std::swap(Board[posKing], Board[62]);
             std::swap(Board[posRook], Board[61]);
@@ -31,15 +31,16 @@ bool rook::swapKing(Board_t &Board, const int posRook, const int posKing)
             return false;
         }
     case 56:
-        if (checkNullRange(Board[57].get(), Board[59].get()) && Board.swapRookKing(color))
+        if (checkNullRange(Board[57].get(), Board[58].get()) && checkNullRange(Board[58].get(), Board[59].get()) && Board.swapRookKing(color) && color && posKing == 60)
         {
+            std::cout << "aqui3\n";
             std::swap(Board[posKing], Board[58]);
             std::swap(Board[posRook], Board[59]);
             Board.swapRookKing(color) = false;
             return false;
         }
     case 7:
-        if (checkNullRange(Board[5].get(), Board[6].get()) && Board.swapRookKing(color))
+        if (checkNullRange(Board[5].get(), Board[6].get()) && Board.swapRookKing(color) && !color && posRook == 7)
         {
             std::swap(Board[posKing], Board[6]);
             std::swap(Board[posRook], Board[5]);
@@ -47,11 +48,12 @@ bool rook::swapKing(Board_t &Board, const int posRook, const int posKing)
             return false;
         }
     case 0:
-        if (checkNullRange(Board[1].get(), Board[3].get()) && Board.swapRookKing(color))
+        if (checkNullRange(Board[1].get(), Board[2].get()) &&  checkNullRange(Board[2].get(), Board[3].get()) && Board.swapRookKing(color) && !color  && posRook == 0)
         {
             std::swap(Board[posKing], Board[2]);
             std::swap(Board[posRook], Board[3]);
             Board.swapRookKing(color) = false;
+            
             return false;
         }
     default:

@@ -16,20 +16,22 @@ template <class BoardMatrix>
 class ChessDataConverter
 {
     public:
-        std::pair<char, int> matrixToEncode(std::pair<int, int> &Move)         
+        std::pair<char, int> matrixToEncode(std::pair<int, int> Move)         
         {
             return std::make_pair(Move.first + 'a', abs(Move.second - 8));
         }
 
-        std::pair<int, int> encodeToMatrix(std::pair<char, int> &Move)         
+        std::pair<int, int> encodeToMatrix(std::pair<char, int> Move)         
         {
             return std::make_pair(Move.first - 'a', abs(Move.second - 8));
         }
 
-        int encodeToPosNumber(std::string &Move)
+        int encodeToPosNumber(std::string Move)
         {
             std::pair<int, int> coverted;
             std::pair<char, int> temp;
+
+            Move.erase(std::remove(Move.begin(), Move.end(), '+'), Move.end());
 
             if (Move[2] == '=')
                 Move.erase(Move.begin() + 2, Move.end());
@@ -39,10 +41,16 @@ class ChessDataConverter
                 temp = std::make_pair(Move[0], Move[1] - 48);
                 coverted = encodeToMatrix(temp);
             }
-            else
+            else if (Move.size() == 3)
             {
                 temp = std::make_pair(Move[1], Move[2] - 48);
                 coverted = encodeToMatrix(temp);
+            }
+            else
+            {
+                temp = std::make_pair(Move[2], Move[3] - 48);
+                coverted = encodeToMatrix(temp);
+
             }
             return matrixToPosNumber(coverted.second, coverted.first);
         }
@@ -58,6 +66,15 @@ class ChessDataConverter
             }
             
             return Matrix[x][y];
+        }
+
+        std::pair<char, int> posNumberToEncode(int pos)
+        {
+            int x = pos / 8;
+            int y = pos % 8;
+            auto pair = std::make_pair(y,x);
+            auto encode = matrixToEncode(pair);
+            return encode;
         }
 
         std::array<int, 64> MatrixToEncode(const BoardMatrix &Board);

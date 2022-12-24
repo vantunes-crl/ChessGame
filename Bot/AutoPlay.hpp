@@ -3,7 +3,9 @@
 #include "../ChessDataConverter.hpp"
 #include "../ChessPieces/Ichess_pieces.hpp"
 #include <iostream>
+#include <cstring>
 #include <unistd.h>
+#include <vector>
 
 /**
  * @brief Class to auto play recorded games.
@@ -32,6 +34,8 @@ class AutoPlay
             auto piecePos = findPieceToPlay(move, board);
 
             std::cout << "Play: " << move << std::endl;
+            std::cout << "Played toMove: " << converter.posNumberToEncode(posToMove).first << converter.posNumberToEncode(posToMove).second << std::endl;
+            std::cout << "Played:MoveFrom " << converter.posNumberToEncode(piecePos).first << converter.posNumberToEncode(piecePos).second << std::endl;
 
             if (!(board[piecePos]->play(board, posToMove)))
                 ROUND = ROUND ? 0 : 1; // Round 0 White, 1 Black.
@@ -51,17 +55,17 @@ class AutoPlay
         void startPlay(std::string movesfile, Board &board)
         {
             auto vec = converter.parseMovesFile(movesfile);
-            auto plays = converter.parseMoves(vec[1]);
+            auto plays = converter.parseMoves(vec[15]);
 
             for (auto it = plays.begin(); it != plays.end(); ++it)
             {
                 std::cout << "Round: " << it->numberOfPlay << std::endl;
 
-                //sleep(1);
+                //sleep(10);
                 board.saveState(it->WhitePlay, "White", it->numberOfPlay);
                 Play(it->WhitePlay, board);
                 
-                //sleep(1);
+                //sleep(10);
                 board.saveState(it->BlackPlay, "Black", it->numberOfPlay);
                 Play(it->BlackPlay, board);
             }
@@ -77,21 +81,30 @@ class AutoPlay
          * @param Piece Piece type. WHITE_BISHOP, BLACK_BISHOP, BLACK_PAWN...
          * @return The piece pos that can move.
          */
-        int predictPieceToMove(Board board, int toMovePos, PIECES Piece)
+        int predictPieceToMove(Board board, int toMovePos, PIECES Piece, char duplicateMove)
         {
             Board cpyBoard = board;
+            int array[2] = {0,0};
+            int count = 0;
+            
             for (int i = 0; i < 64; ++i)
             {
                 cpyBoard = board;
                 if (cpyBoard[i] && cpyBoard[i]->type() == Piece)
                 {
                     if (!cpyBoard[i]->play(cpyBoard, toMovePos))
-                        return i;
+                        array[count++] = i;
                     else
                         continue;
                 }
             }
-            return 0;
+            if (duplicateMove && array[1] && converter.posNumberToEncode(array[1]).first == duplicateMove)
+            {
+                std::cout << duplicateMove << ": here\n";
+                return array[1];
+            }
+
+            return array[0];
         }
 
         /**
@@ -128,16 +141,32 @@ class AutoPlay
          * @param board Board where all the pieces are.
          * @return Pos of the piece.
          */
-        int findPieceToPlay(std::string &move, Board &board)
+        int findPieceToPlay(std::string move, Board &board)
         {
             auto type = findType(move[0]);
+            move.erase(std::remove(move.begin(), move.end(), '+'), move.end());
+
             int toMovePos = 0;
+            char duplicateMove = '\0';
 
             if (move[0] == 'O')
                 toMovePos = ROUND ? 4 : 60;
             else
+            {
+                if (move.size() == 3 && !std::isupper(move[0]))
+                {
+                    duplicateMove = move[0];
+                    move.erase(move.begin());
+                }
+                else if ((move.size() == 4 && std::isupper(move[0]) && !std::isupper(move[1])))
+                {
+                    duplicateMove = move[1]; 
+                    move.erase(move.begin() + 1);
+                }
+                
                 toMovePos = converter.encodeToPosNumber(move);
-            return predictPieceToMove(board, toMovePos, type);
+            }
+            return predictPieceToMove(board, toMovePos, type, duplicateMove);
         }
  
 };
