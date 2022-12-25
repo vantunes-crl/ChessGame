@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../ChessDataConverter.hpp"
+#include "../Utils/ChessDataConverter.hpp"
 #include "../ChessPieces/Ichess_pieces.hpp"
 #include <iostream>
 #include <cstring>

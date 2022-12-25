@@ -1,12 +1,9 @@
 #include <memory>
 #include <algorithm>
 #include <thread>
-#include "static_func.hpp"
+#include "Utils/static_func.hpp"
 #include "GUI/GUI.hpp"
 #include "Bot/AutoPlay.hpp"
-
-
-
 
 int main()
 {
@@ -40,9 +37,6 @@ int main()
   second.join();
 
   //first.join();
-
-
-
 
   // ChessDataConverter<Board<std::shared_ptr<Ichess_pieces>>> test;
   // auto vec = test.parseMovesFile("GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn");
