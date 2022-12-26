@@ -36,19 +36,21 @@ import numpy as np
 # data = pd.DataFrame(listNum)
 # data.to_csv("dataChess.csv", index=False)
 
-data = pd.read_csv("dataChess.csv")
-target = pd.read_csv("target.csv")
+data = pd.read_csv("../PreprocessedData/dataChess.csv")
+target = pd.read_csv("../PreprocessedData/target.csv")
 
-# print(target.value_counts())
+clf = MLPClassifier(random_state=1, max_iter=300)
 
-# clf = MLPClassifier(random_state=1, max_iter=300)
+clf.fit(data, target.values.ravel())
 
-# clf.fit(data, target.values.ravel())
+test = clf.predict_proba(data[0:1])
+
+print(clf.classes_)
 
 
-#print(clf.intercepts_[1])
-# f = open("weightsOutPut.txt", "a")
-# test = np.array(clf.coefs_[1])
+# f = open("weightsBiasOut.txt", "a")
+# test = np.array(clf.intercepts_[1])
 # for x in test:
+#     f.write(" ")
 #     f.write(np.array2string(x))
 # f.close()
