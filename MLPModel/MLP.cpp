@@ -124,6 +124,11 @@ std::string MLP::forward_propagation(const std::array<double, 64> input)
     std::string finalClass[19] = {"Bb5","Be2","Be3","Nc3","Ne5","Nf3","O-O","Ra2","Ra5","a3","a4","a5","bc3","c4","cd5","d4","de5","e3","e4"};
     
     auto elem = std::max_element(finalWeights.begin(), finalWeights.end());
+
+    for (auto i : finalWeights)
+        std::cout << i << std::endl;
+
+
     return finalClass[std::distance(finalWeights.begin(), elem)];
 
 }

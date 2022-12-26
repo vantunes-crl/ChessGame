@@ -53,14 +53,14 @@ class AutoPlay
 
         void BotPlay(Board &board)
         {
-            MLP mlp;
-
+            MLP *mlp = new MLP();
+            std::array<double, 64> state;
             while ( true )
             {
-                auto state = board.read_state();
+                state = board.read_state();
                 if (ROUND == 0)
                 {
-                    std::string move = mlp.forward_propagation(state);
+                    std::string move = mlp->forward_propagation(state);
                     Play(move, board);
                     std::cout << move << " :move" << std::endl;
                     ROUND = 1;
@@ -71,7 +71,6 @@ class AutoPlay
                 {
                     if (state != board.read_state())
                     {
-                        std::cout << "aqui\n";
                         ROUND = 0;
                         break;
                     }

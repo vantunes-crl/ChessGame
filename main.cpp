@@ -7,8 +7,7 @@
 int main()
 {
     Board<std::shared_ptr<Ichess_pieces>> board;
-
-    MLP mlp;
+    //MLP mlp;
     
     //board = loadState();
     board = {
@@ -27,20 +26,20 @@ int main()
 
   // BackTrack backTrack;
   // auto test = backTrack.BackTrackAvalPlacesList(50, board);
-  std::string move = mlp.forward_propagation(board.read_state());
-  std::cout << move << std::endl;
+  // std::string move = mlp.forward_propagation(board.read_state());
+  // std::cout << move << std::endl;
 
-  // GUI gui(825, 825);
-  // std::thread first(&GUI::start, gui, std::ref(board));
+  GUI gui(825, 825);
+  std::thread first(&GUI::start, gui, std::ref(board));
 
-  // AutoPlay<Board<std::shared_ptr<Ichess_pieces>>> autoplay;
+  AutoPlay<Board<std::shared_ptr<Ichess_pieces>>> autoplay;
   
-  // //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::startPlay, autoplay,"GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn", std::ref(board));
+  //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::startPlay, autoplay,"GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn", std::ref(board));
   
-  // std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::BotPlay, autoplay, std::ref(board));
+  std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::BotPlay, autoplay, std::ref(board));
   
-  // first.join();
-  // second.join();
+  first.join();
+  second.join();
 
 
   // ChessDataConverter<Board<std::shared_ptr<Ichess_pieces>>> test;
