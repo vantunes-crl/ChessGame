@@ -79,6 +79,7 @@ void GUI::selectPiece(const int pos, Ichess_pieces::Board_t &Board, std::list<Po
     static int PiecesPos = 0;
     static int Color = 0;
     std::list<int> AvalPlaces;
+    AutoPlay<::Board<std::shared_ptr<Ichess_pieces>>> autoplay;
 
     List.clear();
     AvalPlaces = backTrack.BackTrackAvalPlacesList(pos, Board);
@@ -93,11 +94,12 @@ void GUI::selectPiece(const int pos, Ichess_pieces::Board_t &Board, std::list<Po
     else
     {
         if(Board[PiecesPos])
-        {   
+        {  
+            autoplay.BotPlay(Board);
             if (pos != PiecesPos)
                 Board[PiecesPos]->play(Board, pos);
-                
-        }       
+            
+        }
         List.clear();
         selected = false;
     }

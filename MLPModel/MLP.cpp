@@ -79,6 +79,13 @@ std::vector<std::vector<double>> MLP::convertStringToMatrixDoubles(std::vector<s
         temp.erase(temp.begin(), temp.end());
         count++;
     }
+
+
+    // for (auto i : finalVec)
+    //     for (auto x : i)
+    //         std::cout << x << std::endl;
+
+
     return finalVec;
     
 }

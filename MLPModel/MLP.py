@@ -36,21 +36,39 @@ import numpy as np
 # data = pd.DataFrame(listNum)
 # data.to_csv("dataChess.csv", index=False)
 
-data = pd.read_csv("../PreprocessedData/dataChess.csv")
-target = pd.read_csv("../PreprocessedData/target.csv")
+data = pd.read_csv("PreprocessedData/dataChess.csv")
+target = pd.read_csv("PreprocessedData/target.csv")
 
 clf = MLPClassifier(random_state=1, max_iter=300)
 
 clf.fit(data, target.values.ravel())
 
-test = clf.predict_proba(data[0:1])
+# test = clf.predict_proba(data[0:1])
 
 print(clf.classes_)
 
+f = open("weightsBiasOut.txt", "a")
+test = np.array(clf.intercepts_[1])
+for x in test:
+    f.write(" ")
+    f.write(np.array2string(x, formatter={'float_kind':lambda x: "%.5f" % x}))
+f.close()
 
-# f = open("weightsBiasOut.txt", "a")
-# test = np.array(clf.intercepts_[1])
-# for x in test:
-#     f.write(" ")
-#     f.write(np.array2string(x))
-# f.close()
+f = open("weightsBiasHidden.txt", "a")
+test = np.array(clf.intercepts_[0])
+for x in test:
+    f.write(" ")
+    f.write(np.array2string(x, formatter={'float_kind':lambda x: "%.5f" % x}))
+f.close()
+
+f = open("weightsOutPut.txt", "a")
+test = np.array(clf.coefs_[1])
+for x in test:
+    f.write(np.array2string(x, formatter={'float_kind':lambda x: "%.5f" % x}))
+f.close()
+
+f = open("weightsHidden.txt", "a")
+test = np.array(clf.coefs_[0])
+for x in test:
+    f.write(np.array2string(x, formatter={'float_kind':lambda x: "%.5f" % x}))
+f.close()
