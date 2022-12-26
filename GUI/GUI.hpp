@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <memory>
-#include "../ChessPieces/Ichess_pieces.hpp"
+#include "../Bot/AutoPlay.hpp"
 
 struct Pos
 {

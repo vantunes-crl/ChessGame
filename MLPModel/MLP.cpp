@@ -2,13 +2,15 @@
 #include <iostream>
 #include <algorithm>
 #include <cstring>
+#include <array>
 
-MLP::MLP()
+MLP::MLP():
+_hiddenWeights(convertStringToMatrixDoubles(read_weights("MLPModel/weightsHidden.txt"))),
+_outPutHeights(convertStringToMatrixDoubles(read_weights("MLPModel/weightsOutPut.txt"))),
+_hiddenBias(convertStringToArrayDoubles(read_Bias_weights("MLPModel/weightsBiasHidden.txt"))),
+_outputBias(convertStringToArrayDoubles(read_Bias_weights("MLPModel/weightsBiasOut.txt")))
 {
-    _hiddenWeights = convertStringToMatrixDoubles(read_weights("weightsHidden.txt"));
-    _outPutHeights = convertStringToMatrixDoubles(read_weights("weightsOutPut.txt"));
-    _hiddenBias = convertStringToArrayDoubles(read_Bias_weights("weightsBiasHidden.txt"));
-    _outputBias = convertStringToArrayDoubles(read_Bias_weights("weightsBiasOut.txt"));
+    std::cout << _hiddenWeights.size() << _outPutHeights.size() << _hiddenBias.size() << _outputBias.size() << std::endl;
 }
 
 MLP::~MLP()
@@ -97,7 +99,7 @@ std::vector<double> MLP::convertStringToArrayDoubles(std::string string)
 }
 
 
-std::string MLP::forward_propagation(const double input[64])
+std::string MLP::forward_propagation(const std::array<double, 64> input)
 {
     std::vector<double> total;
     float result;
@@ -126,12 +128,14 @@ std::string MLP::forward_propagation(const double input[64])
 
 }
 
-int main()
-{
-    MLP mlp;
+// int main()
+// {
+//     MLP mlp;
 
-    const double test[64] = {12,0,0,0,0,12,9,0,0,10,10,0,7,10,10,10,10,0,8,0,10,0,0,0,0,0,0,0,0,11,0,0,0,0,0,4,7,0,0,0,4,0,4,0,1,2,0,0,0,0,0,0,1,4,4,4,6,0,0,5,0,6,3,0};
+//     std::array<double, 64> test = {12,8,7,11,9,7,8,12,10,10,10,10,10,10,10,10,0,10,10,10,10,10,0,0,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,4,4,4,4,6,2,1,5,3,1,2,6};
 
-    std::cout << mlp.forward_propagation(test) << std::endl;
+//     // for (auto i : test)
+//     //     std::cout << i << std::endl;
+//     std::cout << mlp.forward_propagation(test) << std::endl;
 
-}
+// }

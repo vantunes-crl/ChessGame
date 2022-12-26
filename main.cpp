@@ -3,11 +3,12 @@
 #include <thread>
 #include "Utils/static_func.hpp"
 #include "GUI/GUI.hpp"
-#include "Bot/AutoPlay.hpp"
 
 int main()
 {
     Board<std::shared_ptr<Ichess_pieces>> board;
+
+    MLP mlp;
     
     //board = loadState();
     board = {
@@ -21,22 +22,26 @@ int main()
         std::make_shared<rook>(1), std::make_shared<horse>(1),std::make_shared<bishop>(1),std::make_shared<queen>(1),std::make_shared<king>(1),std::make_shared<bishop>(1),std::make_shared<horse>(1),std::make_shared<rook>(1),
     };
 
+
   //board.printTable();
 
   // BackTrack backTrack;
   // auto test = backTrack.BackTrackAvalPlacesList(50, board);
+  std::string move = mlp.forward_propagation(board.read_state());
+  std::cout << move << std::endl;
 
-  // for (auto t : test)
-  //   std::cout << t << std::endl;
+  // GUI gui(825, 825);
+  // std::thread first(&GUI::start, gui, std::ref(board));
 
-  //GUI gui(825, 825);
-  //std::thread first(&GUI::start, gui, std::ref(board));
+  // AutoPlay<Board<std::shared_ptr<Ichess_pieces>>> autoplay;
+  
+  // //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::startPlay, autoplay,"GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn", std::ref(board));
+  
+  // std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::BotPlay, autoplay, std::ref(board));
+  
+  // first.join();
+  // second.join();
 
-  AutoPlay<Board<std::shared_ptr<Ichess_pieces>>> autoplay;
-  std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::startPlay, autoplay,"GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn", std::ref(board));
-  second.join();
-
-  //first.join();
 
   // ChessDataConverter<Board<std::shared_ptr<Ichess_pieces>>> test;
   // auto vec = test.parseMovesFile("GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn");

@@ -6,12 +6,16 @@
 #include <cstring>
 #include <unistd.h>
 #include <vector>
+#include "../MLPModel/MLP.hpp"
+#include "../Utils/static_func.hpp"
 
 /**
  * @brief Class to auto play recorded games.
  * 
  * @tparam Board where the pieces are.
  */
+
+
 template <class Board>
 class AutoPlay
 {
@@ -19,7 +23,6 @@ class AutoPlay
         ChessDataConverter<Board> converter;
         int ROUND = 0;
     public:
-
         /**
          * @brief Play a encode move Exempale: Ne4
          * 
@@ -33,17 +36,48 @@ class AutoPlay
                 posToMove = ROUND ? 4 : 60; //Error handler king pos for swap 60 White 4 Black. 
             auto piecePos = findPieceToPlay(move, board);
 
-            std::cout << "Play: " << move << std::endl;
-            std::cout << "Played toMove: " << converter.posNumberToEncode(posToMove).first << converter.posNumberToEncode(posToMove).second << std::endl;
-            std::cout << "Played:MoveFrom " << converter.posNumberToEncode(piecePos).first << converter.posNumberToEncode(piecePos).second << std::endl;
+            // std::cout << "Play: " << move << std::endl;
+            // std::cout << "Played toMove: " << converter.posNumberToEncode(posToMove).first << converter.posNumberToEncode(posToMove).second << std::endl;
+            // std::cout << "Played:MoveFrom " << converter.posNumberToEncode(piecePos).first << converter.posNumberToEncode(piecePos).second << std::endl;
 
             if (!(board[piecePos]->play(board, posToMove)))
-                ROUND = ROUND ? 0 : 1; // Round 0 White, 1 Black.
-            else //for debug
+                std::cout  << "ivalid move" << move << std::endl;
+                // ROUND = ROUND ? 0 : 1; // Round 0 White, 1 Black.
+            // else //for debug
+            // {
+            //     std::cout << "Round " << ROUND << " Piece Pos " << piecePos << " MoveToPos " << posToMove << " Normal Move " << move << std::endl;
+            //     sleep(100);
+            // }
+        }
+
+
+        void BotPlay(Board &board)
+        {
+            MLP mlp;
+
+            while ( true )
             {
-                std::cout << "Round " << ROUND << " Piece Pos " << piecePos << " MoveToPos " << posToMove << " Normal Move " << move << std::endl;
-                sleep(100);
-            }
+                auto state = board.read_state();
+                if (ROUND == 0)
+                {
+                    std::string move = mlp.forward_propagation(state);
+                    Play(move, board);
+                    std::cout << move << " :move" << std::endl;
+                    ROUND = 1;
+                }
+
+                state = board.read_state();
+                while (true)
+                {
+                    if (state != board.read_state())
+                    {
+                        std::cout << "aqui\n";
+                        ROUND = 0;
+                        break;
+                    }
+                }
+                sleep(1);
+              }
         }
 
         /**
@@ -72,7 +106,7 @@ class AutoPlay
                     board.saveState(it->BlackPlay, "Black", it->numberOfPlay);
                     Play(it->BlackPlay, board);
                 }
-                //board.init();
+
                 board = loadState();
                 board.swap_reset();
                 std::cout << "Finish!\n";

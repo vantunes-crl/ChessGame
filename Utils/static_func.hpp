@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../ChessPieces/pawn.hpp"
 #include "../ChessPieces/bishop.hpp"
 #include "../ChessPieces/horse.hpp"
@@ -5,7 +7,7 @@
 #include "../ChessPieces/rook.hpp"
 #include "../ChessPieces/king.hpp"
 
-std::shared_ptr<Ichess_pieces> make_piece(const int type)
+static std::shared_ptr<Ichess_pieces> make_piece(const int type)
 {
   switch (type)
   {
@@ -37,7 +39,7 @@ std::shared_ptr<Ichess_pieces> make_piece(const int type)
   return nullptr;
 }
 
-std::array<std::shared_ptr<Ichess_pieces>, 64> loadState()
+static std::array<std::shared_ptr<Ichess_pieces>, 64> loadState()
 {
 
   std::fstream file("init.rec", std::ios::in);

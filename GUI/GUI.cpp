@@ -96,6 +96,7 @@ void GUI::selectPiece(const int pos, Ichess_pieces::Board_t &Board, std::list<Po
         {   
             if (pos != PiecesPos)
                 Board[PiecesPos]->play(Board, pos);
+                
         }       
         List.clear();
         selected = false;

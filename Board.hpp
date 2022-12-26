@@ -2,7 +2,6 @@
 #define TABLE_HPP
 #pragma once
 
-#include "ChessPieces/Ichess_pieces.hpp"
 #include <array>
 #include <iomanip>
 #include <iostream>
@@ -23,6 +22,8 @@ template <class T>
 class Board 
 {
     public:
+        int ROUND_ = 0;
+
         void printTable()
         {
             std::array<std::string, 13> Pieces = {
@@ -98,6 +99,21 @@ class Board
             file << color << " " << move;
             file << "\n";
             file.close();
+        }
+
+        std::array<double, 64> read_state()
+        {
+            std::array<double, 64> state;
+    
+            for (int i = 0; i < 64; ++i)
+            {
+                if (PlayBoard[i])
+                    state[i] = PlayBoard[i]->type();
+                else
+                    state[i] = 0;
+            }
+
+            return state;
         }
 
         void swap_reset()

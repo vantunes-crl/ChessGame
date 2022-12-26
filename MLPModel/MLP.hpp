@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <array>
 
 class MLP
 {
@@ -11,7 +12,7 @@ private:
     std::vector<double> _hiddenBias;
     std::vector<double> _outputBias;
 public:
-    MLP(/* args */);
+    MLP();
     ~MLP();
 
     std::vector<std::vector<double>> convertStringToMatrixDoubles(std::vector<std::string> vec);
@@ -20,5 +21,5 @@ public:
     std::vector<std::string> read_weights(const std::string movesFile);
     std::string read_Bias_weights(const std::string movesFile);
 
-    std::string forward_propagation(const double input[64]);
+    std::string forward_propagation(std::array<double, 64> input);
 };
