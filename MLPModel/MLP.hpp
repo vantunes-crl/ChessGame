@@ -1,4 +1,6 @@
 
+#pragma once
+
 #include <string>
 #include <fstream>
 #include <vector>
@@ -11,9 +13,12 @@ private:
     std::vector<std::vector<double>> _outPutHeights;
     std::vector<double> _hiddenBias;
     std::vector<double> _outputBias;
+
 public:
     MLP();
     ~MLP();
+
+    MLP getIstance();
 
     std::vector<std::vector<double>> convertStringToMatrixDoubles(std::vector<std::string> vec);
     std::vector<double> convertStringToArrayDoubles(std::string string);

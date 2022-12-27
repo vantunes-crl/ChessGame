@@ -1,6 +1,7 @@
-make --dry-run --always-make --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory '/home/vantunes/ChessGame'
 clang++  -c MLPModel/MLP.cpp -o MLPModel/MLP.o
+ 
 clang++  -c ChessPieces/horse.cpp -o ChessPieces/horse.o
 clang++  -c ChessPieces/bishop.cpp -o ChessPieces/bishop.o
 clang++  -c ChessPieces/pawn.cpp -o ChessPieces/pawn.o
@@ -9,6 +10,6 @@ clang++  -c ChessPieces/queen.cpp -o ChessPieces/queen.o
 clang++  -c ChessPieces/rook.cpp -o ChessPieces/rook.o
 clang++  -c BackTrackAlgorithm/BackTrack.cpp -o BackTrackAlgorithm/BackTrack.o
 clang++  -c GUI/GUI.cpp -o GUI/GUI.o
-clang++ main.cpp MLPModel/MLP.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o BackTrackAlgorithm/BackTrack.o GUI/GUI.o -lsfml-graphics -lsfml-window -lsfml-system -g -pthread -o ChessGame
+clang++ main.cpp MLPModel/MLP.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o BackTrackAlgorithm/BackTrack.o GUI/GUI.o -lsfml-graphics -lsfml-window -lsfml-system -g -pthread -IMLPModel/MLP.hpp -o ChessGame
 make: Leaving directory '/home/vantunes/ChessGame'
  

@@ -21,6 +21,7 @@ class AutoPlay
 {
     private:
         ChessDataConverter<Board> converter;
+        MLP mlp;
         int ROUND = 0;
     public:
         /**
@@ -42,7 +43,7 @@ class AutoPlay
 
             if (board[piecePos] && !(board[piecePos]->play(board, posToMove)))
             {
-                ROUND = ROUND ? 0 : 1; // Round 0 White, 1 Black.
+                ROUND = 0; // Round 0 White, 1 Black.
                 return false;
             }
             else
@@ -57,11 +58,9 @@ class AutoPlay
 
         void BotPlay(Board &board)
         {
-            MLP *mlp = new MLP();
-            std::array<double, 64> *state = new std::array<double, 64>;
-        
-            *state = board.read_state();
-            auto moves = mlp->forward_propagation(*state);
+                    
+            auto state = board.read_state();
+            auto moves =  mlp.getIstance().forward_propagation(state);
     
             for (auto i = moves.rbegin(); i != moves.rend(); ++i)
             {
@@ -70,10 +69,7 @@ class AutoPlay
                 else
                     std::cout << "invalid move" << std::endl;
             }
-
             ROUND = 1;
-            delete mlp;
-            delete state;
         }
 
         /**

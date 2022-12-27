@@ -44,6 +44,10 @@ std::vector<std::string> MLP::read_weights(const std::string movesFile)
     return vec;
 }
 
+MLP MLP::getIstance()
+{
+    return *this;
+}
 
 std::string MLP::read_Bias_weights(const std::string movesFile)
 {

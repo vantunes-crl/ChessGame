@@ -20,6 +20,7 @@ class GUI
 private:
     std::shared_ptr<sf::RenderWindow> _window;
     BackTrack backTrack;
+    AutoPlay<::Board<std::shared_ptr<Ichess_pieces>>> autoplay;
 public:
     void DisplayAvalPlaces(std::list<Pos> &List);
 
