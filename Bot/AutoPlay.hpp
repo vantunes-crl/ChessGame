@@ -29,7 +29,7 @@ class AutoPlay
          * @param move Encoded move.
          * @param board Board where the pieces are.
          **/
-        void Play(std::string &move, Board &board)
+        bool Play(std::string &move, Board &board)
         {
             int posToMove = converter.encodeToPosNumber(move);
             if (move[0] == 'O')
@@ -40,8 +40,13 @@ class AutoPlay
             // std::cout << "Played toMove: " << converter.posNumberToEncode(posToMove).first << converter.posNumberToEncode(posToMove).second << std::endl;
             // std::cout << "Played:MoveFrom " << converter.posNumberToEncode(piecePos).first << converter.posNumberToEncode(piecePos).second << std::endl;
 
-            if ((board[piecePos]->play(board, posToMove)))
+            if (board[piecePos] && !(board[piecePos]->play(board, posToMove)))
+            {
                 ROUND = ROUND ? 0 : 1; // Round 0 White, 1 Black.
+                return false;
+            }
+            else
+                return true;
             // else //for debug
             // {
             //     std::cout << "Round " << ROUND << " Piece Pos " << piecePos << " MoveToPos " << posToMove << " Normal Move " << move << std::endl;
@@ -56,11 +61,17 @@ class AutoPlay
             std::array<double, 64> *state = new std::array<double, 64>;
         
             *state = board.read_state();
-            std::string move = mlp->forward_propagation(*state);
-            Play(move, board);
-            std::cout << move << " :move" << std::endl;
-            ROUND = 1;
+            auto moves = mlp->forward_propagation(*state);
+    
+            for (auto i = moves.rbegin(); i != moves.rend(); ++i)
+            {
+                if (!Play(*i, board))
+                    break;
+                else
+                    std::cout << "invalid move" << std::endl;
+            }
 
+            ROUND = 1;
             delete mlp;
             delete state;
         }

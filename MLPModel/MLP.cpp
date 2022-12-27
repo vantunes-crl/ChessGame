@@ -3,7 +3,13 @@
 #include <algorithm>
 #include <cstring>
 #include <array>
+#include <math.h>
+#include <map>
 
+// MLPModel/
+// MLPModel/
+// MLPModel/
+// MLPModel/
 MLP::MLP():
 _hiddenWeights(convertStringToMatrixDoubles(read_weights("MLPModel/weightsHidden.txt"))),
 _outPutHeights(convertStringToMatrixDoubles(read_weights("MLPModel/weightsOutPut.txt"))),
@@ -80,12 +86,6 @@ std::vector<std::vector<double>> MLP::convertStringToMatrixDoubles(std::vector<s
         count++;
     }
 
-
-    // for (auto i : finalVec)
-    //     for (auto x : i)
-    //         std::cout << x << std::endl;
-
-
     return finalVec;
     
 }
@@ -105,8 +105,19 @@ std::vector<double> MLP::convertStringToArrayDoubles(std::string string)
     return temp;
 }
 
+std::vector<double> MLP::sigmoid(const std::vector<double> matrix) 
+{
+    const unsigned long VECTOR_SIZE = matrix.size();
+    std::vector<double> output (VECTOR_SIZE);
+    
+    for( unsigned i = 0; i != VECTOR_SIZE; ++i ) {
+        output[ i ] = 1 / (1 + exp(-matrix[ i ]));
+    }
+    
+    return output;
+}
 
-std::string MLP::forward_propagation(const std::array<double, 64> input)
+std::vector<std::string>  MLP::forward_propagation(const std::array<double, 64> input)
 {
     std::vector<double> total;
     float result;
@@ -118,9 +129,8 @@ std::string MLP::forward_propagation(const std::array<double, 64> input)
         total.push_back(result);
     }
 
-
     std::vector<double> finalWeights;
-    for (short int i = 0; i < 19; ++i)
+    for (short int i = 0; i < 36; ++i)
     {
         result = 0.0;
         for (short int j = 0; j < _hiddenWeights.size(); j++)
@@ -128,26 +138,35 @@ std::string MLP::forward_propagation(const std::array<double, 64> input)
         finalWeights.push_back(result);
     }
 
-    std::string finalClass[19] = {"Bb5","Be2","Be3","Nc3","Ne5","Nf3","O-O","Ra2","Ra5","a3","a4","a5","bc3","c4","cd5","d4","de5","e3","e4"};
-    
-    auto elem = std::max_element(finalWeights.begin(), finalWeights.end());
+    std::string finalClass[36] = {"Bb5","Be2","Be3","Be4","Be5","Be7","Bf5","Bf6","Na5","Nc3","Nc6","Nd5","Ne5","Nf3","Nf6","O-O","Qa5","Qd5","Qf5","Ra2","Ra5","Rad8","Rd1","a3","a4","a5","a6","bc3","c4","cd5","d4","d5","de5","e3","e4","e6"};
+    std::map<double, std::string> mp;
 
-    for (auto i : finalWeights)
-        std::cout << i << std::endl;
+    for (int i = 0; i < 36; ++i)
+        mp.insert(std::make_pair(finalWeights[i], finalClass[i]));
 
+    std::vector<std::string> finalList;
+    for (auto i : mp)
+        finalList.push_back(i.second);
 
-    return finalClass[std::distance(finalWeights.begin(), elem)];
+    return finalList;
 
 }
+
+// void plays_proba()
+// // {
+
+// // }
+
 
 // int main()
 // {
 //     MLP mlp;
 
-//     std::array<double, 64> test = {12,8,7,11,9,7,8,12,10,10,10,10,10,10,10,10,0,10,10,10,10,10,0,0,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,4,4,4,4,6,2,1,5,3,1,2,6};
+//     std::array<double, 64> test = {12,8,7,11,9,7,8,12,10,10,10,10,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,4,4,4,4,6,2,1,5,3,1,2,6};
 
 //     // for (auto i : test)
 //     //     std::cout << i << std::endl;
-//     std::cout << mlp.forward_propagation(test) << std::endl;
+//     std::cout <<  "forward " << *mlp.forward_propagation(test).rbegin() << std::endl;
+
 
 // }

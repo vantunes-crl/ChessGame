@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Dec 26 14:49:36 2022
+# Make data base, printed on Tue Dec 27 11:59:51 2022
 
 # Variables
 
@@ -98,6 +98,8 @@ MAKE = $(MAKE_COMMAND)
 PATH = /home/vantunes/.vscode-server/bin/e8a3071ea4344d9d48ef8a4df2c097372b0c5161/bin/remote-cli:/home/vantunes/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/CTW02201/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/CTW02201/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin
 # default
 MAKEFILES := 
+# environment
+MOTD_SHOWN = update-motd
 # automatic
 ^F = $(notdir $^)
 # environment
@@ -135,7 +137,7 @@ _ = /mnt/c/Users/CTW02201/AppData/Local/Programs/Microsoft VS Code/bin/code
 # environment
 XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-11bbcdcc-c21a-48a7-a614-51188f3ea152.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-22cc7885-d01f-4210-ad78-0076d3894132.sock
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -155,7 +157,7 @@ WSL_DISTRO_NAME = Ubuntu
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
 # variable set hash-table stats:
-# Load=72/1024=7%, Rehash=0, Collisions=7/109=6%
+# Load=73/1024=7%, Rehash=0, Collisions=7/110=6%
 
 # Pattern-specific Variable Values
 
@@ -164,12 +166,12 @@ WSL_DISTRO_NAME = Ubuntu
 # Directories
 
 # BackTrackAlgorithm (device 2080, inode 44160): 1 files, no impossibilities so far.
-# MLPModel (device 2080, inode 45837): 7 files, no impossibilities so far.
+# MLPModel (device 2080, inode 45837): 8 files, no impossibilities so far.
 # . (device 2080, inode 44068): 18 files, no impossibilities.
 # ChessPieces (device 2080, inode 44167): 13 files, no impossibilities so far.
 # GUI (device 2080, inode 44181): 5 files, no impossibilities so far.
 
-# 44 files, no impossibilities in 5 directories.
+# 45 files, no impossibilities in 5 directories.
 
 # Implicit Rules
 
@@ -204,7 +206,7 @@ ChessPieces/queen.cpp:
 ChessPieces/pawn.o: ChessPieces/pawn.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/pawn'
-#  Last modified 2022-12-26 14:49:30.782597173
+#  Last modified 2022-12-26 19:50:47.745702309
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 14):
@@ -220,7 +222,7 @@ Makefile:
 ChessPieces/bishop.o: ChessPieces/bishop.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/bishop'
-#  Last modified 2022-12-26 14:49:30.502597213
+#  Last modified 2022-12-26 19:50:47.465702334
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 14):
@@ -255,14 +257,14 @@ ChessPieces/pawn.cpp:
 # Not a target:
 MLPModel/MLP.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-12-26 14:41:53.832629693
+#  Last modified 2022-12-26 19:49:39.855708896
 #  File has been updated.
 #  Successfully updated.
 
 ChessPieces/horse.o: ChessPieces/horse.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/horse'
-#  Last modified 2022-12-26 14:49:30.242597239
+#  Last modified 2022-12-26 19:50:47.18570236
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 14):
@@ -271,17 +273,17 @@ ChessPieces/horse.o: ChessPieces/horse.cpp
 BackTrackAlgorithm/BackTrack.o: BackTrackAlgorithm/BackTrack.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'BackTrackAlgorithm/BackTrack'
-#  Last modified 2022-12-26 14:49:31.792597029
+#  Last modified 2022-12-26 19:50:48.835702208
 #  File has been updated.
+ 
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 14):
 	clang++ ${FLAGS} -c $< -o $@
 
 ChessPieces/queen.o: ChessPieces/queen.cpp
- 
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/queen'
-#  Last modified 2022-12-26 14:49:31.282597101
+#  Last modified 2022-12-26 19:50:48.295702258
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 14):
@@ -317,7 +319,7 @@ run: all clean
 ChessPieces/king.o: ChessPieces/king.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/king'
-#  Last modified 2022-12-26 14:49:31.032597138
+#  Last modified 2022-12-26 19:50:48.015702284
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 14):
@@ -341,7 +343,7 @@ test: MLPModel/MLP.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o
 GUI/GUI.o: GUI/GUI.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'GUI/GUI'
-#  Last modified 2022-12-26 14:49:32.152596977
+#  Last modified 2022-12-26 19:50:49.285702166
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 14):
@@ -350,7 +352,7 @@ GUI/GUI.o: GUI/GUI.cpp
 MLPModel/MLP.o: MLPModel/MLP.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'MLPModel/MLP'
-#  Last modified 2022-12-26 14:49:29.992597262
+#  Last modified 2022-12-26 19:50:46.905702387
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 14):
@@ -358,7 +360,7 @@ MLPModel/MLP.o: MLPModel/MLP.cpp
 
 ChessGame: MLPModel/MLP.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o BackTrackAlgorithm/BackTrack.o GUI/GUI.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-12-26 14:49:32.672596904
+#  Last modified 2022-12-26 19:50:49.845702115
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -367,7 +369,7 @@ ChessGame: MLPModel/MLP.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/p
 ChessPieces/rook.o: ChessPieces/rook.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'ChessPieces/rook'
-#  Last modified 2022-12-26 14:49:31.542597064
+#  Last modified 2022-12-26 19:50:48.585702232
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 14):
@@ -376,7 +378,7 @@ ChessPieces/rook.o: ChessPieces/rook.cpp
 # Not a target:
 GUI/GUI.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-12-22 17:02:43.994485017
+#  Last modified 2022-12-26 17:59:00.301498311
 #  File has been updated.
 #  Successfully updated.
 
@@ -395,12 +397,12 @@ ChessPieces/rook.cpp:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 77 / storage = 975 B / avg = 12 B
-# current buf: size = 8162 B / used = 975 B / count = 77 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 78 / storage = 989 B / avg = 12 B
+# current buf: size = 8162 B / used = 989 B / count = 78 / avg = 12 B
 
-# strcache performance: lookups = 124 / hit rate = 37%
+# strcache performance: lookups = 125 / hit rate = 37%
 # hash-table stats:
-# Load=77/8192=1%, Rehash=0, Collisions=0/124=0%
-# Finished Make data base on Mon Dec 26 14:49:36 2022
+# Load=78/8192=1%, Rehash=0, Collisions=0/125=0%
+# Finished Make data base on Tue Dec 27 11:59:51 2022
 
  

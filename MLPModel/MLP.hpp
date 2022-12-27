@@ -20,6 +20,7 @@ public:
     
     std::vector<std::string> read_weights(const std::string movesFile);
     std::string read_Bias_weights(const std::string movesFile);
+   std::vector<std::string> forward_propagation(std::array<double, 64> input);
 
-    std::string forward_propagation(std::array<double, 64> input);
+    std::vector<double> sigmoid (const std::vector<double> matrix);
 };
