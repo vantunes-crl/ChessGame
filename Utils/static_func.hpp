@@ -42,8 +42,9 @@ static std::shared_ptr<Ichess_pieces> make_piece(const int type)
 static std::array<std::shared_ptr<Ichess_pieces>, 64> loadState()
 {
 
-  std::fstream file("init.rec", std::ios::in);
+  std::fstream file("Utils/init.rec", std::ios::in);
   std::array<std::shared_ptr<Ichess_pieces>, 64> board;
+
   int n;
   for (int i = 0; i < 64; ++i)
   {

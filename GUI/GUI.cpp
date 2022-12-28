@@ -98,8 +98,8 @@ void GUI::selectPiece(const int pos, Ichess_pieces::Board_t &Board, std::list<Po
             if (pos != PiecesPos)
             {                
                 Board[PiecesPos]->play(Board, pos);
-                sleep(1);
-                autoplay.BotPlay(Board);
+                // sleep(1);
+                // autoplay.BotPlay(Board);
             }
         }
         List.clear();

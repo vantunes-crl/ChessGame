@@ -3,24 +3,24 @@
 #include <thread>
 #include "Utils/static_func.hpp"
 #include "GUI/GUI.hpp"
-
+#include "Bot/AutoPlay.hpp"
 int main()
 {
     Board<std::shared_ptr<Ichess_pieces>> board;
     //MLP mlp;
     
-    //board = loadState();
+    board = loadState();
     
-    board = {
-        std::make_shared<rook>(0), std::make_shared<horse>(0),std::make_shared<bishop>(0),std::make_shared<queen>(0),std::make_shared<king>(0),std::make_shared<bishop>(0),std::make_shared<horse>(0),std::make_shared<rook>(0),
-        std::make_shared<pawn>(0), std::make_shared<pawn>(0), std::make_shared<pawn>(0), std::make_shared<pawn>(0), std::make_shared<pawn>(0), std::make_shared<pawn>(0), std::make_shared<pawn>(0), std::make_shared<pawn>(0),
-        nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,
-        nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,
-        nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,
-        nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,
-        std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1),std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1),std::make_shared<pawn>(1),
-        std::make_shared<rook>(1), std::make_shared<horse>(1),std::make_shared<bishop>(1),std::make_shared<queen>(1),std::make_shared<king>(1),std::make_shared<bishop>(1),std::make_shared<horse>(1),std::make_shared<rook>(1),
-    };
+    // board = {
+    //     std::make_shared<rook>(0), std::make_shared<horse>(0),std::make_shared<bishop>(0),std::make_shared<queen>(0),std::make_shared<king>(0),std::make_shared<bishop>(0),std::make_shared<horse>(0),std::make_shared<rook>(0),
+    //     std::make_shared<pawn>(0), std::make_shared<pawn>(0), std::make_shared<pawn>(0), std::make_shared<pawn>(0), std::make_shared<pawn>(0), std::make_shared<pawn>(0), std::make_shared<pawn>(0), std::make_shared<pawn>(0),
+    //     nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,
+    //     nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,
+    //     nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,
+    //     nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,
+    //     std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1),std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1), std::make_shared<pawn>(1),std::make_shared<pawn>(1),
+    //     std::make_shared<rook>(1), std::make_shared<horse>(1),std::make_shared<bishop>(1),std::make_shared<queen>(1),std::make_shared<king>(1),std::make_shared<bishop>(1),std::make_shared<horse>(1),std::make_shared<rook>(1),
+    // };
 
   //board.printTable();
 
@@ -30,18 +30,22 @@ int main()
   // std::cout << move << std::endl;
 
   GUI gui(825, 825);
+  AutoPlay<Board<std::shared_ptr<Ichess_pieces>>> autoplay;
+  std::string str = "Rac1";
 
-  gui.start(board);
-  //std::thread first(&GUI::start, gui, std::ref(board));
+  // board.printTable();
+  // autoplay.Play(str, board);
+  // gui.start(board);
+  // std::thread first(&GUI::start, gui, std::ref(board));
 
-  //AutoPlay<Board<std::shared_ptr<Ichess_pieces>>> autoplay;
+  //autoplay.startPlay("GamesRecorded/ficsgamesdb_2009_standard2000_nomovetimes_270751.pgn/ficsgamesdb_2009_standard2000_nomovetimes_270751.pgn", board);
+  //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::startPlay, autoplay,"GamesRecorded/ficsgamesdb_2009_standard2000_nomovetimes_270751.pgn/ficsgamesdb_2009_standard2000_nomovetimes_270751.pgn", std::ref(board));
+
   
-  //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::startPlay, autoplay,"GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn", std::ref(board));
+  // std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::BotPlay, autoplay, std::ref(board));
   
- // std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::BotPlay, autoplay, std::ref(board));
-  
-  //first.join();
-  //second.join();
+  // first.join();
+  // second.join();
 
 
   // ChessDataConverter<Board<std::shared_ptr<Ichess_pieces>>> test;
