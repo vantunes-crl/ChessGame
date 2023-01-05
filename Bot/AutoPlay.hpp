@@ -33,16 +33,22 @@ class AutoPlay
         bool Play(std::string &move, Board &board)
         {
             int posToMove = converter.encodeToPosNumber(move);
-
-            if (move[0] == 'O')
-                posToMove = ROUND ? 4 : 60; //Error handler king pos for swap 60 White 4 Black. 
             auto piecePos = findPieceToPlay(move, board);
 
-            std::cout << piecePos << std::endl;
+            if (move == "O-O")
+            {
+                posToMove = ROUND ? 4 : 60; //Error handler king pos for swap 60 White 4 Black. 
+                piecePos = ROUND ? 7 : 63;
+            }
+            else if (move == "O-O-O")
+            {
+                posToMove = ROUND ? 4 : 60; //Error handler king pos for swap 60 White 4 Black. 
+                piecePos = ROUND ? 0 : 56;
+            }
 
-            // std::cout << "Play: " << move << std::endl;
-            // std::cout << "Played toMove: " << converter.posNumberToEncode(posToMove).first << converter.posNumberToEncode(posToMove).second << std::endl;
-            // std::cout << "Played:MoveFrom " << converter.posNumberToEncode(piecePos).first << converter.posNumberToEncode(piecePos).second << std::endl;
+            std::cout << "Play: " << move << std::endl;
+            std::cout << "Played toMove: " << converter.posNumberToEncode(posToMove).first << converter.posNumberToEncode(posToMove).second << std::endl;
+            std::cout << "Played:MoveFrom " << converter.posNumberToEncode(piecePos).first << converter.posNumberToEncode(piecePos).second << std::endl;
 
             if (!(board[piecePos]->play(board, posToMove)))
                 ROUND = ROUND ? 0 : 1; // Round 0 White, 1 Black. 
@@ -82,15 +88,16 @@ class AutoPlay
             
             for (int i = 0; i < vec.size(); ++i)
             {
-                auto plays = converter.parseMoves(vec[0]);
+                auto plays = converter.parseMoves(vec[29]);
 
                 for (auto it = plays.begin(); it != plays.end(); ++it)
                 {
-                    sleep(1);
+                    //sleep(1);
+                    std::cout << "Number play: " << it->numberOfPlay << std::endl;
                     board.saveState(it->WhitePlay, "White", it->numberOfPlay);
                     Play(it->WhitePlay, board);
                     
-                    sleep(1);
+                    //sleep(1);
                     board.saveState(it->BlackPlay, "Black", it->numberOfPlay);
                     Play(it->BlackPlay, board);
                 }

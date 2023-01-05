@@ -4,6 +4,7 @@
 #include "Utils/static_func.hpp"
 #include "GUI/GUI.hpp"
 #include "Bot/AutoPlay.hpp"
+
 int main()
 {
     Board<std::shared_ptr<Ichess_pieces>> board;
@@ -30,22 +31,22 @@ int main()
   // std::cout << move << std::endl;
 
   GUI gui(825, 825);
-  AutoPlay<Board<std::shared_ptr<Ichess_pieces>>> autoplay;
-  std::string str = "Rac1";
+  //AutoPlay<Board<std::shared_ptr<Ichess_pieces>>> autoplay;
+  //std::string str = "O-O";
 
   // board.printTable();
-  // autoplay.Play(str, board);
-  // gui.start(board);
-  // std::thread first(&GUI::start, gui, std::ref(board));
+  //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::Play, autoplay, std::ref(str), std::ref(board));
+  //autoplay.Play(str, board);
+  //gui.start(board);
+  std::thread first(&GUI::start, gui, std::ref(board));
 
   //autoplay.startPlay("GamesRecorded/ficsgamesdb_2009_standard2000_nomovetimes_270751.pgn/ficsgamesdb_2009_standard2000_nomovetimes_270751.pgn", board);
-  //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::startPlay, autoplay,"GamesRecorded/ficsgamesdb_2009_standard2000_nomovetimes_270751.pgn/ficsgamesdb_2009_standard2000_nomovetimes_270751.pgn", std::ref(board));
+  //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::startPlay, autoplay,"/home/vantunes/ChessGame/GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn", std::ref(board));
 
+  //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::BotPlay, autoplay, std::ref(board));
   
-  // std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::BotPlay, autoplay, std::ref(board));
-  
-  // first.join();
-  // second.join();
+  first.join();
+  //second.join();
 
 
   // ChessDataConverter<Board<std::shared_ptr<Ichess_pieces>>> test;
