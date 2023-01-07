@@ -5,11 +5,10 @@
 #include <iostream>
 #include <memory>
 #include "../BackTrackAlgorithm/BackTrack.hpp"
-#include "../Board.hpp"
 #include <algorithm>
+#include "../Board.hpp"
 
-
-
+class Board;
 /**
  * @brief Type of each piece in chess game.
  * 
@@ -50,8 +49,6 @@ enum ERRORS {
 class Ichess_pieces
 {
     public:
-        typedef Board<std::shared_ptr<Ichess_pieces>> Board_t;
-    public:
         /**
          * @brief Move a piece on the Board.
          * 
@@ -59,14 +56,14 @@ class Ichess_pieces
          * @param ToMovePos int pos to the next move based in a 64 pos board.
          * @return int > 0 if an error occurs, else return 0.
          */
-        virtual int play(Board_t &Board, int ToMovePos) = 0;
+        virtual int play(Board &Board, int ToMovePos) = 0;
         /**
          * @brief Get the int of the piece on the Board.
          * 
          * @param Board Board where the pieces are.
          * @return int pos to the next move based in a 64 pos board.
          */
-        virtual int getPos(Board_t &Board) const = 0;
+        virtual int getPos(Board &Board) const = 0;
         /**
          * @brief Type of the pieces
          * 
@@ -86,8 +83,8 @@ class Ichess_pieces
          * @return std::shared_ptr<Ichess_pieces> 
          */
         virtual std::shared_ptr<Ichess_pieces> copy() = 0;
-
         virtual ~Ichess_pieces() {};
+
 };
 
 

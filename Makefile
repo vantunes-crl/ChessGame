@@ -5,7 +5,7 @@ TEST = ChessTest
 INCLUDE = -lsfml-graphics -lsfml-window -lsfml-system -g -pthread -IMLPModel/MLP.hpp
 
 SRCS =  MLPModel/MLP.cpp ChessPieces/horse.cpp ChessPieces/bishop.cpp ChessPieces/pawn.cpp ChessPieces/king.cpp ChessPieces/queen.cpp ChessPieces/rook.cpp BackTrackAlgorithm/BackTrack.cpp \
-GUI/GUI.cpp 
+GUI/GUI.cpp Board.cpp
 
 # 
 OBJS = $(SRCS:.cpp=.o)

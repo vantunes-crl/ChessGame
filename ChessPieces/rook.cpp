@@ -5,10 +5,10 @@ rook::rook(bool b)
     Color = b;
 }
 
-bool rook::swapKing(Board_t &Board, const int posRook, const int posKing)
+bool rook::swapKing(Board &board, const int posRook, const int posKing)
 {
-    auto state = Board.read_state();
-    int color = Board[posKing]->getColor();
+    auto state = board.read_state();
+    int color = board[posKing]->getColor();
     int type = color ? 3 : 9;
 
     std::array<int, 5> BlackPatern1 = {BLACK_ROOK, EMPTY, EMPTY, EMPTY, BLACK_KING}; // left black
@@ -24,18 +24,18 @@ bool rook::swapKing(Board_t &Board, const int posRook, const int posKing)
         case 0:
             if (std::equal(state.begin(), state.begin() + 4, std::begin(BlackPatern1)))
             {
-                std::swap(Board[posKing], Board[2]);
-                std::swap(Board[posRook], Board[3]);
-                Board.swapRookKing(color) = false;
+                std::swap(board[posKing], board[2]);
+                std::swap(board[posRook], board[3]);
+                board.swapRookKing(color) = false;
                 return false;
             }
             break;
         case 7:
             if (std::equal(state.begin() + 4, state.begin() + 7, std::begin(BlackPatern2)))
             {
-                std::swap(Board[posKing], Board[6]);
-                std::swap(Board[posRook], Board[5]);
-                Board.swapRookKing(color) = false;
+                std::swap(board[posKing], board[6]);
+                std::swap(board[posRook], board[5]);
+                board.swapRookKing(color) = false;
                 return false;
             }
             break;
@@ -46,18 +46,18 @@ bool rook::swapKing(Board_t &Board, const int posRook, const int posKing)
         case 56:
             if (std::equal(state.begin() + 56, state.begin() + 61, std::begin(WhitePatern1)))
             {
-                std::swap(Board[posKing], Board[58]);
-                std::swap(Board[posRook], Board[59]);
-                Board.swapRookKing(color) = false;
+                std::swap(board[posKing], board[58]);
+                std::swap(board[posRook], board[59]);
+                board.swapRookKing(color) = false;
                 return false;
             }
             break;
         case 63:
             if (std::equal(state.begin() + 60, state.begin() + 63, std::begin(WhitePatern2)))
             {
-                std::swap(Board[posKing], Board[62]);
-                std::swap(Board[posRook], Board[61]);
-                Board.swapRookKing(color) = false;
+                std::swap(board[posKing], board[62]);
+                std::swap(board[posRook], board[61]);
+                board.swapRookKing(color) = false;
                 return false;
             }
             break;
@@ -67,37 +67,37 @@ bool rook::swapKing(Board_t &Board, const int posRook, const int posKing)
     }      
 }
 
-int rook::play(Board_t &Board, int ToMovePos)
+int rook::play(Board &board, int ToMovePos)
 {
-    int pos = this->getPos(Board);
+    int pos = this->getPos(board);
 
-    if (ToMovePos > 63 || ToMovePos < 0) //out size of the Board
+    if (ToMovePos > 63 || ToMovePos < 0) //out size of the board
         return OUT_SIZE;
     else if (pos == ToMovePos) //if is not moving
         return SAME_PLACE;
-    else if (Board[ToMovePos] && Board[ToMovePos]->getColor() == this->getColor()) //try kill friend
+    else if (board[ToMovePos] && board[ToMovePos]->getColor() == this->getColor()) //try kill friend
     {
-        switch (Board[ToMovePos]->type()) //Check if its a Swap Rook/King
+        switch (board[ToMovePos]->type()) //Check if its a Swap Rook/King
         {
         case WHITE_KING:
         case BLACK_KING:
-            return (swapKing(Board, pos, ToMovePos));
+            return (swapKing(board, pos, ToMovePos));
         }
         return CANT_MOVE;
     }
 
     std::list<int> moves;
-    backTrack.AvalMoves(8, BOTTON_EDGE, pos, Board, moves); //move top right
-    backTrack.AvalMoves(-8, TOP_EDGE, pos, Board, moves); //move top left
-    backTrack.AvalMoves(-1, LEFT_EDGE, pos, Board, moves); //move botton left
-    backTrack.AvalMoves(1, RIGHT_EDGE, pos, Board, moves); //move botton right
+    backTrack.AvalMoves(8, BOTTON_EDGE, pos, board, moves); //move top right
+    backTrack.AvalMoves(-8, TOP_EDGE, pos, board, moves); //move top left
+    backTrack.AvalMoves(-1, LEFT_EDGE, pos, board, moves); //move botton left
+    backTrack.AvalMoves(1, RIGHT_EDGE, pos, board, moves); //move botton right
 
     for (auto it : moves)
     {
         if (it == ToMovePos)
         {
-            Board[ToMovePos] = Board[pos];
-            Board[pos] = nullptr;
+            board[ToMovePos] = board[pos];
+            board[pos] = nullptr;
             return NO_ERROR;
         }
     };
@@ -113,11 +113,11 @@ int rook::type()
         return BLACK_ROOK;
 }
 
-int rook::getPos(Board_t &Board) const
+int rook::getPos(Board &board) const
 {
     for (int i = 0; i < 64; ++i)
     {
-        if (this == Board[i].get())
+        if (this == board[i].get())
             return i;
     }
     return -1;

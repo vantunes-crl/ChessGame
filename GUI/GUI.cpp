@@ -5,7 +5,7 @@ GUI::GUI(int width, int height)
     _window = std::make_shared<sf::RenderWindow>(sf::VideoMode(width, height), "Chess Game");
 }
 
-void GUI::FillBoardWithPieces(Ichess_pieces::Board_t &Board, std::array<sf::Texture, 13> &Textures)
+void GUI::FillBoardWithPieces(Board &board, std::array<sf::Texture, 13> &Textures)
 {
     std::array<std::shared_ptr<sf::Sprite>, 32> Pieces;
     int count = 0;
@@ -15,9 +15,9 @@ void GUI::FillBoardWithPieces(Ichess_pieces::Board_t &Board, std::array<sf::Text
     {
         for (int j = 0; j < 8; ++j)
         {
-            if (Board[CountPos])
+            if (board[CountPos])
             {
-                Pieces[count] = std::make_shared<sf::Sprite>(Textures[Board[CountPos]->type()]);
+                Pieces[count] = std::make_shared<sf::Sprite>(Textures[board[CountPos]->type()]);
                 Pieces[count]->setPosition(j * 100, i * 100);
                 count++;
             }
@@ -73,7 +73,7 @@ std::array<sf::Texture, 13> GUI::initTextures()
     return Textures;
 }
 
-void GUI::selectPiece(const int pos, Ichess_pieces::Board_t &Board, std::list<Pos> &List)
+void GUI::selectPiece(const int pos, Board &board, std::list<Pos> &List)
 {
     static bool selected = false;
     static int PiecesPos = 0;
@@ -81,7 +81,7 @@ void GUI::selectPiece(const int pos, Ichess_pieces::Board_t &Board, std::list<Po
     std::list<int> AvalPlaces;
     static int count = 1;
     List.clear();
-    AvalPlaces = backTrack.BackTrackAvalPlacesList(pos, Board);
+    AvalPlaces = backTrack.BackTrackAvalPlacesList(pos, board);
     for (auto it : AvalPlaces)
         List.push_back({it % 8, it / 8});
 
@@ -92,12 +92,12 @@ void GUI::selectPiece(const int pos, Ichess_pieces::Board_t &Board, std::list<Po
     }
     else
     {
-        if(Board[PiecesPos])
+        if(board[PiecesPos])
         {  
             
             if (pos != PiecesPos)
             {                
-                Board[PiecesPos]->play(Board, pos);
+                board[PiecesPos]->play(board, pos);
                 // sleep(1);
                 // autoplay.BotPlay(Board);
             }
@@ -143,7 +143,7 @@ void GUI::PositionsNames()
 }
 
 /* Main loop */
-void GUI::start(Ichess_pieces::Board_t &Board)
+void GUI::start(Board &board)
 {
     //static board image
     sf::Texture BoardTexture;
@@ -176,14 +176,14 @@ void GUI::start(Ichess_pieces::Board_t &Board)
                     break;
                 
                 case sf::Event::MouseButtonPressed:
-                    selectPiece(Matrix[event.mouseButton.y / 100][event.mouseButton.x / 100], Board, AvalPlaces);
+                    selectPiece(Matrix[event.mouseButton.y / 100][event.mouseButton.x / 100], board, AvalPlaces);
                 default:
                     break;
             }
         }
         _window->clear();
         _window->draw(BoardSprite);
-        FillBoardWithPieces(Board, PiecesTextures);
+        FillBoardWithPieces(board, PiecesTextures);
         DisplayAvalPlaces(AvalPlaces);
         PositionsNames();
         _window->display();

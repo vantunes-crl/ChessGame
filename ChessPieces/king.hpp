@@ -15,9 +15,9 @@
 class king : public Ichess_pieces 
 {
     public:
-        int play(Board_t &Board, int ToMoveint) override;
+        int play(Board &Board, int ToMoveint) override;
         int type() override;
-        int getPos(Board_t &Board) const override;
+        int getPos(Board &Board) const override;
         bool getColor() const override;
 
         /**
@@ -39,7 +39,7 @@ class king : public Ichess_pieces
          * @return true if can be killed.
          * @return false if no one can kill.
          */
-        bool checkIfSomeoneCanKill(Ichess_pieces::Board_t Board, int pos);
+        bool checkIfSomeoneCanKill(Board Board, int pos);
 
 };
 

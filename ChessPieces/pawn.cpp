@@ -27,26 +27,26 @@ void pawn::move(std::shared_ptr<Ichess_pieces> &ToMovePos, std::shared_ptr<Iches
     Pos = nullptr;
 }
 
-int pawn::movePieces(Board_t &Board, int ToMovePos, int pos)
+int pawn::movePieces(Board &board, int ToMovePos, int pos)
 {
     int signal = 1;
     if (!this->Color)
         signal = -1;
 
-    bool firstPlay = ((this->first_play && pos - ToMovePos == (16 * signal) && !Board[ToMovePos] && !Board[pos - (8 * signal)]) || (this->first_play && pos - ToMovePos == (8 * signal) && !Board[ToMovePos]));
-    bool killEnemy = ((pos - ToMovePos == (9 * signal) && Board[ToMovePos] ) || (pos - ToMovePos == (7 * signal) && Board[ToMovePos]));
-    bool normalMove = (pos - ToMovePos == (8 * signal) && !Board[ToMovePos]);
+    bool firstPlay = ((this->first_play && pos - ToMovePos == (16 * signal) && !board[ToMovePos] && !board[pos - (8 * signal)]) || (this->first_play && pos - ToMovePos == (8 * signal) && !board[ToMovePos]));
+    bool killEnemy = ((pos - ToMovePos == (9 * signal) && board[ToMovePos] ) || (pos - ToMovePos == (7 * signal) && board[ToMovePos]));
+    bool normalMove = (pos - ToMovePos == (8 * signal) && !board[ToMovePos]);
 
     if (firstPlay || killEnemy || normalMove)
     {
         this->first_play = false;
-        move(Board[ToMovePos], Board[pos], checkEnd(ToMovePos));
+        move(board[ToMovePos], board[pos], checkEnd(ToMovePos));
         return NO_ERROR;
     }
     return CANT_MOVE;  
 }
 
-int pawn::play(Board_t &Board, int ToMovePos)
+int pawn::play(Board &Board, int ToMovePos)
 {
     int pos = this->getPos(Board);
 
@@ -64,7 +64,7 @@ int pawn::play(Board_t &Board, int ToMovePos)
     
 }
 
-int pawn::getPos(Board_t &Board) const
+int pawn::getPos(Board &Board) const
 {
     for (int i = 0; i < 64; ++i)
     {

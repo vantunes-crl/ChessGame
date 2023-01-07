@@ -7,7 +7,7 @@
 
 int main()
 {
-    Board<std::shared_ptr<Ichess_pieces>> board;
+    Board board;
     //MLP mlp;
     
     board = loadState();
