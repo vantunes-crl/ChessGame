@@ -1,7 +1,7 @@
 #include "bishop.hpp"
 #include <cstring>
 
-int bishop::play(Board_t &Board, int ToMovePos)
+int bishop::play(Board &Board, int ToMovePos)
 {
     int pos = this->getPos(Board); //original to set pos after move
     
@@ -40,7 +40,7 @@ int bishop::type()
         return BLACK_BISHOP;
 }
 
-int bishop::getPos(Board_t &Board) const
+int bishop::getPos(Board &Board) const
 {
     for (int i = 0; i < 64; ++i)
     {

@@ -25,14 +25,14 @@ private:
 public:
     void DisplayAvalPlaces(std::list<Pos> &List);
 
-    void selectPiece(const int pos, Ichess_pieces::Board_t &Board, std::list<Pos> &List);
+    void selectPiece(const int pos, Board &Board, std::list<Pos> &List);
 
     /**
      * @brief Main Function of the GUI, Where the main loop hapens.
      * 
      * @param Board The table where the pieces are.
      */
-    void start(Ichess_pieces::Board_t &Board);
+    void start(Board &Board);
 
     /**
      * @brief a Draw Function where draws all pieces in the right places.
@@ -40,7 +40,7 @@ public:
      * @param Board Board where the pieces are
      * @param Textures a array of sf::Textures, with all pieces textures. 
      */
-    void FillBoardWithPieces(Ichess_pieces::Board_t &Table, std::array<sf::Texture, 13> &Textures);
+    void FillBoardWithPieces(Board &Table, std::array<sf::Texture, 13> &Textures);
 
     /**
      * @brief Init the list of textures.

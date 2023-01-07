@@ -1,35 +1,35 @@
 #include "BackTrack.hpp"
 
-std::list<int> BackTrack::BackTrackAvalPlacesList(const int &PiecesPos, Ichess_pieces::Board_t Board)
+std::list<int> BackTrack::BackTrackAvalPlacesList(const int &PiecesPos, Board board)
 {
     std::list<int> list;
 
-    if (!Board[PiecesPos])
+    if (!board[PiecesPos])
         return list;
 
     for (int i = 0; i < 64; ++i)
     {
-        Ichess_pieces::Board_t CpyBoard(Board);
+        Board CpyBoard = board;
         if (CpyBoard[PiecesPos]->play(CpyBoard, i) == 0)
             list.push_back(i);
     }
     return list;
 }
 
-void BackTrack::BackTrackAvalPlacesPrint(const int &PiecesPos, Ichess_pieces::Board_t &Board)
+void BackTrack::BackTrackAvalPlacesPrint(const int &PiecesPos, Board &board)
 {
-    Ichess_pieces::Board_t CpyBoard;
+    Board CpyBoard;
 
     for (int i = 0; i < 64; ++i)
     {
-        CpyBoard = Board;
+        CpyBoard = board;
         if (CpyBoard[PiecesPos]->play(CpyBoard, i) == 0)
             std::cout << "Can move to int: " << i << std::endl;
     }
 }
 
 
-void BackTrack::AvalMoves(int steps, EDGES Edge, int pos, Ichess_pieces::Board_t Board, std::list<int> &moves)
+void BackTrack::AvalMoves(int steps, EDGES Edge, int pos, Board board, std::list<int> &moves)
 {
     std::array<std::array<int, 8>, 4> All_Edges = {{
         {0,1,2,3,4,5,6,7},
@@ -46,7 +46,7 @@ void BackTrack::AvalMoves(int steps, EDGES Edge, int pos, Ichess_pieces::Board_t
         if (pos > 63 || pos < 0)
             break;
         moves.push_back(pos);
-        if (Board[pos])
+        if (board[pos])
             break;
     }
 }

@@ -6,37 +6,37 @@ king::king(bool b)
     Color = b;
 }
 
-bool king::checkIfSomeoneCanKill(Ichess_pieces::Board_t Board, int ToMovePos)
+bool king::checkIfSomeoneCanKill(Board board, int ToMovePos)
 {
-    Board[ToMovePos] = std::make_shared<king>(Color);
+    board[ToMovePos] = std::make_shared<king>(Color);
     for (int i = 0; i < 64; ++i)
     {
-        if (Board[i] != nullptr && Board[i]->type() != WHITE_KING && Board[i]->type() != BLACK_KING)
+        if (board[i] != nullptr && board[i]->type() != WHITE_KING && board[i]->type() != BLACK_KING)
         {
-            if (Board[i]->getColor() != this->Color && Board[i]->play(Board, ToMovePos) == 0)
+            if (board[i]->getColor() != this->Color && board[i]->play(board, ToMovePos) == 0)
                 return true;
         }
     }
     return false;
 }
 
-int king::play(Board_t &Board, int ToMovePos)
+int king::play(Board &board, int ToMovePos)
 {
-    int pos = this->getPos(Board);
+    int pos = this->getPos(board);
 
-    if (ToMovePos > 63 || ToMovePos < 0) //out size of the Board
+    if (ToMovePos > 63 || ToMovePos < 0) //out size of the board
         return OUT_SIZE;
     else if (pos == ToMovePos) //if is not moving
         return SAME_PLACE;
-    else if (Board[ToMovePos] && Board[ToMovePos]->getColor() == this->getColor()) //try kill friend
+    else if (board[ToMovePos] && board[ToMovePos]->getColor() == this->getColor()) //try kill friend
         return CANT_MOVE;
 
     const int AvalPos[8] = {-1, 1, 8, -8, 7, -7, 9, -9};
 
-    if (std::find(std::begin(AvalPos), std::end(AvalPos), ToMovePos - pos) != std::end(AvalPos) && !checkIfSomeoneCanKill(Board, ToMovePos))
+    if (std::find(std::begin(AvalPos), std::end(AvalPos), ToMovePos - pos) != std::end(AvalPos) && !checkIfSomeoneCanKill(board, ToMovePos))
     {
-        Board[ToMovePos] = Board[pos];
-        Board[pos] = nullptr;
+        board[ToMovePos] = board[pos];
+        board[pos] = nullptr;
         return NO_ERROR;
     }
 
@@ -51,11 +51,11 @@ int king::type()
         return BLACK_KING;
 }
 
-int king::getPos(Board_t &Board) const
+int king::getPos(Board &board) const
 {
     for (int i = 0; i < 64; ++i)
     {
-        if (this == Board[i].get())
+        if (this == board[i].get())
             return i;
     }
     return -1;

@@ -10,6 +10,7 @@ clang++  -c ChessPieces/queen.cpp -o ChessPieces/queen.o
 clang++  -c ChessPieces/rook.cpp -o ChessPieces/rook.o
 clang++  -c BackTrackAlgorithm/BackTrack.cpp -o BackTrackAlgorithm/BackTrack.o
 clang++  -c GUI/GUI.cpp -o GUI/GUI.o
-clang++ main.cpp MLPModel/MLP.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o BackTrackAlgorithm/BackTrack.o GUI/GUI.o -lsfml-graphics -lsfml-window -lsfml-system -g -pthread -IMLPModel/MLP.hpp -o ChessGame
+clang++  -c Board.cpp -o Board.o
+clang++ main.cpp MLPModel/MLP.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o BackTrackAlgorithm/BackTrack.o GUI/GUI.o Board.o -lsfml-graphics -lsfml-window -lsfml-system -g -pthread -o ChessGame
 make: Leaving directory '/home/vantunes/ChessGame'
  
