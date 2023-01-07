@@ -2,10 +2,10 @@ NAME = ChessGame
 
 TEST = ChessTest
 
-INCLUDE = -lsfml-graphics -lsfml-window -lsfml-system -g -pthread -IMLPModel/MLP.hpp
+INCLUDE =  -lsfml-graphics -lsfml-window -lsfml-system -g -pthread
 
 SRCS =  MLPModel/MLP.cpp ChessPieces/horse.cpp ChessPieces/bishop.cpp ChessPieces/pawn.cpp ChessPieces/king.cpp ChessPieces/queen.cpp ChessPieces/rook.cpp BackTrackAlgorithm/BackTrack.cpp \
-GUI/GUI.cpp Board.cpp
+GUI/GUI.cpp  Board.cpp
 
 # 
 OBJS = $(SRCS:.cpp=.o)
@@ -14,7 +14,7 @@ OBJS = $(SRCS:.cpp=.o)
 	clang++ ${FLAGS} -c $< -o $@
 
 $(NAME): $(OBJS)
-	clang++ main.cpp $(OBJS) $(INCLUDE) -o $(NAME)
+	g++ main.cpp $(OBJS) $(INCLUDE) -o $(NAME)
 
 all: $(NAME)
 

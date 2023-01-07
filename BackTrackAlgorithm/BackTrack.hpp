@@ -5,7 +5,6 @@
 
 class Board;
 
-
 enum EDGES
 {
     TOP_EDGE, BOTTON_EDGE, LEFT_EDGE, RIGHT_EDGE
