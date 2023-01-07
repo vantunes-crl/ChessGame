@@ -82,14 +82,4 @@ Board Board::operator=(const std::array<std::shared_ptr<Ichess_pieces>, 64> &boa
     return *this;
 }
 
-Board *Board::getInstance()
-{   
-    if(Board_ == nullptr){
-        Board_ = new Board;
-    }
-    return Board_;
-}
-
 std::shared_ptr<Ichess_pieces> &Board::operator[](const int i) { return PlayBoard[i]; }
-
-Board* Board::Board_= nullptr;

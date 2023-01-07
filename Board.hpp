@@ -37,10 +37,6 @@ class Board
         void swap_reset();
 
         std::shared_ptr<Ichess_pieces> &operator[](const int i);
-        public:
-            static Board *Board_;
-        public:
-            static Board *getInstance();
 
     private:
         std::array<std::shared_ptr<Ichess_pieces>, 64> PlayBoard;

@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jan  7 03:27:25 2023
+# Make data base, printed on Sat Jan  7 12:20:48 2023
 
 # Variables
 
@@ -39,7 +39,7 @@ XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
 # automatic
 %F = $(notdir $%)
 # environment
-CONDA_PROMPT_MODIFIER = (cpdsensing) 
+CONDA_PROMPT_MODIFIER = (base) 
 # environment
 LANG = C
 # default
@@ -71,7 +71,7 @@ WAYLAND_DISPLAY = wayland-0
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST := Makefile
 # environment
-CONDA_SHLVL = 2
+CONDA_SHLVL = 1
 # automatic
 @F = $(notdir $@)
 # automatic
@@ -91,7 +91,7 @@ MAKE_HOST := x86_64-pc-linux-gnu
 # makefile (from 'Makefile', line 11)
 OBJS = $(SRCS:.cpp=.o)
 # environment
-CONDA_PREFIX = /home/vantunes/miniconda3/envs/cpdsensing
+CONDA_PREFIX = /home/vantunes/miniconda3
 # makefile
 SHELL = /bin/sh
 # default
@@ -103,9 +103,11 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /home/vantunes/.vscode-server/bin/e8a3071ea4344d9d48ef8a4df2c097372b0c5161/bin/remote-cli:/home/vantunes/miniconda3/envs/cpdsensing/bin:/home/vantunes/miniconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0:/mnt/c/WINDOWS/System32/OpenSSH:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/ctw02201.CRITICALTW/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/ctw02201.CRITICALTW/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin
+PATH = /home/vantunes/.vscode-server/bin/e8a3071ea4344d9d48ef8a4df2c097372b0c5161/bin/remote-cli:/home/vantunes/miniconda3/bin:/home/vantunes/miniconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0:/mnt/c/WINDOWS/System32/OpenSSH:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/ctw02201.CRITICALTW/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/ctw02201.CRITICALTW/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin
 # default
 MAKEFILES := 
+# environment
+MOTD_SHOWN = update-motd
 # automatic
 ^F = $(notdir $^)
 # environment
@@ -127,7 +129,7 @@ TEST = ChessTest
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
-CONDA_DEFAULT_ENV = cpdsensing
+CONDA_DEFAULT_ENV = base
 # environment
 LOGNAME = vantunes
 # environment
@@ -147,13 +149,11 @@ XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
 _CE_M = 
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-4889940e-4407-48ce-9b8a-ccab83b7cdd5.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-c99d77ef-cbe6-457f-8942-12b0b3029745.sock
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /home/vantunes
-# environment
-CONDA_PREFIX_1 = /home/vantunes/miniconda3
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
@@ -173,7 +173,7 @@ CONDA_EXE = /home/vantunes/miniconda3/bin/conda
 # environment
 _CE_CONDA = 
 # variable set hash-table stats:
-# Load=81/1024=8%, Rehash=0, Collisions=9/125=7%
+# Load=81/1024=8%, Rehash=0, Collisions=7/122=6%
 
 # Pattern-specific Variable Values
 
@@ -181,13 +181,10 @@ _CE_CONDA =
 
 # Directories
 
-# BackTrackAlgorithm (device 2080, inode 177005): 3 files, no impossibilities so far.
 # MLPModel (device 2080, inode 177046): 1 files, no impossibilities so far.
-# . (device 2080, inode 175626): 22 files, no impossibilities.
-# ChessPieces (device 2080, inode 177011): 16 files, no impossibilities so far.
-# GUI (device 2080, inode 177025): 3 files, no impossibilities so far.
+# . (device 2080, inode 175626): 20 files, no impossibilities.
 
-# 45 files, no impossibilities in 5 directories.
+# 21 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -199,51 +196,23 @@ _CE_CONDA =
 # Files
 
 # Not a target:
-ChessPieces/horse.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2023-01-07 02:14:19.812238828
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-ChessPieces/bishop.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2023-01-07 01:32:29.002249881
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-ChessPieces/queen.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2023-01-07 01:41:39.632249235
-#  File has been updated.
-#  Successfully updated.
-
-ChessPieces/pawn.o: ChessPieces/pawn.cpp
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'ChessPieces/pawn'
-#  Last modified 2023-01-07 03:19:11.672239996
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 14):
-	clang++ ${FLAGS} -c $< -o $@
+ChessPieces/pawn.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2023-01-07 03:25:25.302230988
+#  Last modified 2023-01-07 12:20:12.247998847
 #  File has been updated.
 #  Successfully updated.
 
- 
-ChessPieces/bishop.o: ChessPieces/bishop.cpp
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'ChessPieces/bishop'
-#  Last modified 2023-01-07 03:19:11.402239991
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 14):
-	clang++ ${FLAGS} -c $< -o $@
+# Not a target:
+ChessPieces/bishop.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 clean:
 #  Implicit rule search has not been done.
@@ -252,67 +221,41 @@ clean:
 #  recipe to execute (from 'Makefile', line 26):
 	rm -f $(OBJS)
 
-# Not a target:
-BackTrackAlgorithm/BackTrack.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2023-01-07 01:43:26.762251649
-#  File has been updated.
-#  Successfully updated.
-
 re: fclean all
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-ChessPieces/pawn.cpp:
+MLPModel/MLP.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2023-01-07 01:40:40.802251774
+#  Last modified 2023-01-07 12:19:27.957997322
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
-MLPModel/MLP.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2023-01-05 14:23:58.442320662
-#  File has been updated.
-#  Successfully updated.
+ChessPieces/horse.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
-ChessPieces/horse.o: ChessPieces/horse.cpp
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'ChessPieces/horse'
-#  Last modified 2023-01-07 03:19:11.14223999
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 14):
-	clang++ ${FLAGS} -c $< -o $@
+# Not a target:
+BackTrackAlgorithm/BackTrack.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
-BackTrackAlgorithm/BackTrack.o: BackTrackAlgorithm/BackTrack.cpp
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'BackTrackAlgorithm/BackTrack'
-#  Last modified 2023-01-07 03:19:12.672240018
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 14):
-	clang++ ${FLAGS} -c $< -o $@
+# Not a target:
+ChessPieces/queen.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
-ChessPieces/queen.o: ChessPieces/queen.cpp
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'ChessPieces/queen'
-#  Last modified 2023-01-07 03:19:12.172240005
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 14):
-	clang++ ${FLAGS} -c $< -o $@
-
-Board.o: Board.cpp
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'Board'
-#  Last modified 2023-01-07 03:24:22.562223919
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 14):
-	clang++ ${FLAGS} -c $< -o $@
+# Not a target:
+Board.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .DEFAULT:
@@ -327,7 +270,7 @@ all: ChessGame
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
 
 fclean: clean
 #  Implicit rule search has not been done.
@@ -340,24 +283,15 @@ run: all clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 #  recipe to execute (from 'Makefile', line 32):
 	./ChessGame
 
-ChessPieces/king.o: ChessPieces/king.cpp
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'ChessPieces/king'
-#  Last modified 2023-01-07 03:19:11.92224
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 14):
-	clang++ ${FLAGS} -c $< -o $@
-
 # Not a target:
-ChessPieces/king.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2023-01-07 01:38:32.532247948
-#  File has been updated.
-#  Successfully updated.
+ChessPieces/king.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 test: MLPModel/MLP.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o BackTrackAlgorithm/BackTrack.o GUI/GUI.o Board.o
 #  Implicit rule search has not been done.
@@ -367,101 +301,69 @@ test: MLPModel/MLP.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o
 	clang++ mainTest.cpp $(OBJS) $(INCLUDE) -o $(TEST)
 	./$(TEST)
 
-GUI/GUI.o: GUI/GUI.cpp
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'GUI/GUI'
-#  Last modified 2023-01-07 03:19:13.022240024
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 14):
-	clang++ ${FLAGS} -c $< -o $@
-
-MLPModel/MLP.o: MLPModel/MLP.cpp
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'MLPModel/MLP'
-#  Last modified 2023-01-07 03:19:10.892239991
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 14):
-	clang++ ${FLAGS} -c $< -o $@
-
 # Not a target:
-Board.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2023-01-07 03:24:17.512223293
-#  File has been updated.
-#  Successfully updated.
-
-ChessGame: MLPModel/MLP.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o BackTrackAlgorithm/BackTrack.o GUI/GUI.o Board.o
-#  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := ChessGame
-# automatic
-# * := 
-# automatic
-# < := MLPModel/MLP.o
-# automatic
-# + := MLPModel/MLP.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o BackTrackAlgorithm/BackTrack.o GUI/GUI.o Board.o
-# automatic
-# % := 
-# automatic
-# ^ := MLPModel/MLP.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o BackTrackAlgorithm/BackTrack.o GUI/GUI.o Board.o
-# automatic
-# ? := MLPModel/MLP.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o BackTrackAlgorithm/BackTrack.o GUI/GUI.o Board.o
-# automatic
-# | := 
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=2/15=13%
-#  recipe to execute (from 'Makefile', line 17):
-	g++ main.cpp $(OBJS) $(INCLUDE) -o $(NAME)
-
-# Not a target:
-.SUFFIXES:
+GUI/GUI.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-ChessPieces/rook.o: ChessPieces/rook.cpp
+MLPModel/MLP.o: MLPModel/MLP.cpp
 #  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'ChessPieces/rook'
-#  Last modified 2023-01-07 03:19:12.432240013
+#  Implicit/static pattern stem: 'MLPModel/MLP'
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := MLPModel/MLP.o
+# automatic
+# * := MLPModel/MLP
+# automatic
+# < := MLPModel/MLP.cpp
+# automatic
+# + := MLPModel/MLP.cpp
+# automatic
+# % := 
+# automatic
+# ^ := MLPModel/MLP.cpp
+# automatic
+# ? := MLPModel/MLP.cpp
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/14=7%
 #  recipe to execute (from 'Makefile', line 14):
 	clang++ ${FLAGS} -c $< -o $@
 
-# Not a target:
-GUI/GUI.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2023-01-07 02:23:10.842239837
+ChessGame: MLPModel/MLP.o ChessPieces/horse.o ChessPieces/bishop.o ChessPieces/pawn.o ChessPieces/king.o ChessPieces/queen.o ChessPieces/rook.o BackTrackAlgorithm/BackTrack.o GUI/GUI.o Board.o
+#  Implicit rule search has not been done.
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+#  recipe to execute (from 'Makefile', line 17):
+	clang++ main.cpp $(OBJS) $(INCLUDE) -o $(NAME)
 
 # Not a target:
-ChessPieces/rook.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2023-01-07 01:42:41.792250492
-#  File has been updated.
-#  Successfully updated.
+ChessPieces/rook.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # files hash-table stats:
-# Load=30/1024=3%, Rehash=0, Collisions=0/98=0%
+# Load=21/1024=2%, Rehash=0, Collisions=0/61=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 86 / storage = 1053 B / avg = 12 B
-# current buf: size = 8162 B / used = 1053 B / count = 86 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 46 / storage = 496 B / avg = 10 B
+# current buf: size = 8162 B / used = 496 B / count = 46 / avg = 10 B
 
-# strcache performance: lookups = 131 / hit rate = 34%
+# strcache performance: lookups = 76 / hit rate = 39%
 # hash-table stats:
-# Load=86/8192=1%, Rehash=0, Collisions=0/131=0%
-# Finished Make data base on Sat Jan  7 03:27:25 2023
+# Load=46/8192=1%, Rehash=0, Collisions=0/76=0%
+# Finished Make data base on Sat Jan  7 12:20:48 2023
 
  

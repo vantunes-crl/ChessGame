@@ -14,7 +14,7 @@ OBJS = $(SRCS:.cpp=.o)
 	clang++ ${FLAGS} -c $< -o $@
 
 $(NAME): $(OBJS)
-	g++ main.cpp $(OBJS) $(INCLUDE) -o $(NAME)
+	clang++ main.cpp $(OBJS) $(INCLUDE) -o $(NAME)
 
 all: $(NAME)
 

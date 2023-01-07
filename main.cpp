@@ -6,15 +6,11 @@
 #include "Bot/AutoPlay.hpp"
 #include "Board.hpp"
 
-
-
 int main()
 {
     
     // Board board;
     // //MLP mlp;
-    
-    Board::getInstance()->printTable();    
 
     // board = loadState();
 
