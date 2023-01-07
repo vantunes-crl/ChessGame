@@ -9,13 +9,12 @@
 int main()
 {
     
-    // Board board;
+    Board board;
     // //MLP mlp;
 
-    // board = loadState();
+    board = loadState();
 
-    
-
+  
     //*= nullptr;
     
     // *Board::Board_ = {
@@ -37,22 +36,22 @@ int main()
   // std::string move = mlp.forward_propagation(board.read_state());
   // std::cout << move << std::endl;
 
-  // GUI gui(825, 825);
-  // //AutoPlay<Board<std::shared_ptr<Ichess_pieces>>> autoplay;
+  GUI gui(825, 825);
+  AutoPlay<Board> autoplay;
   // //std::string str = "O-O";
 
   // // board.printTable();
   // //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::Play, autoplay, std::ref(str), std::ref(board));
   // //autoplay.Play(str, board);
   // //gui.start(board);
-  // std::thread first(&GUI::start, gui, std::ref(board));
+  std::thread first(&GUI::start, gui, std::ref(board));
 
   // //autoplay.startPlay("GamesRecorded/ficsgamesdb_2009_standard2000_nomovetimes_270751.pgn/ficsgamesdb_2009_standard2000_nomovetimes_270751.pgn", board);
-  // //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::startPlay, autoplay,"/home/vantunes/ChessGame/GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn", std::ref(board));
+  //std::thread second(&AutoPlay<Board>::startPlay, autoplay,"/home/vantunes/ChessGame/GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn", std::ref(board));
 
   // //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::BotPlay, autoplay, std::ref(board));
   
-  // first.join();
+  first.join();
   //second.join();
 
 

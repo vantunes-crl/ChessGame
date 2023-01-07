@@ -27,41 +27,44 @@ void pawn::move(std::shared_ptr<Ichess_pieces> &ToMovePos, std::shared_ptr<Iches
     Pos = nullptr;
 }
 
-int pawn::movePieces(Board &board, int ToMovePos, int pos)
+int pawn::play(Board &board, int ToMovePos)
 {
-    int signal = 1;
-    if (!this->Color)
-        signal = -1;
+    int pos = this->getPos(board);
 
-    bool firstPlay = ((this->first_play && pos - ToMovePos == (16 * signal) && !board[ToMovePos] && !board[pos - (8 * signal)]) || (this->first_play && pos - ToMovePos == (8 * signal) && !board[ToMovePos]));
-    bool killEnemy = ((pos - ToMovePos == (9 * signal) && board[ToMovePos] ) || (pos - ToMovePos == (7 * signal) && board[ToMovePos]));
-    bool normalMove = (pos - ToMovePos == (8 * signal) && !board[ToMovePos]);
-
-    if (firstPlay || killEnemy || normalMove)
+    if (Check(board, ToMovePos) == NO_ERROR)
     {
         this->first_play = false;
         move(board[ToMovePos], board[pos], checkEnd(ToMovePos));
         return NO_ERROR;
     }
-    return CANT_MOVE;  
+    return CANT_MOVE;
+    
 }
 
-int pawn::play(Board &Board, int ToMovePos)
+int pawn::Check(Board &board, int ToMovePos)
 {
-    int pos = this->getPos(Board);
+    int pos = this->getPos(board);
 
     if (ToMovePos > 63 || ToMovePos < 0) //out size of the Board
         return OUT_SIZE;
     else if (pos == ToMovePos) //if is not moving
         return SAME_PLACE;
-    else if (Board[ToMovePos] && Board[ToMovePos]->getColor() == this->getColor()) //try kill friend
+    else if (board[ToMovePos] && board[ToMovePos]->getColor() == this->getColor()) //try kill friend
         return CANT_MOVE;
-    
     if (!backTrack.checkOpositeEdges(pos, ToMovePos))
         return CANT_MOVE;
 
-    return movePieces(Board, ToMovePos, pos);
+    int signal = 1;
+    if (!this->Color)
+        signal = -1;
     
+    bool firstPlay = ((this->first_play && pos - ToMovePos == (16 * signal) && !board[ToMovePos] && !board[pos - (8 * signal)]) || (this->first_play && pos - ToMovePos == (8 * signal) && !board[ToMovePos]));
+    bool killEnemy = ((pos - ToMovePos == (9 * signal) && board[ToMovePos] ) || (pos - ToMovePos == (7 * signal) && board[ToMovePos]));
+    bool normalMove = (pos - ToMovePos == (8 * signal) && !board[ToMovePos]);
+    
+    if (firstPlay || killEnemy || normalMove)
+        return NO_ERROR;
+    return CANT_MOVE;
 }
 
 int pawn::getPos(Board &Board) const

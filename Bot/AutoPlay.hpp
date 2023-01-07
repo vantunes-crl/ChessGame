@@ -88,7 +88,7 @@ class AutoPlay
             
             for (int i = 0; i < vec.size(); ++i)
             {
-                auto plays = converter.parseMoves(vec[29]);
+                auto plays = converter.parseMoves(vec[i]);
 
                 for (auto it = plays.begin(); it != plays.end(); ++it)
                 {

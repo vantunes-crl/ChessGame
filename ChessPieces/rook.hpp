@@ -26,9 +26,11 @@ class rook : public Ichess_pieces
         rook(bool b);
 
         std::shared_ptr<Ichess_pieces> copy() override;
+        int Check(Board &Board, int ToMovePos) override;
     private:
         bool Color;
         BackTrack backTrack;
+        std::list<int> moves;
         bool swapKing(Board &Board, const int posRook, const int posKing);
         bool checkNullRange(Ichess_pieces *first, Ichess_pieces *end);
 

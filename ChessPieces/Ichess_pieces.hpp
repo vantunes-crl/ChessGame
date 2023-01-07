@@ -40,6 +40,7 @@ enum ERRORS {
     GO_BACK,
     CANT_MOVE,
     LIMIT_MOVES,
+    SWAP_KING,
 };
 
 /**
@@ -57,6 +58,9 @@ class Ichess_pieces
          * @return int > 0 if an error occurs, else return 0.
          */
         virtual int play(Board &Board, int ToMovePos) = 0;
+
+
+        virtual int Check(Board &Board, int ToMovePos) = 0;
         /**
          * @brief Get the int of the piece on the Board.
          * 

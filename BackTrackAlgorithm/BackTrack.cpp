@@ -1,6 +1,6 @@
 #include "BackTrack.hpp"
 
-std::list<int> BackTrack::BackTrackAvalPlacesList(const int &PiecesPos, Board board)
+std::list<int> BackTrack::BackTrackAvalPlacesList(const int &PiecesPos, Board &board)
 {
     std::list<int> list;
 
@@ -9,8 +9,7 @@ std::list<int> BackTrack::BackTrackAvalPlacesList(const int &PiecesPos, Board bo
 
     for (int i = 0; i < 64; ++i)
     {
-        Board CpyBoard = board;
-        if (CpyBoard[PiecesPos]->play(CpyBoard, i) == 0)
+        if (board[PiecesPos]->Check(board, i) == 0)
             list.push_back(i);
     }
     return list;
@@ -18,12 +17,9 @@ std::list<int> BackTrack::BackTrackAvalPlacesList(const int &PiecesPos, Board bo
 
 void BackTrack::BackTrackAvalPlacesPrint(const int &PiecesPos, Board &board)
 {
-    Board CpyBoard;
-
     for (int i = 0; i < 64; ++i)
     {
-        CpyBoard = board;
-        if (CpyBoard[PiecesPos]->play(CpyBoard, i) == 0)
+        if (board[PiecesPos]->Check(board, i) == 0)
             std::cout << "Can move to int: " << i << std::endl;
     }
 }

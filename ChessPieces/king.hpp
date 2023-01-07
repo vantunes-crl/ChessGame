@@ -28,9 +28,12 @@ class king : public Ichess_pieces
         king(bool b);
         std::shared_ptr<Ichess_pieces> copy() override;
 
+        int Check(Board &Board, int ToMovePos) override;
+
     private:
         bool Color;
         BackTrack backTrack;
+        const int AvalPos[8] = {-1, 1, 8, -8, 7, -7, 9, -9};
         /**
          * @brief Check the next position, if someone can kill there.
          * 

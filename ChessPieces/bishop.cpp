@@ -3,6 +3,26 @@
 
 int bishop::play(Board &Board, int ToMovePos)
 {
+    int pos = this->getPos(Board);
+    if (Check(Board, ToMovePos) == NO_ERROR)
+    {
+        for (auto it : moves)
+        {
+            if (it == ToMovePos)
+            {
+                Board[ToMovePos] = Board[pos];
+                Board[pos] = nullptr;
+                return NO_ERROR;
+            }
+        };
+        moves.clear();
+        return NO_ERROR;
+    }
+    return CANT_MOVE;
+}
+
+int bishop::Check(Board &Board, int ToMovePos)
+{
     int pos = this->getPos(Board); //original to set pos after move
     
     if (ToMovePos > 63 || ToMovePos < 0) //out size of the Board
@@ -12,7 +32,6 @@ int bishop::play(Board &Board, int ToMovePos)
     else if (Board[ToMovePos] && Board[ToMovePos]->getColor() == this->getColor()) //try kill friend
         return CANT_MOVE;
     
-    std::list<int> moves;
     backTrack.AvalMoves(9, RIGHT_EDGE, pos, Board, moves); //move top right
     backTrack.AvalMoves(7, LEFT_EDGE, pos, Board, moves); //move top left
     backTrack.AvalMoves(-9, LEFT_EDGE, pos, Board, moves); //move botton left
@@ -21,14 +40,11 @@ int bishop::play(Board &Board, int ToMovePos)
     for (auto it : moves)
     {
         if (it == ToMovePos)
-        {
-            Board[ToMovePos] = Board[pos];
-            Board[pos] = nullptr;
             return NO_ERROR;
-        }
     };
 
     return CANT_MOVE;
+
 }
 
 

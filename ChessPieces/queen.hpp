@@ -17,6 +17,8 @@ class queen : public Ichess_pieces
         int getPos(Board &Board) const override;
         bool getColor() const override;
 
+        int Check(Board &Board, int ToMovePos) override;
+
         /**
          * @brief Construct a new queen object
          * 
@@ -26,6 +28,7 @@ class queen : public Ichess_pieces
         std::shared_ptr<Ichess_pieces> copy() override;
     private:
         bool Color;
+        std::list<int> moves;
         BackTrack backTrack;
 };
 

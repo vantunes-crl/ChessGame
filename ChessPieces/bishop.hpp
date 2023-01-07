@@ -15,6 +15,7 @@ class bishop : public Ichess_pieces
         int type() override;
         int getPos(Board &Board) const override;
         bool getColor() const override;
+        int Check(Board &Board, int ToMovePos) override;
 
         /**
          * @brief Construct a new Bishop object
@@ -26,6 +27,7 @@ class bishop : public Ichess_pieces
 
     private:
         bool Color;
+        std::list<int> moves;
         BackTrack backTrack;
 
 };

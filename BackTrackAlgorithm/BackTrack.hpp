@@ -25,7 +25,7 @@ class BackTrack
          * @param Board Board where all the pieces are.
          * @return std::list<int> with all int X/Y where this piece can move.
          */
-        std::list<int> BackTrackAvalPlacesList(const int &PiecesPos, Board board);
+        std::list<int> BackTrackAvalPlacesList(const int &PiecesPos, Board &board);
 
          /**
          * @brief search for all possible moves of the piece on the table and print.

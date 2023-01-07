@@ -19,6 +19,19 @@ int horse::play(Board &board, int ToMovePos)
 {
     int pos = this->getPos(board);
 
+    if (Check(board, ToMovePos) == NO_ERROR)
+    {
+        board[ToMovePos] = board[pos];
+        board[pos] = nullptr;
+        return NO_ERROR;
+    }    
+    return CANT_MOVE;   
+}
+
+int horse::Check(Board &board, int ToMovePos)
+{
+    int pos = this->getPos(board);
+
     if (ToMovePos > 63 || ToMovePos < 0) //out size of the board
         return OUT_SIZE;
     else if (pos == ToMovePos) //if is not moving
@@ -30,16 +43,9 @@ int horse::play(Board &board, int ToMovePos)
     if (checkDistance(pos, ToMovePos))
         return CANT_MOVE;
 
-    const int AvalPos[8] = {17, -17, 15, -15, 6, -6, 10, -10};
-
     if (std::find(std::begin(AvalPos), std::end(AvalPos), ToMovePos - pos) != std::end(AvalPos))
-    {
-        board[ToMovePos] = board[pos];
-        board[pos] = nullptr;
         return NO_ERROR;
-    }
-    
-    return CANT_MOVE;   
+    return CANT_MOVE; 
 }
 
 int horse::type()

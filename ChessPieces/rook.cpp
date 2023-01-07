@@ -67,7 +67,7 @@ bool rook::swapKing(Board &board, const int posRook, const int posKing)
     }      
 }
 
-int rook::play(Board &board, int ToMovePos)
+int rook::Check(Board &board, int ToMovePos)
 {
     int pos = this->getPos(board);
 
@@ -81,12 +81,11 @@ int rook::play(Board &board, int ToMovePos)
         {
         case WHITE_KING:
         case BLACK_KING:
-            return (swapKing(board, pos, ToMovePos));
+            return SWAP_KING;
         }
         return CANT_MOVE;
     }
 
-    std::list<int> moves;
     backTrack.AvalMoves(8, BOTTON_EDGE, pos, board, moves); //move top right
     backTrack.AvalMoves(-8, TOP_EDGE, pos, board, moves); //move top left
     backTrack.AvalMoves(-1, LEFT_EDGE, pos, board, moves); //move botton left
@@ -95,13 +94,31 @@ int rook::play(Board &board, int ToMovePos)
     for (auto it : moves)
     {
         if (it == ToMovePos)
-        {
-            board[ToMovePos] = board[pos];
-            board[pos] = nullptr;
             return NO_ERROR;
-        }
     };
+    return CANT_MOVE;
 
+}
+
+int rook::play(Board &board, int ToMovePos)
+{
+    int pos = this->getPos(board);
+
+    if (Check(board, ToMovePos) == NO_ERROR)
+    {
+        for (auto it : moves)
+        {
+            if (it == ToMovePos)
+            {
+                board[ToMovePos] = board[pos];
+                board[pos] = nullptr;
+                moves.clear();
+                return NO_ERROR;
+            }
+        };
+    }
+    else if (Check(board, ToMovePos) == SWAP_KING)
+        return swapKing(board, pos, ToMovePos);
     return CANT_MOVE;
 }
 

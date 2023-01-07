@@ -14,6 +14,7 @@ class horse : public Ichess_pieces
         int type() override;
         int getPos(Board &Board) const override;
         bool getColor() const override;
+        int Check(Board &Board, int ToMovePos) override;
 
         /**
          * @brief Construct a new Horse object
@@ -25,6 +26,7 @@ class horse : public Ichess_pieces
     private:
         bool Color;
         BackTrack backTrack;
+        const int AvalPos[8] = {17, -17, 15, -15, 6, -6, 10, -10};
 
         /**
          * @brief Check Distance between Ys to handle errors.

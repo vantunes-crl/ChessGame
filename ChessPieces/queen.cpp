@@ -9,6 +9,26 @@ int queen::play(Board &board, int ToMovePos)
 {
     int pos = this->getPos(board); //original to set pos after move
     
+    if (Check(board, ToMovePos) == NO_ERROR)
+    {
+        for (auto it : moves)
+        {
+            if (it == ToMovePos)
+            {
+                board[ToMovePos] = board[pos];
+                board[pos] = nullptr;
+                moves.clear();
+                return NO_ERROR;
+            }
+        };
+    }
+    return CANT_MOVE;
+}
+
+int queen::Check(Board &board, int ToMovePos)
+{
+    int pos = this->getPos(board); //original to set pos after move
+    
     if (ToMovePos > 63 || ToMovePos < 0) //out size of the board
         return OUT_SIZE;
     else if (pos == ToMovePos) //if is not moving
@@ -16,7 +36,6 @@ int queen::play(Board &board, int ToMovePos)
     else if (board[ToMovePos] && board[ToMovePos]->getColor() == this->getColor()) //try kill friend
         return CANT_MOVE;
     
-    std::list<int> moves;
     backTrack.AvalMoves(9, RIGHT_EDGE, pos, board, moves); //move top right
     backTrack.AvalMoves(7, LEFT_EDGE, pos, board, moves); //move top left
     backTrack.AvalMoves(-9, LEFT_EDGE, pos, board, moves); //move botton left
@@ -27,16 +46,10 @@ int queen::play(Board &board, int ToMovePos)
     backTrack.AvalMoves(1, RIGHT_EDGE, pos, board, moves); //move botton right
 
     for (auto it : moves)
-    {
         if (it == ToMovePos)
-        {
-            board[ToMovePos] = board[pos];
-            board[pos] = nullptr;
             return NO_ERROR;
-        }
-    };
-
     return CANT_MOVE;
+
 }
 
 int queen::type()

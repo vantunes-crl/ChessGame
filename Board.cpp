@@ -1,5 +1,16 @@
 #include "Board.hpp"
 
+Board::Board()
+{
+    for (int i = 0; i < 64; ++i)
+    {
+        if (PlayBoard[i])
+            CurrentState[i] = PlayBoard[i]->getPos(*this);
+        else
+            CurrentState[i] = 0;
+    }
+}
+
 void Board::printTable()
 {
     std::array<std::string, 13> Pieces = {
@@ -82,4 +93,20 @@ Board Board::operator=(const std::array<std::shared_ptr<Ichess_pieces>, 64> &boa
     return *this;
 }
 
-std::shared_ptr<Ichess_pieces> &Board::operator[](const int i) { return PlayBoard[i]; }
+std::shared_ptr<Ichess_pieces> &Board::operator[](const int i) 
+{ 
+    return PlayBoard[i]; 
+}
+
+Board::Board(Board &Board)
+{
+    for (auto i = 0; i < 64; ++i)
+    {
+        if (Board[i])
+        {
+            PlayBoard[i] = Board[i]->copy();
+        }
+        else
+            PlayBoard[i] = nullptr;
+    }
+}

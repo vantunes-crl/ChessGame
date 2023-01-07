@@ -26,6 +26,7 @@ class pawn : public Ichess_pieces
         pawn(bool b);
 
         std::shared_ptr<Ichess_pieces> copy() override;
+        int Check(Board &Board, int ToMovePos) override;
 
     private:
         bool Color;
@@ -33,8 +34,6 @@ class pawn : public Ichess_pieces
         bool first_play = true;
         bool checkEnd(const int ToMovePos);
         void move(std::shared_ptr<Ichess_pieces> &ToMovePos, std::shared_ptr<Ichess_pieces> &Pos, bool end);
-
-        int movePieces(Board &Board, int ToMovePos, int pos);
 };
 
 

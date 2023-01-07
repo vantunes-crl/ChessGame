@@ -24,7 +24,9 @@ class Board
 
         void printTable();
 
-        Board() = default;
+        Board();
+
+        Board(Board &Board);
 
         Board operator=(const std::array<std::shared_ptr<Ichess_pieces>, 64> &boardArray);
 
@@ -40,6 +42,8 @@ class Board
 
     private:
         std::array<std::shared_ptr<Ichess_pieces>, 64> PlayBoard;
+        std::list<int> movesList;
+        std::array<int, 64> CurrentState;
         bool Swap[2] = {true, true};
 };
 

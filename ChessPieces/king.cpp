@@ -24,6 +24,19 @@ int king::play(Board &board, int ToMovePos)
 {
     int pos = this->getPos(board);
 
+    if (Check(board, ToMovePos) == NO_ERROR)
+    {
+        board[ToMovePos] = board[pos];
+        board[pos] = nullptr;
+        return NO_ERROR;
+    }
+    return CANT_MOVE;
+}
+
+int king::Check(Board &board, int ToMovePos)
+{
+    int pos = this->getPos(board);
+
     if (ToMovePos > 63 || ToMovePos < 0) //out size of the board
         return OUT_SIZE;
     else if (pos == ToMovePos) //if is not moving
@@ -31,16 +44,10 @@ int king::play(Board &board, int ToMovePos)
     else if (board[ToMovePos] && board[ToMovePos]->getColor() == this->getColor()) //try kill friend
         return CANT_MOVE;
 
-    const int AvalPos[8] = {-1, 1, 8, -8, 7, -7, 9, -9};
-
     if (std::find(std::begin(AvalPos), std::end(AvalPos), ToMovePos - pos) != std::end(AvalPos) && !checkIfSomeoneCanKill(board, ToMovePos))
-    {
-        board[ToMovePos] = board[pos];
-        board[pos] = nullptr;
         return NO_ERROR;
-    }
-
     return CANT_MOVE;
+
 }
 
 int king::type()
