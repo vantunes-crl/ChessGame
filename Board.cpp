@@ -1,16 +1,5 @@
 #include "Board.hpp"
 
-Board::Board()
-{
-    for (int i = 0; i < 64; ++i)
-    {
-        if (PlayBoard[i])
-            CurrentState[i] = PlayBoard[i]->getPos(*this);
-        else
-            CurrentState[i] = 0;
-    }
-}
-
 void Board::printTable()
 {
     std::array<std::string, 13> Pieces = {
@@ -35,12 +24,6 @@ void Board::printTable()
     }
     std::cout << std::left << "\n--------------------------------------------------------------------------\n";
 }
-
-bool &Board::swapRookKing(int color)
-{
-    return Swap[color];
-}
-
 
 void Board::saveState(std::string move, std::string color, int playNumber)
 {
@@ -81,12 +64,6 @@ std::array<int, 64> Board::read_state()
     return state;
 }
 
-void Board::swap_reset()
-{
-    Swap[0] = true;
-    Swap[1] = true;
-}
-
 Board Board::operator=(const std::array<std::shared_ptr<Ichess_pieces>, 64> &boardArray)
 {
     PlayBoard = boardArray;
@@ -96,17 +73,4 @@ Board Board::operator=(const std::array<std::shared_ptr<Ichess_pieces>, 64> &boa
 std::shared_ptr<Ichess_pieces> &Board::operator[](const int i) 
 { 
     return PlayBoard[i]; 
-}
-
-Board::Board(Board &Board)
-{
-    for (auto i = 0; i < 64; ++i)
-    {
-        if (Board[i])
-        {
-            PlayBoard[i] = Board[i]->copy();
-        }
-        else
-            PlayBoard[i] = nullptr;
-    }
 }

@@ -18,6 +18,7 @@ int bishop::play(Board &Board, int ToMovePos)
         moves.clear();
         return NO_ERROR;
     }
+    moves.clear();
     return CANT_MOVE;
 }
 

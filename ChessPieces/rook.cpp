@@ -26,7 +26,7 @@ bool rook::swapKing(Board &board, const int posRook, const int posKing)
             {
                 std::swap(board[posKing], board[2]);
                 std::swap(board[posRook], board[3]);
-                board.swapRookKing(color) = false;
+                swap = false;
                 return false;
             }
             break;
@@ -35,7 +35,7 @@ bool rook::swapKing(Board &board, const int posRook, const int posKing)
             {
                 std::swap(board[posKing], board[6]);
                 std::swap(board[posRook], board[5]);
-                board.swapRookKing(color) = false;
+                swap = false;
                 return false;
             }
             break;
@@ -48,7 +48,7 @@ bool rook::swapKing(Board &board, const int posRook, const int posKing)
             {
                 std::swap(board[posKing], board[58]);
                 std::swap(board[posRook], board[59]);
-                board.swapRookKing(color) = false;
+                swap = false;
                 return false;
             }
             break;
@@ -57,7 +57,7 @@ bool rook::swapKing(Board &board, const int posRook, const int posKing)
             {
                 std::swap(board[posKing], board[62]);
                 std::swap(board[posRook], board[61]);
-                board.swapRookKing(color) = false;
+                swap = false;
                 return false;
             }
             break;
@@ -77,12 +77,8 @@ int rook::Check(Board &board, int ToMovePos)
         return SAME_PLACE;
     else if (board[ToMovePos] && board[ToMovePos]->getColor() == this->getColor()) //try kill friend
     {
-        switch (board[ToMovePos]->type()) //Check if its a Swap Rook/King
-        {
-        case WHITE_KING:
-        case BLACK_KING:
+        if (board[ToMovePos]->type() == WHITE_KING || board[ToMovePos]->type() == BLACK_KING ) //Check if its a Swap Rook/King
             return SWAP_KING;
-        }
         return CANT_MOVE;
     }
 
@@ -119,6 +115,7 @@ int rook::play(Board &board, int ToMovePos)
     }
     else if (Check(board, ToMovePos) == SWAP_KING)
         return swapKing(board, pos, ToMovePos);
+    moves.clear();
     return CANT_MOVE;
 }
 

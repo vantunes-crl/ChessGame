@@ -22,6 +22,7 @@ int queen::play(Board &board, int ToMovePos)
             }
         };
     }
+    moves.clear();
     return CANT_MOVE;
 }
 

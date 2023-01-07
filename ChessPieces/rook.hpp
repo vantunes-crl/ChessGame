@@ -31,8 +31,8 @@ class rook : public Ichess_pieces
         bool Color;
         BackTrack backTrack;
         std::list<int> moves;
+        bool swap = true;
         bool swapKing(Board &Board, const int posRook, const int posKing);
-        bool checkNullRange(Ichess_pieces *first, Ichess_pieces *end);
 
 };
 

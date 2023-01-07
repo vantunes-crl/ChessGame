@@ -59,7 +59,7 @@ class BackTrack
          * @param Board Board where all the pieces are. 
          * @param moves 
          */
-        void AvalMoves(int steps, EDGES Edge, int pos, Board board, std::list<int> &moves);
+        void AvalMoves(int steps, EDGES Edge, int pos, Board &board, std::list<int> &moves);
 
         /**
          * @brief Check the edges to handle some bugs where the piece cross the board.
