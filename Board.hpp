@@ -101,9 +101,9 @@ class Board
             file.close();
         }
 
-        std::array<double, 64> read_state()
+        std::array<int, 64> read_state()
         {
-            std::array<double, 64> state;
+            std::array<int, 64> state;
     
             for (int i = 0; i < 64; ++i)
             {

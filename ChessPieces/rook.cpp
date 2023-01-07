@@ -5,56 +5,62 @@ rook::rook(bool b)
     Color = b;
 }
 
-bool rook::checkNullRange(Ichess_pieces *first, Ichess_pieces *end)
-{
-    while (first != end)
-    {
-        if (first != nullptr)
-            return false;
-        ++first;
-    }
-    return true;
-}
-
 bool rook::swapKing(Board_t &Board, const int posRook, const int posKing)
 {
+    auto state = Board.read_state();
     int color = Board[posKing]->getColor();
-    
-    switch (posRook)
+    int type = color ? 3 : 9;
+
+    std::array<int, 5> BlackPatern1 = {BLACK_ROOK, EMPTY, EMPTY, EMPTY, BLACK_KING}; // left black
+    std::array<int, 4> BlackPatern2 = {BLACK_KING, EMPTY, EMPTY, BLACK_ROOK}; // right black
+    std::array<int, 5> WhitePatern1 = {WHITE_ROOK, EMPTY, EMPTY, EMPTY, WHITE_KING}; // left white
+    std::array<int, 4> WhitePatern2 = {WHITE_KING, EMPTY, EMPTY, WHITE_ROOK}; // right white
+
+    switch (type)
     {
-    case 63:
-        if (checkNullRange(Board[61].get(), Board[62].get()) && Board.swapRookKing(color) && color && posKing == 60)
+    case BLACK_KING:
+        switch (posRook)
         {
-            std::swap(Board[posKing], Board[62]);
-            std::swap(Board[posRook], Board[61]);
-            Board.swapRookKing(color) = false;
-            return false;
+        case 0:
+            if (std::equal(state.begin(), state.begin() + 4, std::begin(BlackPatern1)))
+            {
+                std::swap(Board[posKing], Board[2]);
+                std::swap(Board[posRook], Board[3]);
+                Board.swapRookKing(color) = false;
+                return false;
+            }
+            break;
+        case 7:
+            if (std::equal(state.begin() + 4, state.begin() + 7, std::begin(BlackPatern2)))
+            {
+                std::swap(Board[posKing], Board[6]);
+                std::swap(Board[posRook], Board[5]);
+                Board.swapRookKing(color) = false;
+                return false;
+            }
+            break;
         }
-    case 56:
-        if (checkNullRange(Board[57].get(), Board[58].get()) && checkNullRange(Board[58].get(), Board[59].get()) && Board.swapRookKing(color) && color && posKing == 60)
+    case WHITE_KING:
+        switch (posRook)
         {
-            std::cout << "aqui3\n";
-            std::swap(Board[posKing], Board[58]);
-            std::swap(Board[posRook], Board[59]);
-            Board.swapRookKing(color) = false;
-            return false;
-        }
-    case 7:
-        if (checkNullRange(Board[5].get(), Board[6].get()) && Board.swapRookKing(color) && !color && posRook == 7)
-        {
-            std::swap(Board[posKing], Board[6]);
-            std::swap(Board[posRook], Board[5]);
-            Board.swapRookKing(color) = false;
-            return false;
-        }
-    case 0:
-        if (checkNullRange(Board[1].get(), Board[2].get()) &&  checkNullRange(Board[2].get(), Board[3].get()) && Board.swapRookKing(color) && !color  && posRook == 0)
-        {
-            std::swap(Board[posKing], Board[2]);
-            std::swap(Board[posRook], Board[3]);
-            Board.swapRookKing(color) = false;
-            
-            return false;
+        case 56:
+            if (std::equal(state.begin() + 56, state.begin() + 61, std::begin(WhitePatern1)))
+            {
+                std::swap(Board[posKing], Board[58]);
+                std::swap(Board[posRook], Board[59]);
+                Board.swapRookKing(color) = false;
+                return false;
+            }
+            break;
+        case 63:
+            if (std::equal(state.begin() + 60, state.begin() + 63, std::begin(WhitePatern2)))
+            {
+                std::swap(Board[posKing], Board[62]);
+                std::swap(Board[posRook], Board[61]);
+                Board.swapRookKing(color) = false;
+                return false;
+            }
+            break;
         }
     default:
         return true;
@@ -76,9 +82,8 @@ int rook::play(Board_t &Board, int ToMovePos)
         case WHITE_KING:
         case BLACK_KING:
             return (swapKing(Board, pos, ToMovePos));
-        default:
-            return CANT_MOVE;
         }
+        return CANT_MOVE;
     }
 
     std::list<int> moves;

@@ -102,6 +102,7 @@ class ChessDataConverter
             std::string gameEndStatus = moves.substr(moves.find('{'), moves.find('}'));
             moves.erase(moves.find('{'), moves.find('}'));
             moves.erase(std::remove(moves.begin(), moves.end(), 'x'), moves.end());
+            moves.erase(std::remove(moves.begin(), moves.end(), '#'), moves.end());
 
             std::vector<Plays> plays;
             Plays temp;

@@ -33,26 +33,31 @@ class AutoPlay
         bool Play(std::string &move, Board &board)
         {
             int posToMove = converter.encodeToPosNumber(move);
-            if (move[0] == 'O')
-                posToMove = ROUND ? 4 : 60; //Error handler king pos for swap 60 White 4 Black. 
             auto piecePos = findPieceToPlay(move, board);
 
-            // std::cout << "Play: " << move << std::endl;
-            // std::cout << "Played toMove: " << converter.posNumberToEncode(posToMove).first << converter.posNumberToEncode(posToMove).second << std::endl;
-            // std::cout << "Played:MoveFrom " << converter.posNumberToEncode(piecePos).first << converter.posNumberToEncode(piecePos).second << std::endl;
-
-            if (board[piecePos] && !(board[piecePos]->play(board, posToMove)))
+            if (move == "O-O")
             {
-                ROUND = 0; // Round 0 White, 1 Black.
-                return false;
+                posToMove = ROUND ? 4 : 60; //Error handler king pos for swap 60 White 4 Black. 
+                piecePos = ROUND ? 7 : 63;
             }
-            else
-                return true;
-            // else //for debug
-            // {
-            //     std::cout << "Round " << ROUND << " Piece Pos " << piecePos << " MoveToPos " << posToMove << " Normal Move " << move << std::endl;
-            //     sleep(100);
-            // }
+            else if (move == "O-O-O")
+            {
+                posToMove = ROUND ? 4 : 60; //Error handler king pos for swap 60 White 4 Black. 
+                piecePos = ROUND ? 0 : 56;
+            }
+
+            std::cout << "Play: " << move << std::endl;
+            std::cout << "Played toMove: " << converter.posNumberToEncode(posToMove).first << converter.posNumberToEncode(posToMove).second << std::endl;
+            std::cout << "Played:MoveFrom " << converter.posNumberToEncode(piecePos).first << converter.posNumberToEncode(piecePos).second << std::endl;
+
+            if (!(board[piecePos]->play(board, posToMove)))
+                ROUND = ROUND ? 0 : 1; // Round 0 White, 1 Black. 
+            else //for debug
+            {
+                std::cout << "Round " << ROUND << " Piece Pos " << piecePos << " MoveToPos " << posToMove << " Normal Move " << move << std::endl;
+                sleep(100);
+            }
+            return true;
         }
 
 
@@ -69,7 +74,6 @@ class AutoPlay
                 else
                     std::cout << "invalid move" << std::endl;
             }
-            ROUND = 1;
         }
 
         /**
@@ -81,16 +85,15 @@ class AutoPlay
         void startPlay(std::string movesfile, Board &board)
         {
             auto vec = converter.parseMovesFile(movesfile);
-
+            
             for (int i = 0; i < vec.size(); ++i)
             {
-                auto plays = converter.parseMoves(vec[15]);
+                auto plays = converter.parseMoves(vec[29]);
 
                 for (auto it = plays.begin(); it != plays.end(); ++it)
                 {
-                    std::cout << "Round: " << it->numberOfPlay << std::endl;
-
                     //sleep(1);
+                    std::cout << "Number play: " << it->numberOfPlay << std::endl;
                     board.saveState(it->WhitePlay, "White", it->numberOfPlay);
                     Play(it->WhitePlay, board);
                     
@@ -98,10 +101,10 @@ class AutoPlay
                     board.saveState(it->BlackPlay, "Black", it->numberOfPlay);
                     Play(it->BlackPlay, board);
                 }
-
+                std::cout << "finish" << std::endl;
+                std::cout << "Loop number: " << i << "Target: " << vec.size() << std::endl;
                 board = loadState();
                 board.swap_reset();
-                std::cout << "Finish!\n";
             }
             
         }
@@ -132,10 +135,7 @@ class AutoPlay
                 }
             }
             if (duplicateMove && array[1] && converter.posNumberToEncode(array[1]).first == duplicateMove)
-            {
-                std::cout << duplicateMove << ": here\n";
                 return array[1];
-            }
 
             return array[0];
         }
