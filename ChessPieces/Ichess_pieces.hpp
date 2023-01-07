@@ -41,6 +41,7 @@ enum ERRORS {
     CANT_MOVE,
     LIMIT_MOVES,
     SWAP_KING,
+    DOUBLE_MOVE,
 };
 
 /**

@@ -33,12 +33,22 @@ int pawn::play(Board &board, int ToMovePos)
 
     if (Check(board, ToMovePos) == NO_ERROR)
     {
-        this->first_play = false;
+        if (abs(pos - ToMovePos) == 16)
+            board.setMoveEvent(ToMovePos, '2');
+        else
+            board.setMoveEvent(ToMovePos, '1');
+        if (this->enpassante)
+        {
+            int last = board.getLastEventMove();
+            std::cout << "last" << last << std::endl;
+            board[last] = nullptr;
+        }
+
         move(board[ToMovePos], board[pos], checkEnd(ToMovePos));
+        this->first_play = false;
         return NO_ERROR;
     }
     return CANT_MOVE;
-    
 }
 
 int pawn::Check(Board &board, int ToMovePos)
@@ -57,11 +67,19 @@ int pawn::Check(Board &board, int ToMovePos)
     int signal = 1;
     if (!this->Color)
         signal = -1;
-    
+        
     bool firstPlay = ((this->first_play && pos - ToMovePos == (16 * signal) && !board[ToMovePos] && !board[pos - (8 * signal)]) || (this->first_play && pos - ToMovePos == (8 * signal) && !board[ToMovePos]));
     bool killEnemy = ((pos - ToMovePos == (9 * signal) && board[ToMovePos] ) || (pos - ToMovePos == (7 * signal) && board[ToMovePos]));
     bool normalMove = (pos - ToMovePos == (8 * signal) && !board[ToMovePos]);
-    
+    bool enpassant =  ((pos - ToMovePos == (9 * signal)) || (pos - ToMovePos == (7 * signal)));
+
+    if (enpassant)
+    {        
+        this->enpassante = true;
+        return NO_ERROR;
+    }
+
+
     if (firstPlay || killEnemy || normalMove)
         return NO_ERROR;
     return CANT_MOVE;

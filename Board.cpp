@@ -74,3 +74,26 @@ std::shared_ptr<Ichess_pieces> &Board::operator[](const int i)
 { 
     return PlayBoard[i]; 
 }
+
+
+void Board::setMoveEvent(int move, char arg)
+{
+    // int y =  move % 8;
+    // int x =  move / 8;
+
+    // std::string temp;
+
+    // char yy = char(y + 'a');
+    // char xx = char(abs(x - 8) + 48);
+    
+    // temp += yy;
+    // temp += xx;
+    // temp += arg;
+
+    LogsMove.push_back(move);
+}
+
+int Board::getLastEventMove()
+{
+    return LogsMove.back();
+}
