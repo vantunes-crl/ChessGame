@@ -76,24 +76,12 @@ std::shared_ptr<Ichess_pieces> &Board::operator[](const int i)
 }
 
 
-void Board::setMoveEvent(int move, char arg)
+void Board::setMoveEvent(int move, bool doubleMove)
 {
-    // int y =  move % 8;
-    // int x =  move / 8;
-
-    // std::string temp;
-
-    // char yy = char(y + 'a');
-    // char xx = char(abs(x - 8) + 48);
-    
-    // temp += yy;
-    // temp += xx;
-    // temp += arg;
-
-    LogsMove.push_back(move);
+    LogsMove.push_back(std::make_pair(move, doubleMove));
 }
 
-int Board::getLastEventMove()
+std::pair<int, bool> Board::getLastEventMove()
 {
     return LogsMove.back();
 }

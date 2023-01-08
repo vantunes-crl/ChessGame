@@ -1,7 +1,6 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/vantunes/ChessGame'
 clang++  -c MLPModel/MLP.cpp -o MLPModel/MLP.o
- 
 clang++  -c ChessPieces/horse.cpp -o ChessPieces/horse.o
 clang++  -c ChessPieces/bishop.cpp -o ChessPieces/bishop.o
 clang++  -c ChessPieces/pawn.cpp -o ChessPieces/pawn.o

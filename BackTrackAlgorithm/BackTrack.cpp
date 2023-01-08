@@ -9,7 +9,8 @@ std::list<int> BackTrack::BackTrackAvalPlacesList(const int &PiecesPos, Board &b
 
     for (int i = 0; i < 64; ++i)
     {
-        if (board[PiecesPos]->Check(board, i) == 0)
+        auto value = board[PiecesPos]->Check(board, i);
+        if (value == NO_ERROR || value == ENPASSANTE)
             list.push_back(i);
     }
     return list;

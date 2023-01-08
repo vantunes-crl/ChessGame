@@ -32,14 +32,14 @@ class Board
 
         std::shared_ptr<Ichess_pieces> &operator[](const int i);
 
-        void setMoveEvent(int move, char arg);
+        void setMoveEvent(int move, bool arg);
 
-        int getLastEventMove();
+        std::pair<int,bool> getLastEventMove();
 
 
     private:
         std::array<std::shared_ptr<Ichess_pieces>, 64> PlayBoard;
-        std::list<int> LogsMove;
+        std::list<std::pair<int, bool>> LogsMove;
 };
 
 #endif

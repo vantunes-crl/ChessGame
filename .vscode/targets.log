@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jan  7 12:20:48 2023
+# Make data base, printed on Sun Jan  8 13:54:58 2023
 
 # Variables
 
@@ -149,7 +149,7 @@ XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
 _CE_M = 
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-c99d77ef-cbe6-457f-8942-12b0b3029745.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-4681d642-3078-4ecf-aef3-c1f4e6b72e4a.sock
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -182,9 +182,9 @@ _CE_CONDA =
 # Directories
 
 # MLPModel (device 2080, inode 177046): 1 files, no impossibilities so far.
-# . (device 2080, inode 175626): 20 files, no impossibilities.
+# . (device 2080, inode 175626): 19 files, no impossibilities.
 
-# 21 files, no impossibilities in 2 directories.
+# 20 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -204,7 +204,7 @@ ChessPieces/pawn.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2023-01-07 12:20:12.247998847
+#  Last modified 2023-01-07 12:23:22.748006501
 #  File has been updated.
 #  Successfully updated.
 
@@ -276,6 +276,7 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 #  recipe to execute (from 'Makefile', line 29):
 	rm -f $(NAME) $(TEST)
 
@@ -283,7 +284,6 @@ run: all clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 #  recipe to execute (from 'Makefile', line 32):
 	./ChessGame
 
@@ -358,12 +358,12 @@ ChessPieces/rook.o:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 46 / storage = 496 B / avg = 10 B
-# current buf: size = 8162 B / used = 496 B / count = 46 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 45 / storage = 486 B / avg = 10 B
+# current buf: size = 8162 B / used = 486 B / count = 45 / avg = 10 B
 
-# strcache performance: lookups = 76 / hit rate = 39%
+# strcache performance: lookups = 75 / hit rate = 40%
 # hash-table stats:
-# Load=46/8192=1%, Rehash=0, Collisions=0/76=0%
-# Finished Make data base on Sat Jan  7 12:20:48 2023
+# Load=45/8192=1%, Rehash=0, Collisions=0/75=0%
+# Finished Make data base on Sun Jan  8 13:54:58 2023
 
  

@@ -31,22 +31,20 @@ int pawn::play(Board &board, int ToMovePos)
 {
     int pos = this->getPos(board);
 
-    if (Check(board, ToMovePos) == NO_ERROR)
+    auto check = Check(board, ToMovePos);
+    auto lastMove = board.getLastEventMove();
+    switch (check)
     {
-        if (abs(pos - ToMovePos) == 16)
-            board.setMoveEvent(ToMovePos, '2');
-        else
-            board.setMoveEvent(ToMovePos, '1');
-        if (this->enpassante)
-        {
-            int last = board.getLastEventMove();
-            std::cout << "last" << last << std::endl;
-            board[last] = nullptr;
-        }
-
-        move(board[ToMovePos], board[pos], checkEnd(ToMovePos));
-        this->first_play = false;
-        return NO_ERROR;
+        case ENPASSANTE:
+            board[lastMove.first] = nullptr;
+        case NO_ERROR:
+            if (abs(pos - ToMovePos) == 16)
+                board.setMoveEvent(ToMovePos, true);
+            else
+                board.setMoveEvent(ToMovePos, false);
+            move(board[ToMovePos], board[pos], checkEnd(ToMovePos));
+            this->first_play = false;
+            return NO_ERROR;
     }
     return CANT_MOVE;
 }
@@ -74,11 +72,21 @@ int pawn::Check(Board &board, int ToMovePos)
     bool enpassant =  ((pos - ToMovePos == (9 * signal)) || (pos - ToMovePos == (7 * signal)));
 
     if (enpassant)
-    {        
-        this->enpassante = true;
-        return NO_ERROR;
+    {
+        auto move = board.getLastEventMove();
+        if (board[pos + 1] && board[pos + 1]->getColor() != this->Color)
+        {
+            int left = this->Color ? 7 : 9;
+            if (move.first == pos + 1 && move.second && (pos - ToMovePos) == (left * signal))
+                return ENPASSANTE;
+        }
+        if (board[pos -1] && board[pos - 1]->getColor() != this->Color)
+        {
+            int right = this->Color ? 9 : 7;
+            if (move.first == pos - 1 && move.second && (pos - ToMovePos) == (right * signal))
+                return ENPASSANTE;
+        }
     }
-
 
     if (firstPlay || killEnemy || normalMove)
         return NO_ERROR;
