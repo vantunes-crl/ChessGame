@@ -14,8 +14,6 @@ int main()
 
     board = loadState();
 
-  
-    //*= nullptr;
     
     // *Board::Board_ = {
     //     std::make_shared<rook>(0), std::make_shared<horse>(0),std::make_shared<bishop>(0),std::make_shared<queen>(0),std::make_shared<king>(0),std::make_shared<bishop>(0),std::make_shared<horse>(0),std::make_shared<rook>(0),
@@ -36,23 +34,39 @@ int main()
   // std::string move = mlp.forward_propagation(board.read_state());
   // std::cout << move << std::endl;
 
-  GUI gui(825, 825);
+  //GUI gui(825, 825);
   AutoPlay<Board> autoplay;
-  // //std::string str = "O-O";
 
   // // board.printTable();
-  // //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::Play, autoplay, std::ref(str), std::ref(board));
-  // //autoplay.Play(str, board);
-  // //gui.start(board);
-  std::thread first(&GUI::start, gui, std::ref(board));
+  //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::Play, autoplay, std::ref(str), std::ref(board));
 
-  // //autoplay.startPlay("GamesRecorded/ficsgamesdb_2009_standard2000_nomovetimes_270751.pgn/ficsgamesdb_2009_standard2000_nomovetimes_270751.pgn", board);
-  //std::thread second(&AutoPlay<Board>::startPlay, autoplay,"/home/vantunes/ChessGame/GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn", std::ref(board));
+  //gui.start(board);
+  //std::thread first(&GUI::start, gui, std::ref(board));
+
+  //std::string str1 = "Rh1";
+  // std::string str2 = "Nb6";
+  // std::string str3 = "Ra6";
+  // std::string str4 = "Nd7";
+
+  //sleep(3);
+  //autoplay.Play(str1, board);
+  // sleep(3);
+  // autoplay.Play(str2, board);
+
+  // sleep(3);
+  // autoplay.Play(str3, board);
+  // sleep(3);
+  // autoplay.Play(str4, board);
+
+
+
+  //autoplay.startPlay("GamesRecorded/ficsgamesdb_2009_standard2000_nomovetimes_270751.pgn/ficsgamesdb_2009_standard2000_nomovetimes_270751.pgn", board);
+  std::thread second(&AutoPlay<Board>::startPlay, autoplay,"/home/vantunes/ChessGame/GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn", std::ref(board));
 
   // //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::BotPlay, autoplay, std::ref(board));
   
-  first.join();
-  //second.join();
+  //first.join();
+  second.join();
 
 
   // ChessDataConverter<Board<std::shared_ptr<Ichess_pieces>>> test;

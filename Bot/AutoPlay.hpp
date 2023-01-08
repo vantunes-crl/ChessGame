@@ -46,16 +46,16 @@ class AutoPlay
                 piecePos = ROUND ? 0 : 56;
             }
 
-            std::cout << "Play: " << move << std::endl;
-            std::cout << "Played toMove: " << converter.posNumberToEncode(posToMove).first << converter.posNumberToEncode(posToMove).second << std::endl;
-            std::cout << "Played:MoveFrom " << converter.posNumberToEncode(piecePos).first << converter.posNumberToEncode(piecePos).second << std::endl;
+            // std::cout << "Play: " << move << ROUND << std::endl;
+            // std::cout << "Played toMove: " << converter.posNumberToEncode(posToMove).first << converter.posNumberToEncode(posToMove).second << std::endl;
+            // std::cout << "Played:MoveFrom " << converter.posNumberToEncode(piecePos).first << converter.posNumberToEncode(piecePos).second << std::endl;
 
-            if (!(board[piecePos]->play(board, posToMove)))
+            if (!board[piecePos] || !(board[piecePos]->play(board, posToMove)))
                 ROUND = ROUND ? 0 : 1; // Round 0 White, 1 Black. 
             else //for debug
             {
                 std::cout << "Round " << ROUND << " Piece Pos " << piecePos << " MoveToPos " << posToMove << " Normal Move " << move << std::endl;
-                sleep(100);
+                return false;
             }
             return true;
         }
@@ -85,26 +85,26 @@ class AutoPlay
         void startPlay(std::string movesfile, Board &board)
         {
             auto vec = converter.parseMovesFile(movesfile);
-            
             for (int i = 0; i < vec.size(); ++i)
             {
                 auto plays = converter.parseMoves(vec[i]);
-
+                bool check = true;
                 for (auto it = plays.begin(); it != plays.end(); ++it)
                 {
-                    //sleep(1);
-                    std::cout << "Number play: " << it->numberOfPlay << std::endl;
-                    board.saveState(it->WhitePlay, "White", it->numberOfPlay);
-                    Play(it->WhitePlay, board);
-                    
-                    //sleep(1);
+                    //sleep(2);
+                    //std::cout << "Number play: " << it->numberOfPlay << std::endl;
+                    //board.saveState(it->WhitePlay, "White", it->numberOfPlay);
+                    check = Play(it->WhitePlay, board);
+                    //sleep(2);
                     board.saveState(it->BlackPlay, "Black", it->numberOfPlay);
-                    Play(it->BlackPlay, board);
+                    check = Play(it->BlackPlay, board);
+                    if (!check)
+                        break;
                 }
                 std::cout << "finish" << std::endl;
                 std::cout << "Loop number: " << i << "Target: " << vec.size() << std::endl;
                 board = loadState();
-                board.swap_reset();
+                ROUND = 0;
             }
             
         }
@@ -117,18 +117,17 @@ class AutoPlay
          * @param Piece Piece type. WHITE_BISHOP, BLACK_BISHOP, BLACK_PAWN...
          * @return The piece pos that can move.
          */
-        int predictPieceToMove(Board board, int toMovePos, PIECES Piece, char duplicateMove)
+        int predictPieceToMove(Board &board, int toMovePos, PIECES Piece, char duplicateMove)
         {
-            Board cpyBoard = board;
             int array[2] = {0,0};
             int count = 0;
             
             for (int i = 0; i < 64; ++i)
             {
-                cpyBoard = board;
-                if (cpyBoard[i] && cpyBoard[i]->type() == Piece)
+                if (board[i] && board[i]->type() == Piece)
                 {
-                    if (!cpyBoard[i]->play(cpyBoard, toMovePos))
+                    auto check = board[i]->Check(board, toMovePos);
+                    if (check == NO_ERROR || check == ENPASSANTE)
                         array[count++] = i;
                     else
                         continue;

@@ -1,5 +1,5 @@
 #include "pawn.hpp"
-
+#include "unistd.h"
 
 pawn::pawn(bool b)
 {

@@ -33,7 +33,6 @@ class pawn : public Ichess_pieces
         BackTrack backTrack;
         bool first_play = true;
         bool checkEnd(const int ToMovePos);
-        bool enpassante = false;
         void move(std::shared_ptr<Ichess_pieces> &ToMovePos, std::shared_ptr<Ichess_pieces> &Pos, bool end);
 };
 
