@@ -55,6 +55,7 @@ class AutoPlay
             else //for debug
             {
                 std::cout << "Round " << ROUND << " Piece Pos " << piecePos << " MoveToPos " << posToMove << " Normal Move " << move << std::endl;
+                sleep(100);
                 return false;
             }
             return true;
@@ -82,8 +83,10 @@ class AutoPlay
          * @param movesfile .pgn file
          * @param board Board where the initial pieces are.
          */
-        void startPlay(std::string movesfile, Board &board)
+        void startPlay(std::string movesfile)
         {
+            Board *board = new Board(); 
+            loadState(*board);
             auto vec = converter.parseMovesFile(movesfile);
             for (int i = 0; i < vec.size(); ++i)
             {
@@ -93,17 +96,18 @@ class AutoPlay
                 {
                     //sleep(2);
                     //std::cout << "Number play: " << it->numberOfPlay << std::endl;
-                    //board.saveState(it->WhitePlay, "White", it->numberOfPlay);
-                    check = Play(it->WhitePlay, board);
+                    board->saveState(it->WhitePlay, "White", it->numberOfPlay);
+                    check = Play(it->WhitePlay, *board);
                     //sleep(2);
-                    board.saveState(it->BlackPlay, "Black", it->numberOfPlay);
-                    check = Play(it->BlackPlay, board);
+                    board->saveState(it->BlackPlay, "Black", it->numberOfPlay);
+                    check = Play(it->BlackPlay, *board);
                     if (!check)
                         break;
                 }
                 std::cout << "finish" << std::endl;
                 std::cout << "Loop number: " << i << "Target: " << vec.size() << std::endl;
-                board = loadState();
+                delete board;
+                loadState(*board);
                 ROUND = 0;
             }
             

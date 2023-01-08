@@ -26,7 +26,7 @@ class king : public Ichess_pieces
          * @param b Chess Piece Color False/Black True/White
          */
         king(bool b);
-        std::shared_ptr<Ichess_pieces> copy() override;
+        std::unique_ptr<Ichess_pieces> copy() override;
 
         int Check(Board &Board, int ToMovePos) override;
 
@@ -42,7 +42,7 @@ class king : public Ichess_pieces
          * @return true if can be killed.
          * @return false if no one can kill.
          */
-        bool checkIfSomeoneCanKill(Board Board, int pos);
+        bool checkIfSomeoneCanKill(Board &Board, int pos);
 
 };
 

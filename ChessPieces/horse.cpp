@@ -21,7 +21,7 @@ int horse::play(Board &board, int ToMovePos)
 
     if (Check(board, ToMovePos) == NO_ERROR)
     {
-        board[ToMovePos] = board[pos];
+        board[ToMovePos] = std::move(board[pos]);
         board[pos] = nullptr;
         return NO_ERROR;
     }    
@@ -66,9 +66,9 @@ int horse::getPos(Board &board) const
     return -1;
 }
 
-std::shared_ptr<Ichess_pieces> horse::copy()
+std::unique_ptr<Ichess_pieces> horse::copy()
 {
-    return std::make_shared<horse>(Color);
+    return std::make_unique<horse>(Color);
 }
 
 bool horse::getColor() const

@@ -9,10 +9,10 @@
 int main()
 {
     
-    Board board;
-    // //MLP mlp;
+    // Board board;
+    // // //MLP mlp;
 
-    board = loadState();
+    // loadState(board);
 
     
     // *Board::Board_ = {
@@ -61,7 +61,7 @@ int main()
 
 
   //autoplay.startPlay("GamesRecorded/ficsgamesdb_2009_standard2000_nomovetimes_270751.pgn/ficsgamesdb_2009_standard2000_nomovetimes_270751.pgn", board);
-  std::thread second(&AutoPlay<Board>::startPlay, autoplay,"/home/vantunes/ChessGame/GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn", std::ref(board));
+  std::thread second(&AutoPlay<Board>::startPlay, autoplay,"/home/vantunes/ChessGame/GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn");
 
   // //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::BotPlay, autoplay, std::ref(board));
   

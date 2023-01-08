@@ -14,7 +14,7 @@
  * @brief Class that represents the table in the Chess Game.
  * 
  * 
- * @warning Use this Template with a diferent type of std::shared_ptr<Ichess_pieces> will cause undefine behavior
+ * @warning Use this Template with a diferent type of std::unique_ptr<Ichess_pieces> will cause undefine behavior
  */
 class Ichess_pieces;
 
@@ -24,13 +24,13 @@ class Board
 
         void printTable();
 
-        Board operator=(const std::array<std::shared_ptr<Ichess_pieces>, 64> &boardArray);
+        //Board &operator=(std::unique_ptr<Ichess_pieces> &Pieces);
 
         void saveState(std::string move, std::string color, int playNumber);
 
         std::array<int, 64> read_state();
 
-        std::shared_ptr<Ichess_pieces> &operator[](const int i);
+        std::unique_ptr<Ichess_pieces> &operator[](const int i);
 
         void setMoveEvent(int move, bool arg);
 
@@ -38,7 +38,7 @@ class Board
 
 
     private:
-        std::array<std::shared_ptr<Ichess_pieces>, 64> PlayBoard;
+        std::array<std::unique_ptr<Ichess_pieces>, 64> PlayBoard;
         std::list<std::pair<int, bool>> LogsMove;
 };
 

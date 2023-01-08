@@ -10,7 +10,7 @@ int bishop::play(Board &Board, int ToMovePos)
         {
             if (it == ToMovePos)
             {
-                Board[ToMovePos] = Board[pos];
+                Board[ToMovePos] = std::move(Board[pos]);
                 Board[pos] = nullptr;
                 return NO_ERROR;
             }
@@ -73,9 +73,9 @@ bishop::bishop(bool b)
 }
 
 
-std::shared_ptr<Ichess_pieces> bishop::copy()
+std::unique_ptr<Ichess_pieces> bishop::copy()
 {
-    return std::make_shared<bishop>(Color);
+    return std::make_unique<bishop>(Color);
 }
 
 

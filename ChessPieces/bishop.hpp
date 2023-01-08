@@ -23,7 +23,7 @@ class bishop : public Ichess_pieces
          * @param b Chess Piece Color False/Black True/White
          */
         bishop(bool b);
-        std::shared_ptr<Ichess_pieces> copy() override;
+        std::unique_ptr<Ichess_pieces> copy() override;
 
     private:
         bool Color;

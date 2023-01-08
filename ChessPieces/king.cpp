@@ -6,14 +6,14 @@ king::king(bool b)
     Color = b;
 }
 
-bool king::checkIfSomeoneCanKill(Board board, int ToMovePos)
+bool king::checkIfSomeoneCanKill(Board &board, int ToMovePos)
 {
-    board[ToMovePos] = std::make_shared<king>(Color);
+    board[ToMovePos] = std::make_unique<king>(Color);
     for (int i = 0; i < 64; ++i)
     {
         if (board[i] != nullptr && board[i]->type() != WHITE_KING && board[i]->type() != BLACK_KING)
         {
-            if (board[i]->getColor() != this->Color && board[i]->play(board, ToMovePos) == 0)
+            if (board[i]->getColor() != this->Color && board[i]->Check(board, ToMovePos) == 0)
                 return true;
         }
     }
@@ -26,7 +26,7 @@ int king::play(Board &board, int ToMovePos)
 
     if (Check(board, ToMovePos) == NO_ERROR)
     {
-        board[ToMovePos] = board[pos];
+        board[ToMovePos] = std::move(board[pos]);
         board[pos] = nullptr;
         return NO_ERROR;
     }
@@ -69,9 +69,9 @@ int king::getPos(Board &board) const
 }
 
 
-std::shared_ptr<Ichess_pieces> king::copy()
+std::unique_ptr<Ichess_pieces> king::copy()
 {
-    return std::make_shared<king>(Color);
+    return std::make_unique<king>(Color);
 }
 
 
