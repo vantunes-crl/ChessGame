@@ -8,12 +8,12 @@ king::king(bool b)
 
 bool king::checkIfSomeoneCanKill(Board &board, int ToMovePos)
 {
-    board[ToMovePos] = std::make_unique<king>(Color);
     for (int i = 0; i < 64; ++i)
     {
         if (board[i] != nullptr && board[i]->type() != WHITE_KING && board[i]->type() != BLACK_KING)
         {
-            if (board[i]->getColor() != this->Color && board[i]->Check(board, ToMovePos) == 0)
+            auto check = board[i]->Check(board, ToMovePos);
+            if (board[i]->getColor() != this->Color && check == NO_ERROR)
                 return true;
         }
     }
@@ -44,7 +44,7 @@ int king::Check(Board &board, int ToMovePos)
     else if (board[ToMovePos] && board[ToMovePos]->getColor() == this->getColor()) //try kill friend
         return CANT_MOVE;
 
-    if (std::find(std::begin(AvalPos), std::end(AvalPos), ToMovePos - pos) != std::end(AvalPos) && !checkIfSomeoneCanKill(board, ToMovePos))
+    if (std::find(std::begin(AvalPos), std::end(AvalPos), ToMovePos - pos) != std::end(AvalPos)) //&& !checkIfSomeoneCanKill(board, ToMovePos))
         return NO_ERROR;
     return CANT_MOVE;
 

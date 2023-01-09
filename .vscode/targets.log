@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jan  8 21:07:26 2023
+# Make data base, printed on Mon Jan  9 16:53:45 2023
 
 # Variables
 
@@ -121,7 +121,7 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # automatic
 +F = $(notdir $+)
 # environment
-WSL_INTEROP = /run/WSL/9_interop
+WSL_INTEROP = /run/WSL/31774_interop
 # makefile (from 'Makefile', line 3)
 TEST = ChessTest
 # 'override' directive
@@ -147,7 +147,7 @@ XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
 _CE_M = 
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-5bc48606-a965-4e68-97e6-3d311a65b72b.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-0100de0f-848e-4813-8869-1682f0b5d91e.sock
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -276,9 +276,9 @@ fclean: clean
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 29):
 	rm -f $(NAME) $(TEST)
- 
 
 run: all clean
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -362,6 +362,6 @@ ChessPieces/rook.o:
 # strcache performance: lookups = 75 / hit rate = 40%
 # hash-table stats:
 # Load=45/8192=1%, Rehash=0, Collisions=0/75=0%
-# Finished Make data base on Sun Jan  8 21:07:26 2023
+# Finished Make data base on Mon Jan  9 16:53:45 2023
 
  
