@@ -87,7 +87,7 @@ class Ichess_pieces
          * 
          * @return std::shared_ptr<Ichess_pieces> 
          */
-        virtual std::shared_ptr<Ichess_pieces> copy() = 0;
+        virtual std::unique_ptr<Ichess_pieces> copy() = 0;
         virtual ~Ichess_pieces() {};
 
 };

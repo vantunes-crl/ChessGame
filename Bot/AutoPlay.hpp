@@ -16,11 +16,11 @@
  */
 
 
-template <class Board>
+template <class Board_T>
 class AutoPlay
 {
     private:
-        ChessDataConverter<Board> converter;
+        ChessDataConverter<Board_T> converter;
         MLP mlp;
         int ROUND = 0;
     public:
@@ -30,7 +30,7 @@ class AutoPlay
          * @param move Encoded move.
          * @param board Board where the pieces are.
          **/
-        bool Play(std::string &move, Board &board)
+        bool Play(std::string &move, Board_T &board)
         {
             int posToMove = converter.encodeToPosNumber(move);
             auto piecePos = findPieceToPlay(move, board);
@@ -55,13 +55,14 @@ class AutoPlay
             else //for debug
             {
                 std::cout << "Round " << ROUND << " Piece Pos " << piecePos << " MoveToPos " << posToMove << " Normal Move " << move << std::endl;
+                sleep(100);
                 return false;
             }
             return true;
         }
 
 
-        void BotPlay(Board &board)
+        void BotPlay(Board_T &board)
         {
                     
             auto state = board.read_state();
@@ -82,8 +83,10 @@ class AutoPlay
          * @param movesfile .pgn file
          * @param board Board where the initial pieces are.
          */
-        void startPlay(std::string movesfile, Board &board)
+        void startPlay(std::string movesfile)
         {
+            std::unique_ptr<Board> board = std::make_unique<Board>(); 
+            loadState(*board);
             auto vec = converter.parseMovesFile(movesfile);
             for (int i = 0; i < vec.size(); ++i)
             {
@@ -91,19 +94,17 @@ class AutoPlay
                 bool check = true;
                 for (auto it = plays.begin(); it != plays.end(); ++it)
                 {
-                    //sleep(2);
+                    //sleep(1);
                     //std::cout << "Number play: " << it->numberOfPlay << std::endl;
-                    //board.saveState(it->WhitePlay, "White", it->numberOfPlay);
-                    check = Play(it->WhitePlay, board);
-                    //sleep(2);
-                    board.saveState(it->BlackPlay, "Black", it->numberOfPlay);
-                    check = Play(it->BlackPlay, board);
-                    if (!check)
-                        break;
+                    board->saveState(it->WhitePlay, "White", it->numberOfPlay);
+                    check = Play(it->WhitePlay, *board);
+                    //sleep(1);
+                    board->saveState(it->BlackPlay, "Black", it->numberOfPlay);
+                    check = Play(it->BlackPlay, *board);
                 }
                 std::cout << "finish" << std::endl;
                 std::cout << "Loop number: " << i << "Target: " << vec.size() << std::endl;
-                board = loadState();
+                board = std::make_unique<Board>();
                 ROUND = 0;
             }
             

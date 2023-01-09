@@ -64,15 +64,14 @@ std::array<int, 64> Board::read_state()
     return state;
 }
 
-Board Board::operator=(const std::array<std::shared_ptr<Ichess_pieces>, 64> &boardArray)
-{
-    PlayBoard = boardArray;
-    return *this;
-}
+// Board &Board::operator=(std::unique_ptr<Ichess_pieces> &Piece)
+// {
+//     return *this;
+// }
 
-std::shared_ptr<Ichess_pieces> &Board::operator[](const int i) 
+std::unique_ptr<Ichess_pieces> &Board::operator[](const int i)
 { 
-    return PlayBoard[i]; 
+    return PlayBoard[i];
 }
 
 

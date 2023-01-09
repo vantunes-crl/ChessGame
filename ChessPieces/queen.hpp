@@ -25,7 +25,7 @@ class queen : public Ichess_pieces
          * @param b  Chess Piece Color False/Black True/White
          */
         queen(bool b);
-        std::shared_ptr<Ichess_pieces> copy() override;
+        std::unique_ptr<Ichess_pieces> copy() override;
     private:
         bool Color;
         std::list<int> moves;

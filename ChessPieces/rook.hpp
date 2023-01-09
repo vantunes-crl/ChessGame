@@ -25,7 +25,7 @@ class rook : public Ichess_pieces
          */
         rook(bool b);
 
-        std::shared_ptr<Ichess_pieces> copy() override;
+        std::unique_ptr<Ichess_pieces> copy() override;
         int Check(Board &Board, int ToMovePos) override;
     private:
         bool Color;

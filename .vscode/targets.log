@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jan  8 13:54:58 2023
+# Make data base, printed on Mon Jan  9 16:53:45 2023
 
 # Variables
 
@@ -106,8 +106,6 @@ MAKE = $(MAKE_COMMAND)
 PATH = /home/vantunes/.vscode-server/bin/e8a3071ea4344d9d48ef8a4df2c097372b0c5161/bin/remote-cli:/home/vantunes/miniconda3/bin:/home/vantunes/miniconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0:/mnt/c/WINDOWS/System32/OpenSSH:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/ctw02201.CRITICALTW/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/ctw02201.CRITICALTW/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin
 # default
 MAKEFILES := 
-# environment
-MOTD_SHOWN = update-motd
 # automatic
 ^F = $(notdir $^)
 # environment
@@ -123,7 +121,7 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # automatic
 +F = $(notdir $+)
 # environment
-WSL_INTEROP = /run/WSL/9_interop
+WSL_INTEROP = /run/WSL/31774_interop
 # makefile (from 'Makefile', line 3)
 TEST = ChessTest
 # 'override' directive
@@ -149,7 +147,7 @@ XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
 _CE_M = 
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-4681d642-3078-4ecf-aef3-c1f4e6b72e4a.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-0100de0f-848e-4813-8869-1682f0b5d91e.sock
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -173,7 +171,7 @@ CONDA_EXE = /home/vantunes/miniconda3/bin/conda
 # environment
 _CE_CONDA = 
 # variable set hash-table stats:
-# Load=81/1024=8%, Rehash=0, Collisions=7/122=6%
+# Load=80/1024=8%, Rehash=0, Collisions=7/121=6%
 
 # Pattern-specific Variable Values
 
@@ -276,11 +274,11 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 #  recipe to execute (from 'Makefile', line 29):
 	rm -f $(NAME) $(TEST)
 
 run: all clean
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -364,6 +362,6 @@ ChessPieces/rook.o:
 # strcache performance: lookups = 75 / hit rate = 40%
 # hash-table stats:
 # Load=45/8192=1%, Rehash=0, Collisions=0/75=0%
-# Finished Make data base on Sun Jan  8 13:54:58 2023
+# Finished Make data base on Mon Jan  9 16:53:45 2023
 
  

@@ -10,9 +10,9 @@ int main()
 {
     
     Board board;
-    // //MLP mlp;
+    // // //MLP mlp;
 
-    board = loadState();
+    loadState(board);
 
     
     // *Board::Board_ = {
@@ -38,35 +38,23 @@ int main()
   AutoPlay<Board> autoplay;
 
   // // board.printTable();
-  //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::Play, autoplay, std::ref(str), std::ref(board));
+  
 
-  //gui.start(board);
+
   //std::thread first(&GUI::start, gui, std::ref(board));
 
-  //std::string str1 = "Rh1";
-  // std::string str2 = "Nb6";
-  // std::string str3 = "Ra6";
-  // std::string str4 = "Nd7";
-
   //sleep(3);
-  //autoplay.Play(str1, board);
-  // sleep(3);
-  // autoplay.Play(str2, board);
-
-  // sleep(3);
-  // autoplay.Play(str3, board);
-  // sleep(3);
-  // autoplay.Play(str4, board);
+  //std::string str = "Qb4";
+  //std::thread second(&AutoPlay<Board>::Play, autoplay, std::ref(str), std::ref(board));
 
 
+  autoplay.startPlay("/home/vantunes/ChessGame/GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn");
+  //std::thread second(&AutoPlay<Board>::startPlay, autoplay,"/home/vantunes/ChessGame/GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn");
 
-  //autoplay.startPlay("GamesRecorded/ficsgamesdb_2009_standard2000_nomovetimes_270751.pgn/ficsgamesdb_2009_standard2000_nomovetimes_270751.pgn", board);
-  std::thread second(&AutoPlay<Board>::startPlay, autoplay,"/home/vantunes/ChessGame/GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn", std::ref(board));
-
-  // //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::BotPlay, autoplay, std::ref(board));
+  //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::BotPlay, autoplay, std::ref(board));
   
   //first.join();
-  second.join();
+ // second.join();
 
 
   // ChessDataConverter<Board<std::shared_ptr<Ichess_pieces>>> test;

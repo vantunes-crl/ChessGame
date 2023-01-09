@@ -106,7 +106,7 @@ int rook::play(Board &board, int ToMovePos)
         {
             if (it == ToMovePos)
             {
-                board[ToMovePos] = board[pos];
+                board[ToMovePos] = std::move(board[pos]);
                 board[pos] = nullptr;
                 moves.clear();
                 return NO_ERROR;
@@ -137,9 +137,9 @@ int rook::getPos(Board &board) const
     return -1;
 }
 
-std::shared_ptr<Ichess_pieces> rook::copy()
+std::unique_ptr<Ichess_pieces> rook::copy()
 {
-    return std::make_shared<rook>(Color);
+    return std::make_unique<rook>(Color);
 }
 
 bool rook::getColor() const

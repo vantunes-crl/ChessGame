@@ -15,7 +15,7 @@ int queen::play(Board &board, int ToMovePos)
         {
             if (it == ToMovePos)
             {
-                board[ToMovePos] = board[pos];
+                board[ToMovePos] = std::move(board[pos]);
                 board[pos] = nullptr;
                 moves.clear();
                 return NO_ERROR;
@@ -72,9 +72,9 @@ int queen::getPos(Board &board) const
 }
 
 
-std::shared_ptr<Ichess_pieces> queen::copy()
+std::unique_ptr<Ichess_pieces> queen::copy()
 {
-    return std::make_shared<queen>(Color);
+    return std::make_unique<queen>(Color);
 }
 
 

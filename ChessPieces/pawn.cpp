@@ -15,14 +15,14 @@ bool pawn::checkEnd(const int ToMovePos)
     return false;
 }
 
-void pawn::move(std::shared_ptr<Ichess_pieces> &ToMovePos, std::shared_ptr<Ichess_pieces> &Pos, bool end)
+void pawn::move(std::unique_ptr<Ichess_pieces> &&ToMovePos, std::unique_ptr<Ichess_pieces> &&Pos, bool end)
 {
     if (!end)
-        ToMovePos = Pos;
+        ToMovePos = std::move(Pos);
     else
     {
-        std::shared_ptr<Ichess_pieces> temp = std::make_shared<queen>(this->Color);
-        ToMovePos = temp;
+        std::unique_ptr<Ichess_pieces> temp = std::make_unique<queen>(this->Color);
+        ToMovePos = std::move(temp);
     }
     Pos = nullptr;
 }
@@ -42,7 +42,7 @@ int pawn::play(Board &board, int ToMovePos)
                 board.setMoveEvent(ToMovePos, true);
             else
                 board.setMoveEvent(ToMovePos, false);
-            move(board[ToMovePos], board[pos], checkEnd(ToMovePos));
+            move(std::move(board[ToMovePos]), std::move(board[pos]), checkEnd(ToMovePos));
             this->first_play = false;
             return NO_ERROR;
     }
@@ -111,9 +111,9 @@ int pawn::type()
         return BLACK_PAWN;
 }
 
-std::shared_ptr<Ichess_pieces> pawn::copy()
+std::unique_ptr<Ichess_pieces> pawn::copy()
 {
-    return std::make_shared<pawn>(Color);
+    return std::make_unique<pawn>(Color);
 }
 
 
