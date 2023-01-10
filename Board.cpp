@@ -49,9 +49,9 @@ void Board::saveState(std::string move, std::string color, int playNumber)
     file.close();
 }
 
-std::array<int, 64> Board::read_state()
+std::array<float, 64> Board::read_state()
 {
-    std::array<int, 64> state;
+    std::array<float, 64> state;
 
     for (int i = 0; i < 64; ++i)
     {

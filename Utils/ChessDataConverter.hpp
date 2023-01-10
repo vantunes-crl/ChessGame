@@ -33,8 +33,9 @@ class ChessDataConverter
 
             Move.erase(std::remove(Move.begin(), Move.end(), '+'), Move.end());
 
-            if (Move[2] == '=')
-                Move.erase(Move.begin() + 2, Move.end());
+            std::size_t end = Move.find('=');
+            if (end != std::string::npos)
+                Move = Move.substr(0, end);
             
             if (Move.size() == 2)
             {

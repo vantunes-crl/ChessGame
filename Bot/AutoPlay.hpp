@@ -46,7 +46,7 @@ class AutoPlay
                 piecePos = ROUND ? 0 : 56;
             }
 
-            // std::cout << "Play: " << move << ROUND << std::endl;
+            // std::cout << "Play: " << move << std::endl;
             // std::cout << "Played toMove: " << converter.posNumberToEncode(posToMove).first << converter.posNumberToEncode(posToMove).second << std::endl;
             // std::cout << "Played:MoveFrom " << converter.posNumberToEncode(piecePos).first << converter.posNumberToEncode(piecePos).second << std::endl;
 
@@ -55,7 +55,6 @@ class AutoPlay
             else //for debug
             {
                 std::cout << "Round " << ROUND << " Piece Pos " << piecePos << " MoveToPos " << posToMove << " Normal Move " << move << std::endl;
-                sleep(100);
                 return false;
             }
             return true;
@@ -64,10 +63,13 @@ class AutoPlay
 
         void BotPlay(Board_T &board)
         {
-                    
             auto state = board.read_state();
             auto moves =  mlp.getIstance().forward_propagation(state);
-    
+
+            for (auto m : moves)
+                std::cout << m << std::endl;
+            
+
             for (auto i = moves.rbegin(); i != moves.rend(); ++i)
             {
                 if (!Play(*i, board))
@@ -85,29 +87,51 @@ class AutoPlay
          */
         void startPlay(std::string movesfile)
         {
-            std::unique_ptr<Board> board = std::make_unique<Board>(); 
-            loadState(*board);
             auto vec = converter.parseMovesFile(movesfile);
             for (int i = 0; i < vec.size(); ++i)
             {
+                std::shared_ptr<Board> board = std::make_shared<Board>(); 
+                loadState(*board);
+                if (i == 221)
+                    ++i;
                 auto plays = converter.parseMoves(vec[i]);
                 bool check = true;
                 for (auto it = plays.begin(); it != plays.end(); ++it)
                 {
-                    //sleep(1);
+                    //sleep(2);
                     //std::cout << "Number play: " << it->numberOfPlay << std::endl;
-                    board->saveState(it->WhitePlay, "White", it->numberOfPlay);
+                    //board->saveState(it->WhitePlay, "White", it->numberOfPlay);
                     check = Play(it->WhitePlay, *board);
                     //sleep(1);
                     board->saveState(it->BlackPlay, "Black", it->numberOfPlay);
                     check = Play(it->BlackPlay, *board);
+                    if (!check)
+                        break;
                 }
                 std::cout << "finish" << std::endl;
                 std::cout << "Loop number: " << i << "Target: " << vec.size() << std::endl;
-                board = std::make_unique<Board>();
                 ROUND = 0;
             }
             
+        }
+
+        void testPlay(std::string movesfile, Board &board, int GameNumber)
+        {
+            auto vec = converter.parseMovesFile(movesfile);
+            auto plays = converter.parseMoves(vec[GameNumber]);
+            for (auto it = plays.begin(); it != plays.end(); ++it)
+            {
+                std::cout << "Number play: " << it->numberOfPlay << std::endl;
+                std::cout << "White play: " << it->WhitePlay << std::endl;
+                board.saveState(it->WhitePlay, "White", it->numberOfPlay);
+                //sleep(2);
+                Play(it->WhitePlay, board);
+                board.saveState(it->BlackPlay, "Black", it->numberOfPlay);
+                //sleep(2);
+                std::cout << "Black play: " << it->BlackPlay << std::endl;
+                Play(it->BlackPlay, board);
+            }
+            std::cout << "finish" << std::endl;
         }
 
         /**

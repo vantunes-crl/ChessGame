@@ -75,6 +75,7 @@ std::array<sf::Texture, 13> GUI::initTextures()
 
 void GUI::selectPiece(const int pos, Board &board, std::list<Pos> &List)
 {
+    
     static bool selected = false;
     static int PiecesPos = 0;
     static int Color = 0;
@@ -97,9 +98,12 @@ void GUI::selectPiece(const int pos, Board &board, std::list<Pos> &List)
             
             if (pos != PiecesPos)
             {                
-                board[PiecesPos]->play(board, pos);
-                // sleep(1);
-                // autoplay.BotPlay(Board);
+                sleep(1);
+                std::string move = "d4";
+                autoplay.Play(move, board);
+
+                sleep(3);
+                autoplay.BotPlay(board);
             }
         }
         List.clear();

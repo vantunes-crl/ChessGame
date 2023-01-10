@@ -62,16 +62,16 @@ std::string MLP::read_Bias_weights(const std::string movesFile)
 }
 
 
-std::vector<std::vector<double>> MLP::convertStringToMatrixDoubles(std::vector<std::string> vec)
+std::vector<std::vector<float>> MLP::convertStringToMatrixDoubles(std::vector<std::string> vec)
 {
     int count = 0;
 
-    std::vector<std::vector<double>> finalVec;
+    std::vector<std::vector<float>> finalVec;
 
     while (count < vec.size())
     {
         auto splitedStr = std::strtok(const_cast<char *>(vec[count].c_str()), " ");
-        std::vector<double> temp;
+        std::vector<float> temp;
 
         while (splitedStr != NULL)
         {  
@@ -94,10 +94,10 @@ std::vector<std::vector<double>> MLP::convertStringToMatrixDoubles(std::vector<s
     
 }
 
-std::vector<double> MLP::convertStringToArrayDoubles(std::string string)
+std::vector<float> MLP::convertStringToArrayDoubles(std::string string)
 {
     auto splitedStr = std::strtok(const_cast<char *>(string.c_str()), " ");
-    std::vector<double> temp;
+    std::vector<float> temp;
 
     while (splitedStr != NULL)
     {  
@@ -109,10 +109,10 @@ std::vector<double> MLP::convertStringToArrayDoubles(std::string string)
     return temp;
 }
 
-std::vector<double> MLP::sigmoid(const std::vector<double> matrix) 
+std::vector<float> MLP::sigmoid(const std::vector<float> matrix) 
 {
     const unsigned long VECTOR_SIZE = matrix.size();
-    std::vector<double> output (VECTOR_SIZE);
+    std::vector<float> output (VECTOR_SIZE);
     
     for( unsigned i = 0; i != VECTOR_SIZE; ++i ) {
         output[ i ] = 1 / (1 + exp(-matrix[ i ]));
@@ -121,9 +121,9 @@ std::vector<double> MLP::sigmoid(const std::vector<double> matrix)
     return output;
 }
 
-std::vector<std::string>  MLP::forward_propagation(const std::array<double, 64> input)
+std::vector<std::string>  MLP::forward_propagation(const std::array<float, 64> input)
 {
-    std::vector<double> total;
+    std::vector<float> total;
     float result;
     for (short int i = 0; i < _hiddenWeights.size(); ++i)
     {
@@ -133,19 +133,19 @@ std::vector<std::string>  MLP::forward_propagation(const std::array<double, 64> 
         total.push_back(result);
     }
 
-    std::vector<double> finalWeights;
-    for (short int i = 0; i < 36; ++i)
+	auto finalClass = read_classes("MLPModel/classes.txt");
+    
+    std::vector<float> finalWeights;
+    for (short int i = 0; i < finalClass.size(); ++i)
     {
         result = 0.0;
         for (short int j = 0; j < _hiddenWeights.size(); j++)
             result += total[j] * _outPutHeights[j][i] + _outputBias[j];
         finalWeights.push_back(result);
     }
-
-    std::string finalClass[36] = {"Bb5","Be2","Be3","Be4","Be5","Be7","Bf5","Bf6","Na5","Nc3","Nc6","Nd5","Ne5","Nf3","Nf6","O-O","Qa5","Qd5","Qf5","Ra2","Ra5","Rad8","Rd1","a3","a4","a5","a6","bc3","c4","cd5","d4","d5","de5","e3","e4","e6"};
-    std::map<double, std::string> mp;
-
-    for (int i = 0; i < 36; ++i)
+ 
+	std::map<float, std::string> mp;
+    for (int i = 0; i < finalClass.size(); ++i)
         mp.insert(std::make_pair(finalWeights[i], finalClass[i]));
 
     std::vector<std::string> finalList;
@@ -155,6 +155,27 @@ std::vector<std::string>  MLP::forward_propagation(const std::array<double, 64> 
     return finalList;
 
 }
+
+std::vector<std::string> MLP::read_classes(const std::string movesFile)
+{
+    std::fstream file(movesFile);
+    std::string buff;
+    std::vector<std::string> vec;
+    char c;
+
+    while (file >> std::noskipws >> c)
+    {
+        buff += c;
+        if (c == ' ')
+        {
+            vec.push_back(buff);
+			buff.clear();
+        }
+    }
+
+    return vec;
+}
+
 
 // void plays_proba()
 // // {
