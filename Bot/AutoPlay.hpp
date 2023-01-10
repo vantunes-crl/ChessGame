@@ -65,11 +65,6 @@ class AutoPlay
         {
             auto state = board.read_state();
             auto moves =  mlp.getIstance().forward_propagation(state);
-
-            for (auto m : moves)
-                std::cout << m << std::endl;
-            
-
             for (auto i = moves.rbegin(); i != moves.rend(); ++i)
             {
                 if (!Play(*i, board))

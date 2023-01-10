@@ -38,13 +38,10 @@ void Board::saveState(std::string move, std::string color, int playNumber)
             encodedBoard[i] = 0;
     }
 
-    std::ofstream file("Game.rec", std::ios_base::app);
+    std::ofstream file("Game.csv", std::ios_base::app);
 
     for (auto i = 0; i < 64; ++i)
-        file << encodedBoard[i] << " ";
-
-    file << "Play: " << playNumber << " ";
-    file << color << " " << move;
+        file << encodedBoard[i] << ",";
     file << "\n";
     file.close();
 }
@@ -63,11 +60,6 @@ std::array<float, 64> Board::read_state()
 
     return state;
 }
-
-// Board &Board::operator=(std::unique_ptr<Ichess_pieces> &Piece)
-// {
-//     return *this;
-// }
 
 std::unique_ptr<Ichess_pieces> &Board::operator[](const int i)
 { 
