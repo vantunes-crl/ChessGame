@@ -28,7 +28,7 @@ class Board
 
         void saveState(std::string move, std::string color, int playNumber);
 
-        std::array<float, 64> read_state();
+        std::array<double, 64> read_state();
 
         std::unique_ptr<Ichess_pieces> &operator[](const int i);
 

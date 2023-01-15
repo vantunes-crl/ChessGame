@@ -87,7 +87,7 @@ void MLP::Relu(std::vector<double> &vec)
 
 std::vector<std::string> MLP::forward_propagation(const std::array<double, 64> input)
 {
-    auto finalClass = read_classes("classes.txt");
+    auto finalClass = read_classes("MLPModel/classes.txt");
     std::vector<double> vec;
 
     //forward hidden layer
@@ -118,11 +118,13 @@ std::vector<std::string> MLP::forward_propagation(const std::array<double, 64> i
     for (int i = 0; i < finalClass.size(); ++i)
         mp.insert(std::make_pair(finalWeights[i], finalClass[i]));
 
-
     //return a list of plays organized
     std::vector<std::string> finalList;
     for (auto i : mp)
+    {
+        i.second.erase(std::remove(i.second.begin(), i.second.end(), ' '), i.second.end());
         finalList.push_back(i.second);
+    }        
 
     return finalList;
 

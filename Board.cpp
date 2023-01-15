@@ -61,9 +61,9 @@ void Board::saveState(std::string move, std::string color, int playNumber)
 
 }
 
-std::array<float, 64> Board::read_state()
+std::array<double, 64> Board::read_state()
 {
-    std::array<float, 64> state;
+    std::array<double, 64> state;
 
     for (int i = 0; i < 64; ++i)
     {

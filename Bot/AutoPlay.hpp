@@ -64,10 +64,11 @@ class AutoPlay
         void BotPlay(Board_T &board)
         {
             auto state = board.read_state();
-            auto moves =  mlp.getIstance().forward_propagation(state);
+
+            auto moves =  mlp.forward_propagation(state);
             for (auto i = moves.rbegin(); i != moves.rend(); ++i)
             {
-                if (!Play(*i, board))
+                if (Play(*i, board))
                     break;
                 else
                     std::cout << "invalid move" << std::endl;
@@ -205,6 +206,7 @@ class AutoPlay
             {
                 if (move.size() == 3 && !std::isupper(move[0]))
                 {
+
                     duplicateMove = move[0];
                     move.erase(move.begin());
                 }

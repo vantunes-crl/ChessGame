@@ -21,8 +21,8 @@ class GUI
 private:
     std::shared_ptr<sf::RenderWindow> _window;
     BackTrack backTrack;
+    ChessDataConverter<Board> converter;
     AutoPlay<Board> autoplay;
-    //AutoPlay<::Board<std::shared_ptr<Ichess_pieces>>> autoplay;
 public:
     void DisplayAvalPlaces(std::list<Pos> &List);
 

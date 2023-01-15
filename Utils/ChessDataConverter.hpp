@@ -37,10 +37,12 @@ class ChessDataConverter
             if (end != std::string::npos)
                 Move = Move.substr(0, end);
             
+            
             if (Move.size() == 2)
             {
                 temp = std::make_pair(Move[0], Move[1] - 48);
                 coverted = encodeToMatrix(temp);
+                
             }
             else if (Move.size() == 3)
             {
