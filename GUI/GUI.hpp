@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include "../ChessPieces/Ichess_pieces.hpp"
-//#include "../Bot/AutoPlay.hpp"
+#include "../Bot/AutoPlay.hpp"
 
 struct Pos
 {
@@ -21,7 +21,8 @@ class GUI
 private:
     std::shared_ptr<sf::RenderWindow> _window;
     BackTrack backTrack;
-    //AutoPlay<::Board<std::shared_ptr<Ichess_pieces>>> autoplay;
+    ChessDataConverter<Board> converter;
+    AutoPlay<Board> autoplay;
 public:
     void DisplayAvalPlaces(std::list<Pos> &List);
 

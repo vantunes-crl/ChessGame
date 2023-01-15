@@ -34,27 +34,28 @@ int main()
   // std::string move = mlp.forward_propagation(board.read_state());
   // std::cout << move << std::endl;
 
-  //GUI gui(825, 825);
-  AutoPlay<Board> autoplay;
+  GUI gui(825, 825);
+  //AutoPlay<Board> autoplay;
 
   // // board.printTable();
-  
+  std::thread first(&GUI::start, gui, std::ref(board));
+  //sleep(10);
+  //std::thread second(&AutoPlay<Board>::BotPlay, autoplay, std::ref(board));
 
-
-  //std::thread first(&GUI::start, gui, std::ref(board));
 
   //sleep(3);
   //std::string str = "Qb4";
   //std::thread second(&AutoPlay<Board>::Play, autoplay, std::ref(str), std::ref(board));
 
-
-  autoplay.startPlay("/home/vantunes/ChessGame/GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn");
-  //std::thread second(&AutoPlay<Board>::startPlay, autoplay,"/home/vantunes/ChessGame/GamesRecorded/ficsgamesdb_202201_standard2000_nomovetimes_263567.pgn");
+  //int i = 221;
+  //autoplay.startPlay("/home/vantunes/ChessGame/blackWins.pgn");
+  //
+  //std::thread second(&AutoPlay<Board>::startPlay, autoplay, "/home/vantunes/ChessGame/dataChess/dataChess.pgn");
 
   //std::thread second(&AutoPlay<Board<std::shared_ptr<Ichess_pieces>>>::BotPlay, autoplay, std::ref(board));
   
-  //first.join();
- // second.join();
+  first.join();
+  //second.join();
 
 
   // ChessDataConverter<Board<std::shared_ptr<Ichess_pieces>>> test;

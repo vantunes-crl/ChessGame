@@ -75,6 +75,7 @@ std::array<sf::Texture, 13> GUI::initTextures()
 
 void GUI::selectPiece(const int pos, Board &board, std::list<Pos> &List)
 {
+    
     static bool selected = false;
     static int PiecesPos = 0;
     static int Color = 0;
@@ -97,9 +98,12 @@ void GUI::selectPiece(const int pos, Board &board, std::list<Pos> &List)
             
             if (pos != PiecesPos)
             {                
-                board[PiecesPos]->play(board, pos);
-                // sleep(1);
-                // autoplay.BotPlay(Board);
+                std::string move;
+                auto a = converter.posNumberToEncode(pos);
+                move += a.first;
+                move += char(a.second + 48);
+                std::cout << move << std::endl;
+                autoplay.Play(move, board);
             }
         }
         List.clear();
@@ -177,6 +181,15 @@ void GUI::start(Board &board)
                 
                 case sf::Event::MouseButtonPressed:
                     selectPiece(Matrix[event.mouseButton.y / 100][event.mouseButton.x / 100], board, AvalPlaces);
+                case sf::Event::KeyPressed:
+                    if (event.type == sf::Event::KeyPressed)
+                    {
+                        if (event.key.code == sf::Keyboard::B)
+                        {
+                            autoplay.BotPlay(board);
+                            std::cout << "the escape key was pressed" << std::endl;
+                        }
+                    }
                 default:
                     break;
             }
