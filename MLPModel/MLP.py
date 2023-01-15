@@ -2,72 +2,78 @@ from sklearn.neural_network import MLPClassifier
 import pandas as pd
 import numpy as np
 
-# target.to_csv("targetBlack.csv", index=False)
-# data.to_csv("dataChessBlack.csv", index=False)
+data = pd.read_csv("/home/vantunes/ChessGame/HalfData.csv")
+# target = pd.read_csv("/home/vantunes/ChessGame/HalfTarget.csv")
 
-data = pd.read_csv("test.csv")
-target = pd.read_csv("target.csv")
+# model = MLPClassifier(random_state=1, hidden_layer_sizes=(1024,), max_iter=1000)
 
-# print(data.loc[0])
-# print(target.loc[0])
+# print(data.values.shape)
+# print(target.values.shape)
 
-# model = MLPClassifier(random_state=1, max_iter=5000)
+# model.fit(data.values, target.values.ravel())
 
-# model.fit(data, target.values.ravel())
-#print(target.shape)
+def relu(x):
+    return(np.maximum(0, x))
+
+test = data
 import pickle
 
-# # #pickle.dump(model, open('rfr_model.sav', 'wb'))
+#anp.array([1,2,3])
 
-test = np.array([12,8,7,11,9,7,8,12,10,10,0,0,10,10,10,10,0,0,0,10,0,0,0,0,0,0,10,0,0,0,0,0,0,0,0,4,4,0,0,0,0,0,0,0,0,2,0,0,4,4,4,0,0,4,4,4,6,2,1,5,3,1,0,6]).reshape(1,-1)
 
-clf = pickle.load(open('rfr_model.sav', 'rb'))                 
-print('Loaded model score:', clf.predict(test))
+#pickle.dump(model, open('rfr_model.sav', 'wb'))
 
-# print(data[0:1])
-# test = clf.predict(data[0:1])
+clf = pickle.load(open('rfr_model.sav', 'rb'))
 
-print(len(clf.classes_))
-#print(clf.classes_)
+test = np.array([12,8,7,11,9,7,8,12,10,10,10,10,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,4,4,4,4,6,2,1,5,3,1,2,6]).reshape(1, -1)
+
+bias = clf.intercepts_
+HiddenBias = bias[0]
+OutPutBias = bias[1]
+HiddenWeights = clf.coefs_[0]
+OutPutWeights = clf.coefs_[1]
+ 
+# #Forward propagation
+# print(HiddenWeights[0][0])
+# print(HiddenBias[0])
+
+forward = np.matmul(test, HiddenWeights) + HiddenBias
+forward = relu(forward)
+forward = np.matmul(forward, OutPutWeights) + OutPutBias
+ 
+print(np.max(forward))
+
+# #Getting the max value from the outPut Layer
+# #Saving in a list to compare with the original algorithm
+# my_predictions = np.argmax(forward)
+ 
+# #Saving in a list to compare with the copy algorithm
+# # test_y = clf.predict(data.value)
+# # predic = []
+# # for i in test_y:
+# #     predic.append(i)
+
+# print(clf.predict(test))
+# print(clf.classes_[my_predictions])
+ 
+ 
+# print("My algorithm predicions")
+# print(my_predictions)
+# print("Sklearn Predictions ")
+# print(predic)
 
 
 # f = open("classes.txt", "a")
 # for x in clf.classes_:
-#     print("aqui")
 #     f.write(x)
 #     f.write(' ')
 # f.close()
 
+# np.savetxt("weightsBiasHidden.txt", clf.intercepts_[0], delimiter=',')
+# np.savetxt("weightsBiasOut.txt", clf.intercepts_[1], delimiter=',')
+# np.savetxt('weightsHidden.txt', clf.coefs_[0], delimiter=',')
+# np.savetxt('weightsOut.txt', clf.coefs_[1], delimiter=',') 
 
-
-
-
-
-# f = open("weightsBiasOut.txt", "a")
-# test = np.array(clf.intercepts_[1])
-# for x in test:
-#     f.write(" ")
-#     f.write(np.array2string(x, formatter={'float_kind':lambda x: "%.5f" % x}))
-# f.close()
-
-# f = open("weightsBiasHidden.txt", "a")
-# test = np.array(clf.intercepts_[0])
-# for x in test:
-#     f.write(" ")
-#     f.write(np.array2string(x, formatter={'float_kind':lambda x: "%.5f" % x}))
-# f.close()
-
-# f = open("weightsOutPut.txt", "a")
-# test = np.array(clf.coefs_[1])
-# for x in test:
-#     f.write(np.array2string(x, formatter={'float_kind':lambda x: "%.5f" % x}))
-# f.close()
-
-# f = open("weightsHidden.txt", "a")
-# test = np.array(clf.coefs_[0])
-# for x in test:
-#     f.write(np.array2string(x, formatter={'float_kind':lambda x: "%.5f" % x}))
-# f.close()
 
 #cat Game.rec |  grep -o ......$ | sed -e "s/ack //" | sed -e "s/ck //" | sed -e "s/k //" | sed -e "s/ //" > file1
 #cat Game.rec | sed 's/\P.*//' > dataChess.csv

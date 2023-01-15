@@ -28,8 +28,6 @@ void Board::printTable()
 void Board::saveState(std::string move, std::string color, int playNumber)
 {
     std::array<int, 64> encodedBoard;
-    static int count = 0;
-
     for (int i = 0; i < 64; ++i)
     {
         if (PlayBoard[i])
@@ -38,12 +36,29 @@ void Board::saveState(std::string move, std::string color, int playNumber)
             encodedBoard[i] = 0;
     }
 
-    std::ofstream file("Game.csv", std::ios_base::app);
-
-    for (auto i = 0; i < 64; ++i)
-        file << encodedBoard[i] << ",";
+    std::ofstream file("DataChess.csv", std::ios_base::app);
+    for (auto i = 0; i < 64; ++i){
+        file << encodedBoard[i];
+        if (i < 63)
+            file << ',';
+    }
     file << "\n";
     file.close();
+
+    move.erase(std::remove(move.begin(), move.end(), 'x'), move.end());
+    move.erase(std::remove(move.begin(), move.end(), '#'), move.end());
+    move.erase(std::remove(move.begin(), move.end(), '+'), move.end());
+
+    std::size_t end = move.find('=');
+    if (end != std::string::npos)
+        move = move.substr(0, end);
+
+
+    std::ofstream file1("Target.csv", std::ios_base::app);
+    file1 << move;
+    file1 << "\n";
+    file1.close();
+
 }
 
 std::array<float, 64> Board::read_state()

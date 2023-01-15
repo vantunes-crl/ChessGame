@@ -87,8 +87,6 @@ class AutoPlay
             {
                 std::shared_ptr<Board> board = std::make_shared<Board>(); 
                 loadState(*board);
-                if (i == 221)
-                    ++i;
                 auto plays = converter.parseMoves(vec[i]);
                 bool check = true;
                 for (auto it = plays.begin(); it != plays.end(); ++it)
