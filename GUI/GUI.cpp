@@ -98,12 +98,14 @@ void GUI::selectPiece(const int pos, Board &board, std::list<Pos> &List)
             
             if (pos != PiecesPos)
             {                
-                std::string move;
-                auto a = converter.posNumberToEncode(pos);
-                move += a.first;
-                move += char(a.second + 48);
-                std::cout << move << std::endl;
-                autoplay.Play(move, board);
+                // std::string move;
+                // auto a = converter.posNumberToEncode(pos);
+                // move += a.first;
+                // move += char(a.second + 48);
+                // std::cout << move << std::endl;
+
+                board[PiecesPos]->play(board, pos);
+                autoplay.ROUND = 1;
             }
         }
         List.clear();

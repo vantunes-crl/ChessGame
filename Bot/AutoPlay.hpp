@@ -22,8 +22,8 @@ class AutoPlay
     private:
         ChessDataConverter<Board_T> converter;
         MLP mlp;
-        int ROUND = 0;
     public:
+        int ROUND = 0;
         /**
          * @brief Play a encode move Exempale: Ne4
          * 
