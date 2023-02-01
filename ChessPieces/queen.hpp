@@ -12,22 +12,21 @@
 class queen : public Ichess_pieces
 {
     public:
-        int play(Board &Board, int ToMoveint) override;
-        int type() override;
+        int play(Board &Board, const int &ToMoveInt) override;
+        int type() const override;
         int getPos(Board &Board) const override;
         bool getColor() const override;
 
-        int Check(Board &Board, int ToMovePos) override;
+        int Check(Board &Board, const int &ToMovePos) override;
 
         /**
          * @brief Construct a new queen object
          * 
          * @param b  Chess Piece Color False/Black True/White
          */
-        queen(bool b);
-        std::unique_ptr<Ichess_pieces> copy() override;
+        explicit queen(COLORS b);
     private:
-        bool Color;
+        COLORS Color;
         std::list<int> moves;
         BackTrack backTrack;
 };

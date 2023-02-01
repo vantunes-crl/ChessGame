@@ -1,6 +1,5 @@
 #ifndef ICHESS_PIECES_HPP
 #define ICHESS_PIECES_HPP
-#pragma once
 
 #include <iostream>
 #include <memory>
@@ -44,6 +43,11 @@ enum ERRORS {
     ENPASSANTE,
 };
 
+enum COLORS {
+    WHITE,
+    BLACK
+};
+
 /**
  * @brief Interface to build all Pieces on the Chess Game.
  * 
@@ -58,10 +62,10 @@ class Ichess_pieces
          * @param ToMovePos int pos to the next move based in a 64 pos board.
          * @return int > 0 if an error occurs, else return 0.
          */
-        virtual int play(Board &Board, int ToMovePos) = 0;
+        virtual int play(Board &Board, const int &ToMovePos) = 0;
 
 
-        virtual int Check(Board &Board, int ToMovePos) = 0;
+        virtual int Check(Board &Board, const int &ToMovePos) = 0;
         /**
          * @brief Get the int of the piece on the Board.
          * 
@@ -74,7 +78,7 @@ class Ichess_pieces
          * 
          * @return a int value based on an enum structure (PIECES).
          */
-        virtual int type() = 0;
+        virtual int type() const = 0;
         /**
          * @brief Get the Color of object
          * 
@@ -82,13 +86,11 @@ class Ichess_pieces
          * @return false Black
          */
         virtual bool getColor() const = 0;
+
         /**
-         * @brief Create a Copy of the piece.
-         * 
-         * @return std::shared_ptr<Ichess_pieces> 
+         * Destructor
          */
-        virtual std::unique_ptr<Ichess_pieces> copy() = 0;
-        virtual ~Ichess_pieces() {};
+        virtual ~Ichess_pieces() = default;
 
 };
 

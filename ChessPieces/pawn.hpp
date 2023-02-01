@@ -1,6 +1,5 @@
 #ifndef PAWN_HPP
 #define PAWN_HPP
-#pragma once
 
 #include "queen.hpp"
 
@@ -13,8 +12,8 @@
 class pawn : public Ichess_pieces
 {
     public:
-        int play(Board &Board, int ToMoveint) override;
-        int type() override;
+        int play(Board &Board, const int &ToMoveInt) override;
+        int type() const override;
         int getPos(Board &Board) const override;
         bool getColor() const override;
 
@@ -23,17 +22,16 @@ class pawn : public Ichess_pieces
          * 
          * @param b Chess Piece Color False/Black True/White
          */
-        pawn(bool b);
+        explicit pawn(COLORS b);
 
-        std::unique_ptr<Ichess_pieces> copy() override;
-        int Check(Board &Board, int ToMovePos) override;
+        int Check(Board &Board,const int &ToMovePos) override;
 
     private:
-        bool Color;
+        COLORS Color;
         BackTrack backTrack;
         bool first_play = true;
-        bool checkEnd(const int ToMovePos);
-        void move(std::unique_ptr<Ichess_pieces> &&ToMovePos, std::unique_ptr<Ichess_pieces> &&Pos, bool end);
+        bool checkEnd(const int &ToMovePos);
+        void move(std::unique_ptr<Ichess_pieces> &&ToMovePos, std::unique_ptr<Ichess_pieces> &&Pos, const bool &end);
 };
 
 

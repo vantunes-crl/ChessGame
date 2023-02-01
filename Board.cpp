@@ -27,7 +27,7 @@ void Board::printTable()
 
 void Board::saveState(std::string move, std::string color, int playNumber)
 {
-    std::array<int, 64> encodedBoard;
+    std::array<int, 64> encodedBoard {};
     for (int i = 0; i < 64; ++i)
     {
         if (PlayBoard[i])
@@ -63,7 +63,7 @@ void Board::saveState(std::string move, std::string color, int playNumber)
 
 std::array<double, 64> Board::read_state()
 {
-    std::array<double, 64> state;
+    std::array<double, 64> state {};
 
     for (int i = 0; i < 64; ++i)
     {

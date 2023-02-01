@@ -15,8 +15,8 @@
 class king : public Ichess_pieces 
 {
     public:
-        int play(Board &Board, int ToMoveint) override;
-        int type() override;
+        int play(Board &Board, const int &ToMoveInt) override;
+        int type() const override;
         int getPos(Board &Board) const override;
         bool getColor() const override;
 
@@ -25,15 +25,15 @@ class king : public Ichess_pieces
          * 
          * @param b Chess Piece Color False/Black True/White
          */
-        king(bool b);
-        std::unique_ptr<Ichess_pieces> copy() override;
+        explicit king(COLORS b);
 
-        int Check(Board &Board, int ToMovePos) override;
+        int Check(Board &Board, const int &ToMovePos) override;
 
     private:
         bool Color;
         BackTrack backTrack;
         const int AvalPos[8] = {-1, 1, 8, -8, 7, -7, 9, -9};
+
         /**
          * @brief Check the next position, if someone can kill there.
          * 
@@ -42,7 +42,7 @@ class king : public Ichess_pieces
          * @return true if can be killed.
          * @return false if no one can kill.
          */
-        bool checkIfSomeoneCanKill(Board &Board, int pos);
+        bool checkIfSomeoneCanKill(Board &Board, const int &pos);
 
 };
 

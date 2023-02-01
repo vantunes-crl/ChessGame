@@ -1,7 +1,6 @@
 #ifndef ROOK_HPP
 #define ROOK_HPP
 
-#pragma once
 #include "king.hpp"
 
 /**
@@ -13,8 +12,8 @@
 class rook : public Ichess_pieces
 {
     public:
-        int play(Board &Board, int ToMoveint) override;
-        int type() override;
+        int play(Board &Board, const int &ToMoveInt) override;
+        int type() const override;
         int getPos(Board &Board) const override;
         bool getColor() const override;
 
@@ -23,16 +22,15 @@ class rook : public Ichess_pieces
          * 
          * @param b  Chess Piece Color False/Black True/White
          */
-        rook(bool b);
+         explicit rook(COLORS b);
 
-        std::unique_ptr<Ichess_pieces> copy() override;
-        int Check(Board &Board, int ToMovePos) override;
+        int Check(Board &Board, const int &ToMovePos) override;
     private:
         bool Color;
         BackTrack backTrack;
         std::list<int> moves;
-        bool swap = true;
-        bool swapKing(Board &Board, const int posRook, const int posKing);
+        bool swap;
+        bool swapKing(Board &Board, const int &posRook, const int &posKing);
 
 };
 

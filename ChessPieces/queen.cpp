@@ -1,13 +1,13 @@
 #include "queen.hpp"
 
-queen::queen(bool b)
+queen::queen(COLORS b)
 {
     Color = b;
 }
 
-int queen::play(Board &board, int ToMovePos)
+int queen::play(Board &board, const int &ToMovePos)
 {
-    int pos = this->getPos(board); //original to set pos after move
+    const int pos = this->getPos(board); //original to set pos after move
     
     if (Check(board, ToMovePos) == NO_ERROR)
     {
@@ -26,9 +26,9 @@ int queen::play(Board &board, int ToMovePos)
     return CANT_MOVE;
 }
 
-int queen::Check(Board &board, int ToMovePos)
+int queen::Check(Board &board, const int &ToMovePos)
 {
-    int pos = this->getPos(board); //original to set pos after move
+    const int pos = this->getPos(board); //original to set pos after move
     
     if (ToMovePos > 63 || ToMovePos < 0) //out size of the board
         return OUT_SIZE;
@@ -53,7 +53,7 @@ int queen::Check(Board &board, int ToMovePos)
 
 }
 
-int queen::type()
+int queen::type() const
 {
     if (Color)
         return WHITE_QUEEN;
@@ -70,13 +70,6 @@ int queen::getPos(Board &board) const
     }
     return -1;
 }
-
-
-std::unique_ptr<Ichess_pieces> queen::copy()
-{
-    return std::make_unique<queen>(Color);
-}
-
 
 bool queen::getColor() const
 {

@@ -1,12 +1,11 @@
 #include "pawn.hpp"
-#include "unistd.h"
 
-pawn::pawn(bool b)
+pawn::pawn(COLORS b)
 {
     Color = b;
 }
 
-bool pawn::checkEnd(const int ToMovePos)
+bool pawn::checkEnd(const int &ToMovePos)
 {
     const int BoardEnd[16] = {56, 57, 58, 59, 60, 61, 62 , 63, 0, 1, 2, 3, 4, 5, 6, 7};
 
@@ -15,7 +14,7 @@ bool pawn::checkEnd(const int ToMovePos)
     return false;
 }
 
-void pawn::move(std::unique_ptr<Ichess_pieces> &&ToMovePos, std::unique_ptr<Ichess_pieces> &&Pos, bool end)
+void pawn::move(std::unique_ptr<Ichess_pieces> &&ToMovePos, std::unique_ptr<Ichess_pieces> &&Pos, const bool &end)
 {
     if (!end)
         ToMovePos = std::move(Pos);
@@ -27,29 +26,28 @@ void pawn::move(std::unique_ptr<Ichess_pieces> &&ToMovePos, std::unique_ptr<Iche
     Pos = nullptr;
 }
 
-int pawn::play(Board &board, int ToMovePos)
+int pawn::play(Board &board, const int &ToMovePos)
 {
     int pos = this->getPos(board);
 
     auto check = Check(board, ToMovePos);
     auto lastMove = board.getLastEventMove();
-    switch (check)
+    if  (check == ENPASSANTE)
+        board[lastMove.first] = nullptr;
+    else if (check == NO_ERROR)
     {
-        case ENPASSANTE:
-            board[lastMove.first] = nullptr;
-        case NO_ERROR:
-            if (abs(pos - ToMovePos) == 16)
-                board.setMoveEvent(ToMovePos, true);
-            else
-                board.setMoveEvent(ToMovePos, false);
-            move(std::move(board[ToMovePos]), std::move(board[pos]), checkEnd(ToMovePos));
-            this->first_play = false;
-            return NO_ERROR;
+        if (abs(pos - ToMovePos) == 16)
+            board.setMoveEvent(ToMovePos, true);
+        else
+            board.setMoveEvent(ToMovePos, false);
+    move(std::move(board[ToMovePos]), std::move(board[pos]), checkEnd(ToMovePos));
+    this->first_play = false;
+    return NO_ERROR;
     }
     return CANT_MOVE;
 }
 
-int pawn::Check(Board &board, int ToMovePos)
+int pawn::Check(Board &board, const int &ToMovePos)
 {
     int pos = this->getPos(board);
 
@@ -103,19 +101,13 @@ int pawn::getPos(Board &Board) const
     return -1;
 }
 
-int pawn::type()
+int pawn::type() const
 {
     if (Color)
         return WHITE_PAWN;
     else
         return BLACK_PAWN;
 }
-
-std::unique_ptr<Ichess_pieces> pawn::copy()
-{
-    return std::make_unique<pawn>(Color);
-}
-
 
 bool pawn::getColor() const
 {

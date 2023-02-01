@@ -1,6 +1,5 @@
 #ifndef HORSE_HPP
 #define HORSE_HPP
-#pragma once
 #include "Ichess_pieces.hpp"
 
 /**
@@ -10,19 +9,19 @@
 class horse : public Ichess_pieces
 {
     public:
-        int play(Board &Board, int ToMoveint) override;
-        int type() override;
+        int play(Board &Board, const int &ToMoveint) override;
+        int type() const override;
         int getPos(Board &Board) const override;
         bool getColor() const override;
-        int Check(Board &Board, int ToMovePos) override;
+        int Check(Board &Board, const int &ToMovePos) override;
 
         /**
          * @brief Construct a new Horse object
          * 
          * @param b Chess Piece Color False/Black True/White
          */
-        horse(bool b);
-        std::unique_ptr<Ichess_pieces> copy() override;
+        explicit horse(COLORS b);
+
     private:
         bool Color;
         BackTrack backTrack;
@@ -36,7 +35,7 @@ class horse : public Ichess_pieces
          * @return true if the distance is less than 3.
          * @return false if the distance is bigger than 3.
          */
-        bool checkDistance(int pos, int ToMovePos);
+        static bool checkDistance(const int &pos, const int &ToMovePos);
 };
 
 #endif

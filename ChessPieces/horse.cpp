@@ -1,11 +1,11 @@
 #include "horse.hpp"
 
-horse::horse(bool b)
+horse::horse(COLORS b)
 {
     Color = b;
 }
 
-bool horse::checkDistance(int pos, int ToMovePos)
+bool horse::checkDistance(const int &pos, const int &ToMovePos)
 {
     int y1 = pos % 8;
     int y2 = ToMovePos % 8;
@@ -15,7 +15,7 @@ bool horse::checkDistance(int pos, int ToMovePos)
     return false;
 }
     
-int horse::play(Board &board, int ToMovePos)
+int horse::play(Board &board, const int &ToMovePos)
 {
     int pos = this->getPos(board);
 
@@ -28,13 +28,13 @@ int horse::play(Board &board, int ToMovePos)
     return CANT_MOVE;   
 }
 
-int horse::Check(Board &board, int ToMovePos)
+int horse::Check(Board &board, const int &ToMovePos)
 {
     int pos = this->getPos(board);
 
     if (ToMovePos > 63 || ToMovePos < 0) //out size of the board
         return OUT_SIZE;
-    else if (pos == ToMovePos) //if is not moving
+    else if (pos == ToMovePos) //if it is not moving
         return SAME_PLACE;
     else if (board[ToMovePos] && board[ToMovePos]->getColor() == this->getColor()) //try kill friend
         return CANT_MOVE;
@@ -48,7 +48,7 @@ int horse::Check(Board &board, int ToMovePos)
     return CANT_MOVE; 
 }
 
-int horse::type()
+int horse::type() const
 {
     if (Color)
         return WHITE_HORSE;
@@ -64,11 +64,6 @@ int horse::getPos(Board &board) const
             return i;
     }
     return -1;
-}
-
-std::unique_ptr<Ichess_pieces> horse::copy()
-{
-    return std::make_unique<horse>(Color);
 }
 
 bool horse::getColor() const

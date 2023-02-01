@@ -1,7 +1,6 @@
 #include "bishop.hpp"
-#include <cstring>
 
-int bishop::play(Board &Board, int ToMovePos)
+int bishop::play(Board &Board, const int &ToMovePos)
 {
     int pos = this->getPos(Board);
     if (Check(Board, ToMovePos) == NO_ERROR)
@@ -22,7 +21,7 @@ int bishop::play(Board &Board, int ToMovePos)
     return CANT_MOVE;
 }
 
-int bishop::Check(Board &Board, int ToMovePos)
+int bishop::Check(Board &Board, const int &ToMovePos)
 {
     int pos = this->getPos(Board); //original to set pos after move
     
@@ -48,8 +47,7 @@ int bishop::Check(Board &Board, int ToMovePos)
 
 }
 
-
-int bishop::type()
+int bishop::type() const
 {
     if (Color)
         return WHITE_BISHOP;
@@ -67,15 +65,9 @@ int bishop::getPos(Board &Board) const
     return -1;
 }
 
-bishop::bishop(bool b)
+bishop::bishop(COLORS b)
 {
     Color = b;
-}
-
-
-std::unique_ptr<Ichess_pieces> bishop::copy()
-{
-    return std::make_unique<bishop>(Color);
 }
 
 

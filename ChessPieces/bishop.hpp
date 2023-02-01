@@ -1,6 +1,5 @@
 #ifndef BISHOP_HPP
 #define BISHOP_HPP
-#pragma once
 #include "Ichess_pieces.hpp"
 
 /**
@@ -11,19 +10,18 @@
 class bishop : public Ichess_pieces
 {
     public:
-        int play(Board &Board, int ToMovePos) override;
-        int type() override;
+        int play(Board &Board, const int &ToMovePos) override;
+        int type() const override;
         int getPos(Board &Board) const override;
         bool getColor() const override;
-        int Check(Board &Board, int ToMovePos) override;
+        int Check(Board &Board, const int &ToMovePos) override;
 
         /**
          * @brief Construct a new Bishop object
          * 
          * @param b Chess Piece Color False/Black True/White
          */
-        bishop(bool b);
-        std::unique_ptr<Ichess_pieces> copy() override;
+        explicit bishop(COLORS b);
 
     private:
         bool Color;
@@ -31,8 +29,5 @@ class bishop : public Ichess_pieces
         BackTrack backTrack;
 
 };
-
-
-
 
 #endif

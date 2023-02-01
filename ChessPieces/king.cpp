@@ -1,12 +1,11 @@
 #include "king.hpp"
 
-
-king::king(bool b)
+king::king(COLORS b)
 {
     Color = b;
 }
 
-bool king::checkIfSomeoneCanKill(Board &board, int ToMovePos)
+bool king::checkIfSomeoneCanKill(Board &board, const int &ToMovePos)
 {
     for (int i = 0; i < 64; ++i)
     {
@@ -20,9 +19,9 @@ bool king::checkIfSomeoneCanKill(Board &board, int ToMovePos)
     return false;
 }
 
-int king::play(Board &board, int ToMovePos)
+int king::play(Board &board, const int &ToMovePos)
 {
-    int pos = this->getPos(board);
+    const int pos = this->getPos(board);
 
     if (Check(board, ToMovePos) == NO_ERROR)
     {
@@ -33,13 +32,13 @@ int king::play(Board &board, int ToMovePos)
     return CANT_MOVE;
 }
 
-int king::Check(Board &board, int ToMovePos)
+int king::Check(Board &board, const int &ToMovePos)
 {
-    int pos = this->getPos(board);
+    const int pos = this->getPos(board);
 
     if (ToMovePos > 63 || ToMovePos < 0) //out size of the board
         return OUT_SIZE;
-    else if (pos == ToMovePos) //if is not moving
+    else if (pos == ToMovePos) //if it is not moving
         return SAME_PLACE;
     else if (board[ToMovePos] && board[ToMovePos]->getColor() == this->getColor()) //try kill friend
         return CANT_MOVE;
@@ -50,7 +49,7 @@ int king::Check(Board &board, int ToMovePos)
 
 }
 
-int king::type()
+int king::type() const
 {
     if (Color)
         return WHITE_KING;
@@ -67,13 +66,6 @@ int king::getPos(Board &board) const
     }
     return -1;
 }
-
-
-std::unique_ptr<Ichess_pieces> king::copy()
-{
-    return std::make_unique<king>(Color);
-}
-
 
 bool king::getColor() const
 {
