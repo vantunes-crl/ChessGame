@@ -73,16 +73,16 @@ std::array<sf::Texture, 13> GUI::initTextures()
     return Textures;
 }
 
-void GUI::selectPiece(const int pos, Board &board, std::list<Pos> &List)
+bool GUI::selectPiece(const int &pos, Board &board, std::list<Pos> &List)
 {
-    
     static bool selected = false;
     static int PiecesPos = 0;
-    static int Color = 0;
+
     std::list<int> AvalPlaces;
-    static int count = 1;
+
     List.clear();
     AvalPlaces = backTrack.BackTrackAvalPlacesList(pos, board);
+
     for (auto it : AvalPlaces)
         List.push_back({it % 8, it / 8});
 
@@ -94,18 +94,18 @@ void GUI::selectPiece(const int pos, Board &board, std::list<Pos> &List)
     else
     {
         if(board[PiecesPos])
-        {  
-            
+        {
             if (pos != PiecesPos)
             {
                 board[PiecesPos]->play(board, pos);
                 autoplay.ROUND = 1;
-
+                return true;
             }
+            selected = false;
         }
         List.clear();
-        selected = false;
     }
+    return false;
 }
 
 void GUI::DisplayAvalPlaces(std::list<Pos> &List)
@@ -177,15 +177,11 @@ void GUI::start(Board &board)
                     break;
                 
                 case sf::Event::MouseButtonPressed:
-                    selectPiece(Matrix[event.mouseButton.y / 100][event.mouseButton.x / 100], board, AvalPlaces);
-                case sf::Event::KeyPressed:
-                    if (event.type == sf::Event::KeyPressed)
+                    if (selectPiece(Matrix[event.mouseButton.y / 100][event.mouseButton.x / 100], board, AvalPlaces))
                     {
-                        if (event.key.code == sf::Keyboard::B)
-                        {
-                            autoplay.BotPlay(board);
-                        }
+                        autoplay.BotPlay(board);
                     }
+
                 default:
                     break;
             }

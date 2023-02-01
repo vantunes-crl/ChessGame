@@ -26,7 +26,7 @@ private:
 public:
     void DisplayAvalPlaces(std::list<Pos> &List);
 
-    void selectPiece(const int pos, Board &Board, std::list<Pos> &List);
+    bool selectPiece(const int &pos, Board &Board, std::list<Pos> &List);
 
     /**
      * @brief Main Function of the GUI, Where the main loop hapens.
